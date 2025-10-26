@@ -1,0 +1,33 @@
+---
+const { title = "ITMOSS — Experiments in AI · Video · Commerce", description = "Founder landing: projects, notes, contact.", } = Astro.props;
+---
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body class="font-body antialiased">
+    <header class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+      <a href="/" class="font-extrabold tracking-tight text-xl">ITMOSS</a>
+      <nav class="flex gap-4 text-sm text-[var(--muted)]">
+        <a href="/#projects" class="hover:text-white">Projects</a>
+        <a href="/notes" class="hover:text-white">Notes</a>
+        <a href="/about" class="hover:text-white">About</a>
+        <a href="/contact" class="hover:text-white">Contact</a>
+      </nav>
+    </header>
+    <main class="max-w-5xl mx-auto px-6">
+      <slot />
+    </main>
+    <footer class="max-w-5xl mx-auto px-6 py-12 text-xs text-[var(--muted)]">
+      © {new Date().getFullYear()} ITMOSS · Built with Astro
+    </footer>
+  </body>
+</html>
