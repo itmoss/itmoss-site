@@ -2,14 +2,48 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="About — ITMOSS">
-  <section class="prose prose-invert py-16">
-    <h1>About</h1>
-    <p><strong>Jaster (정명진)</strong> — AI/영상/유통 실험을 즐기는 창업자. Golang/Node, Supabase, AWS를 주로 사용합니다.</p>
-    <h3>Focus</h3>
-    <ul>
-      <li>RabbitScene PhotoBooth (실시간 합성·프린팅)</li>
-      <li>K-Beauty Vector Search (멀티모달 검색)</li>
-      <li>Trading Infra (멀티봇·WS)</li>
-    </ul>
+  <section class="py-32 max-w-7xl mx-auto px-6 font-mono">
+    <div class="space-y-8">
+      <h1 class="text-5xl font-black uppercase">About</h1>
+      <p class="text-lg"><strong>아이티모스(ITMOSS)</strong></p>
+      <p class="text-[var(--muted)]">삶을 왜곡되지 않게 만드는 서비스.</p>
+      <p class="text-[var(--muted)]">기술로 잃어버린 인간의 권리를 회복하고, 데이터와 금융을 모두에게 돌려주는 브랜드입니다.</p>
+      <p class="text-[var(--muted)]">공해를 만드는 AI 영상팀, 아이티모스입니다. 20년 동안 사람과 함께하는 기술을 만들어왔습니다.</p>
+      
+      <div class="space-y-6">
+        <h2 class="text-2xl font-bold uppercase">[CORE_PHILOSOPHY]</h2>
+        <ul class="space-y-3 text-[var(--muted)]">
+          <li>> 오직 사용자 당신을 위한 서비스를 제공합니다. 옆의 친구는 중요하지 않습니다.</li>
+          <li>> 당신의 디지털 자산은 절대 왜곡되어서는 안 됩니다</li>
+          <li>> 당신의 배터리는 꼭 필요한 일에만 사용되어야 합니다</li>
+          <li>> 해로운 마케팅 문구를 쓰지 않습니다. 데이터의 이유와 근거를 명확히 밝힙니다</li>
+        </ul>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-2xl font-bold uppercase">[SUSTAINABLE_TECH]</h2>
+        <p class="text-[var(--muted)] mb-4">아이티모스는 지속 가능한 기술을 만듭니다. 불필요한 자원 낭비를 줄이고, 기술이 환경과 사람 모두에게 이로울 수 있도록 고민합니다.</p>
+        <ul class="space-y-3 text-[var(--muted)]">
+          <li>> 불필요한 쓰레기 앱을 만들지 않습니다</li>
+          <li>> 폐기될 앱을 미리 생각하고, 재활용 가능한 구조로 설계합니다</li>
+          <li>> 꼭 필요한 영상만 제작하며, 사용이 끝난 영상은 재활용·회수합니다</li>
+          <li>> 데이터베이스를 과도하게 사용하지 않습니다. 동일한 트랜잭션은 지구에서 가장 빠르게 처리합니다</li>
+        </ul>
+        <p class="text-xs text-[var(--muted)] mt-4">* 12frame/1s 이상의 지연은 실시간이 아닙니다.</p>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-2xl font-bold uppercase">[SUMMARY]</h2>
+        <p class="text-lg text-[var(--fg)] font-bold">우리는 사람과 지구 모두에게 공해가 되지 않는 기술을 만듭니다.</p>
+        
+        <div class="flex justify-center items-center pt-8">
+          <img src="/images/jaster.png" alt="Jaster" class="w-80 opacity-90 hover:opacity-100 transition-all duration-300" />
+        </div>
+        
+        <div class="flex justify-center items-center pt-8">
+          <img src="/images/staff-wilson.png" alt="Wilson" class="w-80 opacity-90 hover:opacity-100 transition-all duration-300" />
+        </div>
+      </div>
+    </div>
   </section>
 </BaseLayout>

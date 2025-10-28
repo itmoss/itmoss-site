@@ -3,9 +3,6 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
-  integrations: [
-    tailwind({ applyBaseStyles: true }),
-    mdx()
-  ],
+  integrations: [tailwind({ applyBaseStyles: true }), mdx()],
   site: 'https://example.com'
 });

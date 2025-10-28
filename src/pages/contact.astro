@@ -2,9 +2,33 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Contact — ITMOSS">
-  <section class="prose prose-invert py-16">
-    <h1>Contact</h1>
-    <p>프로젝트 협업/문의: <a href="mailto:hello@itmoss.dev">hello@itmoss.dev</a></p>
-    <p>캘린더 예약: <a href="https://calendly.com/" target="_blank">Calendly</a> 링크를 연결해 두세요.</p>
+  <section class="prose prose-invert py-16 font-mono max-w-none">
+    <h1 class="text-5xl font-black uppercase mb-8">Contact</h1>
+    <div class="space-y-6">
+      <div class="text-lg text-[var(--muted)]">
+        <p class="mb-4">아이티모스와 함께하세요.</p>
+        <p class="mb-4">삶을 왜곡되지 않게 만드는 서비스에 관심이 있으시다면 언제든 연락주세요.</p>
+      </div>
+      
+      <div class="space-y-4 text-lg">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">></span>
+          <p>프로젝트 협업/문의: <a href="mailto:hello@itmoss.dev" class="font-bold hover:text-[var(--accent)] transition-colors">hello@itmoss.dev</a></p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">></span>
+          <p>캘린더 예약: <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="font-bold hover:text-[var(--accent)] transition-colors">Calendly</a> 링크를 연결해 두세요.</p>
+        </div>
+      </div>
+      
+      <div class="mt-8 p-6 border-2 border-[var(--fg)] card">
+        <div class="text-sm font-bold text-[var(--accent)] mb-3">[MISSION]</div>
+        <p class="text-lg font-bold">우리는 사람과 지구 모두에게 공해가 되지 않는 기술을 만듭니다.</p>
+      </div>
+      
+      <div class="flex justify-center items-center mt-8">
+        <img src="/images/image.png" alt="ITMOSS Vision" class="w-80 opacity-90 hover:opacity-100 transition-all duration-300" />
+      </div>
+    </div>
   </section>
 </BaseLayout>
