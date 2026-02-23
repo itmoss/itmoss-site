@@ -1,20 +1,24 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import glob from "fast-glob";
-const entries = await glob(['src/pages/notes/*.mdx']);
+const noteModules = import.meta.glob('./*.mdx');
+const entries = Object.keys(noteModules).map((path) => path.replace('./', '').replace('.mdx', ''));
 ---
 <BaseLayout title="Notes — ITMOSS">
-  <section class="py-12 space-y-6">
-    <h1 class="text-3xl font-bold">Notes</h1>
-    <ul class="grid gap-4">
-      {entries.map((f) => {
-        const name = f.split('/').pop().replace('.mdx','');
-        return (
-          <li class="card">
-            <a href={`/notes/${name}`}>{name}</a>
-          </li>
-        )
-      })}
+  <section class="py-32 max-w-7xl mx-auto px-6 font-mono">
+    <div class="mb-16">
+      <div class="text-sm text-[var(--muted)] mb-4">> NOTES</div>
+      <h1 class="text-6xl font-black uppercase tracking-widest">[NOTES]</h1>
+      <p class="mt-6 text-sm text-[var(--muted)]">> 기술, 아이디어, 그리고 관측의 기록들.</p>
+    </div>
+    <ul class="space-y-4">
+      {entries.map((name) => (
+        <li>
+          <a href={`/notes/${name}`} class="card pl-12 block hover:no-underline group">
+            <div class="text-xs font-bold text-[var(--accent)] mb-2 tracking-widest group-hover:text-[var(--fg)] transition-colors">[NOTE]</div>
+            <p class="text-base font-bold">{name}</p>
+          </a>
+        </li>
+      ))}
     </ul>
   </section>
 </BaseLayout>

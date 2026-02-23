@@ -2,33 +2,52 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Contact — ITMOSS">
-  <section class="prose prose-invert py-16 font-mono max-w-none">
-    <h1 class="text-5xl font-black uppercase mb-8">Contact</h1>
-    <div class="space-y-6">
-      <div class="text-lg text-[var(--muted)]">
-        <p class="mb-4">아이티모스와 함께하세요.</p>
-        <p class="mb-4">삶을 왜곡되지 않게 만드는 서비스에 관심이 있으시다면 언제든 연락주세요.</p>
-      </div>
-      
-      <div class="space-y-4 text-lg">
-        <div class="flex items-center gap-3">
-          <span class="text-2xl">></span>
-          <p>프로젝트 협업/문의: <a href="mailto:hello@itmoss.dev" class="font-bold hover:text-[var(--accent)] transition-colors">hello@itmoss.dev</a></p>
+
+  <section class="py-32 max-w-7xl mx-auto px-6 font-mono">
+    <div class="mb-16">
+      <div class="text-sm text-[var(--muted)] mb-4">> CONTACT</div>
+      <h1 class="text-6xl font-black uppercase tracking-widest">[CONTACT]</h1>
+    </div>
+
+    <div class="max-w-2xl space-y-12">
+      <p class="text-base text-[var(--muted)] leading-loose">
+        아이티모스와 함께 디지털 황무지에 이끼를 심으세요.<br />
+        삶을 왜곡되지 않게 만드는 기술에 관심이 있으시다면 언제든 연락주세요.
+      </p>
+
+      <div class="space-y-6">
+        <div class="card pl-12">
+          <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[EMAIL]</div>
+          <a
+            href="mailto:hello@itmoss.dev"
+            class="text-xl font-black hover:text-[var(--accent)] transition-colors"
+          >
+            hello@itmoss.dev
+          </a>
+          <p class="text-sm text-[var(--muted)] mt-2">프로젝트 협업, 문의, 제안</p>
         </div>
-        <div class="flex items-center gap-3">
-          <span class="text-2xl">></span>
-          <p>캘린더 예약: <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="font-bold hover:text-[var(--accent)] transition-colors">Calendly</a> 링크를 연결해 두세요.</p>
+
+        <div class="card pl-12">
+          <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[BLOG]</div>
+          <a
+            href="https://blog.naver.com/itmoss"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xl font-black hover:text-[var(--accent)] transition-colors"
+          >
+            blog.naver.com/itmoss
+          </a>
+          <p class="text-sm text-[var(--muted)] mt-2">아이디어, 기술, 생각의 기록</p>
         </div>
       </div>
-      
-      <div class="mt-8 p-6 border-2 border-[var(--fg)] card">
-        <div class="text-sm font-bold text-[var(--accent)] mb-3">[MISSION]</div>
-        <p class="text-lg font-bold">우리는 사람과 지구 모두에게 공해가 되지 않는 기술을 만듭니다.</p>
-      </div>
-      
-      <div class="flex justify-center items-center mt-8">
-        <img src="/images/image.png" alt="ITMOSS Vision" class="w-80 opacity-90 hover:opacity-100 transition-all duration-300" />
-      </div>
+
+      <blockquote class="border-l-4 border-[var(--fg)] pl-6">
+        <p class="text-lg font-black">"No Observer, No Reality."</p>
+        <p class="text-sm text-[var(--muted)] mt-2">
+          > 우리는 사람과 지구 모두에게 공해가 되지 않는 기술을 만듭니다.
+        </p>
+      </blockquote>
     </div>
   </section>
+
 </BaseLayout>
