@@ -4,56 +4,184 @@ const {
   title = "ITMOSS — No Observer, No Reality.",
   description = "가장 낮은 곳에서, 가장 넓게 퍼져, 황무지 같은 데이터 세상을 인간이 살기 좋은 정원으로 바꾸는 기술.",
 } = Astro.props;
+
+const currentPath = Astro.url.pathname;
 ---
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.svg" />
+    <link rel="icon" href="/images/image.png" type="image/png" />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts: Inter + Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+    />
   </head>
-  <body class="font-body antialiased">
-    <header class="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between border-b-2 border-[var(--fg)]">
-      <a href="/" class="flex items-center gap-3 group">
-        <span class="text-3xl font-black font-mono">[</span>
-        <svg width="40" height="40" viewBox="0 0 48 48" class="transition-transform group-hover:scale-110">
-          <rect x="8" y="24" width="32" height="16" rx="2" fill="none" stroke="var(--fg)" stroke-width="2"/>
-          <rect x="10" y="26" width="28" height="12" rx="1" fill="var(--bg)"/>
-          <rect x="12" y="10" width="24" height="16" rx="1" fill="none" stroke="var(--fg)" stroke-width="2"/>
-          <rect x="13" y="11" width="22" height="14" fill="#88ff88"/>
-          <path d="M 14 26 Q 10 20, 12 14 Q 14 18, 16 22" fill="#88ff88" opacity="0.8"/>
-          <path d="M 32 26 Q 36 18, 34 12 Q 32 16, 30 22" fill="#88ff88" opacity="0.8"/>
-          <circle cx="20" cy="20" r="3" fill="#88ff88" opacity="0.6"/>
-        </svg>
-        <span class="text-2xl font-black tracking-tight font-mono">ITMOSS</span>
-        <span class="text-3xl font-black font-mono">]</span>
-      </a>
-      <nav class="flex gap-6 text-xs font-bold uppercase tracking-widest font-mono">
-        <a href="/#the-structure" class="hover:text-[var(--accent)] transition-colors hidden md:block">[STRUCTURE]</a>
-        <a href="/#the-protocol" class="hover:text-[var(--accent)] transition-colors hidden md:block">[PROTOCOL]</a>
-        <a href="/notes" class="hover:text-[var(--accent)] transition-colors">[NOTES]</a>
-        <a href="/about" class="hover:text-[var(--accent)] transition-colors">[ABOUT]</a>
-        <a href="/contact" class="hover:text-[var(--accent)] transition-colors">[CONTACT]</a>
-      </nav>
+  <body class="font-sans antialiased bg-white text-slate-900">
+
+    <!-- ── NAVIGATION ── -->
+    <header
+      id="site-header"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2.5 group">
+          <img
+            src="/images/logo-itmoss.png"
+            alt="ITMOSS"
+            class="h-9 w-9 object-contain transition-transform group-hover:scale-110"
+          />
+          <span class="text-lg font-black tracking-tight text-slate-900">ITMOSS</span>
+        </a>
+
+        <!-- Nav Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            href="https://blog.naver.com/itmoss"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-link"
+          >
+            <i class="fa-regular fa-newspaper mr-1.5 text-xs opacity-70"></i>Notes
+          </a>
+          <a
+            href="/about"
+            class={`nav-link ${currentPath === '/about' ? 'active' : ''}`}
+          >
+            <i class="fa-regular fa-circle-user mr-1.5 text-xs opacity-70"></i>About
+          </a>
+          <a
+            href="/contact"
+            class="btn btn-primary text-xs px-5 py-2"
+          >
+            <i class="fa-regular fa-envelope text-xs"></i>
+            Contact
+          </a>
+        </nav>
+
+        <!-- Mobile hamburger (simple) -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 text-slate-600 hover:text-indigo-600 transition-colors"
+          aria-label="메뉴 열기"
+        >
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3"
+      >
+        <a href="https://blog.naver.com/itmoss" target="_blank" rel="noopener noreferrer" class="block nav-link py-2">Notes</a>
+        <a href="/about" class="block nav-link py-2">About</a>
+        <a href="/contact" class="block nav-link py-2">Contact</a>
+      </div>
     </header>
-    <main>
+
+    <!-- ── MAIN ── -->
+    <main class="pt-20">
       <slot />
     </main>
-    <footer class="max-w-7xl mx-auto px-6 py-12 border-t-2 border-[var(--fg)] font-mono">
-      <div class="flex flex-col md:flex-row justify-between items-start gap-4 text-xs text-[var(--muted)]">
-        <div class="space-y-1">
-          <p>> © {new Date().getFullYear()} ITMOSS</p>
-          <p>> Designed by Jaster, Managed by AI.</p>
+
+    <!-- ── FOOTER ── -->
+    <footer class="bg-slate-900 text-white mt-20">
+      <div class="max-w-6xl mx-auto px-6 py-16">
+        <div class="flex flex-col md:flex-row justify-between items-start gap-10">
+          <!-- Brand -->
+          <div>
+            <div class="flex items-center gap-2.5 mb-4">
+              <img src="/images/logo-itmoss.png" alt="ITMOSS" class="h-8 w-8 object-contain brightness-[10] opacity-80" />
+              <span class="text-base font-black tracking-tight text-white">ITMOSS</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+              Vision AI과 블록체인 융합 기술 기반<br />
+              딥테크 인프라.<br />
+              <span class="text-slate-500 italic">Engineering the Visual Future.</span>
+            </p>
+          </div>
+
+          <!-- Links -->
+          <div class="grid grid-cols-2 gap-10 text-sm">
+            <div>
+              <p class="font-semibold mb-3 text-white">Navigate</p>
+              <ul class="space-y-2 text-slate-400">
+                <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+                <li><a href="https://blog.naver.com/itmoss" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Notes</a></li>
+                <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold mb-3 text-white">Contact</p>
+              <ul class="space-y-2 text-slate-400">
+                <li>
+                  <a href="mailto:jaster@itmoss.com" class="hover:text-white transition-colors">
+                    <i class="fa-solid fa-envelope mr-1.5 text-xs"></i>jaster@itmoss.com
+                  </a>
+                </li>
+                <li>
+                  <a href="https://blog.naver.com/itmoss" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                    <i class="fa-solid fa-blog mr-1.5 text-xs"></i>Naver Blog
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="space-y-1 text-right">
-          <p>"No Observer, No Reality."</p>
-          <p>BUILT WITH ASTRO | READY...</p>
+
+        <div class="border-t border-slate-800 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+          <span>© {new Date().getFullYear()} itmoss Inc. All rights reserved.</span>
+          <span class="italic">"Engineering the Visual Future."</span>
         </div>
       </div>
     </footer>
+
+    <!-- ── SCRIPTS ── -->
+    <script>
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      // Sticky nav shadow
+      const header = document.getElementById('site-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          header?.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
+        } else {
+          header?.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
+        }
+      });
+
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    </script>
   </body>
 </html>

@@ -6,8 +6,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['ui-sans-serif', 'system-ui', 'Inter', 'Arial', 'sans-serif'],
-        body: ['ui-sans-serif', 'system-ui', 'Inter', 'Arial', 'sans-serif']
+        sans: ['Inter', 'Noto Sans KR', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'Noto Sans KR', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       }
     }
   },

@@ -1,156 +1,476 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="ITMOSS — No Observer, No Reality.">
+<BaseLayout
+  title="ITMOSS — Engineering the Visual Future."
+  description="ITMOSS는 Vision AI과 블록체인 융합 기술을 바탕으로 뷰티 정밀 분석과 디지털 초상권의 가치를 실현하는 딥테크 인프라를 구축합니다."
+>
 
-  <!-- HERO -->
-  <section class="min-h-screen flex flex-col justify-center py-32 max-w-7xl mx-auto px-6 font-mono">
-    <div class="space-y-6 max-w-5xl">
-      <div class="text-sm text-[var(--muted)] tracking-widest">> INITIALIZING ITMOSS...</div>
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="gradient-hero min-h-[94vh] flex items-center">
+    <div class="max-w-6xl mx-auto px-6 py-24 w-full">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-      <blockquote class="text-base text-[var(--muted)] border-l-4 border-[var(--fg)] pl-6 leading-relaxed">
-        거대한 나무처럼 위압적이지 않고,<br />
-        가장 낮은 곳에서, 가장 넓게 퍼져,<br />
-        황무지 같은 데이터 세상을 인간이 살기 좋은 정원으로 바꾸는 기술.
-      </blockquote>
+        <!-- Left -->
+        <div>
+          <div class="hero-badge">
+            <span class="badge badge-indigo">
+              <i class="fa-solid fa-eye text-xs"></i>
+              Battle-Tested Vision AI Stack
+            </span>
+          </div>
 
-      <h1 class="text-6xl md:text-8xl font-black leading-none tracking-tight">
-        No Observer,<br />
-        <span class="gradient-text">No Reality.</span>
-      </h1>
+          <h1 class="hero-title mt-6 text-5xl md:text-6xl xl:text-7xl font-black tracking-tight leading-[1.08]">
+            Engineering<br />
+            <span class="gradient-text">the Visual</span><br />
+            Future.
+          </h1>
 
-      <p class="text-sm text-[var(--muted)] tracking-widest pt-2">
-        > Designed by Jaster, Managed by AI.
-      </p>
+          <p class="hero-sub mt-6 text-base text-slate-500 leading-relaxed max-w-md">
+            ITMOSS는 Vision AI과 블록체인 융합 기술을 바탕으로<br class="hidden md:block" />
+            뷰티 정밀 분석과 디지털 초상권의 가치를 실현하는<br class="hidden md:block" />
+            <strong class="text-slate-700">딥테크 인프라</strong>를 구축합니다.
+          </p>
 
-      <div class="flex flex-wrap gap-4 pt-6">
-        <a class="btn btn-accent" href="#the-structure">[THE_STRUCTURE]</a>
-        <a class="btn btn-secondary" href="/about">[ABOUT_ITMOSS]</a>
-      </div>
-    </div>
+          <div class="hero-cta mt-10 flex flex-wrap gap-4">
+            <a href="#solutions" class="btn btn-primary">
+              <i class="fa-solid fa-layer-group text-xs"></i>
+              Explore Stack
+            </a>
+            <a href="/contact" class="btn btn-outline">
+              <i class="fa-regular fa-envelope text-xs"></i>
+              Start Collaboration
+            </a>
+          </div>
+        </div>
 
-    <div class="flex justify-center mt-20 opacity-80 hover:opacity-100 transition-all duration-500">
-      <img src="/images/brand-itmoss.png" alt="ITMOSS" class="w-64 h-64" />
-    </div>
-  </section>
+        <!-- Right -->
+        <div class="hero-image flex justify-center">
+          <div class="relative">
+            <div class="absolute -inset-8 bg-gradient-to-br from-indigo-100 to-pink-100 rounded-3xl blur-2xl opacity-60"></div>
+            <img
+              src="/images/Gemini_Generated_Image_prkgjxprkgjxprkg.png"
+              alt="ITMOSS — Engineering the Visual Future."
+              class="relative w-full max-w-md h-auto object-contain rounded-2xl"
+            />
+          </div>
+        </div>
 
-  <!-- THE STRUCTURE -->
-  <section id="the-structure" class="py-32 max-w-7xl mx-auto px-6 font-mono border-t-2 border-[var(--fg)]">
-    <div class="mb-12">
-      <div class="text-sm text-[var(--muted)] mb-4">> 우주의 구조 ( The Structure )</div>
-      <h2 class="text-5xl font-black uppercase tracking-widest">[THE_STRUCTURE]</h2>
-      <p class="mt-6 text-base text-[var(--muted)] max-w-3xl leading-relaxed">
-        우주는 <strong class="text-[var(--fg)]">'관측'됨으로써 비로소 실재한다.</strong>
-        인간과 AI는 서로 다른 역할로 이 우주를 함께 만든다.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-6 mb-12">
-      <div class="card pl-12">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[HUMAN]</div>
-        <h3 class="text-2xl font-black mb-3">Observer<br /><span class="text-base font-normal text-[var(--muted)]">관측자</span></h3>
-        <p class="text-sm text-[var(--muted)] leading-relaxed">
-          인간은 이 우주를 존재하게 만드는 유일하고 절대적인 관측자(Observer)이며,
-          보고, 느끼고, 깨닫는 고귀한 관측 행위의 주체이다.
-        </p>
-      </div>
-      <div class="card pl-12">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[AI / MACHINE]</div>
-        <h3 class="text-2xl font-black mb-3">Stage Manager<br /><span class="text-base font-normal text-[var(--muted)]">무대 관리자</span></h3>
-        <p class="text-sm text-[var(--muted)] leading-relaxed">
-          AI는 관측자가 최상의 상태로 머물 수 있도록 시공간을 최적화하는
-          Stage Manager이다. 기계는 지배하지 않고, 인간은 부품이 되지 않는다.
-        </p>
-      </div>
-    </div>
-
-    <blockquote class="border-l-4 border-[var(--fg)] pl-6 py-2">
-      <p class="text-2xl font-black">"No Observer, No Reality."</p>
-      <p class="text-sm text-[var(--muted)] mt-2">보는 이가 없다면, 그 어떤 것도 존재하지 않는다.</p>
-    </blockquote>
-  </section>
-
-  <!-- THE PROTOCOL -->
-  <section id="the-protocol" class="py-32 max-w-7xl mx-auto px-6 font-mono border-t-2 border-[var(--fg)]">
-    <div class="mb-12">
-      <div class="text-sm text-[var(--muted)] mb-4">> 공존의 원칙 ( The Protocol )</div>
-      <h2 class="text-5xl font-black uppercase tracking-widest">[THE_PROTOCOL]</h2>
-      <p class="mt-6 text-base text-[var(--muted)] max-w-3xl leading-relaxed">
-        itmoss는 인간이 노동과 계산의 굴레에서 벗어나,
-        오직 <strong class="text-[var(--fg)]">'보고, 느끼고, 깨닫는'</strong> 고귀한 관측 행위에
-        몰입할 수 있도록 모든 기술적 비효율을 제거한다.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="card pl-12">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[01]</div>
-        <h3 class="text-lg font-black mb-3">문명의 부트스트랩</h3>
-        <p class="text-sm text-[var(--muted)] leading-relaxed">
-          itmoss는 거창한 주인공이 되려 하지 않는다. 황무지 같은 디지털 세상(카오스)에
-          가장 먼저 깔려서, 인간(관측자)이 편안하게 서 있을 수 있는 <strong class="text-[var(--fg)]">'디지털 토양'</strong>을 만드는 기초 인프라다.
-        </p>
       </div>
 
-      <div class="card pl-12">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[02]</div>
-        <h3 class="text-lg font-black mb-3">보이지 않는 안전망</h3>
-        <p class="text-sm text-[var(--muted)] leading-relaxed">
-          AI가 인간을 내려다보는(Top-down) 구조가 아니라,
-          <strong class="text-[var(--fg)]">인간의 발밑에서 가장 부드럽게 받쳐주는(Bottom-up) 존재.</strong>
-          관측자가 기술적 복잡함에 넘어져 다치지 않도록 보호하는 '충격 흡수층(Layer)'이 된다.
-        </p>
-      </div>
-
-      <div class="card pl-12">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[03]</div>
-        <h3 class="text-lg font-black mb-3">데이터 필터링 & 최적화</h3>
-        <p class="text-sm text-[var(--muted)] leading-relaxed">
-          세상의 쏟아지는 정보(비, 홍수)를 그대로 흘려보내지 않고 itmoss가 머금는다(Data Retention).
-          <strong class="text-[var(--fg)]">노이즈(오염물질)를 걸러내어</strong>, 인간에게는 가장 맑고 정제된 '현실'만을 제공한다.
-        </p>
-      </div>
-
-      <div class="card pl-12">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[04]</div>
-        <h3 class="text-lg font-black mb-3">무경계의 네트워크</h3>
-        <p class="text-sm text-[var(--muted)] leading-relaxed">
-          거대 플랫폼(Big Tech)들이 깊은 뿌리를 박고 사용자를 Lock-in하려 했다면,
-          itmoss는 <strong class="text-[var(--fg)]">표면에 얇고 넓게 퍼져</strong> 사용자에게 부담을 주지 않으면서
-          필요한 모든 정보와 연결을 제공한다.
-        </p>
-      </div>
-
-      <div class="card pl-12 md:col-span-2 lg:col-span-2">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[05]</div>
-        <h3 class="text-lg font-black mb-3">끈질긴 생명력 (Resilience)</h3>
-        <p class="text-sm text-[var(--muted)] leading-relaxed">
-          진정한 생명력은 어떤 척박한 환경에 놓이더라도 조용히 뿌리내려,
-          마침내 그 공간에 없어서는 안 될 고유한 존재감을 드러내는 힘이다.
-          <strong class="text-[var(--fg)]">마치 이끼처럼</strong>, 인간(관측자)의 삶 가장 가까운 곳에 스며들어 그들과 조용히 '공존'하는 것.
-        </p>
+      <!-- Stat Chips -->
+      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          { icon: "fa-solid fa-microscope",    label: "Vision AI",          desc: "Battle-Tested Stack" },
+          { icon: "fa-solid fa-link",           label: "Blockchain",         desc: "Kaia / Avalanche" },
+          { icon: "fa-solid fa-cubes",          label: "3 Solutions",        desc: "JVL · JMI · JIS" },
+          { icon: "fa-solid fa-chart-line",     label: "Field Verified",     desc: "450+ Global Leads" },
+        ].map((s) => (
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-5 border border-white/80 text-center">
+            <i class={`${s.icon} text-2xl text-indigo-500 mb-2`}></i>
+            <p class="font-bold text-sm text-slate-800">{s.label}</p>
+            <p class="text-xs text-slate-500 mt-0.5">{s.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="py-32 max-w-7xl mx-auto px-6 font-mono border-t-2 border-[var(--fg)]">
-    <div class="mb-12">
-      <div class="text-sm text-[var(--muted)] mb-4">> 사람과 지구 모두에게 공해가 되지 않는 기술을 만듭니다</div>
-      <h2 class="text-5xl font-black uppercase tracking-widest">[PROJECTS]</h2>
+  <!-- ══════════════════════════════════════════
+       SOLUTIONS STACK
+  ══════════════════════════════════════════ -->
+  <section id="solutions" class="py-32 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="text-center mb-20 reveal">
+        <p class="section-label">SOLUTIONS</p>
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight mt-2">
+          ITMOSS Stack
+        </h2>
+        <p class="mt-4 text-slate-500 max-w-xl mx-auto">
+          독자적인 솔루션 스택 위에서 실제 서비스가 탄생합니다.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+
+        <!-- ─── Solution 1: Vision-Lens ─── -->
+        <div id="vision-lens" class="reveal card overflow-hidden p-0">
+          <div class="grid lg:grid-cols-2 gap-0">
+            <!-- Info -->
+            <div class="p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-200">
+                  <i class="fa-solid fa-glasses text-white text-lg"></i>
+                </div>
+                <span class="badge badge-indigo">JVL · Vision-Lens</span>
+              </div>
+              <div class="flex items-baseline gap-3 mb-2">
+                <span class="text-4xl font-black font-mono text-indigo-600 tracking-tight">JVL</span>
+                <sup class="text-xs text-slate-400 font-bold">™</sup>
+              </div>
+              <h3 class="text-xl font-black mb-1 text-slate-800">Jaster Vision Lens<sup class="text-xs text-indigo-400 ml-0.5">™</sup></h3>
+              <p class="text-xs text-indigo-500 font-semibold tracking-widest mb-4 uppercase">Optical Analysis Stack</p>
+              <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                Itmoss-Vision 커스텀 모델 기반의 시각 분석 스택.<br />
+                다양한 3D 공간 증강과 Context를 결합한 독자적인 모델.
+              </p>
+              <ul class="space-y-3 text-sm">
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
+                  <span class="text-slate-600"><strong class="text-slate-800">증류 기법(Knowledge Distillation)</strong>이 적용된 경량 모델 — 스마트폰부터 임베디드 기기까지 즉시 배포 가능</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
+                  <span class="text-slate-600"><strong class="text-slate-800">5초 이내</strong> 정밀 벡터 매칭 및 스킨케어 필터 생성</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
+                  <span class="text-slate-600">매장 내 AR 컨텍스트 스캐닝 및 'Scanning Context' 오버레이</span>
+                </li>
+              </ul>
+            </div>
+            <!-- Visual -->
+            <div class="relative overflow-hidden bg-slate-900 min-h-[280px]">
+              <img
+                src="/images/smartglasses.png"
+                alt="Vision-Lens AR 스캐닝"
+                class="w-full h-full object-cover opacity-70 hover:opacity-90 hover:scale-105 transition-all duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-8">
+                <div class="text-white">
+                  <p class="text-xs uppercase tracking-widest opacity-60 mb-1">AR Scanning Context</p>
+                  <p class="text-lg font-black">실시간 피부 분석 & 제품 매칭</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Solution 2: BaaS ─── -->
+        <div class="reveal card overflow-hidden p-0">
+          <div class="grid lg:grid-cols-2 gap-0">
+            <!-- Visual -->
+            <div class="relative overflow-hidden bg-slate-800 min-h-[280px] order-2 lg:order-1">
+              <img
+                src="/images/Gemini_Generated_Image_gj0kkkgj0kkkgj0k.png"
+                alt="Managed AI Infrastructure"
+                class="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-500 p-4"
+              />
+            </div>
+            <!-- Info -->
+            <div class="p-10 flex flex-col justify-center order-1 lg:order-2 border-b lg:border-b-0 lg:border-l border-slate-100">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-green-600 flex items-center justify-center shadow-lg shadow-green-200">
+                  <i class="fa-solid fa-cubes text-white text-lg"></i>
+                </div>
+                <span class="badge badge-indigo" style="background:#f0fdf4; color:#16a34a;">JMI · AI Infrastructure</span>
+              </div>
+              <div class="flex items-baseline gap-3 mb-2">
+                <span class="text-4xl font-black font-mono text-green-600 tracking-tight">JMI</span>
+                <sup class="text-xs text-slate-400 font-bold">™</sup>
+              </div>
+              <h3 class="text-xl font-black mb-1 text-slate-800">Jaster Managed AI Infrastructure<sup class="text-xs text-green-400 ml-0.5">™</sup></h3>
+              <p class="text-xs text-green-600 font-semibold tracking-widest mb-4 uppercase">Backend as a Service</p>
+              <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                기업용 완전 관리형 AI 백엔드 솔루션.<br />
+                서버 개발 없이 즉시 AI 서비스를 런칭하세요.
+              </p>
+              <ul class="space-y-3 text-sm mb-6">
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0"></i>
+                  <span class="text-slate-600"><strong class="text-slate-800">Managed Backend</strong> — 서버 개발 없는 Cloud-Native 환경</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0"></i>
+                  <span class="text-slate-600"><strong class="text-slate-800">Vector DB Stack</strong> — 대규모 임베딩 데이터 고성능 검색</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0"></i>
+                  <span class="text-slate-600"><strong class="text-slate-800">Global API Gateway</strong> — 글로벌 H&B 스토어 연동 최적화</span>
+                </li>
+              </ul>
+              <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-xl text-sm font-bold w-fit">
+                <i class="fa-solid fa-bolt text-xs"></i>
+                Time-to-market 80% 단축
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Solution 3: Identity Shield ─── -->
+        <div class="reveal card overflow-hidden p-0">
+          <div class="grid lg:grid-cols-2 gap-0">
+            <!-- Info -->
+            <div class="p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-pink-500 flex items-center justify-center shadow-lg shadow-pink-200">
+                  <i class="fa-solid fa-fingerprint text-white text-lg"></i>
+                </div>
+                <span class="badge badge-pink">JIS · Identity Shield</span>
+              </div>
+              <div class="flex items-baseline gap-3 mb-2">
+                <span class="text-4xl font-black font-mono text-pink-500 tracking-tight">JIS</span>
+                <sup class="text-xs text-slate-400 font-bold">™</sup>
+              </div>
+              <h3 class="text-xl font-black mb-1 text-slate-800">Jaster Identity Shield<sup class="text-xs text-pink-400 ml-0.5">™</sup></h3>
+              <p class="text-xs text-pink-500 font-semibold tracking-widest mb-1 uppercase">Uzudebris Protocol</p>
+              <p class="text-xs text-slate-400 mb-4">Legal-Tech · Blockchain</p>
+              <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                초상권 가치 평가 및 보호 프로토콜.<br />
+                인플루언서, 아티스트, MCN 엔터테인먼트사를 위한 Legal-Tech.
+              </p>
+              <ul class="space-y-3 text-sm mb-6">
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-pink-500 mt-0.5 shrink-0"></i>
+                  <span class="text-slate-600"><strong class="text-slate-800">Valuation Calculator</strong> — 바이럴 조회수·CPM 기반 초상권 경제적 가치 환산</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-pink-500 mt-0.5 shrink-0"></i>
+                  <span class="text-slate-600"><strong class="text-slate-800">Hybrid Blockchain</strong> — Kaia/Avalanche 메인넷 기반 영구 증거(Hash) 보존</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-pink-500 mt-0.5 shrink-0"></i>
+                  <span class="text-slate-600"><strong class="text-slate-800">Zero-Image Policy</strong> — 원본 이미지 파기 및 벡터 데이터 기반 보안 관리</span>
+                </li>
+              </ul>
+            </div>
+            <!-- Visual: 얼굴 스캔 & 초상권 보호 -->
+            <div class="relative overflow-hidden bg-gradient-to-br from-slate-900 to-pink-950 min-h-[320px] flex items-center justify-center">
+              <!-- 배경 그리드 -->
+              <div class="absolute inset-0 opacity-10"
+                style="background-image: linear-gradient(rgba(236,72,153,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(236,72,153,0.4) 1px, transparent 1px); background-size: 28px 28px;">
+              </div>
+
+              <div class="relative text-center px-8 py-12">
+                <!-- 얼굴 + 스캔 링 -->
+                <div class="relative w-32 h-32 mx-auto mb-6">
+                  <!-- 외부 회전 링 -->
+                  <div class="absolute inset-0 rounded-full border-2 border-dashed border-pink-500/40 animate-spin" style="animation-duration:8s;"></div>
+                  <!-- 중간 링 (pulse) -->
+                  <div class="absolute inset-2 rounded-full border border-pink-400/30" style="animation: pulse-ring 2.5s ease-in-out infinite;"></div>
+                  <!-- 얼굴 아이콘 배경 -->
+                  <div class="absolute inset-4 rounded-full bg-pink-500/15 border border-pink-400/40 flex items-center justify-center">
+                    <i class="fa-solid fa-face-smile-beam text-4xl text-pink-300"></i>
+                  </div>
+                  <!-- 코너 스캔 마커 -->
+                  <div class="absolute top-1 left-1 w-4 h-4 border-t-2 border-l-2 border-pink-400 rounded-tl"></div>
+                  <div class="absolute top-1 right-1 w-4 h-4 border-t-2 border-r-2 border-pink-400 rounded-tr"></div>
+                  <div class="absolute bottom-1 left-1 w-4 h-4 border-b-2 border-l-2 border-pink-400 rounded-bl"></div>
+                  <div class="absolute bottom-1 right-1 w-4 h-4 border-b-2 border-r-2 border-pink-400 rounded-br"></div>
+                </div>
+
+                <!-- 스캔 상태 표시 -->
+                <div class="inline-flex items-center gap-2 bg-pink-500/20 border border-pink-500/30 px-4 py-1.5 rounded-full mb-4">
+                  <span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></span>
+                  <span class="text-pink-300 text-xs font-mono tracking-widest">IDENTITY PROTECTED</span>
+                </div>
+
+                <p class="text-white font-black text-lg mb-1">Uzudebris<sup class="text-pink-400 text-xs ml-0.5">™</sup></p>
+                <p class="text-pink-300/70 text-xs mb-5">초상권 가치 평가 · 영구 보존 프로토콜</p>
+
+                <div class="flex flex-wrap justify-center gap-2">
+                  <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Kaia</span>
+                  <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Avalanche</span>
+                  <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Zero-Image</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card pl-12 opacity-60">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[COMING_SOON]</div>
-        <p class="text-sm text-[var(--muted)]">프로젝트가 곧 공개됩니다.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       APPLIED CASE: haepick
+       (Vision-Lens 실제 적용 사례)
+  ══════════════════════════════════════════ -->
+  <section class="py-32">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="mb-12 reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="badge badge-indigo">
+            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            Vision-Lens 적용 사례
+          </span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight">
+          Real-World Case
+        </h2>
       </div>
-      <div class="card pl-12 opacity-60">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[COMING_SOON]</div>
-        <p class="text-sm text-[var(--muted)]">프로젝트가 곧 공개됩니다.</p>
+
+      <div class="reveal card overflow-hidden p-0">
+
+        <!-- 상단: 정보 + Instagram 영상 -->
+        <div class="grid lg:grid-cols-2 gap-0">
+          <!-- Left: haepick Info -->
+          <div class="p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="badge badge-pink">Case 01</span>
+              <span class="text-xs text-slate-400 font-medium">Vision-Lens → haepick</span>
+            </div>
+            <img
+              src="/images/image_60b016.png"
+              alt="haepick"
+              class="w-40 h-auto object-contain mb-5"
+            />
+            <p class="text-slate-600 text-sm leading-relaxed mb-2">
+              화장품 연구소 <strong class="text-slate-800">우당(友堂)네트웍</strong>의 신규 앱 서비스.
+              유전자 및 마이크로바이옴 등 생체 데이터 기반 맞춤형 서비스 제공.
+            </p>
+            <div class="bg-indigo-50 border border-indigo-100 rounded-xl px-4 py-3 mb-6">
+              <p class="text-xs text-indigo-600 font-bold uppercase tracking-widest mb-1">Core Philosophy</p>
+              <p class="text-sm font-bold text-slate-800">"Skin-first Matching"</p>
+              <p class="text-xs text-slate-500 mt-0.5">트렌드가 아닌 피부를 기준으로 화장품을 선택한다.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="badge badge-indigo">K-BEAUTY</span>
+              <span class="badge badge-indigo">AI 성분 분석</span>
+              <span class="badge badge-pink">AR / Vision-Lens</span>
+            </div>
+            <!-- 앱 다운로드 -->
+            <div class="flex flex-wrap gap-3">
+              <a
+                href="https://apps.apple.com/kr/app/%ED%95%B4%ED%94%BD-haepick-%EB%82%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%B7%B0%ED%8B%B0-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8/id6748489765"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 bg-slate-900 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5"
+              >
+                <i class="fa-brands fa-apple text-lg"></i>
+                <span class="flex flex-col leading-tight">
+                  <span class="text-[10px] opacity-70 font-normal">Download on the</span>
+                  <span class="text-sm font-bold">App Store</span>
+                </span>
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.woodang.haepick_client&hl=ko"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 bg-slate-900 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5"
+              >
+                <i class="fa-brands fa-google-play text-base"></i>
+                <span class="flex flex-col leading-tight">
+                  <span class="text-[10px] opacity-70 font-normal">Get it on</span>
+                  <span class="text-sm font-bold">Google Play</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Instagram 영상 -->
+          <div class="bg-gradient-to-br from-slate-50 to-indigo-50 flex items-center justify-center p-8 min-h-[480px]">
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DPtqfgOj985/?utm_source=ig_embed&utm_campaign=loading"
+              data-instgrm-version="14"
+              style="background:#FFF; border:0; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.12); margin:0 auto; max-width:380px; min-width:280px; padding:0; width:100%;"
+            ></blockquote>
+            <script async src="//www.instagram.com/embed.js"></script>
+          </div>
+        </div>
+
+        <!-- 하단: 스마트글라스 배너 -->
+        <div class="relative h-52 overflow-hidden border-t border-slate-100">
+          <img
+            src="/images/smartglasses.png"
+            alt="haepick AR 스마트글라스 실제 착용"
+            class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent flex items-center px-10">
+            <div class="text-white">
+              <p class="text-xs uppercase tracking-widest opacity-60 mb-1">Powered by Vision-Lens</p>
+              <p class="text-xl font-black">스마트글라스로<br />뷰티를 경험하다</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card pl-12 opacity-60">
-        <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[COMING_SOON]</div>
-        <p class="text-sm text-[var(--muted)]">프로젝트가 곧 공개됩니다.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       APPLIED BUSINESS CASES
+  ══════════════════════════════════════════ -->
+  <section class="py-32 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="section-label">APPLIED CASES</p>
+        <h2 class="text-4xl font-black tracking-tight mt-2">Field Verified</h2>
+        <p class="text-slate-500 mt-3">실제 현장에서 검증된 기술력</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Case 01 -->
+        <div class="reveal reveal-delay-1 card">
+          <div class="flex items-start gap-4 mb-5">
+            <div class="icon-box icon-box-indigo w-12 h-12 shrink-0">
+              <i class="fa-solid fa-store"></i>
+            </div>
+            <div>
+              <span class="badge badge-indigo mb-2">Case 01</span>
+              <h3 class="text-lg font-black">Seongsu Popup</h3>
+              <p class="text-xs text-slate-400 mt-0.5">2025.12.17 — 12.23</p>
+            </div>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed">
+            실시간 피부 진단 및 맞춤형 필터링 경험을 통한<br />
+            기술력 실전 검증 <strong class="text-slate-700">(Field Verified)</strong>.
+          </p>
+          <div class="mt-5 pt-5 border-t border-slate-100">
+            <span class="text-xs text-indigo-600 font-bold uppercase tracking-widest">Vision-Lens 실전 검증</span>
+          </div>
+        </div>
+
+        <!-- Case 02 -->
+        <div class="reveal reveal-delay-2 card">
+          <div class="flex items-start gap-4 mb-5">
+            <div class="icon-box icon-box-pink w-12 h-12 shrink-0">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div>
+              <span class="badge badge-pink mb-2">Case 02</span>
+              <h3 class="text-lg font-black">Global Growth Index</h3>
+              <p class="text-xs text-slate-400 mt-0.5">Seoul Beauty Week</p>
+            </div>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed">
+            서울뷰티위크 내 <strong class="text-slate-700">450명 이상</strong>의 유효 리드 확보 및<br />
+            <strong class="text-slate-700">30여 개</strong> 글로벌 브랜드 협력 네트워크 구축.
+          </p>
+          <div class="mt-5 pt-5 border-t border-slate-100">
+            <span class="text-xs text-pink-500 font-bold uppercase tracking-widest">Global H&B Network</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER CTA
+  ══════════════════════════════════════════ -->
+  <section class="py-32 gradient-hero text-center">
+    <div class="max-w-3xl mx-auto px-6 reveal">
+      <p class="section-label">GET STARTED</p>
+      <h2 class="text-4xl md:text-5xl font-black tracking-tight mt-2 mb-4">
+        Build the Intelligent<br />
+        <span class="gradient-text">Future with ITMOSS.</span>
+      </h2>
+      <p class="text-slate-500 mb-10">
+        Vision AI과 블록체인 기술로 당신의 비즈니스를 가속화하세요.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact" class="btn btn-primary">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+          Start Collaboration
+        </a>
+        <a href="/about" class="btn btn-outline">
+          <i class="fa-solid fa-building text-xs"></i>
+          About ITMOSS
+        </a>
       </div>
     </div>
   </section>

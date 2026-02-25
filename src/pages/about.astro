@@ -1,111 +1,196 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const principles = [
+  {
+    num: "01",
+    badge: "문명의 부트스트랩",
+    title: "디지털 황무지의 토양",
+    body: "itmoss는 거창한 주인공이 되려 하지 않는다. 황무지 같은 디지털 세상(카오스)에 가장 먼저 깔려서, 인간(관측자)이 편안하게 서 있을 수 있는 '디지털 토양'을 만드는 기초 인프라다.",
+    icon: "fa-solid fa-seedling",
+    color: "icon-box-green",
+    img: "/images/Gemini_Generated_Image_cm7tyacm7tyacm7t.png",
+    imgAlt: "문명의 부트스트랩 — 회로 위에 자라는 이끼",
+    imgRight: true,
+  },
+  {
+    num: "02",
+    badge: "보이지 않는 안전망",
+    title: "Bottom-up 존재",
+    body: "AI가 인간을 내려다보는(Top-down) 구조가 아니라, 인간의 발밑에서 가장 부드럽게 받쳐주는(Bottom-up) 존재. 관측자가 기술적 복잡함에 넘어져 다치지 않도록 보호하는 '충격 흡수층(Layer)'이 된다.",
+    icon: "fa-solid fa-shield-halved",
+    color: "icon-box-indigo",
+    img: "/images/Gemini_Generated_Image_vs7laxvs7laxvs7l.png",
+    imgAlt: "보이지 않는 안전망 — 이끼가 사람들을 받아주는 그림",
+    imgRight: false,
+  },
+  {
+    num: "03",
+    badge: "데이터 필터링 & 최적화",
+    title: "노이즈를 걸러내다",
+    body: "세상의 쏟아지는 정보(비, 홍수)를 그대로 흘려보내지 않고 itmoss가 머금는다(Data Retention). 노이즈(오염물질)를 걸러내어, 인간에게는 가장 맑고 정제된 상태의 '현실'만을 제공한다.",
+    icon: "fa-solid fa-filter",
+    color: "icon-box-amber",
+    img: "/images/Gemini_Generated_Image_e1wnqde1wnqde1wn.png",
+    imgAlt: "데이터 필터링 — 이끼 필터",
+    imgRight: true,
+  },
+  {
+    num: "04",
+    badge: "무경계의 네트워크",
+    title: "Lock-in을 거부한다",
+    body: "거대 플랫폼(Big Tech)들이 깊은 뿌리를 박고 사용자를 Lock-in하려 했다면, itmoss는 표면에 얇고 넓게 퍼져 사용자에게 부담을 주지 않으면서 필요한 모든 정보와 연결을 제공한다.",
+    icon: "fa-solid fa-arrows-to-circle",
+    color: "icon-box-pink",
+    img: "/images/Gemini_Generated_Image_i0lhoei0lhoei0lh.png",
+    imgAlt: "무경계 네트워크 — 지구를 잇는 이끼",
+    imgRight: false,
+  },
+  {
+    num: "05",
+    badge: "끈질긴 생명력 (Resilience)",
+    title: "이끼처럼 조용히",
+    body: "진정한 생명력은 어떤 척박한 환경에 놓이더라도 조용히 뿌리내려, 마침내 그 공간에 없어서는 안 될 고유한 존재감을 드러내는 힘이다. 마치 이끼처럼, 인간의 삶 가장 가까운 곳에 스며들어 그들과 조용히 '공존'하는 것.",
+    icon: "fa-solid fa-leaf",
+    color: "icon-box-green",
+    img: "/images/Gemini_Generated_Image_97x3vo97x3vo97x3.png",
+    imgAlt: "끈질긴 생명력 — 돌 틈을 뚫는 이끼",
+    imgRight: true,
+  },
+];
 ---
 <BaseLayout title="About — ITMOSS">
 
-  <!-- HEADER -->
-  <section class="py-32 max-w-7xl mx-auto px-6 font-mono">
-    <div class="mb-16">
-      <div class="text-sm text-[var(--muted)] mb-4">> ABOUT ITMOSS</div>
-      <h1 class="text-6xl font-black uppercase tracking-widest">[ABOUT]</h1>
+  <!-- ══════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════ -->
+  <section class="gradient-hero py-28 text-center">
+    <div class="max-w-3xl mx-auto px-6">
+      <p class="section-label">ABOUT</p>
+      <h1 class="text-6xl md:text-8xl font-black tracking-tight mt-2 mb-6">ITMOSS</h1>
+      <p class="text-lg text-slate-500 leading-relaxed">
+        가장 낮은 곳에서, 가장 넓게.
+      </p>
     </div>
+  </section>
 
-    <!-- IT + MOSS 어원 -->
-    <div class="space-y-8 mb-20">
-      <div class="border-l-4 border-[var(--fg)] pl-6 space-y-2">
-        <p class="text-4xl font-black">
-          IT + <span class="gradient-text">MOSS</span>
+  <!-- ══════════════════════════════════════════
+       PHILOSOPHY
+  ══════════════════════════════════════════ -->
+  <section class="py-24">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="reveal">
+        <p class="section-label">PHILOSOPHY</p>
+        <p class="text-4xl md:text-5xl font-black leading-tight mt-2 mb-6">
+          "No Observer,<br />
+          <span class="gradient-text">No Reality."</span>
         </p>
-        <p class="text-sm text-[var(--muted)] tracking-widest">Information Technology + 이끼(蘚苔)</p>
+        <p class="text-slate-500 leading-relaxed">
+          우주는 관측됨으로써 실재한다.<br />
+          인간은 Observer, AI는 Stage Manager.
+        </p>
       </div>
 
-      <p class="text-base text-[var(--muted)] max-w-3xl leading-loose">
-        이끼(MOSS)는 지구에서 가장 오래된 식물 중 하나입니다.
-        거대한 나무처럼 위압적이지 않고, 가장 낮은 곳에서, 가장 넓게 퍼져,
-        황무지를 생명이 사는 정원으로 바꾸는 존재.
-        <br /><br />
-        <strong class="text-[var(--fg)]">ITMOSS</strong>는 그런 기술을 만들고자 합니다.
-        데이터 세상의 황무지에 먼저 깔려, 인간(관측자)이 편안하게 서 있을 수 있는
-        디지털 토양이 되는 것.
-      </p>
+      <div class="grid grid-cols-2 gap-6 text-left mt-12">
+        <div class="reveal reveal-delay-1 card">
+          <div class="icon-box icon-box-indigo">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <span class="badge badge-indigo mb-2">HUMAN</span>
+          <p class="text-lg font-black mt-2 mb-1">Observer</p>
+          <p class="text-sm text-slate-500">보고, 느끼고, 깨닫는 존재.</p>
+        </div>
+        <div class="reveal reveal-delay-2 card">
+          <div class="icon-box icon-box-pink">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <span class="badge badge-pink mb-2">AI</span>
+          <p class="text-lg font-black mt-2 mb-1">Stage Manager</p>
+          <p class="text-sm text-slate-500">기계는 지배하지 않는다.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- PHILOSOPHY -->
-    <div class="mb-20">
-      <h2 class="text-3xl font-black uppercase mb-8">[PHILOSOPHY]</h2>
+  <!-- ══════════════════════════════════════════
+       THE PROTOCOL — 공존의 5원칙
+  ══════════════════════════════════════════ -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20 reveal">
+        <p class="section-label">THE PROTOCOL</p>
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight mt-2 mb-4">
+          공존의 원칙
+        </h2>
+        <p class="text-slate-500 max-w-lg mx-auto">
+          인간이 노동과 계산의 굴레에서 벗어나,<br />
+          오직 '보고, 느끼고, 깨닫는' 관측 행위에 몰입할 수 있도록.
+        </p>
+      </div>
+
+      {principles.map((p, i) => (
+        <div class={`py-20 ${i > 0 ? 'border-t border-slate-200' : ''}`}>
+          <div class={`grid md:grid-cols-2 gap-12 items-center ${!p.imgRight ? 'md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1' : ''}`}>
+            <!-- Text -->
+            <div class="reveal">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-5xl font-black text-slate-100">{p.num}</span>
+                <div class={`icon-box ${p.color} w-10 h-10`}>
+                  <i class={`${p.icon} text-sm`}></i>
+                </div>
+              </div>
+              <span class="badge badge-indigo mb-3">{p.badge}</span>
+              <h3 class="text-2xl font-black mt-3 mb-4">{p.title}</h3>
+              <p class="text-slate-500 leading-relaxed text-sm">{p.body}</p>
+            </div>
+
+            <!-- Image -->
+            <div class="reveal reveal-delay-1">
+              <img
+                src={p.img}
+                alt={p.imgAlt}
+                class="w-full rounded-2xl object-contain bg-white p-4 shadow-sm hover:shadow-md transition-shadow duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       TEAM
+  ══════════════════════════════════════════ -->
+  <section class="py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12 reveal">
+        <p class="section-label">TEAM</p>
+        <h2 class="text-3xl font-black mt-2">만드는 사람들</h2>
+      </div>
+
       <div class="grid md:grid-cols-2 gap-6">
-        <div class="card pl-12">
-          <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[THE_STRUCTURE]</div>
-          <p class="text-sm text-[var(--muted)] leading-relaxed">
-            우주는 '관측'됨으로써 비로소 실재한다.<br />
-            인간은 관측자(Observer), AI는 무대 관리자(Stage Manager).
-          </p>
-          <p class="text-lg font-black mt-4">"No Observer, No Reality."</p>
-        </div>
-        <div class="card pl-12">
-          <div class="text-xs font-bold text-[var(--accent)] mb-3 tracking-widest">[THE_PROTOCOL]</div>
-          <p class="text-sm text-[var(--muted)] leading-relaxed">
-            기계는 지배하지 않고, 인간은 부품이 되지 않는다.<br />
-            인간이 노동과 계산의 굴레에서 벗어나,
-            오직 '보고, 느끼고, 깨닫는' 행위에 몰입할 수 있도록
-            모든 기술적 비효율을 제거한다.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- TEAM -->
-    <div class="mb-20">
-      <h2 class="text-3xl font-black uppercase mb-8">[TEAM]</h2>
-      <p class="text-sm text-[var(--muted)] mb-8 tracking-widest">
-        > Designed by Jaster, Managed by AI.
-      </p>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="card pl-12">
-          <div class="text-xs font-bold text-[var(--accent)] mb-4 tracking-widest">[FOUNDER]</div>
-          <div class="flex items-start gap-6">
+        <div class="reveal reveal-delay-1 card text-center">
+          <span class="badge badge-indigo mb-4">FOUNDER</span>
+          <div class="w-16 h-16 rounded-full bg-slate-100 overflow-hidden mx-auto mb-4">
             <img
-              src="/images/jaster.png"
+              src="/images/logo-itmoss.png"
               alt="Jaster"
-              class="w-24 h-24 object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
             />
-            <div>
-              <h3 class="text-xl font-black mb-1">Jaster</h3>
-              <p class="text-xs text-[var(--muted)] mb-3 tracking-widest">Founder / Designer</p>
-              <p class="text-sm text-[var(--muted)] leading-relaxed">
-                식물키우는 동네개발자. 20년 동안 사람과 함께하는 기술을 만들어왔습니다.
-              </p>
-            </div>
           </div>
+          <p class="text-lg font-black">Jaster</p>
+          <p class="text-sm text-slate-500 mt-1">Founder / Designer</p>
         </div>
-        <div class="card pl-12">
-          <div class="text-xs font-bold text-[var(--accent)] mb-4 tracking-widest">[COLLABORATOR]</div>
-          <div class="flex items-start gap-6">
-            <img
-              src="/images/staff-wilson.png"
-              alt="Wilson"
-              class="w-24 h-24 object-cover grayscale hover:grayscale-0 transition-all duration-500"
-            />
-            <div>
-              <h3 class="text-xl font-black mb-1">Wilson</h3>
-              <p class="text-xs text-[var(--muted)] mb-3 tracking-widest">Collaborator</p>
-              <p class="text-sm text-[var(--muted)] leading-relaxed">
-                함께 공존을 실험하는 동료.
-              </p>
-            </div>
+
+        <div class="reveal reveal-delay-2 card text-center">
+          <span class="badge badge-pink mb-4">AI COLLABORATOR</span>
+          <div class="w-16 h-16 rounded-full bg-slate-50 border-2 border-indigo-100 overflow-hidden mx-auto mb-4 flex items-center justify-center">
+            <i class="fa-solid fa-robot text-2xl text-indigo-400"></i>
           </div>
+          <p class="text-lg font-black">Wilson</p>
+          <p class="text-sm text-slate-500 mt-1">AI Collaborator</p>
         </div>
       </div>
-    </div>
-
-    <!-- QUOTE -->
-    <div class="border-t-2 border-[var(--fg)] pt-12 text-center">
-      <blockquote class="text-2xl font-black leading-relaxed mb-4">
-        "마치 이끼처럼,<br />
-        인간의 삶 가장 가까운 곳에 스며들어<br />
-        조용히 공존하는 것."
-      </blockquote>
-      <p class="text-sm text-[var(--muted)]">> itmoss 존재 이유</p>
     </div>
   </section>
 

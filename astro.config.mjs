@@ -4,5 +4,5 @@ import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   integrations: [tailwind({ applyBaseStyles: true }), mdx()],
-  site: 'https://example.com'
+  site: 'https://itmoss.com'
 });
