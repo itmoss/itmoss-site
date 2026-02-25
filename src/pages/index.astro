@@ -275,10 +275,14 @@ import T from "../components/i18n/T.astro";
         <div class="flex items-center gap-3 mb-3">
           <span class="badge badge-indigo">
             <i class="fa-solid fa-glasses text-xs"></i>
-            JVL Applied Case
+            JVL Applied
+          </span>
+          <span class="badge badge-pink">
+            <i class="fa-solid fa-fingerprint text-xs"></i>
+            JIS Applied
           </span>
         </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">Real-World Case</h2>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">Real-World Cases</h2>
       </div>
 
       <div class="reveal card overflow-hidden p-0">
@@ -356,6 +360,130 @@ import T from "../components/i18n/T.astro";
           </div>
         </div>
       </div>
+
+      <!-- JIS Applied Case: Uzudebris -->
+      <div class="reveal mt-10 card overflow-hidden p-0">
+        <div class="grid lg:grid-cols-2 gap-0">
+          <!-- Info -->
+          <div class="p-6 sm:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="badge badge-pink">Case 02</span>
+              <span class="text-xs text-slate-400 font-medium">JIS → Uzudebris</span>
+            </div>
+            <div class="mb-5">
+              <p class="text-2xl sm:text-3xl font-black text-slate-900">Uzu<span class="text-pink-500">Debris</span><sup class="text-pink-400 text-sm ml-0.5">™</sup> <span class="text-xs font-bold bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full align-middle border border-pink-200">Beta</span></p>
+              <p class="text-xs text-pink-500 font-semibold tracking-widest uppercase mt-1">Digital Face Asset & Debris Scanner</p>
+            </div>
+            <T tag="p" class="text-slate-600 text-sm leading-relaxed mb-4"
+              en={`A pioneering startup combining AI and blockchain to protect personal digital rights from deepfakes and fake news.<br />Scan how your likeness appears in videos — in real time.`}
+              ko={`딥페이크와 가짜 뉴스로부터 개인의 디지털 초상권을 보호하는 AI와 블록체인 융합 스타트업.<br />영상 속 당신의 얼굴이 어떻게 소비되는지 실시간으로 분석합니다.`}
+              vi={`Startup tiên phong kết hợp AI và blockchain để bảo vệ quyền kỹ thuật số cá nhân.<br />Quét cách hình ảnh của bạn xuất hiện trong video theo thời gian thực.`}
+              th={`สตาร์ทอัพที่ผสมผสาน AI และบล็อกเชนเพื่อปกป้องสิทธิ์ดิจิทัลส่วนบุคคล`}
+              bn={`AI এবং ব্লকচেইন একত্রিত করে ডিপফেক থেকে ব্যক্তিগত ডিজিটাল অধিকার রক্ষা করে।`}
+              ja={`AIとブロックチェーンを組み合わせ、ディープフェイクとフェイクニュースから個人のデジタル肖像権を守るスタートアップ。リアルタイムで動画内のあなたの顔を分析します。`}
+              zh={`结合AI和区块链技术，保护个人数字肖像权的先驱创业公司。<br />实时扫描您的面孔在视频中的使用方式。`}
+            />
+            <div class="bg-pink-50 border border-pink-100 rounded-xl px-4 py-3 mb-5">
+              <p class="text-xs text-pink-600 font-bold uppercase tracking-widest mb-1">Core Mission</p>
+              <T tag="p" class="text-sm font-bold text-slate-800"
+                en={`"Your Face is Your Asset"`}
+                ko={`"당신의 얼굴은 당신의 자산"`}
+                vi={`"Khuôn mặt của bạn là tài sản"`}
+                th={`"ใบหน้าของคุณคือทรัพย์สิน"`}
+                bn={`"আপনার মুখ আপনার সম্পদ"`}
+                ja={`「あなたの顔はあなたの資産」`}
+                zh={`"您的面孔是您的资产"`}
+              />
+              <T tag="p" class="text-xs text-slate-500 mt-0.5"
+                en={`Protect your digital identity before it becomes debris.`}
+                ko={`당신의 디지털 정체성이 우주 쓰레기가 되기 전에 보호하세요.`}
+                vi={`Bảo vệ danh tính kỹ thuật số trước khi trở thành mảnh vụn.`}
+                th={`ปกป้องตัวตนดิจิทัลก่อนที่จะกลายเป็นเศษซาก`}
+                bn={`ধ্বংসাবশেষ হওয়ার আগে আপনার ডিজিটাল পরিচয় রক্ষা করুন।`}
+                ja={`デブリになる前にデジタルアイデンティティを守る。`}
+                zh={`在成为碎片之前保护您的数字身份。`}
+              />
+            </div>
+            <div class="flex flex-wrap gap-2 mb-7">
+              <span class="badge badge-pink">Portrait Rights</span>
+              <span class="badge badge-pink">AI Scanner</span>
+              <span class="badge badge-pink">Blockchain</span>
+              <span class="badge badge-pink">Deepfake Detection</span>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="https://uzudebris.com" target="_blank" rel="noopener noreferrer"
+                class="flex items-center gap-2 bg-pink-600 hover:bg-pink-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5">
+                <i class="fa-solid fa-shield-halved"></i>
+                Visit uzudebris.com
+              </a>
+            </div>
+          </div>
+          <!-- Visual: Video Scan -->
+          <div class="relative overflow-hidden bg-gradient-to-br from-slate-900 to-pink-950 min-h-[360px] sm:min-h-[480px] flex items-center justify-center">
+            <div class="absolute inset-0 opacity-10"
+              style="background-image: linear-gradient(rgba(236,72,153,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(236,72,153,0.4) 1px, transparent 1px); background-size: 28px 28px;"></div>
+            <div class="relative text-center px-6 sm:px-8 py-10 sm:py-12 w-full">
+              <!-- Video mock -->
+              <div class="relative w-full max-w-[240px] mx-auto mb-6">
+                <div class="aspect-video bg-slate-800/80 rounded-xl border border-pink-500/30 relative overflow-hidden shadow-lg shadow-pink-900/30">
+                  <div class="absolute inset-0 flex items-center justify-center opacity-20">
+                    <i class="fa-brands fa-youtube text-5xl text-slate-400"></i>
+                  </div>
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-16 h-20 border border-pink-400/60 relative">
+                      <div class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-pink-400"></div>
+                      <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-pink-400"></div>
+                      <div class="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-pink-400"></div>
+                      <div class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-pink-400"></div>
+                      <div class="absolute inset-0 flex items-center justify-center">
+                        <i class="fa-solid fa-face-smile-beam text-pink-300/50 text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="absolute top-2 left-2 right-2 flex justify-between">
+                    <span class="text-[8px] text-red-400 font-mono">● REC</span>
+                    <span class="text-[8px] text-pink-300/70 font-mono">SCANNING</span>
+                  </div>
+                  <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-700">
+                    <div class="h-full bg-pink-500/70 w-2/3"></div>
+                  </div>
+                </div>
+                <div class="mt-3 flex justify-center">
+                  <div class="inline-flex items-center gap-1.5 bg-pink-500/20 border border-pink-500/30 px-3 py-1 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></span>
+                    <span class="text-pink-300 text-[10px] font-mono tracking-wider">FACE DETECTED</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-white font-black text-lg mb-1">UzuDebris<sup class="text-pink-400 text-xs ml-0.5">™</sup> <span class="text-[10px] font-bold bg-pink-500/30 text-pink-300 px-2 py-0.5 rounded-full align-middle border border-pink-500/40">Beta</span></p>
+              <p class="text-pink-300/70 text-xs mb-5">Digital Face Asset & Debris Scanner</p>
+              <div class="grid grid-cols-3 gap-3 text-center max-w-[240px] mx-auto">
+                <div class="bg-slate-800/60 rounded-lg p-2.5">
+                  <i class="fa-solid fa-lock text-pink-400 text-sm mb-1.5 block"></i>
+                  <p class="text-white text-[11px] font-bold">Secure</p>
+                  <p class="text-pink-300/60 text-[9px]">Processing</p>
+                </div>
+                <div class="bg-slate-800/60 rounded-lg p-2.5">
+                  <i class="fa-solid fa-bolt text-pink-400 text-sm mb-1.5 block"></i>
+                  <p class="text-white text-[11px] font-bold">Real-time</p>
+                  <p class="text-pink-300/60 text-[9px]">Analysis</p>
+                </div>
+                <div class="bg-slate-800/60 rounded-lg p-2.5">
+                  <i class="fa-solid fa-bullseye text-pink-400 text-sm mb-1.5 block"></i>
+                  <p class="text-white text-[11px] font-bold">99%</p>
+                  <p class="text-pink-300/60 text-[9px]">Accuracy</p>
+                </div>
+              </div>
+              <div class="mt-5 flex flex-wrap justify-center gap-2">
+                <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Kaia</span>
+                <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Avalanche</span>
+                <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Zero-Image</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
