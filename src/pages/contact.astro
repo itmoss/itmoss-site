@@ -3,47 +3,54 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Contact — ITMOSS">
 
-  <section class="gradient-hero min-h-[80vh] flex flex-col items-center justify-center px-6 text-center py-20">
-    <div class="max-w-lg mx-auto">
+  <section class="gradient-hero min-h-[80vh] flex flex-col items-center justify-center px-4 sm:px-6 text-center py-16 sm:py-20">
+    <div class="max-w-lg mx-auto w-full">
       <p class="section-label reveal">CONTACT</p>
-      <h1 class="text-6xl md:text-7xl font-black tracking-tight mt-2 mb-4 reveal">
-        연락하기
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mt-2 mb-2 sm:mb-4 reveal">
+        Get in Touch
       </h1>
-      <p class="text-slate-500 mb-14 reveal reveal-delay-1">
-        협업 제안, 프로젝트 문의 — 무엇이든 환영합니다.
+      <p class="text-xs text-slate-400 mb-4 reveal">연락하기</p>
+      <p class="text-slate-500 text-sm sm:text-base mb-10 sm:mb-14 reveal reveal-delay-1">
+        Collaboration proposals, project inquiries — all welcome.
       </p>
+      <p class="text-xs text-slate-400 -mt-8 mb-10 sm:mb-14 reveal reveal-delay-1">협업 제안, 프로젝트 문의 — 무엇이든 환영합니다.</p>
 
-      <div class="space-y-4 w-full reveal reveal-delay-2">
+      <div class="space-y-3 sm:space-y-4 w-full reveal reveal-delay-2">
         <a
           href="mailto:jaster@itmoss.com"
-          class="card flex items-center gap-5 text-left hover:no-underline group p-6"
+          class="card flex items-center gap-4 sm:gap-5 text-left hover:no-underline group p-5 sm:p-6"
         >
-          <div class="icon-box icon-box-indigo w-12 h-12 shrink-0">
-            <i class="fa-solid fa-envelope"></i>
+          <div class="icon-box icon-box-indigo w-11 h-11 sm:w-12 sm:h-12 shrink-0">
+            <i class="fa-solid fa-envelope text-sm sm:text-base"></i>
           </div>
-          <div>
-            <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-1">Email</p>
-            <p class="text-lg font-black group-hover:text-indigo-600 transition-colors">jaster@itmoss.com</p>
+          <div class="min-w-0">
+            <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-0.5 sm:mb-1">Email</p>
+            <p class="text-base sm:text-lg font-black group-hover:text-indigo-600 transition-colors truncate">jaster@itmoss.com</p>
           </div>
-          <i class="fa-solid fa-arrow-right ml-auto text-slate-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all"></i>
+          <i class="fa-solid fa-arrow-right ml-auto text-slate-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all shrink-0"></i>
         </a>
 
         <a
           href="https://blog.naver.com/itmoss"
           target="_blank"
           rel="noopener noreferrer"
-          class="card flex items-center gap-5 text-left hover:no-underline group p-6"
+          class="card flex items-center gap-4 sm:gap-5 text-left hover:no-underline group p-5 sm:p-6"
         >
-          <div class="icon-box icon-box-green w-12 h-12 shrink-0">
-            <i class="fa-solid fa-blog"></i>
+          <div class="icon-box icon-box-green w-11 h-11 sm:w-12 sm:h-12 shrink-0">
+            <i class="fa-solid fa-blog text-sm sm:text-base"></i>
           </div>
-          <div>
-            <p class="text-xs font-bold text-green-600 uppercase tracking-widest mb-1">Blog</p>
-            <p class="text-lg font-black group-hover:text-indigo-600 transition-colors">blog.naver.com/itmoss</p>
+          <div class="min-w-0">
+            <p class="text-xs font-bold text-green-600 uppercase tracking-widest mb-0.5 sm:mb-1">Notes / Blog</p>
+            <p class="text-base sm:text-lg font-black group-hover:text-indigo-600 transition-colors truncate">blog.naver.com/itmoss</p>
           </div>
-          <i class="fa-solid fa-arrow-right ml-auto text-slate-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all"></i>
+          <i class="fa-solid fa-arrow-right ml-auto text-slate-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all shrink-0"></i>
         </a>
       </div>
+
+      <p class="text-xs text-slate-400 mt-10 leading-relaxed">
+        We typically respond within 1–2 business days.<br />
+        <span class="text-slate-300">영업일 기준 1–2일 내에 답변드립니다.</span>
+      </p>
     </div>
   </section>
 
