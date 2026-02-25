@@ -108,23 +108,60 @@ import T from "../components/i18n/T.astro";
                 <sup class="text-xs text-slate-400 font-bold">™</sup>
               </div>
               <h3 class="text-lg sm:text-xl font-black mb-1 text-slate-800">Jaster Vision Lens<sup class="text-xs text-indigo-400 ml-0.5">™</sup></h3>
-              <p class="text-xs text-indigo-500 font-semibold tracking-widest mb-4 uppercase">Optical Analysis Stack</p>
-              <p class="text-slate-500 text-sm leading-relaxed mb-5">
-                Custom Itmoss-Vision model-based visual analysis stack.<br />
-                Uniquely combines 3D spatial augmentation with contextual intelligence.
-              </p>
+              <T tag="p" class="text-xs text-indigo-500 font-semibold tracking-widest mb-4 uppercase"
+                en="Optical Analysis Stack"
+                ko="광학 분석 스택"
+                vi="Bộ phân tích quang học"
+                th="ชุดวิเคราะห์เชิงแสง"
+                bn="অপটিক্যাল বিশ্লেষণ স্ট্যাক"
+                ja="光学分析スタック"
+                zh="光学分析堆栈"
+              />
+              <T tag="p" class="text-slate-500 text-sm leading-relaxed mb-5"
+                en="Custom Itmoss-Vision model-based visual analysis stack.<br />Uniquely combines 3D spatial augmentation with contextual intelligence."
+                ko="커스텀 Itmoss-Vision 모델 기반 시각 분석 스택.<br />3D 공간 증강과 컨텍스트 인텔리전스를 독창적으로 결합합니다."
+                vi="Bộ phân tích hình ảnh dựa trên mô hình Itmoss-Vision tùy chỉnh.<br />Kết hợp độc đáo tăng cường không gian 3D với trí thông minh theo ngữ cảnh."
+                th="ชุดวิเคราะห์ภาพบนพื้นฐานโมเดล Itmoss-Vision ที่กำหนดเอง<br />ผสมผสาน 3D spatial augmentation กับ contextual intelligence อย่างเป็นเอกลักษณ์"
+                bn="কাস্টম Itmoss-Vision মডেল-ভিত্তিক ভিজ্যুয়াল বিশ্লেষণ স্ট্যাক।<br />3D স্থানিক বর্ধন এবং প্রাসঙ্গিক বুদ্ধিমত্তাকে অনন্যভাবে একত্রিত করে।"
+                ja="カスタムItmoss-Visionモデルベースの視覚分析スタック。<br />3D空間拡張とコンテキストインテリジェンスを独自に組み合わせます。"
+                zh="基于自定义Itmoss-Vision模型的视觉分析堆栈。<br />独特结合3D空间增强与上下文智能。"
+              />
               <ul class="space-y-3 text-sm">
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
-                  <span class="text-slate-600"><strong class="text-slate-800">Knowledge Distillation</strong> applied lightweight model — deployable from smartphones to embedded devices</span>
+                  <T tag="span" class="text-slate-600"
+                    en={`<strong class="text-slate-800">Knowledge Distillation</strong> applied lightweight model — deployable from smartphones to embedded devices`}
+                    ko={`<strong class="text-slate-800">Knowledge Distillation</strong> 적용 경량 모델 — 스마트폰부터 임베디드 장치까지 배포 가능`}
+                    vi={`Mô hình nhẹ áp dụng <strong class="text-slate-800">Knowledge Distillation</strong> — triển khai từ điện thoại thông minh đến thiết bị nhúng`}
+                    th={`โมเดลน้ำหนักเบาที่ใช้ <strong class="text-slate-800">Knowledge Distillation</strong> — ติดตั้งได้ตั้งแต่สมาร์ตโฟนถึงอุปกรณ์ฝังตัว`}
+                    bn={`<strong class="text-slate-800">Knowledge Distillation</strong> প্রয়োগ করা লাইটওয়েট মডেল — স্মার্টফোন থেকে এমবেডেড ডিভাইসে ডিপ্লয় করা যায়`}
+                    ja={`<strong class="text-slate-800">Knowledge Distillation</strong>適用の軽量モデル — スマートフォンから組み込みデバイスまで展開可能`}
+                    zh={`应用<strong class="text-slate-800">Knowledge Distillation</strong>的轻量模型 — 可部署在智能手机到嵌入式设备`}
+                  />
                 </li>
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
-                  <span class="text-slate-600">Precision vector matching and skincare filter generation in <strong class="text-slate-800">under 5 seconds</strong></span>
+                  <T tag="span" class="text-slate-600"
+                    en={`Precision vector matching and skincare filter generation in <strong class="text-slate-800">under 5 seconds</strong>`}
+                    ko={`정밀 벡터 매칭 및 스킨케어 필터 생성 <strong class="text-slate-800">5초 이내</strong> 처리`}
+                    vi={`Khớp vector chính xác và tạo bộ lọc dưỡng da trong <strong class="text-slate-800">dưới 5 giây</strong>`}
+                    th={`การจับคู่เวกเตอร์ที่แม่นยำและสร้างฟิลเตอร์ดูแลผิวใน <strong class="text-slate-800">ไม่ถึง 5 วินาที</strong>`}
+                    bn={`নির্ভুল ভেক্টর ম্যাচিং এবং স্কিনকেয়ার ফিল্টার তৈরি <strong class="text-slate-800">৫ সেকেন্ডের মধ্যে</strong>`}
+                    ja={`精密なベクターマッチングとスキンケアフィルター生成を<strong class="text-slate-800">5秒以内</strong>に処理`}
+                    zh={`<strong class="text-slate-800">5秒内</strong>完成精确向量匹配和护肤过滤器生成`}
+                  />
                 </li>
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
-                  <span class="text-slate-600">In-store AR context scanning with <strong class="text-slate-800">'Scanning Context'</strong> overlay</span>
+                  <T tag="span" class="text-slate-600"
+                    en={`In-store AR context scanning with <strong class="text-slate-800">'Scanning Context'</strong> overlay`}
+                    ko={`매장 내 AR 컨텍스트 스캔 및 <strong class="text-slate-800">'Scanning Context'</strong> 오버레이`}
+                    vi={`Quét ngữ cảnh AR trong cửa hàng với lớp phủ <strong class="text-slate-800">'Scanning Context'</strong>`}
+                    th={`การสแกน AR context ในร้านค้าพร้อม overlay <strong class="text-slate-800">'Scanning Context'</strong>`}
+                    bn={`ইন-স্টোর AR কনটেক্সট স্ক্যানিং এবং <strong class="text-slate-800">'Scanning Context'</strong> ওভারলে`}
+                    ja={`店舗内ARコンテキストスキャンと<strong class="text-slate-800">'Scanning Context'</strong>オーバーレイ`}
+                    zh={`店内AR场景扫描与<strong class="text-slate-800">'Scanning Context'</strong>叠加层`}
+                  />
                 </li>
               </ul>
             </div>
@@ -136,8 +173,24 @@ import T from "../components/i18n/T.astro";
               />
               <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-6 sm:p-8">
                 <div class="text-white">
-                  <p class="text-xs uppercase tracking-widest opacity-60 mb-1">AR Scanning Context</p>
-                  <p class="text-base sm:text-lg font-black">Real-time Skin Analysis & Product Matching</p>
+                  <T tag="p" class="text-xs uppercase tracking-widest opacity-60 mb-1"
+                    en="AR Scanning Context"
+                    ko="AR 스캐닝 컨텍스트"
+                    vi="Bối cảnh AR Scanning"
+                    th="บริบท AR Scanning"
+                    bn="AR স্ক্যানিং কনটেক্সট"
+                    ja="ARスキャニングコンテキスト"
+                    zh="AR扫描场景"
+                  />
+                  <T tag="p" class="text-base sm:text-lg font-black"
+                    en="Real-time Skin Analysis & Product Matching"
+                    ko="실시간 피부 분석 & 제품 매칭"
+                    vi="Phân tích da và ghép sản phẩm theo thời gian thực"
+                    th="การวิเคราะห์ผิวและการจับคู่สินค้าแบบเรียลไทม์"
+                    bn="রিয়েল-টাইম স্কিন অ্যানালাইসিস & প্রোডাক্ট ম্যাচিং"
+                    ja="リアルタイム肌分析 & 製品マッチング"
+                    zh="实时皮肤分析与产品匹配"
+                  />
                 </div>
               </div>
             </div>
@@ -166,28 +219,73 @@ import T from "../components/i18n/T.astro";
                 <sup class="text-xs text-slate-400 font-bold">™</sup>
               </div>
               <h3 class="text-lg sm:text-xl font-black mb-1 text-slate-800">Jaster Managed AI Infrastructure<sup class="text-xs text-green-400 ml-0.5">™</sup></h3>
-              <p class="text-xs text-green-600 font-semibold tracking-widest mb-4 uppercase">Backend as a Service</p>
-              <p class="text-slate-500 text-sm leading-relaxed mb-5">
-                Enterprise-grade fully managed AI backend solution.<br />
-                Launch your AI service instantly — no server development required.
-              </p>
+              <T tag="p" class="text-xs text-green-600 font-semibold tracking-widest mb-4 uppercase"
+                en="Backend as a Service"
+                ko="백엔드 서비스형 플랫폼"
+                vi="Backend như một dịch vụ"
+                th="Backend ในรูปแบบบริการ"
+                bn="ব্যাকএন্ড হিসেবে সার্ভিস"
+                ja="バックエンドアズアサービス"
+                zh="后端即服务"
+              />
+              <T tag="p" class="text-slate-500 text-sm leading-relaxed mb-5"
+                en="Enterprise-grade fully managed AI backend solution.<br />Launch your AI service instantly — no server development required."
+                ko="엔터프라이즈급 완전 관리형 AI 백엔드 솔루션.<br />서버 개발 없이 AI 서비스를 즉시 출시하세요."
+                vi="Giải pháp backend AI được quản lý hoàn toàn cấp doanh nghiệp.<br />Ra mắt dịch vụ AI ngay lập tức — không cần phát triển máy chủ."
+                th="โซลูชัน AI backend แบบ fully managed ระดับ Enterprise<br />เปิดตัวบริการ AI ของคุณได้ทันที — ไม่ต้องพัฒนา server"
+                bn="এন্টারপ্রাইজ-গ্রেড সম্পূর্ণ পরিচালিত AI ব্যাকএন্ড সমাধান।<br />সার্ভার ডেভেলপমেন্ট ছাড়াই আপনার AI পরিষেবা তাৎক্ষণিকভাবে লঞ্চ করুন।"
+                ja="エンタープライズグレードの完全マネージドAIバックエンドソリューション。<br />サーバー開発なしにAIサービスを即時リリースできます。"
+                zh="企业级完全托管AI后端解决方案。<br />无需服务器开发，即刻推出AI服务。"
+              />
               <ul class="space-y-3 text-sm mb-5">
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0"></i>
-                  <span class="text-slate-600"><strong class="text-slate-800">Managed Backend</strong> — Cloud-Native environment with zero server setup</span>
+                  <T tag="span" class="text-slate-600"
+                    en={`<strong class="text-slate-800">Managed Backend</strong> — Cloud-Native environment with zero server setup`}
+                    ko={`<strong class="text-slate-800">Managed Backend</strong> — 서버 설정 없는 Cloud-Native 환경`}
+                    vi={`<strong class="text-slate-800">Managed Backend</strong> — Môi trường Cloud-Native không cần cấu hình máy chủ`}
+                    th={`<strong class="text-slate-800">Managed Backend</strong> — สภาพแวดล้อม Cloud-Native ไม่ต้องตั้งค่า server`}
+                    bn={`<strong class="text-slate-800">Managed Backend</strong> — জিরো সার্ভার সেটআপ সহ Cloud-Native পরিবেশ`}
+                    ja={`<strong class="text-slate-800">Managed Backend</strong> — サーバーセットアップ不要のCloud-Native環境`}
+                    zh={`<strong class="text-slate-800">托管后端</strong> — 零服务器配置的Cloud-Native环境`}
+                  />
                 </li>
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0"></i>
-                  <span class="text-slate-600"><strong class="text-slate-800">Vector DB Stack</strong> — High-performance search for large-scale embedding data</span>
+                  <T tag="span" class="text-slate-600"
+                    en={`<strong class="text-slate-800">Vector DB Stack</strong> — High-performance search for large-scale embedding data`}
+                    ko={`<strong class="text-slate-800">Vector DB Stack</strong> — 대규모 임베딩 데이터 고성능 검색`}
+                    vi={`<strong class="text-slate-800">Vector DB Stack</strong> — Tìm kiếm hiệu năng cao cho dữ liệu embedding quy mô lớn`}
+                    th={`<strong class="text-slate-800">Vector DB Stack</strong> — การค้นหาประสิทธิภาพสูงสำหรับข้อมูล embedding ขนาดใหญ่`}
+                    bn={`<strong class="text-slate-800">Vector DB Stack</strong> — বড় স্কেলের এমবেডিং ডেটার জন্য উচ্চ-কার্যক্ষমতার অনুসন্ধান`}
+                    ja={`<strong class="text-slate-800">Vector DB Stack</strong> — 大規模エンベディングデータの高性能検索`}
+                    zh={`<strong class="text-slate-800">Vector DB堆栈</strong> — 大规模嵌入数据高性能搜索`}
+                  />
                 </li>
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0"></i>
-                  <span class="text-slate-600"><strong class="text-slate-800">Global API Gateway</strong> — Optimized for global H&B store integration</span>
+                  <T tag="span" class="text-slate-600"
+                    en={`<strong class="text-slate-800">Global API Gateway</strong> — Optimized for global H&B store integration`}
+                    ko={`<strong class="text-slate-800">Global API Gateway</strong> — 글로벌 H&B 스토어 연동 최적화`}
+                    vi={`<strong class="text-slate-800">Global API Gateway</strong> — Được tối ưu hóa cho tích hợp cửa hàng H&B toàn cầu`}
+                    th={`<strong class="text-slate-800">Global API Gateway</strong> — ปรับแต่งสำหรับการรวมระบบ H&B store ทั่วโลก`}
+                    bn={`<strong class="text-slate-800">Global API Gateway</strong> — বৈশ্বিক H&B স্টোর ইন্টিগ্রেশনের জন্য অপ্টিমাইজড`}
+                    ja={`<strong class="text-slate-800">Global API Gateway</strong> — グローバルH&Bストア統合向けに最適化`}
+                    zh={`<strong class="text-slate-800">全球API网关</strong> — 针对全球H&B门店集成优化`}
+                  />
                 </li>
               </ul>
               <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-xl text-sm font-bold w-fit">
                 <i class="fa-solid fa-bolt text-xs"></i>
-                80% faster time-to-market
+                <T tag="span"
+                  en="80% faster time-to-market"
+                  ko="출시 기간 80% 단축"
+                  vi="Rút ngắn 80% thời gian ra thị trường"
+                  th="ลดเวลาออกสู่ตลาด 80%"
+                  bn="বাজারে আসার সময় ৮০% দ্রুততর"
+                  ja="市場投入時間80%短縮"
+                  zh="上市时间缩短80%"
+                />
               </div>
             </div>
           </div>
@@ -210,22 +308,51 @@ import T from "../components/i18n/T.astro";
               <h3 class="text-lg sm:text-xl font-black mb-1 text-slate-800">Jaster Identity Shield<sup class="text-xs text-pink-400 ml-0.5">™</sup></h3>
               <p class="text-xs text-pink-500 font-semibold tracking-widest mb-1 uppercase">Uzudebris Protocol</p>
               <p class="text-xs text-slate-400 mb-4">Legal-Tech · Blockchain</p>
-              <p class="text-slate-500 text-sm leading-relaxed mb-5">
-                Portrait rights valuation and protection protocol.<br />
-                Legal-Tech for influencers, artists, and MCN entertainment companies.
-              </p>
+              <T tag="p" class="text-slate-500 text-sm leading-relaxed mb-5"
+                en="Portrait rights valuation and protection protocol.<br />Legal-Tech for influencers, artists, and MCN entertainment companies."
+                ko="초상권 가치 평가 및 보호 프로토콜.<br />인플루언서, 아티스트, MCN 엔터테인먼트 기업을 위한 Legal-Tech."
+                vi="Giao thức định giá và bảo vệ quyền chân dung.<br />Legal-Tech cho influencer, nghệ sĩ và công ty giải trí MCN."
+                th="โปรโตคอลการประเมินมูลค่าและปกป้องสิทธิ์ภาพพอร์ตเทรต<br />Legal-Tech สำหรับ influencer, ศิลปิน และบริษัทบันเทิง MCN"
+                bn="পোট্রেট রাইটস মূল্যায়ন ও সুরক্ষা প্রোটোকল।<br />ইনফ্লুয়েন্সার, শিল্পী এবং MCN এন্টারটেইনমেন্ট কোম্পানির জন্য Legal-Tech।"
+                ja="肖像権の評価と保護プロトコル。<br />インフルエンサー、アーティスト、MCNエンターテインメント企業向けLegal-Tech。"
+                zh="肖像权估值与保护协议。<br />为网红、艺术家和MCN娱乐公司提供的Legal-Tech。"
+              />
               <ul class="space-y-3 text-sm">
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-circle-check text-pink-500 mt-0.5 shrink-0"></i>
-                  <span class="text-slate-600"><strong class="text-slate-800">Valuation Calculator</strong> — Converts portrait rights into economic value via viral views & CPM</span>
+                  <T tag="span" class="text-slate-600"
+                    en={`<strong class="text-slate-800">Valuation Calculator</strong> — Converts portrait rights into economic value via viral views & CPM`}
+                    ko={`<strong class="text-slate-800">Valuation Calculator</strong> — 바이럴 조회수 & CPM을 통해 초상권을 경제적 가치로 환산`}
+                    vi={`<strong class="text-slate-800">Máy tính định giá</strong> — Chuyển đổi quyền chân dung thành giá trị kinh tế qua lượt xem viral & CPM`}
+                    th={`<strong class="text-slate-800">Valuation Calculator</strong> — แปลงสิทธิ์ภาพพอร์ตเทรตเป็นมูลค่าทางเศรษฐกิจผ่าน viral views & CPM`}
+                    bn={`<strong class="text-slate-800">Valuation Calculator</strong> — ভাইরাল ভিউ ও CPM-এর মাধ্যমে পোট্রেট রাইটসকে অর্থনৈতিক মূল্যে রূপান্তর`}
+                    ja={`<strong class="text-slate-800">Valuation Calculator</strong> — バイラルビューとCPMを通じて肖像権を経済的価値に変換`}
+                    zh={`<strong class="text-slate-800">估值计算器</strong> — 通过病毒式观看量和CPM将肖像权转化为经济价值`}
+                  />
                 </li>
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-circle-check text-pink-500 mt-0.5 shrink-0"></i>
-                  <span class="text-slate-600"><strong class="text-slate-800">Hybrid Blockchain</strong> — Permanent Hash preservation on Kaia/Avalanche mainnet</span>
+                  <T tag="span" class="text-slate-600"
+                    en={`<strong class="text-slate-800">Hybrid Blockchain</strong> — Permanent Hash preservation on Kaia/Avalanche mainnet`}
+                    ko={`<strong class="text-slate-800">Hybrid Blockchain</strong> — Kaia/Avalanche 메인넷에 영구 Hash 보존`}
+                    vi={`<strong class="text-slate-800">Blockchain lai</strong> — Bảo tồn Hash vĩnh viễn trên mainnet Kaia/Avalanche`}
+                    th={`<strong class="text-slate-800">Hybrid Blockchain</strong> — การอนุรักษ์ Hash ถาวรบน Kaia/Avalanche mainnet`}
+                    bn={`<strong class="text-slate-800">Hybrid Blockchain</strong> — Kaia/Avalanche মেইননেটে স্থায়ী Hash সংরক্ষণ`}
+                    ja={`<strong class="text-slate-800">Hybrid Blockchain</strong> — Kaia/Avalanche メインネット上の永続的なHash保存`}
+                    zh={`<strong class="text-slate-800">混合区块链</strong> — 在Kaia/Avalanche主网上永久保存Hash`}
+                  />
                 </li>
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-circle-check text-pink-500 mt-0.5 shrink-0"></i>
-                  <span class="text-slate-600"><strong class="text-slate-800">Zero-Image Policy</strong> — Original image disposal with vector-based security management</span>
+                  <T tag="span" class="text-slate-600"
+                    en={`<strong class="text-slate-800">Zero-Image Policy</strong> — Original image disposal with vector-based security management`}
+                    ko={`<strong class="text-slate-800">Zero-Image Policy</strong> — 원본 이미지 폐기 및 벡터 기반 보안 관리`}
+                    vi={`<strong class="text-slate-800">Chính sách Zero-Image</strong> — Xử lý ảnh gốc với quản lý bảo mật dựa trên vector`}
+                    th={`<strong class="text-slate-800">Zero-Image Policy</strong> — การจัดการรูปภาพต้นฉบับด้วยการจัดการความปลอดภัยแบบ vector`}
+                    bn={`<strong class="text-slate-800">Zero-Image Policy</strong> — মূল ছবি মুছে ফেলা এবং ভেক্টর-ভিত্তিক নিরাপত্তা ব্যবস্থাপনা`}
+                    ja={`<strong class="text-slate-800">Zero-Image Policy</strong> — ベクターベースのセキュリティ管理による元画像の廃棄`}
+                    zh={`<strong class="text-slate-800">零图像策略</strong> — 基于向量的安全管理，废弃原始图像`}
+                  />
                 </li>
               </ul>
             </div>
@@ -250,7 +377,15 @@ import T from "../components/i18n/T.astro";
                   <span class="text-pink-300 text-xs font-mono tracking-widest">IDENTITY PROTECTED</span>
                 </div>
                 <p class="text-white font-black text-lg mb-1">Uzudebris<sup class="text-pink-400 text-xs ml-0.5">™</sup></p>
-                <p class="text-pink-300/70 text-xs mb-4">Portrait Rights Protection Protocol</p>
+                <T tag="p" class="text-pink-300/70 text-xs mb-4"
+                  en="Portrait Rights Protection Protocol"
+                  ko="초상권 보호 프로토콜"
+                  vi="Giao thức bảo vệ quyền chân dung"
+                  th="โปรโตคอลคุ้มครองสิทธิ์ภาพพอร์ตเทรต"
+                  bn="পোট্রেট রাইটস সুরক্ষা প্রোটোকল"
+                  ja="肖像権保護プロトコル"
+                  zh="肖像权保护协议"
+                />
                 <div class="flex flex-wrap justify-center gap-2">
                   <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Kaia</span>
                   <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Avalanche</span>
@@ -296,7 +431,7 @@ import T from "../components/i18n/T.astro";
             <img src="/images/image_60b016.png" alt="haepick" class="w-32 sm:w-40 h-auto object-contain mb-5" />
             <T tag="p" class="text-slate-600 text-sm leading-relaxed mb-4" 
               en={`A new app by cosmetics research lab <strong class="text-slate-800">Woodang Network</strong>.<br />Personalized service powered by genetic and microbiome biometric data.`}
-              ko={`화장품 연구소 <strong class="text-slate-800">우당(友堂)네트웍</strong>의 신규 앱 서비스.<br />유전자 및 마이크로바이옴 생체 데이터를 기반으로 한 맞춤형 혁신 서비스.`}
+              ko={`아토피 화장품 연구소 <strong class="text-slate-800">우당(友堂)네트웍</strong>의 신규 앱 서비스.<br />유전자 및 마이크로바이옴 생체 데이터를 기반으로 한 맞춤형 혁신 서비스.`}
               vi={`Một ứng dụng mới của phòng thí nghiệm mỹ phẩm <strong class="text-slate-800">Woodang Network</strong>.`}
               th={`แอปพลิเคชั่นใหม่โดย Lab วิจัยเครื่องสำอาง <strong class="text-slate-800">Woodang Network</strong>.`}
               bn={`প্রসাধনী গবেষণা ল্যাব দ্বারা একটি নতুন অ্যাপ <strong class="text-slate-800">Woodang Network</strong>.`}
@@ -495,7 +630,15 @@ import T from "../components/i18n/T.astro";
       <div class="text-center mb-12 reveal">
         <p class="section-label">APPLIED CASES</p>
         <h2 class="text-3xl sm:text-4xl font-black tracking-tight mt-2">Field Verified</h2>
-        <p class="text-slate-500 mt-2 text-sm">Technology proven in the real world</p>
+        <T tag="p" class="text-slate-500 mt-2 text-sm"
+          en="Technology proven in the real world"
+          ko="실제 현장에서 검증된 기술"
+          vi="Công nghệ được chứng minh trong thực tế"
+          th="เทคโนโลยีที่ได้รับการพิสูจน์ในโลกแห่งความเป็นจริง"
+          bn="বাস্তব জগতে প্রমাণিত প্রযুক্তি"
+          ja="実世界で実証された技術"
+          zh="在现实世界中经过验证的技术"
+        />
       </div>
       <div class="grid sm:grid-cols-2 gap-5 sm:gap-6">
         <div class="reveal reveal-delay-1 card">
@@ -507,12 +650,25 @@ import T from "../components/i18n/T.astro";
               <p class="text-xs text-slate-400 mt-0.5">2025.12.17 — 12.23</p>
             </div>
           </div>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Real-time skin diagnosis and personalized filtering — technology
-            <strong class="text-slate-700">field verified</strong> through live customer interactions.
-          </p>
+          <T tag="p" class="text-slate-500 text-sm leading-relaxed"
+            en={`Real-time skin diagnosis and personalized filtering — technology <strong class="text-slate-700">field verified</strong> through live customer interactions.`}
+            ko={`실시간 피부 진단과 맞춤형 필터링 — 고객 현장 인터랙션을 통해 기술 <strong class="text-slate-700">현장 검증</strong> 완료.`}
+            vi={`Chẩn đoán da và lọc cá nhân hóa theo thời gian thực — công nghệ được <strong class="text-slate-700">xác minh thực tế</strong> qua tương tác trực tiếp với khách hàng.`}
+            th={`การวินิจฉัยผิวและการกรองแบบส่วนตัวแบบเรียลไทม์ — เทคโนโลยี<strong class="text-slate-700">ผ่านการตรวจสอบภาคสนาม</strong>ผ่านการโต้ตอบกับลูกค้าจริง`}
+            bn={`রিয়েল-টাইম স্কিন ডায়াগনসিস এবং ব্যক্তিগতকৃত ফিল্টারিং — লাইভ গ্রাহক ইন্টারঅ্যাকশনের মাধ্যমে প্রযুক্তি <strong class="text-slate-700">ফিল্ড ভেরিফাইড</strong>।`}
+            ja={`リアルタイム肌診断とパーソナライズドフィルタリング — 実際の顧客とのインタラクションを通じて技術が<strong class="text-slate-700">フィールド検証済み</strong>。`}
+            zh={`实时皮肤诊断和个性化过滤 — 通过现场客户互动<strong class="text-slate-700">现场验证</strong>的技术。`}
+          />
           <div class="mt-5 pt-5 border-t border-slate-100">
-            <span class="text-xs text-indigo-600 font-bold uppercase tracking-widest">JVL Field Verified</span>
+            <T tag="span" class="text-xs text-indigo-600 font-bold uppercase tracking-widest"
+              en="JVL Field Verified"
+              ko="JVL 현장 검증 완료"
+              vi="JVL Đã xác minh thực tế"
+              th="JVL ผ่านการตรวจสอบภาคสนาม"
+              bn="JVL ফিল্ড ভেরিফাইড"
+              ja="JVL フィールド検証済み"
+              zh="JVL 现场验证"
+            />
           </div>
         </div>
         <div class="reveal reveal-delay-2 card">
@@ -524,12 +680,25 @@ import T from "../components/i18n/T.astro";
               <p class="text-xs text-slate-400 mt-0.5">Seoul Beauty Week</p>
             </div>
           </div>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            <strong class="text-slate-700">450+ qualified leads</strong> secured and
-            <strong class="text-slate-700">30+ global brand</strong> partnership network established.
-          </p>
+          <T tag="p" class="text-slate-500 text-sm leading-relaxed"
+            en={`<strong class="text-slate-700">450+ qualified leads</strong> secured and <strong class="text-slate-700">30+ global brand</strong> partnership network established.`}
+            ko={`<strong class="text-slate-700">450+ 검증된 리드</strong> 확보 및 <strong class="text-slate-700">30+ 글로벌 브랜드</strong> 파트너십 네트워크 구축.`}
+            vi={`Bảo đảm <strong class="text-slate-700">hơn 450 leads đủ tiêu chuẩn</strong> và thiết lập mạng lưới đối tác <strong class="text-slate-700">30+ thương hiệu toàn cầu</strong>.`}
+            th={`ยืนยัน <strong class="text-slate-700">450+ qualified leads</strong> และสร้างเครือข่ายพันธมิตร <strong class="text-slate-700">30+ แบรนด์ทั่วโลก</strong>`}
+            bn={`<strong class="text-slate-700">৪৫০+ যোগ্য লিড</strong> নিশ্চিত করা হয়েছে এবং <strong class="text-slate-700">৩০+ গ্লোবাল ব্র্যান্ড</strong> পার্টনারশিপ নেটওয়ার্ক প্রতিষ্ঠিত।`}
+            ja={`<strong class="text-slate-700">450以上の適格リード</strong>を確保し、<strong class="text-slate-700">30以上のグローバルブランド</strong>パートナーシップネットワークを構築。`}
+            zh={`获得<strong class="text-slate-700">450+合格潜在客户</strong>，建立<strong class="text-slate-700">30+全球品牌</strong>合作伙伴网络。`}
+          />
           <div class="mt-5 pt-5 border-t border-slate-100">
-            <span class="text-xs text-pink-500 font-bold uppercase tracking-widest">Global H&B Network</span>
+            <T tag="span" class="text-xs text-pink-500 font-bold uppercase tracking-widest"
+              en="Global H&B Network"
+              ko="글로벌 H&B 네트워크"
+              vi="Mạng lưới H&B toàn cầu"
+              th="เครือข่าย H&B ทั่วโลก"
+              bn="গ্লোবাল H&B নেটওয়ার্ক"
+              ja="グローバルH&Bネットワーク"
+              zh="全球H&B网络"
+            />
           </div>
         </div>
       </div>
