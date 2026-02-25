@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import T from "../components/i18n/T.astro";
 ---
 <BaseLayout
   title="ITMOSS — Engineering the Visual Future."
@@ -25,15 +26,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <span class="gradient-text">the Visual</span><br />
             Future.
           </h1>
-          <p class="hero-sub mt-5 text-sm sm:text-base text-slate-500 leading-relaxed max-w-md">
-            ITMOSS builds deep-tech infrastructure that brings
-            <strong class="text-slate-700">precision beauty analysis</strong> and
-            <strong class="text-slate-700">digital portrait rights</strong> to life —
-            powered by Vision AI and blockchain convergence.
-          </p>
-          <p class="mt-1 text-xs text-slate-400">
-            Vision AI와 블록체인 융합 기술 기반 딥테크 인프라
-          </p>
+          <T tag="p" class="hero-sub mt-5 text-sm sm:text-base text-slate-500 leading-relaxed max-w-md" 
+            en={`ITMOSS builds deep-tech infrastructure that brings <strong class="text-slate-700">precision beauty analysis</strong> and <strong class="text-slate-700">digital portrait rights</strong> to life — powered by Vision AI and blockchain convergence.`}
+            ko={`ITMOSS는 비전 AI와 블록체인 융합을 통해 <strong class="text-slate-700">정밀 뷰티 분석</strong>과 <strong class="text-slate-700">디지털 초상권</strong>을 실현하는 딥테크 인프라를 구축합니다.`}
+            vi={`ITMOSS xây dựng cơ sở hạ tầng công nghệ sâu mang đến <strong class="text-slate-700">phân tích sắc đẹp chính xác</strong> và <strong class="text-slate-700">quyền chân dung kỹ thuật số</strong> — được hỗ trợ bởi Vision AI và chuỗi khối.`}
+            th={`ITMOSS สร้างโครงสร้างพื้นฐานระดับลึกที่นำ <strong class="text-slate-700">การวิเคราะห์ความงามที่แม่นยำ</strong> และ <strong class="text-slate-700">สิทธิ์ภาพพอร์ตเทรตดิจิทัล</strong> สู่ชีวิต`}
+            bn={`ITMOSS একটি গভীর-প্রযুক্তি পরিকাঠামো তৈরি করে যা <strong class="text-slate-700">دقيق সৌন্দর্য বিশ্লেষণ</strong> নিয়ে আসে।`}
+            ja={`ITMOSSは、Vision AIとブロックチェーンの融合により、<strong class="text-slate-700">精密な美容分析</strong>と<strong class="text-slate-700">デジタル肖像権</strong>を実現するディープテックインフラを構築します。`}
+            zh={`ITMOSS构建深层技术基础设施，通过Vision AI和区块链的融合，将<strong class="text-slate-700">精确的美容分析</strong>和<strong class="text-slate-700">数字肖像权</strong>变为现实。`}
+          />
           <div class="hero-cta mt-8 flex flex-wrap gap-3">
             <a href="#solutions" class="btn btn-primary">
               <i class="fa-solid fa-layer-group text-xs"></i>
@@ -289,15 +290,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <span class="text-xs text-slate-400 font-medium">JVL → haepick</span>
             </div>
             <img src="/images/image_60b016.png" alt="haepick" class="w-32 sm:w-40 h-auto object-contain mb-5" />
-            <p class="text-slate-600 text-sm leading-relaxed mb-2">
-              A new app by cosmetics research lab <strong class="text-slate-800">Woodang Network</strong>.<br />
-              Personalized service powered by genetic and microbiome biometric data.
-            </p>
-            <p class="text-xs text-slate-400 mb-4">화장품 연구소 우당(友堂)네트웍의 신규 앱 서비스</p>
+            <T tag="p" class="text-slate-600 text-sm leading-relaxed mb-4" 
+              en={`A new app by cosmetics research lab <strong class="text-slate-800">Woodang Network</strong>.<br />Personalized service powered by genetic and microbiome biometric data.`}
+              ko={`화장품 연구소 <strong class="text-slate-800">우당(友堂)네트웍</strong>의 신규 앱 서비스.<br />유전자 및 마이크로바이옴 생체 데이터를 기반으로 한 맞춤형 혁신 서비스.`}
+              vi={`Một ứng dụng mới của phòng thí nghiệm mỹ phẩm <strong class="text-slate-800">Woodang Network</strong>.`}
+              th={`แอปพลิเคชั่นใหม่โดย Lab วิจัยเครื่องสำอาง <strong class="text-slate-800">Woodang Network</strong>.`}
+              bn={`প্রসাধনী গবেষণা ল্যাব দ্বারা একটি নতুন অ্যাপ <strong class="text-slate-800">Woodang Network</strong>.`}
+              ja={`化粧品研究所<strong class="text-slate-800">Woodang Network</strong>の新しいアプリ。遺伝子とマイクロバイオームの生体データを利用したパーソナライズサービス。`}
+              zh={`化妆品实验室<strong class="text-slate-800">Woodang网络</strong>推出的一款新应用。<br />基于基因和微生物组生物特征数据的个性化服务。`}
+            />
             <div class="bg-indigo-50 border border-indigo-100 rounded-xl px-4 py-3 mb-5">
               <p class="text-xs text-indigo-600 font-bold uppercase tracking-widest mb-1">Core Philosophy</p>
-              <p class="text-sm font-bold text-slate-800">"Skin-first Matching"</p>
-              <p class="text-xs text-slate-500 mt-0.5">Choose cosmetics based on your skin, not trends.</p>
+              <T tag="p" class="text-sm font-bold text-slate-800" en={`"Skin-first Matching"`} ko={`"피부 중심의 매칭"`} vi={`"Kết nối trên hết làn da"`} th={`"การจับคู่เริ่มจากผิวหน้า"`} bn={`"ত্বক প্রথম"`} ja={`「肌ファーストのマッチング」`} zh={`"肌肤首选匹配"`} />
+              <T tag="p" class="text-xs text-slate-500 mt-0.5" en={`Choose cosmetics based on your skin, not trends.`} ko={`트렌드가 아닌 내 피부에 맞춘 화장품 선택.`} vi={`Chọn mỹ phẩm dựa trên làn da của bạn`} th={`เลือกเครื่องสำอางตามสภาพผิว`} bn={`আপনার ত্বক অনুযায়ী প্রসাধনী বেছে নিন`} ja={`流行ではなく、あなたの肌に合わせて化粧品を選ぶ。`} zh={`根据您的肌肤而非潮流选择化妆品。`} />
             </div>
             <div class="flex flex-wrap gap-2 mb-7">
               <span class="badge badge-indigo">K-BEAUTY</span>

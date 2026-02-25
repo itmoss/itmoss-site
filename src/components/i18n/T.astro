@@ -1,0 +1,46 @@
+---
+export interface Props {
+  tag?: string;
+  class?: string;
+  id?: string;
+  en: string;
+  ko?: string;
+  vi?: string;
+  th?: string;
+  bn?: string;
+  ja?: string;
+  zh?: string;
+  [key: string]: any;
+}
+
+const {
+  tag = 'span',
+  class: className,
+  id,
+  en,
+  ko,
+  vi,
+  th,
+  bn,
+  ja,
+  zh,
+  ...rest
+} = Astro.props as Props;
+
+// Use 'Fragment' if tag is empty string ('') to avoid rendering an element wrapper
+// However, 'Fragment' cannot take attributes.
+const Element = tag || 'span';
+---
+<Element 
+  class={`i18n-text ${className || ''}`} 
+  id={id}
+  data-en={en} 
+  data-ko={ko || en} 
+  data-vi={vi || en} 
+  data-th={th || en} 
+  data-bn={bn || en} 
+  data-ja={ja || en} 
+  data-zh={zh || en} 
+  set:html={en} 
+  {...rest}
+></Element>
