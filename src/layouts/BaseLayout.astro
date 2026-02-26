@@ -205,8 +205,9 @@ const currentPath = Astro.url.pathname;
         }
       }
 
-      setNavScrolled(window.scrollY > 20);
-      window.addEventListener('scroll', () => setNavScrolled(window.scrollY > 20));
+      const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
+      setNavScrolled(window.scrollY > 20 || !isHomePage);
+      window.addEventListener('scroll', () => setNavScrolled(window.scrollY > 20 || !isHomePage));
 
       // Mobile menu
       document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
