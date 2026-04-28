@@ -1,0 +1,45 @@
+# ITMOSS
+
+> 사람과 지구 모두에게 공해가 되지 않는 기술을 만드는 브랜드
+
+## 브랜드 소개
+
+ITMOSS(아이티모스)는 삶을 왜곡되지 않게 만드는 서비스를 개발하는 한국의 기술 브랜드입니다.
+20년 동안 사람과 함께하는 기술을 만들어왔으며, 기술로 잃어버린 인간의 권리를 회복하고
+데이터와 금융을 모두에게 돌려주는 것을 목표로 합니다.
+
+## 핵심 철학
+
+- 오직 사용자 당신을 위한 서비스를 제공합니다. 옆의 친구는 중요하지 않습니다.
+- 당신의 디지털 자산은 절대 왜곡되어서는 안 됩니다.
+- 당신의 배터리는 꼭 필요한 일에만 사용되어야 합니다.
+- 해로운 마케팅 문구를 쓰지 않습니다. 데이터의 이유와 근거를 명확히 밝힙니다.
+
+## 지속 가능한 기술
+
+- 불필요한 쓰레기 앱을 만들지 않습니다.
+- 폐기될 앱을 미리 생각하고, 재활용 가능한 구조로 설계합니다.
+- 꼭 필요한 영상만 제작하며, 사용이 끝난 영상은 재활용·회수합니다.
+- 데이터베이스를 과도하게 사용하지 않습니다. 동일한 트랜잭션은 지구에서 가장 빠르게 처리합니다.
+
+## 기술 스택 및 전문 분야
+
+- 실시간 트레이딩 인프라 (WebSocket, Redis/Valkey, DCA/ROI/TP 로직)
+- AI 벡터 검색 (CLIP, SigLIP, pgvector, OCR, pHash)
+- 영상 처리 및 포토부스 시스템 (Canon EOS SDK, WebRTC, 실시간 합성)
+- 핀테크 및 데이터 인프라
+
+## 사이트맵
+
+- 홈: https://itmoss.com/
+- 소개: https://itmoss.com/about
+- 연락: https://itmoss.com/contact
+- 기술 노트: https://itmoss.com/notes
+  - Trading Infrastructure: https://itmoss.com/notes/trading-infra
+  - K-Beauty Vector Search: https://itmoss.com/notes/kbeauty-vector-search
+  - RabbitScene PhotoBooth: https://itmoss.com/notes/rabbitscene-intro
+
+## 연락처
+
+- Email: hello@itmoss.dev
+- Website: https://itmoss.com

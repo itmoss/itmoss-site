@@ -3,7 +3,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import glob from "fast-glob";
 const entries = await glob(['src/pages/notes/*.mdx']);
 ---
-<BaseLayout title="Notes — ITMOSS">
+<BaseLayout
+  title="Notes — ITMOSS"
+  description="ITMOSS 기술 노트. 트레이딩 인프라, AI 벡터 검색, 영상 처리 등 실전 개발 경험과 기술 메모를 공유합니다."
+  keywords="ITMOSS노트, 기술노트, 트레이딩인프라, 벡터검색, 포토부스, 개발메모"
+>
   <section class="py-12 space-y-6">
     <h1 class="text-3xl font-bold">Notes</h1>
     <ul class="grid gap-4">

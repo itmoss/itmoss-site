@@ -1,23 +1,78 @@
 ---
 import '../styles/global.css';
-const { title = "ITMOSS — 사람과 지구 모두에게 공해가 되지 않는 기술을 만듭니다", description = "Founder landing: projects, notes, contact.", } = Astro.props;
+
+const {
+  title = "ITMOSS — 사람과 지구 모두에게 공해가 되지 않는 기술을 만듭니다",
+  description = "아이티모스(ITMOSS)는 삶을 왜곡되지 않게 만드는 서비스를 개발합니다. 기술로 잃어버린 인간의 권리를 회복하고, 데이터와 금융을 모두에게 돌려주는 브랜드입니다.",
+  image = "/images/brand-itmoss.png",
+  type = "website",
+  publishDate,
+  keywords = "ITMOSS, 아이티모스, 지속가능한기술, AI, 핀테크, 영상처리, 벡터검색, 트레이딩인프라",
+} = Astro.props;
+
+const siteURL = 'https://itmoss.com';
+const canonicalURL = new URL(Astro.url.pathname, siteURL).href;
+const ogImage = image.startsWith('http') ? image : new URL(image, siteURL).href;
 ---
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Primary Meta -->
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="ITMOSS" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="ITMOSS" />
+    {publishDate && <meta property="article:published_time" content={publishDate} />}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ITMOSS",
+      "alternateName": "아이티모스",
+      "url": siteURL,
+      "logo": `${siteURL}/favicon.svg`,
+      "description": "사람과 지구 모두에게 공해가 되지 않는 기술을 만드는 브랜드",
+      "email": "hello@itmoss.dev",
+      "foundingDate": "2004",
+      "sameAs": []
+    })} />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet" />
   </head>
   <body class="font-body antialiased">
     <header class="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between border-b-2 border-[var(--fg)]">
-      <a href="/" class="flex items-center gap-3 group">
+      <a href="/" class="flex items-center gap-3 group" aria-label="ITMOSS 홈으로">
         <span class="text-3xl font-black font-mono">[</span>
-        <svg width="48" height="48" viewBox="0 0 48 48" class="transition-transform group-hover:scale-110">
+        <svg width="48" height="48" viewBox="0 0 48 48" class="transition-transform group-hover:scale-110" aria-hidden="true">
           <!-- Laptop -->
           <rect x="8" y="24" width="32" height="16" rx="2" fill="none" stroke="var(--fg)" stroke-width="2"/>
           <rect x="10" y="26" width="28" height="12" rx="1" fill="var(--bg)"/>
@@ -32,7 +87,7 @@ const { title = "ITMOSS — 사람과 지구 모두에게 공해가 되지 않�
         <span class="text-3xl font-black tracking-tight font-mono">ITMOSS</span>
         <span class="text-3xl font-black font-mono">]</span>
       </a>
-      <nav class="flex gap-6 text-sm font-bold uppercase tracking-widest font-mono">
+      <nav class="flex gap-6 text-sm font-bold uppercase tracking-widest font-mono" aria-label="주요 메뉴">
         <a href="/#projects" class="hover:text-[var(--accent)] transition-colors">[PROJECTS]</a>
         <a href="/notes" class="hover:text-[var(--accent)] transition-colors">[NOTES]</a>
         <a href="/about" class="hover:text-[var(--accent)] transition-colors">[ABOUT]</a>

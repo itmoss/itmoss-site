@@ -1,0 +1,49 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { frontmatter } = Astro.props;
+const {
+  title = "Note — ITMOSS",
+  description = "ITMOSS 기술 노트",
+  publishDate,
+  tags = [],
+} = frontmatter;
+
+const keywords = ["ITMOSS", "아이티모스", "기술노트", ...tags].join(", ");
+---
+<BaseLayout
+  title={`${title} — ITMOSS`}
+  description={description}
+  type="article"
+  publishDate={publishDate}
+  keywords={keywords}
+>
+  <article class="py-16 max-w-3xl mx-auto font-mono" itemscope itemtype="https://schema.org/TechArticle">
+    <header class="mb-12">
+      <div class="text-sm text-[var(--muted)] mb-4">
+        <a href="/notes" class="hover:text-[var(--accent)] transition-colors">> /notes</a>
+        {" "}/{" "}
+        <span>{title}</span>
+      </div>
+      <h1 class="text-4xl font-black uppercase mb-4" itemprop="headline">{title}</h1>
+      {publishDate && (
+        <time class="text-xs text-[var(--muted)]" datetime={publishDate} itemprop="datePublished">
+          {new Date(publishDate).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+      )}
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {tags.map((tag: string) => (
+            <span class="text-xs font-bold text-[var(--accent)] border border-[var(--accent)] px-2 py-1">#{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
+    <div class="prose prose-invert max-w-none" itemprop="articleBody">
+      <slot />
+    </div>
+    <footer class="mt-16 pt-8 border-t-2 border-[var(--fg)]">
+      <a href="/notes" class="text-sm font-bold hover:text-[var(--accent)] transition-colors">> [BACK TO NOTES]</a>
+    </footer>
+  </article>
+</BaseLayout>
