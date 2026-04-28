@@ -3,18 +3,20 @@ import '../styles/global.css';
 const {
   title = "ITMOSS — Engineering the Visual Future.",
   description = "ITMOSS builds deep-tech infrastructure for precision beauty analysis and digital portrait rights, powered by Vision AI and blockchain convergence technology.",
-  image = "/images/brand-itmoss.png",
+  image = "/images/image.png",
   type = "website",
   publishDate,
   keywords = "ITMOSS, 아이티모스, Vision AI, blockchain, beauty tech, digital portrait rights",
+  lang = "ko",
 } = Astro.props;
 
 const siteURL = 'https://itmoss.com';
 const canonicalURL = new URL(Astro.url.pathname, siteURL).href;
 const ogImage = image.startsWith('http') ? image : new URL(image, siteURL).href;
+const isArticle = type === 'article';
 const currentPath = Astro.url.pathname;
 ---
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -44,17 +46,35 @@ const currentPath = Astro.url.pathname;
     <meta name="twitter:image" content={ogImage} />
 
     <!-- JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ITMOSS",
-      "alternateName": "아이티모스",
-      "url": siteURL,
-      "logo": `${siteURL}/images/image.png`,
-      "description": "Deep-tech infrastructure for Vision AI and digital portrait rights",
-      "email": "jaster@itmoss.com",
-      "sameAs": []
-    })} />
+    {isArticle ? (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": title,
+        "description": description,
+        "image": ogImage,
+        "url": canonicalURL,
+        "datePublished": publishDate,
+        "author": { "@type": "Organization", "name": "ITMOSS" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ITMOSS",
+          "logo": { "@type": "ImageObject", "url": `${siteURL}/images/image.png` }
+        }
+      })} />
+    ) : (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ITMOSS",
+        "alternateName": "아이티모스",
+        "url": siteURL,
+        "logo": `${siteURL}/images/image.png`,
+        "description": "Deep-tech infrastructure for Vision AI and digital portrait rights",
+        "email": "jaster@itmoss.com",
+        "sameAs": []
+      })} />
+    )}
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
