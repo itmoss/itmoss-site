@@ -1,0 +1,21 @@
+# ITMOSS — LLM-Friendly Site Index
+
+> ITMOSS builds deep-tech infrastructure for Vision AI and digital portrait rights.
+
+## Pages
+
+- [Home](https://itmoss.com/): Main landing page — Vision AI, blockchain, products
+- [About](https://itmoss.com/about/): Brand philosophy and mission
+- [Contact](https://itmoss.com/contact/): Get in touch
+- [Notes](https://itmoss.com/notes/): Technical blog — AI, fintech, infrastructure
+
+## Notes
+
+- [K-Beauty Vector Search](https://itmoss.com/notes/kbeauty-vector-search/)
+- [RabbitScene Intro](https://itmoss.com/notes/rabbitscene-intro/)
+- [Trading Infrastructure](https://itmoss.com/notes/trading-infra/)
+
+## Contact
+
+- Email: jaster@itmoss.com
+- Blog: https://blog.naver.com/itmoss

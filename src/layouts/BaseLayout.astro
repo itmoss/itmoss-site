@@ -3,8 +3,15 @@ import '../styles/global.css';
 const {
   title = "ITMOSS — Engineering the Visual Future.",
   description = "ITMOSS builds deep-tech infrastructure for precision beauty analysis and digital portrait rights, powered by Vision AI and blockchain convergence technology.",
+  image = "/images/brand-itmoss.png",
+  type = "website",
+  publishDate,
+  keywords = "ITMOSS, 아이티모스, Vision AI, blockchain, beauty tech, digital portrait rights",
 } = Astro.props;
 
+const siteURL = 'https://itmoss.com';
+const canonicalURL = new URL(Astro.url.pathname, siteURL).href;
+const ogImage = image.startsWith('http') ? image : new URL(image, siteURL).href;
 const currentPath = Astro.url.pathname;
 ---
 <html lang="en">
@@ -12,12 +19,45 @@ const currentPath = Astro.url.pathname;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="ITMOSS" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href="/images/image.png" type="image/png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://itmoss.com" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="ITMOSS" />
+    {publishDate && <meta property="article:published_time" content={publishDate} />}
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="/images/image.png" type="image/png" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ITMOSS",
+      "alternateName": "아이티모스",
+      "url": siteURL,
+      "logo": `${siteURL}/images/image.png`,
+      "description": "Deep-tech infrastructure for Vision AI and digital portrait rights",
+      "email": "jaster@itmoss.com",
+      "sameAs": []
+    })} />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
 
     <!-- i18n Script -->
