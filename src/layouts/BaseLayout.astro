@@ -78,6 +78,15 @@ const currentPath = Astro.url.pathname;
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZK5GDSNNR" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FZK5GDSNNR');
+    </script>
     <title>{title}</title>
 
     <!-- i18n Script -->
