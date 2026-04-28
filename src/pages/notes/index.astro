@@ -3,7 +3,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 const noteModules = import.meta.glob('./*.mdx');
 const entries = Object.keys(noteModules).map((path) => path.replace('./', '').replace('.mdx', ''));
 ---
-<BaseLayout title="Notes — ITMOSS">
+<BaseLayout
+  title="아이티모스 기술 노트 — ITMOSS Notes"
+  description="아이티모스(ITMOSS)의 기술 노트. Vision AI, 벡터 검색, 트레이딩 인프라, 블록체인 등 딥테크 주제를 다룹니다."
+  keywords="아이티모스 기술블로그, ITMOSS notes, Vision AI, 벡터 검색, 트레이딩 인프라, 딥테크"
+>
   <section class="py-32 max-w-7xl mx-auto px-6 font-mono">
     <div class="mb-16">
       <div class="text-sm text-[var(--muted)] mb-4">> NOTES</div>
