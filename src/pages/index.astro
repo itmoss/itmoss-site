@@ -5,7 +5,7 @@ import T from "../components/i18n/T.astro";
 <BaseLayout
   title="아이티모스 ITMOSS — Engineering the Visual Future."
   description="아이티모스(ITMOSS)는 Vision AI와 블록체인 기술로 뷰티 정밀 분석과 디지털 초상권 인프라를 개발하는 딥테크 브랜드입니다."
-  keywords="아이티모스, ITMOSS, Vision AI, 뷰티 AI, 블록체인, 딥테크, 디지털 초상권, haepick, JVL, JMI, JIS"
+  keywords="아이티모스, ITMOSS, Vision AI, 뷰티 AI, 블록체인, 딥테크, 디지털 초상권, haepick, JVL, JIS"
 >
 
   <!-- ══════════════════════════════════════
@@ -65,7 +65,7 @@ import T from "../components/i18n/T.astro";
         {[
           { icon: "fa-solid fa-microscope",  label: "Vision AI",       desc: "Battle-Tested Stack" },
           { icon: "fa-solid fa-link",         label: "Blockchain",      desc: "Kaia / Avalanche" },
-          { icon: "fa-solid fa-cubes",        label: "3 Solutions",     desc: "JVL · JMI · JIS" },
+          { icon: "fa-solid fa-cubes",        label: "2 Platforms",     desc: "Identity Shield · Beauty AI" },
           { icon: "fa-solid fa-chart-line",   label: "Field Verified",  desc: "450+ Global Leads" },
         ].map((s) => (
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-3 sm:p-5 border border-white/80 text-center">
@@ -94,206 +94,8 @@ import T from "../components/i18n/T.astro";
 
       <div class="space-y-5 sm:space-y-6">
 
-        <!-- JVL -->
-        <div id="vision-lens" class="reveal card overflow-hidden p-0">
-          <div class="grid lg:grid-cols-2 gap-0">
-            <div class="p-6 sm:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="w-11 h-11 rounded-2xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-200">
-                  <i class="fa-solid fa-glasses text-white text-base"></i>
-                </div>
-                <span class="badge badge-indigo">JVL · Vision-Lens</span>
-              </div>
-              <div class="flex items-baseline gap-2 mb-1">
-                <span class="text-3xl sm:text-4xl font-black font-mono text-indigo-600 tracking-tight">JVL</span>
-                <sup class="text-xs text-slate-400 font-bold">™</sup>
-              </div>
-              <h3 class="text-lg sm:text-xl font-black mb-1 text-slate-800">Jaster Vision Lens<sup class="text-xs text-indigo-400 ml-0.5">™</sup></h3>
-              <T tag="p" class="text-xs text-indigo-500 font-semibold tracking-widest mb-4 uppercase"
-                en="Optical Analysis Stack"
-                ko="광학 분석 스택"
-                vi="Bộ phân tích quang học"
-                th="ชุดวิเคราะห์เชิงแสง"
-                bn="অপটিক্যাল বিশ্লেষণ স্ট্যাক"
-                ja="光学分析スタック"
-                zh="光学分析堆栈"
-              />
-              <T tag="p" class="text-slate-500 text-sm leading-relaxed mb-5"
-                en="Custom Itmoss-Vision model-based visual analysis stack.<br />Uniquely combines 3D spatial augmentation with contextual intelligence."
-                ko="커스텀 Itmoss-Vision 모델 기반 시각 분석 스택.<br />3D 공간 증강과 컨텍스트 인텔리전스를 독창적으로 결합합니다."
-                vi="Bộ phân tích hình ảnh dựa trên mô hình Itmoss-Vision tùy chỉnh.<br />Kết hợp độc đáo tăng cường không gian 3D với trí thông minh theo ngữ cảnh."
-                th="ชุดวิเคราะห์ภาพบนพื้นฐานโมเดล Itmoss-Vision ที่กำหนดเอง<br />ผสมผสาน 3D spatial augmentation กับ contextual intelligence อย่างเป็นเอกลักษณ์"
-                bn="কাস্টম Itmoss-Vision মডেল-ভিত্তিক ভিজ্যুয়াল বিশ্লেষণ স্ট্যাক।<br />3D স্থানিক বর্ধন এবং প্রাসঙ্গিক বুদ্ধিমত্তাকে অনন্যভাবে একত্রিত করে।"
-                ja="カスタムItmoss-Visionモデルベースの視覚分析スタック。<br />3D空間拡張とコンテキストインテリジェンスを独自に組み合わせます。"
-                zh="基于自定义Itmoss-Vision模型的视觉分析堆栈。<br />独特结合3D空间增强与上下文智能。"
-              />
-              <ul class="space-y-3 text-sm">
-                <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
-                  <T tag="span" class="text-slate-600"
-                    en={`<strong class="text-slate-800">Knowledge Distillation</strong> applied lightweight model — deployable from smartphones to embedded devices`}
-                    ko={`<strong class="text-slate-800">Knowledge Distillation</strong> 적용 경량 모델 — 스마트폰부터 임베디드 장치까지 배포 가능`}
-                    vi={`Mô hình nhẹ áp dụng <strong class="text-slate-800">Knowledge Distillation</strong> — triển khai từ điện thoại thông minh đến thiết bị nhúng`}
-                    th={`โมเดลน้ำหนักเบาที่ใช้ <strong class="text-slate-800">Knowledge Distillation</strong> — ติดตั้งได้ตั้งแต่สมาร์ตโฟนถึงอุปกรณ์ฝังตัว`}
-                    bn={`<strong class="text-slate-800">Knowledge Distillation</strong> প্রয়োগ করা লাইটওয়েট মডেল — স্মার্টফোন থেকে এমবেডেড ডিভাইসে ডিপ্লয় করা যায়`}
-                    ja={`<strong class="text-slate-800">Knowledge Distillation</strong>適用の軽量モデル — スマートフォンから組み込みデバイスまで展開可能`}
-                    zh={`应用<strong class="text-slate-800">Knowledge Distillation</strong>的轻量模型 — 可部署在智能手机到嵌入式设备`}
-                  />
-                </li>
-                <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
-                  <T tag="span" class="text-slate-600"
-                    en={`Precision vector matching and skincare filter generation in <strong class="text-slate-800">under 5 seconds</strong>`}
-                    ko={`정밀 벡터 매칭 및 스킨케어 필터 생성 <strong class="text-slate-800">1초 이내</strong> 처리`}
-                    vi={`Khớp vector chính xác và tạo bộ lọc dưỡng da trong <strong class="text-slate-800">dưới 5 giây</strong>`}
-                    th={`การจับคู่เวกเตอร์ที่แม่นยำและสร้างฟิลเตอร์ดูแลผิวใน <strong class="text-slate-800">ไม่ถึง 5 วินาที</strong>`}
-                    bn={`নির্ভুল ভেক্টর ম্যাচিং এবং স্কিনকেয়ার ফিল্টার তৈরি <strong class="text-slate-800">৫ সেকেন্ডের মধ্যে</strong>`}
-                    ja={`精密なベクターマッチングとスキンケアフィルター生成を<strong class="text-slate-800">5秒以内</strong>に処理`}
-                    zh={`<strong class="text-slate-800">5秒内</strong>完成精确向量匹配和护肤过滤器生成`}
-                  />
-                </li>
-                <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
-                  <T tag="span" class="text-slate-600"
-                    en={`In-store AR context scanning with <strong class="text-slate-800">'Scanning Context'</strong> overlay`}
-                    ko={`매장 내 AR 컨텍스트 스캔 및 <strong class="text-slate-800">'Scanning Context'</strong> 오버레이`}
-                    vi={`Quét ngữ cảnh AR trong cửa hàng với lớp phủ <strong class="text-slate-800">'Scanning Context'</strong>`}
-                    th={`การสแกน AR context ในร้านค้าพร้อม overlay <strong class="text-slate-800">'Scanning Context'</strong>`}
-                    bn={`ইন-স্টোর AR কনটেক্সট স্ক্যানিং এবং <strong class="text-slate-800">'Scanning Context'</strong> ওভারলে`}
-                    ja={`店舗内ARコンテキストスキャンと<strong class="text-slate-800">'Scanning Context'</strong>オーバーレイ`}
-                    zh={`店内AR场景扫描与<strong class="text-slate-800">'Scanning Context'</strong>叠加层`}
-                  />
-                </li>
-              </ul>
-            </div>
-            <div class="relative overflow-hidden bg-slate-900 min-h-[220px] lg:min-h-[280px]">
-              <img
-                src="/images/smartglasses.png"
-                alt="JVL Vision-Lens AR Scanning"
-                class="w-full h-full object-cover opacity-70 hover:opacity-90 hover:scale-105 transition-all duration-700"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-6 sm:p-8">
-                <div class="text-white">
-                  <T tag="p" class="text-xs uppercase tracking-widest opacity-60 mb-1"
-                    en="AR Scanning Context"
-                    ko="AR 스캐닝 컨텍스트"
-                    vi="Bối cảnh AR Scanning"
-                    th="บริบท AR Scanning"
-                    bn="AR স্ক্যানিং কনটেক্সট"
-                    ja="ARスキャニングコンテキスト"
-                    zh="AR扫描场景"
-                  />
-                  <T tag="p" class="text-base sm:text-lg font-black"
-                    en="Real-time Skin Analysis & Product Matching"
-                    ko="실시간 피부 분석 & 제품 매칭"
-                    vi="Phân tích da và ghép sản phẩm theo thời gian thực"
-                    th="การวิเคราะห์ผิวและการจับคู่สินค้าแบบเรียลไทม์"
-                    bn="রিয়েল-টাইম স্কিন অ্যানালাইসিস & প্রোডাক্ট ম্যাচিং"
-                    ja="リアルタイム肌分析 & 製品マッチング"
-                    zh="实时皮肤分析与产品匹配"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- JMI -->
-        <div class="reveal card overflow-hidden p-0">
-          <div class="grid lg:grid-cols-2 gap-0">
-            <div class="relative overflow-hidden bg-slate-800 min-h-[200px] lg:min-h-[280px] order-2 lg:order-1">
-              <img
-                src="/images/Gemini_Generated_Image_gj0kkkgj0kkkgj0k.png"
-                alt="JMI AI Infrastructure"
-                class="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-500 p-4"
-              />
-            </div>
-            <div class="p-6 sm:p-10 flex flex-col justify-center order-1 lg:order-2 border-b lg:border-b-0 lg:border-l border-slate-100">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="w-11 h-11 rounded-2xl bg-green-600 flex items-center justify-center shadow-lg shadow-green-200">
-                  <i class="fa-solid fa-cubes text-white text-base"></i>
-                </div>
-                <span class="badge" style="background:#f0fdf4; color:#16a34a;">JMI · AI Infrastructure</span>
-              </div>
-              <div class="flex items-baseline gap-2 mb-1">
-                <span class="text-3xl sm:text-4xl font-black font-mono text-green-600 tracking-tight">JMI</span>
-                <sup class="text-xs text-slate-400 font-bold">™</sup>
-              </div>
-              <h3 class="text-lg sm:text-xl font-black mb-1 text-slate-800">Jaster Managed AI Infrastructure<sup class="text-xs text-green-400 ml-0.5">™</sup></h3>
-              <T tag="p" class="text-xs text-green-600 font-semibold tracking-widest mb-4 uppercase"
-                en="Backend as a Service"
-                ko="백엔드 서비스형 플랫폼"
-                vi="Backend như một dịch vụ"
-                th="Backend ในรูปแบบบริการ"
-                bn="ব্যাকএন্ড হিসেবে সার্ভিস"
-                ja="バックエンドアズアサービス"
-                zh="后端即服务"
-              />
-              <T tag="p" class="text-slate-500 text-sm leading-relaxed mb-5"
-                en="Enterprise-grade fully managed AI backend solution.<br />Launch your AI service instantly — no server development required."
-                ko="엔터프라이즈급 완전 관리형 AI 백엔드 솔루션.<br />서버 개발 없이 AI 서비스를 즉시 출시하세요."
-                vi="Giải pháp backend AI được quản lý hoàn toàn cấp doanh nghiệp.<br />Ra mắt dịch vụ AI ngay lập tức — không cần phát triển máy chủ."
-                th="โซลูชัน AI backend แบบ fully managed ระดับ Enterprise<br />เปิดตัวบริการ AI ของคุณได้ทันที — ไม่ต้องพัฒนา server"
-                bn="এন্টারপ্রাইজ-গ্রেড সম্পূর্ণ পরিচালিত AI ব্যাকএন্ড সমাধান।<br />সার্ভার ডেভেলপমেন্ট ছাড়াই আপনার AI পরিষেবা তাৎক্ষণিকভাবে লঞ্চ করুন।"
-                ja="エンタープライズグレードの完全マネージドAIバックエンドソリューション。<br />サーバー開発なしにAIサービスを即時リリースできます。"
-                zh="企业级完全托管AI后端解决方案。<br />无需服务器开发，即刻推出AI服务。"
-              />
-              <ul class="space-y-3 text-sm mb-5">
-                <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0"></i>
-                  <T tag="span" class="text-slate-600"
-                    en={`<strong class="text-slate-800">Managed Backend</strong> — Cloud-Native environment with zero server setup`}
-                    ko={`<strong class="text-slate-800">Managed Backend</strong> — 서버 설정 없는 Cloud-Native 환경`}
-                    vi={`<strong class="text-slate-800">Managed Backend</strong> — Môi trường Cloud-Native không cần cấu hình máy chủ`}
-                    th={`<strong class="text-slate-800">Managed Backend</strong> — สภาพแวดล้อม Cloud-Native ไม่ต้องตั้งค่า server`}
-                    bn={`<strong class="text-slate-800">Managed Backend</strong> — জিরো সার্ভার সেটআপ সহ Cloud-Native পরিবেশ`}
-                    ja={`<strong class="text-slate-800">Managed Backend</strong> — サーバーセットアップ不要のCloud-Native環境`}
-                    zh={`<strong class="text-slate-800">托管后端</strong> — 零服务器配置的Cloud-Native环境`}
-                  />
-                </li>
-                <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0"></i>
-                  <T tag="span" class="text-slate-600"
-                    en={`<strong class="text-slate-800">Vector DB Stack</strong> — High-performance search for large-scale embedding data`}
-                    ko={`<strong class="text-slate-800">Vector DB Stack</strong> — 대규모 임베딩 데이터 고성능 검색`}
-                    vi={`<strong class="text-slate-800">Vector DB Stack</strong> — Tìm kiếm hiệu năng cao cho dữ liệu embedding quy mô lớn`}
-                    th={`<strong class="text-slate-800">Vector DB Stack</strong> — การค้นหาประสิทธิภาพสูงสำหรับข้อมูล embedding ขนาดใหญ่`}
-                    bn={`<strong class="text-slate-800">Vector DB Stack</strong> — বড় স্কেলের এমবেডিং ডেটার জন্য উচ্চ-কার্যক্ষমতার অনুসন্ধান`}
-                    ja={`<strong class="text-slate-800">Vector DB Stack</strong> — 大規模エンベディングデータの高性能検索`}
-                    zh={`<strong class="text-slate-800">Vector DB堆栈</strong> — 大规模嵌入数据高性能搜索`}
-                  />
-                </li>
-                <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-circle-check text-green-500 mt-0.5 shrink-0"></i>
-                  <T tag="span" class="text-slate-600"
-                    en={`<strong class="text-slate-800">Global API Gateway</strong> — Optimized for global H&B store integration`}
-                    ko={`<strong class="text-slate-800">Global API Gateway</strong> — 글로벌 H&B 스토어 연동 최적화`}
-                    vi={`<strong class="text-slate-800">Global API Gateway</strong> — Được tối ưu hóa cho tích hợp cửa hàng H&B toàn cầu`}
-                    th={`<strong class="text-slate-800">Global API Gateway</strong> — ปรับแต่งสำหรับการรวมระบบ H&B store ทั่วโลก`}
-                    bn={`<strong class="text-slate-800">Global API Gateway</strong> — বৈশ্বিক H&B স্টোর ইন্টিগ্রেশনের জন্য অপ্টিমাইজড`}
-                    ja={`<strong class="text-slate-800">Global API Gateway</strong> — グローバルH&Bストア統合向けに最適化`}
-                    zh={`<strong class="text-slate-800">全球API网关</strong> — 针对全球H&B门店集成优化`}
-                  />
-                </li>
-              </ul>
-              <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-xl text-sm font-bold w-fit">
-                <i class="fa-solid fa-bolt text-xs"></i>
-                <T tag="span"
-                  en="80% faster time-to-market"
-                  ko="출시 기간 80% 단축"
-                  vi="Rút ngắn 80% thời gian ra thị trường"
-                  th="ลดเวลาออกสู่ตลาด 80%"
-                  bn="বাজারে আসার সময় ৮০% দ্রুততর"
-                  ja="市場投入時間80%短縮"
-                  zh="上市时间缩短80%"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- JIS -->
-        <div class="reveal card overflow-hidden p-0">
+        <!-- JIS · Identity Shield (first) -->
+        <div id="identity-shield" class="reveal card overflow-hidden p-0">
           <div class="grid lg:grid-cols-2 gap-0">
             <div class="p-6 sm:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
               <div class="flex items-center gap-3 mb-5">
@@ -397,6 +199,237 @@ import T from "../components/i18n/T.astro";
           </div>
         </div>
 
+        <!-- Beauty AI Platform (umbrella, new) -->
+        <div id="beauty-ai-platform" class="reveal card overflow-hidden p-0">
+          <!-- Top: description + engine highlights + image -->
+          <div class="grid lg:grid-cols-2 gap-0">
+            <div class="p-6 sm:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-11 h-11 rounded-2xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-200">
+                  <i class="fa-solid fa-wand-magic-sparkles text-white text-base"></i>
+                </div>
+                <span class="badge badge-indigo">Beauty AI Platform</span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-black mb-1 text-slate-800">Beauty AI Platform</h3>
+              <T tag="p" class="text-xs text-indigo-500 font-semibold tracking-widest mb-4 uppercase"
+                en="Powered by JVL + JMI engine"
+                ko="JVL + JMI 엔진 기반"
+                vi="Được hỗ trợ bởi JVL + JMI engine"
+                th="ขับเคลื่อนโดย JVL + JMI engine"
+                bn="JVL + JMI ইঞ্জিন দ্বারা চালিত"
+                ja="JVL + JMI エンジン搭載"
+                zh="由 JVL + JMI 引擎驱动"
+              />
+              <T tag="p" class="text-slate-500 text-sm leading-relaxed mb-6"
+                en="One Vision-AI engine, broken into functional products for K-beauty brands and retailers."
+                ko="하나의 비전 AI 엔진을, K-뷰티 브랜드와 리테일러를 위한 기능별 제품군으로 나눈 플랫폼."
+                vi="Một engine Vision-AI được phân chia thành các sản phẩm chức năng cho các thương hiệu K-beauty và nhà bán lẻ."
+                th="Vision-AI engine เดียว แบ่งเป็นผลิตภัณฑ์เชิงฟังก์ชันสำหรับแบรนด์ K-beauty และผู้ค้าปลีก"
+                bn="একটি ভিশন-AI ইঞ্জিন, K-বিউটি ব্র্যান্ড ও খুচরা বিক্রেতাদের জন্য কার্যকরী পণ্যে বিভক্ত।"
+                ja="K-beautyブランドと小売業者向けに、1つのVision-AIエンジンを機能別製品に分割したプラットフォーム。"
+                zh="一个Vision-AI引擎，拆分为面向K-beauty品牌和零售商的功能产品。"
+              />
+              <!-- JVL Engine Highlights -->
+              <div class="bg-indigo-50/80 border border-indigo-100 rounded-2xl p-5">
+                <p class="text-xs text-indigo-600 font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                  <i class="fa-solid fa-glasses text-indigo-500"></i>
+                  <T tag="span"
+                    en="Vision Engine Core — JVL"
+                    ko="비전 엔진 코어 — JVL"
+                    vi="Lõi Vision Engine — JVL"
+                    th="Vision Engine Core — JVL"
+                    bn="ভিশন ইঞ্জিন কোর — JVL"
+                    ja="Vision Engine Core — JVL"
+                    zh="视觉引擎核心 — JVL"
+                  />
+                </p>
+                <ul class="space-y-3 text-sm">
+                  <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
+                    <T tag="span" class="text-slate-600"
+                      en={`<strong class="text-slate-800">Knowledge Distillation</strong> applied lightweight model — deployable from smartphones to embedded devices`}
+                      ko={`<strong class="text-slate-800">Knowledge Distillation</strong> 적용 경량 모델 — 스마트폰부터 임베디드 장치까지 배포 가능`}
+                      vi={`Mô hình nhẹ áp dụng <strong class="text-slate-800">Knowledge Distillation</strong> — triển khai từ điện thoại thông minh đến thiết bị nhúng`}
+                      th={`โมเดลน้ำหนักเบาที่ใช้ <strong class="text-slate-800">Knowledge Distillation</strong> — ติดตั้งได้ตั้งแต่สมาร์ตโฟนถึงอุปกรณ์ฝังตัว`}
+                      bn={`<strong class="text-slate-800">Knowledge Distillation</strong> প্রয়োগ করা লাইটওয়েট মডেল — স্মার্টফোন থেকে এমবেডেড ডিভাইসে ডিপ্লয় করা যায়`}
+                      ja={`<strong class="text-slate-800">Knowledge Distillation</strong>適用の軽量モデル — スマートフォンから組み込みデバイスまで展開可能`}
+                      zh={`应用<strong class="text-slate-800">Knowledge Distillation</strong>的轻量模型 — 可部署在智能手机到嵌入式设备`}
+                    />
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
+                    <T tag="span" class="text-slate-600"
+                      en={`Precision vector matching and skincare filter generation in <strong class="text-slate-800">under 5 seconds</strong>`}
+                      ko={`정밀 벡터 매칭 및 스킨케어 필터 생성 <strong class="text-slate-800">5초 이내</strong> 처리`}
+                      vi={`Khớp vector chính xác và tạo bộ lọc dưỡng da trong <strong class="text-slate-800">dưới 5 giây</strong>`}
+                      th={`การจับคู่เวกเตอร์ที่แม่นยำและสร้างฟิลเตอร์ดูแลผิวใน <strong class="text-slate-800">ไม่ถึง 5 วินาที</strong>`}
+                      bn={`নির্ভুল ভেক্টর ম্যাচিং এবং স্কিনকেয়ার ফিল্টার তৈরি <strong class="text-slate-800">৫ সেকেন্ডের মধ্যে</strong>`}
+                      ja={`精密なベクターマッチングとスキンケアフィルター生成を<strong class="text-slate-800">5秒以内</strong>に処理`}
+                      zh={`<strong class="text-slate-800">5秒内</strong>完成精确向量匹配和护肤过滤器生成`}
+                    />
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-circle-check text-indigo-500 mt-0.5 shrink-0"></i>
+                    <T tag="span" class="text-slate-600"
+                      en={`In-store AR context scanning with <strong class="text-slate-800">'Scanning Context'</strong> overlay`}
+                      ko={`매장 내 AR 컨텍스트 스캔 및 <strong class="text-slate-800">'Scanning Context'</strong> 오버레이`}
+                      vi={`Quét ngữ cảnh AR trong cửa hàng với lớp phủ <strong class="text-slate-800">'Scanning Context'</strong>`}
+                      th={`การสแกน AR context ในร้านค้าพร้อม overlay <strong class="text-slate-800">'Scanning Context'</strong>`}
+                      bn={`ইন-স্টোর AR কনটেক্সট স্ক্যানিং এবং <strong class="text-slate-800">'Scanning Context'</strong> ওভারলে`}
+                      ja={`店舗内ARコンテキストスキャンと<strong class="text-slate-800">'Scanning Context'</strong>オーバーレイ`}
+                      zh={`店内AR场景扫描与<strong class="text-slate-800">'Scanning Context'</strong>叠加层`}
+                    />
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- AR Scanning visual panel -->
+            <div class="relative overflow-hidden bg-slate-900 min-h-[220px] lg:min-h-[280px]">
+              <img
+                src="/images/smartglasses.png"
+                alt="Beauty AI Platform — Vision Engine AR Scanning"
+                class="w-full h-full object-cover opacity-70 hover:opacity-90 hover:scale-105 transition-all duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-6 sm:p-8">
+                <div class="text-white">
+                  <T tag="p" class="text-xs uppercase tracking-widest opacity-60 mb-1"
+                    en="AR Scanning Context"
+                    ko="AR 스캐닝 컨텍스트"
+                    vi="Bối cảnh AR Scanning"
+                    th="บริบท AR Scanning"
+                    bn="AR স্ক্যানিং কনটেক্সট"
+                    ja="ARスキャニングコンテキスト"
+                    zh="AR扫描场景"
+                  />
+                  <T tag="p" class="text-base sm:text-lg font-black"
+                    en="Real-time Skin Analysis & Product Matching"
+                    ko="실시간 피부 분석 & 제품 매칭"
+                    vi="Phân tích da và ghép sản phẩm theo thời gian thực"
+                    th="การวิเคราะห์ผิวและการจับคู่สินค้าแบบเรียลไทม์"
+                    bn="রিয়েল-টাইম স্কিন অ্যানালাইসিস & প্রোডাক্ট ম্যাচিং"
+                    ja="リアルタイム肌分析 & 製品マッチング"
+                    zh="实时皮肤分析与产品匹配"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom: 5 platform product cards -->
+          <div class="border-t border-slate-100 p-6 sm:p-8 bg-slate-50/50">
+            <T tag="p" class="text-xs text-slate-500 font-bold uppercase tracking-widest mb-5"
+              en="Platform Products"
+              ko="플랫폼 제품군"
+              vi="Sản phẩm nền tảng"
+              th="ผลิตภัณฑ์แพลตฟอร์ม"
+              bn="প্ল্যাটফর্ম পণ্য"
+              ja="プラットフォーム製品"
+              zh="平台产品"
+            />
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+              <!-- 1. K-Beauty Performance Marketing -->
+              <div class="bg-white rounded-2xl border border-slate-100 p-5 hover:border-indigo-200 hover:shadow-md transition-all duration-200">
+                <div class="flex items-center gap-2.5 mb-3">
+                  <div class="w-8 h-8 rounded-xl bg-indigo-100 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-chart-bar text-indigo-600 text-sm"></i>
+                  </div>
+                  <h4 class="font-black text-sm text-slate-800">K-Beauty Performance Marketing</h4>
+                </div>
+                <T tag="p" class="text-xs text-slate-500 leading-relaxed"
+                  en="Influencer, channel & campaign performance measurement and optimization."
+                  ko="인플루언서·채널·캠페인 성과 측정·최적화"
+                  vi="Đo lường và tối ưu hóa hiệu suất influencer, kênh và chiến dịch."
+                  th="การวัดและปรับแต่งประสิทธิภาพ influencer, ช่องทาง และแคมเปญ"
+                  bn="ইনফ্লুয়েন্সার, চ্যানেল ও ক্যাম্পেইন পারফরম্যান্স পরিমাপ ও অপ্টিমাইজেশন।"
+                  ja="インフルエンサー、チャンネル、キャンペーンのパフォーマンス測定と最適化。"
+                  zh="网红、渠道及活动绩效测量与优化。"
+                />
+              </div>
+
+              <!-- 2. Ingredient Intelligence -->
+              <div class="bg-white rounded-2xl border border-slate-100 p-5 hover:border-indigo-200 hover:shadow-md transition-all duration-200">
+                <div class="flex items-center gap-2.5 mb-3">
+                  <div class="w-8 h-8 rounded-xl bg-indigo-100 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-flask text-indigo-600 text-sm"></i>
+                  </div>
+                  <h4 class="font-black text-sm text-slate-800">Ingredient Intelligence</h4>
+                </div>
+                <T tag="p" class="text-xs text-slate-500 leading-relaxed"
+                  en="Global ingredient-level trend & insight analysis for R&I and product planning."
+                  ko="글로벌 '성분 단위' 트렌드·인사이트 분석. R&I·기획용."
+                  vi="Phân tích xu hướng và thông tin ở cấp độ thành phần toàn cầu cho R&I và lập kế hoạch sản phẩm."
+                  th="การวิเคราะห์ข้อมูลเชิงลึกและแนวโน้มระดับส่วนผสมทั่วโลก สำหรับ R&I และการวางแผนผลิตภัณฑ์"
+                  bn="R&I ও পণ্য পরিকল্পনার জন্য বৈশ্বিক উপাদান-স্তরের ট্রেন্ড ও ইনসাইট বিশ্লেষণ।"
+                  ja="R&Iと製品計画向けのグローバル成分レベルトレンドとインサイト分析。"
+                  zh="面向R&I和产品规划的全球成分级趋势与洞察分析。"
+                />
+              </div>
+
+              <!-- 3. AI Vision Scan -->
+              <div class="bg-white rounded-2xl border border-slate-100 p-5 hover:border-indigo-200 hover:shadow-md transition-all duration-200">
+                <div class="flex items-center gap-2.5 mb-3">
+                  <div class="w-8 h-8 rounded-xl bg-indigo-100 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-camera text-indigo-600 text-sm"></i>
+                  </div>
+                  <h4 class="font-black text-sm text-slate-800">AI Vision Scan</h4>
+                </div>
+                <T tag="p" class="text-xs text-slate-500 leading-relaxed"
+                  en="Instant cosmetic ingredient recognition via camera — the data input gateway."
+                  ko="카메라로 화장품 성분 즉시 분석. 해픽의 핵심, 모든 데이터의 입력 관문."
+                  vi="Nhận diện thành phần mỹ phẩm tức thời qua camera — cổng nhập dữ liệu."
+                  th="การจดจำส่วนผสมเครื่องสำอางทันทีผ่านกล้อง — ประตูป้อนข้อมูล"
+                  bn="ক্যামেরার মাধ্যমে তাৎক্ষণিক প্রসাধনী উপাদান শনাক্তকরণ — ডেটা ইনপুট গেটওয়ে।"
+                  ja="カメラによる化粧品成分の即時認識 — データ入力ゲートウェイ。"
+                  zh="通过摄像头即时识别化妆品成分 — 数据输入入口。"
+                />
+              </div>
+
+              <!-- 4. Personalization -->
+              <div class="bg-white rounded-2xl border border-slate-100 p-5 hover:border-indigo-200 hover:shadow-md transition-all duration-200">
+                <div class="flex items-center gap-2.5 mb-3">
+                  <div class="w-8 h-8 rounded-xl bg-indigo-100 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-user-check text-indigo-600 text-sm"></i>
+                  </div>
+                  <h4 class="font-black text-sm text-slate-800">Personalization</h4>
+                </div>
+                <T tag="p" class="text-xs text-slate-500 leading-relaxed"
+                  en="Tailored curation from consumer preference, routine & recommendation signals."
+                  ko="소비자 선호·루틴·추천 신호 기반 맞춤 큐레이션. B2C 가치."
+                  vi="Curation được cá nhân hóa từ tín hiệu sở thích, thói quen và khuyến nghị của người tiêu dùng."
+                  th="การคัดสรรที่ปรับแต่งตามสัญญาณความชอบ ประจำวัน และคำแนะนำของผู้บริโภค"
+                  bn="ভোক্তার পছন্দ, রুটিন ও সুপারিশ সিগন্যাল থেকে কাস্টমাইজড কিউরেশন।"
+                  ja="消費者の好み、ルーティン、推薦シグナルによるパーソナライズキュレーション。"
+                  zh="基于消费者偏好、日常习惯与推荐信号的个性化策展。"
+                />
+              </div>
+
+              <!-- 5. NutriScan (Expansion) -->
+              <div class="bg-slate-50 rounded-2xl border border-dashed border-slate-200 p-5 hover:border-slate-300 hover:shadow-sm transition-all duration-200 relative">
+                <div class="absolute top-3 right-3">
+                  <span class="text-[10px] bg-slate-200 text-slate-500 px-2 py-0.5 rounded-full font-semibold tracking-wide">Expansion</span>
+                </div>
+                <div class="flex items-center gap-2.5 mb-3">
+                  <div class="w-8 h-8 rounded-xl bg-slate-200 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-leaf text-slate-400 text-sm"></i>
+                  </div>
+                  <h4 class="font-black text-sm text-slate-400">NutriScan</h4>
+                </div>
+                <T tag="p" class="text-xs text-slate-400 leading-relaxed"
+                  en="Supplement & food analysis on the same vision engine — adjacent-market expansion."
+                  ko="같은 비전 엔진으로 건기식·식품 분석. 뷰티 인접 시장 확장."
+                  vi="Phân tích thực phẩm bổ sung và thực phẩm trên cùng engine vision — mở rộng thị trường lân cận."
+                  th="การวิเคราะห์อาหารเสริมและอาหารด้วย vision engine เดียวกัน — การขยายตลาดใกล้เคียง"
+                  bn="একই ভিশন ইঞ্জিনে সাপ্লিমেন্ট ও খাদ্য বিশ্লেষণ — পার্শ্ববর্তী বাজারে সম্প্রসারণ।"
+                  ja="同じビジョンエンジンでサプリメント・食品分析 — 隣接市場への拡張。"
+                  zh="在相同视觉引擎上进行补充剂和食品分析 — 相邻市场扩张。"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -409,101 +442,25 @@ import T from "../components/i18n/T.astro";
 
       <div class="mb-10 sm:mb-12 reveal">
         <div class="flex items-center gap-3 mb-3">
-          <span class="badge badge-indigo">
-            <i class="fa-solid fa-glasses text-xs"></i>
-            JVL Applied
-          </span>
           <span class="badge badge-pink">
             <i class="fa-solid fa-fingerprint text-xs"></i>
             JIS Applied
+          </span>
+          <span class="badge badge-indigo">
+            <i class="fa-solid fa-glasses text-xs"></i>
+            JVL Applied
           </span>
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">Real-World Cases</h2>
       </div>
 
+      <!-- JIS Applied Case: Uzudebris (Case 01) -->
       <div class="reveal card overflow-hidden p-0">
         <div class="grid lg:grid-cols-2 gap-0">
           <!-- Info -->
           <div class="p-6 sm:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
             <div class="flex items-center gap-2 mb-5">
               <span class="badge badge-pink">Case 01</span>
-              <span class="text-xs text-slate-400 font-medium">JVL → haepick</span>
-            </div>
-            <img src="/images/image_60b016.png" alt="haepick" class="w-32 sm:w-40 h-auto object-contain mb-5" />
-            <T tag="p" class="text-slate-600 text-sm leading-relaxed mb-4" 
-              en={`A new app by cosmetics research lab <strong class="text-slate-800">Woodang Network</strong>.<br />Personalized service powered by genetic and microbiome biometric data.`}
-              ko={`아토피 화장품 연구소 <strong class="text-slate-800">우당(友堂)네트웍</strong>의 신규 앱 서비스.<br />유전자 및 마이크로바이옴 생체 데이터를 기반으로 한 맞춤형 혁신 서비스.`}
-              vi={`Một ứng dụng mới của phòng thí nghiệm mỹ phẩm <strong class="text-slate-800">Woodang Network</strong>.`}
-              th={`แอปพลิเคชั่นใหม่โดย Lab วิจัยเครื่องสำอาง <strong class="text-slate-800">Woodang Network</strong>.`}
-              bn={`প্রসাধনী গবেষণা ল্যাব দ্বারা একটি নতুন অ্যাপ <strong class="text-slate-800">Woodang Network</strong>.`}
-              ja={`化粧品研究所<strong class="text-slate-800">Woodang Network</strong>の新しいアプリ。遺伝子とマイクロバイオームの生体データを利用したパーソナライズサービス。`}
-              zh={`化妆品实验室<strong class="text-slate-800">Woodang网络</strong>推出的一款新应用。<br />基于基因和微生物组生物特征数据的个性化服务。`}
-            />
-            <div class="bg-indigo-50 border border-indigo-100 rounded-xl px-4 py-3 mb-5">
-              <p class="text-xs text-indigo-600 font-bold uppercase tracking-widest mb-1">Core Philosophy</p>
-              <T tag="p" class="text-sm font-bold text-slate-800" en={`"Skin-first Matching"`} ko={`"피부 중심의 매칭"`} vi={`"Kết nối trên hết làn da"`} th={`"การจับคู่เริ่มจากผิวหน้า"`} bn={`"ত্বক প্রথম"`} ja={`「肌ファーストのマッチング」`} zh={`"肌肤首选匹配"`} />
-              <T tag="p" class="text-xs text-slate-500 mt-0.5" en={`Choose cosmetics based on your skin, not trends.`} ko={`트렌드가 아닌 내 피부에 맞춘 화장품 선택.`} vi={`Chọn mỹ phẩm dựa trên làn da của bạn`} th={`เลือกเครื่องสำอางตามสภาพผิว`} bn={`আপনার ত্বক অনুযায়ী প্রসাধনী বেছে নিন`} ja={`流行ではなく、あなたの肌に合わせて化粧品を選ぶ。`} zh={`根据您的肌肤而非潮流选择化妆品。`} />
-            </div>
-            <div class="flex flex-wrap gap-2 mb-7">
-              <span class="badge badge-indigo">K-BEAUTY</span>
-              <span class="badge badge-indigo">AI Analysis</span>
-              <span class="badge badge-pink">AR / Vision-Lens</span>
-            </div>
-            <div class="flex flex-wrap gap-3">
-              <a href="https://apps.apple.com/kr/app/%ED%95%B4%ED%94%BD-haepick-%EB%82%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%B7%B0%ED%8B%B0-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8/id6748489765"
-                target="_blank" rel="noopener noreferrer"
-                class="flex items-center gap-2 bg-slate-900 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5">
-                <i class="fa-brands fa-apple text-lg"></i>
-                <span class="flex flex-col leading-tight">
-                  <span class="text-[10px] opacity-70 font-normal">Download on the</span>
-                  <span class="text-sm font-bold">App Store</span>
-                </span>
-              </a>
-              <a href="https://play.google.com/store/apps/details?id=com.woodang.haepick_client&hl=ko"
-                target="_blank" rel="noopener noreferrer"
-                class="flex items-center gap-2 bg-slate-900 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5">
-                <i class="fa-brands fa-google-play text-base"></i>
-                <span class="flex flex-col leading-tight">
-                  <span class="text-[10px] opacity-70 font-normal">Get it on</span>
-                  <span class="text-sm font-bold">Google Play</span>
-                </span>
-              </a>
-            </div>
-          </div>
-          <!-- Instagram -->
-          <div class="bg-gradient-to-br from-slate-50 to-indigo-50 flex items-center justify-center p-5 sm:p-8 min-h-[360px] sm:min-h-[480px]">
-            <blockquote
-              class="instagram-media"
-              data-instgrm-permalink="https://www.instagram.com/p/DPtqfgOj985/?utm_source=ig_embed&utm_campaign=loading"
-              data-instgrm-version="14"
-              style="background:#FFF; border:0; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.12); margin:0 auto; max-width:380px; min-width:260px; padding:0; width:100%;"
-            ></blockquote>
-            <script async src="//www.instagram.com/embed.js"></script>
-          </div>
-        </div>
-        <!-- Smartglasses Banner -->
-        <div class="relative h-40 sm:h-52 overflow-hidden border-t border-slate-100">
-          <img
-            src="/images/smartglasses.png"
-            alt="haepick AR Smart Glasses"
-            class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
-          />
-          <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent flex items-center px-6 sm:px-10">
-            <div class="text-white">
-              <p class="text-xs uppercase tracking-widest opacity-60 mb-1">Powered by JVL</p>
-              <p class="text-lg sm:text-xl font-black">Experience Beauty<br />Through Smart Glasses</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- JIS Applied Case: Uzudebris -->
-      <div class="reveal mt-10 card overflow-hidden p-0">
-        <div class="grid lg:grid-cols-2 gap-0">
-          <!-- Info -->
-          <div class="p-6 sm:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
-            <div class="flex items-center gap-2 mb-5">
-              <span class="badge badge-pink">Case 02</span>
               <span class="text-xs text-slate-400 font-medium">JIS → Uzudebris</span>
             </div>
             <div class="mb-5">
@@ -615,6 +572,83 @@ import T from "../components/i18n/T.astro";
                 <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Avalanche</span>
                 <span class="bg-pink-500/20 text-pink-300 text-xs px-3 py-1 rounded-full border border-pink-500/30">Zero-Image</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JVL Applied Case: haepick (Case 02) -->
+      <div class="reveal mt-10 card overflow-hidden p-0">
+        <div class="grid lg:grid-cols-2 gap-0">
+          <!-- Info -->
+          <div class="p-6 sm:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="badge badge-indigo">Case 02</span>
+              <span class="text-xs text-slate-400 font-medium">JVL → haepick</span>
+            </div>
+            <img src="/images/image_60b016.png" alt="haepick" class="w-32 sm:w-40 h-auto object-contain mb-5" />
+            <T tag="p" class="text-slate-600 text-sm leading-relaxed mb-4"
+              en={`A new app by cosmetics research lab <strong class="text-slate-800">Woodang Network</strong>.<br />Personalized service powered by genetic and microbiome biometric data.`}
+              ko={`아토피 화장품 연구소 <strong class="text-slate-800">우당(友堂)네트웍</strong>의 신규 앱 서비스.<br />유전자 및 마이크로바이옴 생체 데이터를 기반으로 한 맞춤형 혁신 서비스.`}
+              vi={`Một ứng dụng mới của phòng thí nghiệm mỹ phẩm <strong class="text-slate-800">Woodang Network</strong>.`}
+              th={`แอปพลิเคชั่นใหม่โดย Lab วิจัยเครื่องสำอาง <strong class="text-slate-800">Woodang Network</strong>.`}
+              bn={`প্রসাধনী গবেষণা ল্যাব দ্বারা একটি নতুন অ্যাপ <strong class="text-slate-800">Woodang Network</strong>.`}
+              ja={`化粧品研究所<strong class="text-slate-800">Woodang Network</strong>の新しいアプリ。遺伝子とマイクロバイオームの生体データを利用したパーソナライズサービス。`}
+              zh={`化妆品实验室<strong class="text-slate-800">Woodang网络</strong>推出的一款新应用。<br />基于基因和微生物组生物特征数据的个性化服务。`}
+            />
+            <div class="bg-indigo-50 border border-indigo-100 rounded-xl px-4 py-3 mb-5">
+              <p class="text-xs text-indigo-600 font-bold uppercase tracking-widest mb-1">Core Philosophy</p>
+              <T tag="p" class="text-sm font-bold text-slate-800" en={`"Skin-first Matching"`} ko={`"피부 중심의 매칭"`} vi={`"Kết nối trên hết làn da"`} th={`"การจับคู่เริ่มจากผิวหน้า"`} bn={`"ত্বক প্রথম"`} ja={`「肌ファーストのマッチング」`} zh={`"肌肤首选匹配"`} />
+              <T tag="p" class="text-xs text-slate-500 mt-0.5" en={`Choose cosmetics based on your skin, not trends.`} ko={`트렌드가 아닌 내 피부에 맞춘 화장품 선택.`} vi={`Chọn mỹ phẩm dựa trên làn da của bạn`} th={`เลือกเครื่องสำอางตามสภาพผิว`} bn={`আপনার ত্বক অনুযায়ী প্রসাধনী বেছে নিন`} ja={`流行ではなく、あなたの肌に合わせて化粧品を選ぶ。`} zh={`根据您的肌肤而非潮流选择化妆品。`} />
+            </div>
+            <div class="flex flex-wrap gap-2 mb-7">
+              <span class="badge badge-indigo">K-BEAUTY</span>
+              <span class="badge badge-indigo">AI Analysis</span>
+              <span class="badge badge-pink">AR / Vision-Lens</span>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="https://apps.apple.com/kr/app/%ED%95%B4%ED%94%BD-haepick-%EB%82%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%B7%B0%ED%8B%B0-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8/id6748489765"
+                target="_blank" rel="noopener noreferrer"
+                class="flex items-center gap-2 bg-slate-900 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5">
+                <i class="fa-brands fa-apple text-lg"></i>
+                <span class="flex flex-col leading-tight">
+                  <span class="text-[10px] opacity-70 font-normal">Download on the</span>
+                  <span class="text-sm font-bold">App Store</span>
+                </span>
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.woodang.haepick_client&hl=ko"
+                target="_blank" rel="noopener noreferrer"
+                class="flex items-center gap-2 bg-slate-900 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5">
+                <i class="fa-brands fa-google-play text-base"></i>
+                <span class="flex flex-col leading-tight">
+                  <span class="text-[10px] opacity-70 font-normal">Get it on</span>
+                  <span class="text-sm font-bold">Google Play</span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <!-- Instagram -->
+          <div class="bg-gradient-to-br from-slate-50 to-indigo-50 flex items-center justify-center p-5 sm:p-8 min-h-[360px] sm:min-h-[480px]">
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DPtqfgOj985/?utm_source=ig_embed&utm_campaign=loading"
+              data-instgrm-version="14"
+              style="background:#FFF; border:0; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.12); margin:0 auto; max-width:380px; min-width:260px; padding:0; width:100%;"
+            ></blockquote>
+            <script async src="//www.instagram.com/embed.js"></script>
+          </div>
+        </div>
+        <!-- Smartglasses Banner -->
+        <div class="relative h-40 sm:h-52 overflow-hidden border-t border-slate-100">
+          <img
+            src="/images/smartglasses.png"
+            alt="haepick AR Smart Glasses"
+            class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent flex items-center px-6 sm:px-10">
+            <div class="text-white">
+              <p class="text-xs uppercase tracking-widest opacity-60 mb-1">Powered by JVL</p>
+              <p class="text-lg sm:text-xl font-black">Experience Beauty<br />Through Smart Glasses</p>
             </div>
           </div>
         </div>
