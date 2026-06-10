@@ -17,11 +17,15 @@ import T from "../components/i18n/T.astro";
 
         <div>
 
-          <h1 class="hero-title mt-5 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tight leading-[1.08]">
-            Engineering<br />
-            <span class="gradient-text">the Visual</span><br />
-            Future.
-          </h1>
+          <T tag="h1" class="hero-title mt-5 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tight leading-[1.08]"
+            en={`Engineering<br /><span class="gradient-text">the Visual</span><br />Future.`}
+            ko={`미디어의 미래를<br /><span class="gradient-text">엔지니어링</span><br />합니다.`}
+            vi={`Kiến tạo<br /><span class="gradient-text">Tương lai</span><br />Thị giác.`}
+            th={`วิศวกรรม<br /><span class="gradient-text">อนาคต</span><br />แห่งภาพ.`}
+            bn={`দৃশ্যমান ভবিষ্যৎ<br /><span class="gradient-text">নির্মাণ</span><br />করছি.`}
+            ja={`ビジュアルな<br /><span class="gradient-text">未来を</span><br />エンジニアリング。`}
+            zh={`工程化<br /><span class="gradient-text">视觉</span><br />未来。`}
+          />
           <T tag="p" class="hero-sub mt-5 text-sm sm:text-base text-slate-500 leading-relaxed max-w-md" 
             en={`ITMOSS builds deep-tech infrastructure that brings <strong class="text-slate-700">precision beauty analysis</strong> and <strong class="text-slate-700">digital portrait rights</strong> to life — powered by Vision AI and blockchain convergence.`}
             ko={`ITMOSS는 비전 AI와 블록체인 융합을 통해 <strong class="text-slate-700">정밀 뷰티 분석</strong>과 <strong class="text-slate-700">디지털 초상권</strong>을 실현하는 딥테크 인프라를 구축합니다.`}
@@ -58,15 +62,31 @@ import T from "../components/i18n/T.astro";
       <!-- Stats -->
       <div class="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
         {[
-          { icon: "fa-solid fa-microscope",  label: "Vision AI",       desc: "Battle-Tested Stack" },
-          { icon: "fa-solid fa-link",         label: "Blockchain",      desc: "Kaia / Avalanche" },
-          { icon: "fa-solid fa-cubes",        label: "2 Platforms",     desc: "Identity Shield · Beauty AI" },
-          { icon: "fa-solid fa-chart-line",   label: "Field Verified",  desc: "Global Leads" },
+          {
+            icon: "fa-solid fa-microscope",
+            label: { en: "Vision AI",      ko: "비전 AI",       vi: "Vision AI",              th: "Vision AI",                  bn: "ভিশন AI",         ja: "Vision AI",          zh: "视觉AI" },
+            desc:  { en: "Battle-Tested Stack", ko: "검증된 기술 스택", vi: "Stack đã kiểm nghiệm", th: "Stack ที่ผ่านการทดสอบ", bn: "পরীক্ষিত স্ট্যাক", ja: "実証済みスタック",  zh: "久经考验的技术栈" },
+          },
+          {
+            icon: "fa-solid fa-link",
+            label: { en: "Blockchain",     ko: "블록체인",       vi: "Blockchain",             th: "บล็อกเชน",                   bn: "ব্লকচেইন",        ja: "ブロックチェーン",    zh: "区块链" },
+            desc:  { en: "Kaia / Avalanche", ko: "Kaia / Avalanche", vi: "Kaia / Avalanche",  th: "Kaia / Avalanche",           bn: "Kaia / Avalanche", ja: "Kaia / Avalanche", zh: "Kaia / Avalanche" },
+          },
+          {
+            icon: "fa-solid fa-cubes",
+            label: { en: "2 Platforms",    ko: "플랫폼",    vi: "2 Nền tảng",             th: "2 แพลตฟอร์ม",                bn: "২টি প্ল্যাটফর্ম", ja: "2プラットフォーム", zh: "2个平台" },
+            desc:  { en: "Identity Shield · Beauty AI", ko: "초상권 보호 · 뷰티 AI", vi: "Identity Shield · Beauty AI", th: "Identity Shield · Beauty AI", bn: "পরিচয় সুরক্ষা · বিউটি AI", ja: "Identity Shield · Beauty AI", zh: "身份盾牌 · 美妆AI" },
+          },
+          {
+            icon: "fa-solid fa-chart-line",
+            label: { en: "Field Verified", ko: "현장 검증",      vi: "Đã xác minh",            th: "ผ่านการทดสอบ",               bn: "ফিল্ড ভেরিফাইড", ja: "フィールド検証済み", zh: "现场验证" },
+            desc:  { en: "Global Leads",   ko: "글로벌 리드",    vi: "Dẫn đầu toàn cầu",       th: "นำตลาดโลก",                  bn: "গ্লোবাল লিড",    ja: "グローバルリード",  zh: "全球潜在客户" },
+          },
         ].map((s) => (
           <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-3 sm:p-5 border border-white/80 text-center">
             <i class={`${s.icon} text-xl sm:text-2xl text-indigo-500 mb-1.5`}></i>
-            <p class="font-bold text-xs sm:text-sm text-slate-800">{s.label}</p>
-            <p class="text-[10px] sm:text-xs text-slate-500 mt-0.5">{s.desc}</p>
+            <T tag="p" class="font-bold text-xs sm:text-sm text-slate-800" en={s.label.en} ko={s.label.ko} vi={s.label.vi} th={s.label.th} bn={s.label.bn} ja={s.label.ja} zh={s.label.zh} />
+            <T tag="p" class="text-[10px] sm:text-xs text-slate-500 mt-0.5" en={s.desc.en} ko={s.desc.ko} vi={s.desc.vi} th={s.desc.th} bn={s.desc.bn} ja={s.desc.ja} zh={s.desc.zh} />
           </div>
         ))}
       </div>
