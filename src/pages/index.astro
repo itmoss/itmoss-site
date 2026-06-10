@@ -817,13 +817,24 @@ import T from "../components/i18n/T.astro";
   <section class="py-20 sm:py-32 gradient-hero text-center">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 reveal">
       <p class="section-label">GET STARTED</p>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mt-2 mb-4">
-        Build the Intelligent<br />
-        <span class="gradient-text">Future with ITMOSS.</span>
-      </h2>
-      <p class="text-slate-500 text-sm sm:text-base mb-8 sm:mb-10">
-        Accelerate your business with Vision AI and blockchain technology.
-      </p>
+      <T tag="h2" class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mt-2 mb-4"
+        en={`Build the Intelligent<br /><span class="gradient-text">Future with ITMOSS.</span>`}
+        ko={`ITMOSS와 함께<br /><span class="gradient-text">지능적인 미래를 만드세요.</span>`}
+        vi={`Xây dựng Tương lai<br /><span class="gradient-text">Thông minh cùng ITMOSS.</span>`}
+        th={`สร้างอนาคต<br /><span class="gradient-text">อัจฉริยะกับ ITMOSS.</span>`}
+        bn={`ITMOSS-এর সাথে<br /><span class="gradient-text">বুদ্ধিমান ভবিষ্যৎ গড়ুন।</span>`}
+        ja={`ITMOSSと共に<br /><span class="gradient-text">インテリジェントな未来を。</span>`}
+        zh={`与 ITMOSS 共建<br /><span class="gradient-text">智能未来。</span>`}
+      />
+      <T tag="p" class="text-slate-500 text-sm sm:text-base mb-8 sm:mb-10"
+        en="Accelerate your business with Vision AI and blockchain technology."
+        ko="Vision AI와 블록체인 기술로 비즈니스를 가속하세요."
+        vi="Tăng tốc doanh nghiệp của bạn với Vision AI và công nghệ blockchain."
+        th="เร่งการเติบโตธุรกิจด้วย Vision AI และเทคโนโลยีบล็อกเชน"
+        bn="Vision AI এবং ব্লকচেইন প্রযুক্তি দিয়ে আপনার ব্যবসা ত্বরান্বিত করুন।"
+        ja="Vision AIとブロックチェーン技術でビジネスを加速させましょう。"
+        zh="借助 Vision AI 和区块链技术加速您的业务。"
+      />
       <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
         <a href="/contact" class="btn btn-primary">
           <i class="fa-solid fa-paper-plane text-xs"></i>
