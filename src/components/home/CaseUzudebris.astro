@@ -1,6 +1,7 @@
 ---
 // #uzudebris CASE 01 — 밝은 배경 섹션. 문구: docs/renewal/copy.md "## 우주데브리스".
-// 약속은 "발견해서 본인에게 알린다"까지. 흐름 다이어그램은 F08, 대시보드 이미지는 F16.
+// 약속은 "발견해서 본인에게 알린다"까지. 흐름 다이어그램은 UzuFlowDiagram, 대시보드 이미지는 F16.
+import UzuFlowDiagram from './UzuFlowDiagram.astro';
 const steps = [
   { title: '영상을 등록합니다', body: '채널 주소나 원본 파일을 올리면 됩니다.' },
   {
@@ -67,6 +68,8 @@ const audiences = [
         </li>
       ))}
     </ol>
+
+    <UzuFlowDiagram />
 
     <ul class="uzu-cards">
       {cards.map((c) => (

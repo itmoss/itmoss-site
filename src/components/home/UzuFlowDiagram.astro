@@ -1,0 +1,128 @@
+---
+// 우주데브리스 처리 순서 — 인라인 SVG (외부 요청·스크립트 없음). CaseUzudebris 의 3단계 목록 아래에 놓인다.
+// 넓은 화면은 가로, 좁은 화면(≤760px)은 세로 그림을 보인다. 숨은 쪽은 display:none 이라 보조기기에 한 번만 읽힌다.
+// 문구: docs/renewal/copy.md "## 우주데브리스" — aria-label 은 그곳 문장 그대로.
+const label = '원본 등록, 제목 예측과 후보 검색, 지문 대조, 본인 알림으로 이어지는 우주데브리스 처리 순서';
+
+const nodes = [
+  { title: '원본 등록', sub: '채널 주소 · 원본 파일' },
+  { title: '제목 예측', sub: '자막 · 장면으로 후보 검색' },
+  { title: '지문 대조', sub: '찾은 후보만 화면 · 소리로' },
+  { title: '본인 알림', sub: '위치 · 신고 방법 안내' },
+];
+const last = nodes.length - 1;
+
+// 가로: 상자 210×112, 간격 53
+const H = { w: 210, h: 112, gap: 53 };
+const hWidth = nodes.length * H.w + last * H.gap;
+// 세로: 상자 320×88, 간격 44
+const V = { w: 320, h: 88, gap: 44 };
+const vHeight = nodes.length * V.h + last * V.gap;
+const num = (i: number) => String(i + 1).padStart(2, '0');
+---
+<figure class="uzu-flow" data-reveal>
+  <svg
+    class="uzu-flow__svg uzu-flow__svg--h"
+    viewBox={`0 0 ${hWidth + 2} ${H.h + 2}`}
+    role="img"
+    aria-label={label}
+  >
+    {nodes.map((n, i) => {
+      const x = 1 + i * (H.w + H.gap);
+      return (
+        <g>
+          <rect class:list={['uzu-flow__box', { 'uzu-flow__box--end': i === last }]} x={x} y="1" width={H.w} height={H.h} />
+          <text class="uzu-flow__num" x={x + 20} y="32">{num(i)}</text>
+          <text class="uzu-flow__title" x={x + 20} y="68">{n.title}</text>
+          <text class="uzu-flow__sub" x={x + 20} y="94">{n.sub}</text>
+          {i < last && (
+            <g class="uzu-flow__arrow">
+              <line x1={x + H.w + 8} y1={1 + H.h / 2} x2={x + H.w + H.gap - 8} y2={1 + H.h / 2} />
+              <polyline points={`${x + H.w + H.gap - 15},${1 + H.h / 2 - 6} ${x + H.w + H.gap - 8},${1 + H.h / 2} ${x + H.w + H.gap - 15},${1 + H.h / 2 + 6}`} />
+            </g>
+          )}
+        </g>
+      );
+    })}
+  </svg>
+
+  <svg
+    class="uzu-flow__svg uzu-flow__svg--v"
+    viewBox={`0 0 ${V.w + 2} ${vHeight + 2}`}
+    role="img"
+    aria-label={label}
+  >
+    {nodes.map((n, i) => {
+      const y = 1 + i * (V.h + V.gap);
+      return (
+        <g>
+          <rect class:list={['uzu-flow__box', { 'uzu-flow__box--end': i === last }]} x="1" y={y} width={V.w} height={V.h} />
+          <text class="uzu-flow__num" x="20" y={y + 30}>{num(i)}</text>
+          <text class="uzu-flow__title" x="64" y={y + 31}>{n.title}</text>
+          <text class="uzu-flow__sub" x="64" y={y + 62}>{n.sub}</text>
+          {i < last && (
+            <g class="uzu-flow__arrow">
+              <line x1="34" y1={y + V.h + 6} x2="34" y2={y + V.h + V.gap - 6} />
+              <polyline points={`28,${y + V.h + V.gap - 13} 34,${y + V.h + V.gap - 6} 40,${y + V.h + V.gap - 13}`} />
+            </g>
+          )}
+        </g>
+      );
+    })}
+  </svg>
+</figure>
+
+<style>
+  .uzu-flow {
+    margin: 0;
+    color: var(--color-ink);
+  }
+  .uzu-flow__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .uzu-flow__svg--v {
+    display: none;
+    max-width: 420px;
+  }
+  @media (max-width: 760px) {
+    .uzu-flow__svg--h { display: none; }
+    .uzu-flow__svg--v { display: block; }
+  }
+
+  .uzu-flow__box {
+    fill: none;
+    stroke: var(--color-line-on-paper);
+    stroke-width: 1;
+  }
+  .uzu-flow__box--end {
+    stroke: var(--color-signal-ink);
+    stroke-width: 2;
+  }
+  .uzu-flow__num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: var(--tracking-mono);
+    fill: var(--color-signal-ink);
+  }
+  .uzu-flow__title {
+    font-family: var(--font-sans);
+    font-size: 20px;
+    font-weight: 500;
+    fill: var(--color-ink);
+  }
+  .uzu-flow__sub {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    fill: var(--color-muted-on-paper);
+  }
+  .uzu-flow__arrow line,
+  .uzu-flow__arrow polyline {
+    fill: none;
+    stroke: var(--color-muted-on-paper);
+    stroke-width: 1.5;
+    stroke-linecap: square;
+  }
+</style>
