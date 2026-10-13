@@ -1,0 +1,79 @@
+---
+// #engines 두 엔진. 문구: docs/renewal/copy.md "## 두 엔진".
+const engines = [
+  {
+    label: '01 · 보는 엔진',
+    title: 'JVL Vision Engine',
+    body: '카메라에 비친 제품과 피부를 읽습니다. 스마트폰과 임베디드 장치에서 돌아가도록 경량화했습니다.',
+    used: '해픽에서 쓰고 있습니다',
+    href: '#haepick',
+  },
+  {
+    label: '02 · 찾는 엔진',
+    title: '영상 지문 대조',
+    body: '화면과 소리에서 고유한 값을 뽑아, 제목이 바뀌고 화질이 낮아져도 같은 영상을 알아봅니다.',
+    used: '우주데브리스에서 쓰고 있습니다',
+    href: '#uzudebris',
+  },
+];
+---
+<section id="engines" class="engines" aria-labelledby="engines-title">
+  <div class="container">
+    <h2 id="engines-title" class="visually-hidden">아이티모스의 두 엔진</h2>
+    <ul class="engines__list">
+      {engines.map((e) => (
+        <li class="engines__item">
+          <p class="eyebrow">{e.label}</p>
+          <h3 class="engines__title">{e.title}</h3>
+          <p class="engines__body">{e.body}</p>
+          <a class="engines__link" href={e.href}>{e.used} <span aria-hidden="true">→</span></a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .engines {
+    border-top: 1px solid var(--color-line);
+  }
+  .engines__list {
+    margin: 0;
+    padding: var(--space-24) 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-12);
+  }
+  .engines__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .engines__title {
+    margin: 0;
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+  }
+  @media (min-width: 641px) {
+    .engines__title { font-size: 32px; }
+  }
+  .engines__body {
+    margin: 0;
+    max-width: 46ch;
+    font-size: 17px;
+    line-height: var(--leading-body);
+    color: var(--color-muted);
+    word-break: keep-all;
+  }
+  .engines__link {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--tap-min);
+    font-size: var(--text-sm);
+    text-underline-offset: 4px;
+  }
+</style>
