@@ -1,31 +1,64 @@
 ---
 import '../styles/global.css';
+import '../styles/tokens.css';
+
+// .mdx 의 layout 으로 쓰일 때는 frontmatter 가 Astro.props.frontmatter 로 들어온다.
+const props = { ...(Astro.props.frontmatter ?? {}), ...Astro.props };
 const {
-  title = "아이티모스 ITMOSS — Engineering the Media Future.",
-  description = "아이티모스(ITMOSS)는 Vision AI와 블록체인 기술 기반의 딥테크 인프라를 개발합니다. 뷰티 정밀 분석, 디지털 초상권 보호, AI 기반 서비스를 만드는 기술 브랜드입니다.",
-  image = "/images/image.png",
+  title = "아이티모스 ITMOSS — 영상을 만드는 기술로 영상을 지키는 비전 AI",
+  description = "아이티모스(ITMOSS)는 영상을 만드는 기술로 영상을 지키는 비전 AI 회사입니다. 창작자 영상 무단 재송출 탐지 우주데브리스와 뷰티 비전 AI 해픽을 만듭니다.",
+  image = "/images/brand/apple-touch-icon.png",
   type = "website",
   publishDate,
-  keywords = "아이티모스, ITMOSS, Vision AI, 뷰티 AI, 블록체인, 딥테크, 디지털 초상권, 뷰티 분석, AI 인프라, beauty tech, digital portrait rights",
+  keywords = "아이티모스, ITMOSS, 비전 AI, Vision AI, 우주데브리스, 해픽, 영상 지문, 무단 재송출 탐지, 뷰티 AI",
   lang = "ko",
-} = Astro.props;
+} = props;
 
 const siteURL = 'https://itmoss.com';
 const canonicalURL = new URL(Astro.url.pathname, siteURL).href;
 const ogImage = image.startsWith('http') ? image : new URL(image, siteURL).href;
+const logoURL = `${siteURL}/images/brand/logo-on-light.webp`;
 const isArticle = type === 'article';
-const currentPath = Astro.url.pathname;
+const isHome = Astro.url.pathname === '/';
+// 홈에서는 같은 페이지 앵커, 다른 페이지에서는 홈의 앵커로 보낸다.
+const anchor = (id: string) => (isHome ? `#${id}` : `/#${id}`);
+const GA_ID = 'G-FZK5GDSNNR';
+const CONTACT_EMAIL = 'jaster@itmoss.com';
+
+const csp = [
+  "default-src 'self'",
+  "script-src 'self' https://www.googletagmanager.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src https://fonts.gstatic.com",
+  "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com",
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
+  "form-action 'self'",
+  "frame-src 'none'",
+  "base-uri 'self'",
+  "object-src 'none'",
+].join('; ');
+
+const nav = [
+  { id: 'uzudebris', label: '우주데브리스' },
+  { id: 'haepick', label: '해픽 · Vision AI' },
+  { id: 'record', label: '소식' },
+  { id: 'contact', label: '연락' },
+];
 ---
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content={csp} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="ITMOSS" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
-    <link rel="icon" href="/images/image.png" type="image/png" />
+    <link rel="icon" href="/images/brand/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png" sizes="180x180" />
 
     <!-- Open Graph -->
     <meta property="og:type" content={type} />
@@ -33,19 +66,17 @@ const currentPath = Astro.url.pathname;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:site_name" content="ITMOSS" />
     {publishDate && <meta property="article:published_time" content={publishDate} />}
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- JSON-LD -->
+    <!-- JSON-LD (데이터 블록 — 실행되지 않으므로 CSP 대상 아님) -->
     {isArticle ? (
       <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
@@ -59,7 +90,7 @@ const currentPath = Astro.url.pathname;
         "publisher": {
           "@type": "Organization",
           "name": "ITMOSS",
-          "logo": { "@type": "ImageObject", "url": `${siteURL}/images/image.png` }
+          "logo": { "@type": "ImageObject", "url": logoURL }
         }
       })} />
     ) : (
@@ -69,219 +100,213 @@ const currentPath = Astro.url.pathname;
         "name": "ITMOSS",
         "alternateName": "아이티모스",
         "url": siteURL,
-        "logo": `${siteURL}/images/image.png`,
-        "description": "아이티모스(ITMOSS) — Vision AI와 블록체인 기반 딥테크 인프라 브랜드",
-        "email": "jaster@itmoss.com",
+        "logo": logoURL,
+        "description": "아이티모스(ITMOSS) — 영상을 만드는 기술로 영상을 지키는 비전 AI 회사",
+        "email": CONTACT_EMAIL,
         "sameAs": []
       })} />
     )}
 
-    <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Google Analytics GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZK5GDSNNR" is:inline></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-FZK5GDSNNR');
-    </script>
-    <title>{title}</title>
-
-    <!-- i18n Script -->
-    <script is:inline>
-      (function() {
-        let lang = localStorage.getItem('i18n-lang');
-        if (!lang) {
-          const userLang = navigator.language || navigator.userLanguage;
-          if (userLang.startsWith('ko')) lang = 'ko';
-          else if (userLang.startsWith('vi')) lang = 'vi';
-          else if (userLang.startsWith('th')) lang = 'th';
-          else if (userLang.startsWith('bn')) lang = 'bn';
-          else if (userLang.startsWith('ja')) lang = 'ja';
-          else if (userLang.startsWith('zh')) lang = 'zh';
-          else lang = 'en';
-        }
-        document.documentElement.lang = lang;
-        window.currentLang = lang;
-
-        window.applyLanguage = function(lang) {
-          document.querySelectorAll('.i18n-text').forEach(el => {
-            el.innerHTML = el.getAttribute('data-' + lang) || el.getAttribute('data-en') || '';
-          });
-          document.querySelectorAll('.lang-selector').forEach(sel => {
-            if (sel.value !== lang) sel.value = lang;
-          });
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-          window.applyLanguage(window.currentLang);
-          document.querySelectorAll('.lang-selector').forEach(sel => {
-            sel.addEventListener('change', (e) => {
-              const newLang = e.target.value;
-              localStorage.setItem('i18n-lang', newLang);
-              document.documentElement.lang = newLang;
-              window.currentLang = newLang;
-              window.applyLanguage(newLang);
-            });
-          });
-        });
-      })();
-    </script>
-
-    <!-- Google Fonts: Inter + Noto Sans KR -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google Fonts: IBM Plex Sans KR + IBM Plex Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <!-- Font Awesome 6 -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body class="font-sans antialiased bg-white text-slate-900">
 
-    <!-- ── NAV ── -->
-    <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2 group">
-          <img id="nav-logo" src="/images/logo-itmoss.png" alt="ITMOSS" class="h-8 w-8 object-contain transition-all duration-300 group-hover:scale-110" style="filter: brightness(0) invert(1);" />
-          <span id="nav-brand-text" class="text-base font-black tracking-tight text-white transition-colors duration-300">ITMOSS</span>
+    <!-- Google Analytics GA4 (초기화는 /scripts/gtag-init.js — 인라인 스크립트 없음) -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} is:inline></script>
+    <script src="/scripts/gtag-init.js" is:inline></script>
+  </head>
+  <body class="site">
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-logo" href={isHome ? '#top' : '/'} aria-label="아이티모스 홈">
+          <img src="/images/brand/logo-on-dark.webp" width="724" height="150" alt="아이티모스 itmoss" />
         </a>
-        <nav class="hidden md:flex items-center gap-6">
-          <a href="https://blog.naver.com/itmoss" target="_blank" rel="noopener noreferrer" class="nav-link">Notes</a>
-          <a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`}>About</a>
-          <select class="lang-selector bg-slate-100 border-none text-slate-600 text-xs rounded-lg px-2 py-1 outline-none mr-2">
-            <option value="en">English</option>
-            <option value="ko">한국어</option>
-            <option value="vi">Tiếng Việt</option>
-            <option value="th">ไทย</option>
-            <option value="bn">বাংলা</option>
-            <option value="ja">日本語</option>
-            <option value="zh">中文</option>
-          </select>
-          <a href="/contact" class="btn btn-primary text-xs px-4 py-2">
-            <i class="fa-regular fa-envelope text-xs"></i>Contact
-          </a>
+        <nav class="site-nav" aria-label="주 메뉴">
+          {nav.map((item) => <a href={anchor(item.id)}>{item.label}</a>)}
         </nav>
-        <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-indigo-600 transition-colors" aria-label="Open menu">
-          <i class="fa-solid fa-bars text-lg"></i>
-        </button>
-      </div>
-      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-3 space-y-1 shadow-lg">
-        <a href="https://blog.naver.com/itmoss" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-indigo-50 hover:text-indigo-600">
-          <i class="fa-regular fa-newspaper w-4 text-center"></i>Notes
-        </a>
-        <a href="/about" class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-indigo-50 hover:text-indigo-600">
-          <i class="fa-regular fa-circle-user w-4 text-center"></i>About
-        </a>
-        <a href="/contact" class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-indigo-50 hover:text-indigo-600">
-          <i class="fa-regular fa-envelope w-4 text-center"></i>Contact
-        </a>
-        <div class="px-3 py-2 border-t border-slate-100 mt-2 pt-2">
-          <select class="lang-selector w-full bg-slate-50 border border-slate-200 text-slate-700 text-sm rounded-xl px-3 py-2 outline-none">
-            <option value="en">English (EN)</option>
-            <option value="ko">한국어 (KO)</option>
-            <option value="vi">Tiếng Việt (VI)</option>
-            <option value="th">ไทย (TH)</option>
-            <option value="bn">বাংলা (BN)</option>
-            <option value="ja">日本語 (JA)</option>
-            <option value="zh">中文 (ZH)</option>
-          </select>
-        </div>
       </div>
     </header>
 
-    <main class="pt-[72px]">
+    <main id="main" class={isArticle ? 'site-main site-article' : 'site-main'}>
       <slot />
     </main>
 
-    <!-- ── FOOTER ── -->
-    <footer class="bg-slate-900 text-white mt-20">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div class="flex flex-col md:flex-row justify-between items-start gap-10">
-          <div class="max-w-xs">
-            <div class="flex items-center gap-2 mb-4">
-              <img src="/images/logo-itmoss.png" alt="ITMOSS" class="h-7 w-7 object-contain brightness-[10] opacity-80" />
-              <span class="text-base font-black tracking-tight text-white">ITMOSS</span>
-            </div>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Deep-tech infrastructure for Vision AI<br />
-              and blockchain convergence.
-            </p>
-            <p class="text-slate-600 text-xs italic mt-2">"Engineering the Media Future."</p>
-          </div>
-          <div class="grid grid-cols-2 gap-8 sm:gap-12 text-sm">
-            <div>
-              <p class="font-semibold mb-3 text-white">Navigate</p>
-              <ul class="space-y-2 text-slate-400">
-                <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
-                <li><a href="https://blog.naver.com/itmoss" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Notes</a></li>
-                <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
-              </ul>
-            </div>
-            <div>
-              <p class="font-semibold mb-3 text-white">Contact</p>
-              <ul class="space-y-2 text-slate-400">
-                <li>
-                  <a href="mailto:jaster@itmoss.com" class="hover:text-white transition-colors break-all">
-                    <i class="fa-solid fa-envelope mr-1.5 text-xs"></i>jaster@itmoss.com
-                  </a>
-                </li>
-                <li>
-                  <a href="https://blog.naver.com/itmoss" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
-                    <i class="fa-solid fa-blog mr-1.5 text-xs"></i>Blog
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-slate-500">
-          <span>© {new Date().getFullYear()} itmoss Inc. All rights reserved.</span>
-          <span class="italic">"Engineering the Media Future."</span>
-        </div>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <a class="site-logo site-logo--footer" href="/" aria-label="아이티모스 홈">
+          <img src="/images/brand/logo-on-dark.webp" width="724" height="150" alt="아이티모스 itmoss" loading="lazy" />
+        </a>
+        <ul class="site-footer__links">
+          <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
+          <li><a href="/privacy/">개인정보처리방침</a></li>
+        </ul>
+        <p class="site-footer__meta">
+          <span>아이티모스 · 경기도 의정부</span>
+          <span>© {new Date().getFullYear()} ITMOSS</span>
+        </p>
       </div>
     </footer>
-
-    <script>
-      // Scroll reveal
-      const observer = new IntersectionObserver(
-        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-        { threshold: 0.1 }
-      );
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-
-      // Sticky nav
-      const header = document.getElementById('site-header');
-      const navLogo = document.getElementById('nav-logo');
-      const navBrandText = document.getElementById('nav-brand-text');
-
-      function setNavScrolled(scrolled: boolean) {
-        if (scrolled) {
-          header?.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
-          if (navLogo) navLogo.style.filter = '';
-          if (navBrandText) { navBrandText.classList.remove('text-white'); navBrandText.classList.add('text-slate-900'); }
-        } else {
-          header?.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
-          if (navLogo) navLogo.style.filter = 'brightness(0) invert(1)';
-          if (navBrandText) { navBrandText.classList.remove('text-slate-900'); navBrandText.classList.add('text-white'); }
-        }
-      }
-
-      const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
-      setNavScrolled(window.scrollY > 20 || !isHomePage);
-      window.addEventListener('scroll', () => setNavScrolled(window.scrollY > 20 || !isHomePage));
-
-      // Mobile menu
-      document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-        document.getElementById('mobile-menu')?.classList.toggle('hidden');
-      });
-    </script>
   </body>
 </html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  html, body.site {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body.site {
+    margin: 0;
+    line-height: var(--leading-body);
+  }
+  body.site a {
+    color: inherit;
+  }
+  body.site a:hover {
+    color: var(--color-signal);
+  }
+  body.site :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: var(--space-4);
+    top: calc(-1 * var(--space-16));
+    z-index: 100;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-signal);
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    top: var(--space-4);
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-ink);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .site-header__inner,
+  .site-footer__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-inline: var(--gutter);
+    box-sizing: border-box;
+  }
+  .site-header__inner {
+    min-height: var(--header-h);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: var(--space-6);
+  }
+  .site-logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+  }
+  .site-logo img {
+    display: block;
+    height: var(--logo-h);
+    width: auto;
+  }
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-7);
+    font-size: var(--text-base);
+  }
+  .site-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    text-decoration: none;
+  }
+  @media (max-width: 640px) {
+    .site-nav {
+      column-gap: var(--space-4);
+      font-size: var(--text-sm);
+    }
+  }
+
+  .site-main {
+    display: block;
+  }
+  .site-article {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: var(--space-16) var(--gutter);
+  }
+  .site-article h1 {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin: 0 0 var(--space-8);
+  }
+  .site-article h2 {
+    font-size: var(--text-xl);
+    margin: var(--space-12) 0 var(--space-4);
+  }
+  .site-article ul {
+    list-style: disc;
+    padding-left: var(--space-6);
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--color-line);
+    color: var(--color-muted);
+    font-size: var(--text-xs);
+  }
+  .site-footer__inner {
+    padding-block: var(--space-8);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-8);
+  }
+  .site-logo--footer img {
+    height: var(--space-7);
+  }
+  .site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .site-footer__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+  }
+  .site-footer__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin: 0;
+  }
+</style>

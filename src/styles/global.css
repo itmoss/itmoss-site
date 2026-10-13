@@ -22,16 +22,7 @@
   --pink-light: #f9a8d4;  /* pink-300 */
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-html, body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: 'Inter', 'Noto Sans KR', -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
+/* 바탕색·글꼴·스크롤은 BaseLayout + tokens.css 가 정한다. 아래는 리뉴얼 전 페이지용 잔여 스타일. */
 
 /* ============================================================
    Animations
@@ -104,10 +95,9 @@ html, body {
    Scroll Reveal
 ============================================================ */
 
+/* 옛 IntersectionObserver 스크립트는 BaseLayout 에서 빠졌다 — 숨기지 않는다. */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 1;
 }
 .reveal.visible {
   opacity: 1;

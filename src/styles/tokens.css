@@ -1,0 +1,67 @@
+/* ============================================================
+   ITMOSS 디자인 토큰 — 색·타이포·간격의 유일한 출처
+   (loops/modu/design.md "디자인 토큰" 계약, 캔버스 Main.dc.html 기준)
+   src/components · src/layouts · src/pages/*.astro 에는 hex·rgb()·hsl() 을 직접 쓰지 않는다.
+============================================================ */
+
+:root {
+  /* 색 — 다크 그래파이트 기본, 우주데브리스 섹션만 밝게 */
+  --color-ink: #101214;            /* 바탕 */
+  --color-paper: #ECEDEA;          /* 본문 글자 / 밝은 섹션 바탕 */
+  --color-signal: #FF6A2B;         /* 강조·CTA·연락 섹션 바탕 */
+  --color-signal-ink: #B23E0C;     /* 밝은 바탕 위 오렌지 글자 (대비용) */
+  --color-muted: #A9ACA6;          /* 보조 문단 (다크 위) */
+  --color-muted-on-paper: #3E413D; /* 보조 문단 (밝은 바탕 위) */
+  --color-faint: #6E716C;          /* 보조 라벨 전용 — 본문 대비 4.5:1 미만 */
+  --color-line: #2A2D2B;           /* 구분선 (다크 위) */
+  --color-line-on-paper: #C9CBC5;  /* 구분선 (밝은 바탕 위) */
+  --color-leaf: #257833;           /* 로고 마크 녹색 — 로고에만 쓴다 */
+
+  /* 타이포 */
+  --font-sans: 'IBM Plex Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --text-xs: 13px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+  --text-3xl: clamp(32px, 5vw, 48px);
+  --text-display: clamp(36px, 7vw, 72px);
+  --leading-tight: 1.2;
+  --leading-body: 1.7;
+  --tracking-mono: 0.12em;
+
+  /* 간격 — 4px 단위 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-30: 120px;
+
+  /* 모양·폭 */
+  --radius-none: 0;
+  --radius-sm: 0;
+  --measure: 68ch;
+  --container: 1200px;
+  --gutter: var(--space-8);
+  --header-h: 72px;
+  --logo-h: 32px;   /* 로고 표시 높이 28~40px (원본 해상도 한계) */
+  --tap-min: 44px;  /* 터치 타깃 최소 */
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: var(--space-5);
+    --logo-h: 28px;
+  }
+}
