@@ -2,7 +2,30 @@
   "permissions": {
     "allow": [
       "Bash(python3 scripts/loop.py:*)",
-      "Bash(bash scripts/work-loop.sh:*)"
+      "Bash(bash scripts/work-loop.sh:*)",
+      "mcp__claude_ai_Google_Drive__search_files",
+      "mcp__claude_ai_Google_Drive__read_file_content",
+      "mcp__claude_ai_Google_Drive__get_file_metadata",
+      "Artifact",
+      "Skill",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(test:*)",
+      "Bash(git rm:*)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(npm i:*)",
+      "Bash(node:*)",
+      "Bash(npx astro:*)",
+      "Bash(npx playwright:*)",
+      "Bash(npx -y lighthouse:*)",
+      "Bash(npx -y skills:*)",
+      "Bash(python3 scripts/gen_images.py:*)",
+      "Bash(python3 -c:*)",
+      "Bash(make images:*)",
+      "Bash(cwebp:*)",
+      "Bash(bash scripts/lighthouse.sh:*)"
     ]
   }
 }
