@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>ITMoss 홈</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#101214}
+a{color:#ECEDEA}a:hover{color:#FF6A2B}
+</style>
+</helmet>
+<div style="background: #101214; color: #ECEDEA; font-family: 'IBM Plex Sans KR', sans-serif; min-height: 100vh">
+
+<header style="max-width: 1200px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
+<a href="#top" style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.12em; text-decoration: none">ITMOSS</a>
+<nav aria-label="주 메뉴" style="display: flex; flex-wrap: wrap; gap: 28px; font-size: 15px">
+<a href="#uzudebris" style="text-decoration: none">우주데브리스</a>
+<a href="#haepick" style="text-decoration: none">해픽 · Vision AI</a>
+<a href="#record" style="text-decoration: none">소식</a>
+<a href="#contact" style="text-decoration: none">연락</a>
+</nav>
+</header>
+
+<section id="top" style="max-width: 1200px; margin: 0 auto; padding: 120px 32px 140px; display: flex; flex-direction: column; gap: 40px">
+<h1 style="margin: 0; font-size: clamp(44px, 7vw, 96px); line-height: 1.05; font-weight: 700; letter-spacing: -0.03em">영상을 만드는 기술로,<br>영상을 지킵니다.</h1>
+<p style="margin: 0; max-width: 620px; font-size: 19px; line-height: 1.7; color: #A9ACA6; font-weight: 300">아이티모스는 스트리밍과 트랜스코딩을 20년 다뤄 온 팀이 만든 비전 AI 회사입니다. 화면 속 사물을 읽는 엔진과, 같은 영상을 찾아내는 엔진을 만듭니다.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#uzudebris" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; background: {{accent}}; color: #101214; font-weight: 500; text-decoration: none">우주데브리스 보기</a>
+<a href="#contact" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1px solid #3A3D3A; text-decoration: none">협업 문의</a>
+</div>
+<div style="margin-top: 40px; border: 1px solid #2A2D2B; aspect-ratio: 16 / 7; display: flex; align-items: center; justify-content: center; color: #6E716C; font-family: 'IBM Plex Mono', monospace; font-size: 13px; text-align: center; padding: 24px">[이미지 HERO — 여러 화면에 흩어진 같은 영상 프레임, 하나만 주황 윤곽선. gpt-image 생성 예정]</div>
+</section>
+
+<section style="border-top: 1px solid #2A2D2B">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #6E716C">01 · 보는 엔진</div>
+<h2 style="margin: 0; font-size: 32px; font-weight: 500">JVL Vision Engine</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #A9ACA6">카메라에 비친 제품과 피부를 읽습니다. 스마트폰과 임베디드 장치에서 돌아가도록 경량화했습니다.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #6E716C">02 · 찾는 엔진</div>
+<h2 style="margin: 0; font-size: 32px; font-weight: 500">영상 지문 대조</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #A9ACA6">화면과 소리에서 고유한 값을 뽑아, 제목이 바뀌고 화질이 낮아져도 같은 영상을 알아봅니다.</p>
+</div>
+</div>
+</section>
+
+<section id="uzudebris" style="background: #ECEDEA; color: #101214">
+<div style="max-width: 1200px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 20px; max-width: 760px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #B23E0C">CASE 01 · 우주데브리스 — 생성 AI 악용 대응</div>
+<h2 style="margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">내 영상과 얼굴이 어디에 쓰이고 있는지, 먼저 알려드립니다.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.7; color: #3E413D">유료로 판 화보와 영상이 무료 사이트에 올라가고, 방송 장면이 짜깁기 숏폼으로 다시 돌고, 계약이 끝난 사진이 쇼핑몰에 남아 있습니다. 소속사도 법무팀도 없는 창작자는 대개 우연히 알게 됩니다. 그 '우연'을 없애는 일을 합니다.</p>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border-top: 2px solid #101214">
+<li style="padding: 28px 24px 28px 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 40px; font-weight: 500">1</span>
+<strong style="font-size: 20px; font-weight: 500">영상을 등록합니다</strong>
+<span style="font-size: 16px; line-height: 1.6; color: #3E413D">채널 주소나 원본 파일을 올리면 끝입니다.</span>
+</li>
+<li style="padding: 28px 24px 28px 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 40px; font-weight: 500">2</span>
+<strong style="font-size: 20px; font-weight: 500">바뀐 제목까지 추적합니다</strong>
+<span style="font-size: 16px; line-height: 1.6; color: #3E413D">원본의 자막과 장면으로 재업로드 제목을 예측하고, 후보만 지문으로 대조합니다.</span>
+</li>
+<li style="padding: 28px 24px 28px 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 40px; font-weight: 500">3</span>
+<strong style="font-size: 20px; font-weight: 500">본인에게만 알립니다</strong>
+<span style="font-size: 16px; line-height: 1.6; color: #3E413D">발견 위치와 플랫폼별 신고 방법을 함께 보내드립니다.</span>
+</li>
+</ol>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+<div style="background: #101214; color: #ECEDEA; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: {{accent}}">지금 · 베타 준비</div>
+<h3 style="margin: 0; font-size: 24px; font-weight: 500">베껴 올린 영상 찾기</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #A9ACA6">유출된 유료 콘텐츠, 자막을 덧입히고 잘라 붙인 재업로드까지 화면과 소리의 지문으로 원본과 대조합니다. 1인 창작자용 월 구독입니다.</p>
+</div>
+<div style="border: 1px solid #101214; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5C5F5A">다음 · 기업·기관용</div>
+<h3 style="margin: 0; font-size: 24px; font-weight: 500">합성된 얼굴 가려내기</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #3E413D">같은 파이프라인에 딥페이크 판별을 더합니다. 본인이 직접 등록한 얼굴만 대조하고, 결과는 단정하지 않고 합성 가능성으로 보여 드립니다.</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; border-top: 1px solid #C9CBC5; padding-top: 40px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 500">이런 분들을 위해 만듭니다</h3>
+<ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; line-height: 1.6; color: #3E413D">
+<li>유료 구독 플랫폼에서 화보·영상을 파는 창작자</li>
+<li>방송 장면이 짜깁기 숏폼으로 도는 스트리머</li>
+<li>계약이 끝난 뒤에도 얼굴이 쓰이는 프리랜서 모델·배우</li>
+<li>소속사 없이 혼자 대응하는 마이크로 인플루언서</li>
+</ul>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 500">함께 쓰는 곳</h3>
+<ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; line-height: 1.6; color: #3E413D">
+<li>소속 크리에이터 수십 명을 매니저가 직접 살피는 중소형 MCN·기획사</li>
+<li>침해 사건을 다루지만 찾는 일은 손으로 하는 법무법인·평판관리 업체</li>
+</ul>
+</div>
+</div>
+<div style="border: 1px solid #C9CBC5; aspect-ratio: 16 / 8; display: flex; align-items: center; justify-content: center; color: #5C5F5A; font-family: 'IBM Plex Mono', monospace; font-size: 13px; text-align: center; padding: 24px">[이미지 — 창작자 대시보드: 발견된 링크 목록. 실제 화면 캡처 또는 gpt-image]</div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
+<a href="https://uzudebris.com" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; background: #101214; color: #ECEDEA; text-decoration: none">내 채널 무료 스캔 받아보기</a>
+<span style="font-size: 15px; color: #3E413D">공개된 콘텐츠를 1회 스캔해 의심 링크 목록을 보내드립니다.</span>
+</div>
+</div>
+</section>
+
+<section id="haepick" style="background: #101214">
+<div style="max-width: 1200px; margin: 0 auto; padding: 128px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 64px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: {{accent}}">CASE 02 · 해픽 — VISION AI</div>
+<h2 style="margin: 0; font-size: clamp(36px, 5vw, 60px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">카메라를 대면,<br>성분을 읽습니다.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.7; color: #A9ACA6">아이티모스의 JVL 비전 엔진이 상용 앱 「해픽」 안에서 실사용자에게 돌아가고 있습니다. 제품을 비추면 인식하고, 성분을 읽어 내 피부 기준으로 맞춰 봅니다.</p>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; border-top: 1px solid #2A2D2B; padding-top: 24px">
+<div><dt style="font-size: 13px; color: #6E716C">출시</dt><dd style="margin: 4px 0 0; font-size: 22px">2025.08</dd></div>
+<div><dt style="font-size: 13px; color: #6E716C">업데이트</dt><dd style="margin: 4px 0 0; font-size: 22px">11회 · v1.0.10</dd></div>
+<div><dt style="font-size: 13px; color: #6E716C">실행 환경</dt><dd style="margin: 4px 0 0; font-size: 22px">온디바이스 경량 모델</dd></div>
+<div><dt style="font-size: 13px; color: #6E716C">현장 검증</dt><dd style="margin: 4px 0 0; font-size: 22px">성수 팝업 7일</dd></div>
+</dl>
+</div>
+<div style="border: 1px solid #2A2D2B; aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center; color: #6E716C; font-family: 'IBM Plex Mono', monospace; font-size: 13px; text-align: center; padding: 24px">[이미지 — 손에 든 화장품을 비추는 폰, 인식 박스와 성분 라벨. 스크롤 시 인식 단계가 차례로 켜짐. gpt-image 생성 예정]</div>
+</div>
+</section>
+
+<section id="record" style="border-top: 1px solid #2A2D2B">
+<div style="max-width: 1200px; margin: 0 auto; padding: 112px 32px; display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; font-size: 32px; font-weight: 500">소식</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+<article style="border: 1px solid #2A2D2B; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #6E716C">2026 · 선정</div>
+<h3 style="margin: 0; font-size: 22px; font-weight: 500; line-height: 1.4">아이티모스 뷰티 AI 플랫폼, GBSA AI 멤버십 기업 선정</h3>
+<a href="#" style="margin-top: auto; font-size: 15px">자세히 보기</a>
+</article>
+<article style="border: 1px solid #2A2D2B; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: {{accent}}">2026.10 · 진출</div>
+<h3 style="margin: 0; font-size: 22px; font-weight: 500; line-height: 1.4">우주데브리스, 「모두의 창업」 2차 1라운드 진출</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #A9ACA6">1인 창작자를 위한 영상 무단 도용 감시 아이디어로 1라운드에 올랐습니다. 멘토기관은 동국대학교 산학협력단입니다.</p>
+<a href="#" style="margin-top: auto; font-size: 15px">자세히 보기</a>
+</article>
+</div>
+<h3 style="margin: 24px 0 0; font-size: 20px; font-weight: 500; color: #A9ACA6">걸어온 길</h3>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+<li style="display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 24px; padding: 20px 0; border-top: 1px solid #2A2D2B"><span style="font-family: 'IBM Plex Mono', monospace; color: #6E716C">2025.12</span><span style="font-size: 18px">성수 팝업 현장 운영 — 실시간 피부 진단</span></li>
+<li style="display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 24px; padding: 20px 0; border-top: 1px solid #2A2D2B"><span style="font-family: 'IBM Plex Mono', monospace; color: #6E716C">2025.08</span><span style="font-size: 18px">해픽 앱스토어 출시</span></li>
+<li style="display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 24px; padding: 20px 0; border-top: 1px solid #2A2D2B; border-bottom: 1px solid #2A2D2B"><span style="font-family: 'IBM Plex Mono', monospace; color: #6E716C">2025.07</span><span style="font-size: 18px">아이티모스 설립</span></li>
+</ol>
+</div>
+</section>
+
+<section id="contact" style="background: {{accent}}; color: #101214">
+<div style="max-width: 1200px; margin: 0 auto; padding: 120px 32px; display: flex; flex-direction: column; gap: 28px">
+<h2 style="margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">영상이 있는 곳이면<br>같이 풀어 볼 수 있습니다.</h2>
+<p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.7">창작자, MCN, 브랜드, 연구기관 모두 환영합니다.</p>
+<a href="mailto:[연락 이메일]" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; background: #101214; color: #ECEDEA; text-decoration: none">[연락 이메일]</a>
+<form style="margin-top: 48px; padding-top: 40px; border-top: 1px solid #101214; display: flex; flex-direction: column; gap: 16px; max-width: 560px">
+<label for="sub-email" style="font-size: 20px; font-weight: 500">새 소식 받아보기</label>
+<span style="font-size: 15px; line-height: 1.6">우주데브리스 베타 오픈과 해픽 업데이트를 메일로 알려드립니다. 한 달에 한 번을 넘기지 않습니다.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<input id="sub-email" type="email" name="email" placeholder="name@example.com" autocomplete="email" style="flex: 1 1 260px; min-height: 48px; padding: 0 16px; border: 1px solid #101214; background: #FFF4EE; color: #101214; font-family: inherit; font-size: 16px">
+<button type="submit" style="min-height: 48px; padding: 0 24px; border: 0; background: #101214; color: #ECEDEA; font-family: inherit; font-size: 16px; cursor: pointer">구독</button>
+</div>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.5">
+<input type="checkbox" name="consent" style="width: 20px; height: 20px; margin: 0; flex: none">
+<span>(필수) 소식 발송을 위한 이메일 수집·이용에 동의합니다. 구독 해지 시 즉시 삭제됩니다. <a href="#" style="color: #101214">자세히</a></span>
+</label>
+</form>
+</div>
+</section>
+
+<footer style="max-width: 1200px; margin: 0 auto; padding: 32px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-size: 13px; color: #6E716C">
+<span>아이티모스 · 경기도 의정부</span>
+<span>© 2026 ITMOSS</span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF6A2B","options":["#FF6A2B","#D7FF3A","#4C8DFF"]},"$preview":{"width":1440,"height":5600}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#FF6A2B' };
+}
+}
+</script>
+</body>
+</html>
