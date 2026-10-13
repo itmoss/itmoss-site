@@ -87,22 +87,22 @@
       "reviewed": "2026-10-13"
     },
     {
-      "check": "node scripts/check-site.mjs build && grep -q 'animation-timeline' src/styles/scroll.css && grep -q 'prefers-reduced-motion' src/styles/scroll.css && grep -q 'IntersectionObserver' src/scripts/scrollfx.js && node scripts/check-site.mjs jsbudget",
+      "check": "node scripts/check-site.mjs build && grep -q 'animation-timeline' src/styles/scroll.css && grep -q 'prefers-reduced-motion' src/styles/scroll.css && grep -q 'IntersectionObserver' src/scripts/scrollfx.js && node scripts/check-site.mjs jsbudget && grep -lq 'IntersectionObserver' dist/_astro/*.js && grep -q 'fx-io' dist/_astro/*.js && ! grep -nE '^[[:space:]]*\\[data-(reveal|step|stage|scene)' src/styles/scroll.css",
       "depends_on": [
-        "F05"
+        "F05",
+        "F18"
       ],
       "desc": "스크롤 연출 기반: src/styles/scroll.css(CSS scroll-driven, @supports animation-timeline) + src/scripts/scrollfx.js(미지원 시 IntersectionObserver 폴백) + reduced-motion 에서 전부 정지·노출. data-reveal / data-step-group·data-step / data-scene·data-stage 계약",
-      "done": false,
+      "done": true,
       "id": "F07",
       "must_not": "grep -rnE \"addEventListener\\(['\\\"]scroll|onscroll|requestAnimationFrame\" src/scripts src/components src/layouts",
-      "notes": "review 2026-10-13 WEAK: check 가 소스 키워드 grep 뿐 — 빌드 산출물에 scrollfx 가 실리는지, 숨김 초기상태가 html.fx-css/fx-io 아래로만 한정되는지(계약: JS 실패 시 내용 보임) 검증 안 함",
+      "notes": "완료 2026-10-13: WEAK 보강: check 에 dist/_astro JS 의 IO·fx-io 포함 + scroll.css data-* 셀렉터가 전부 html.fx-* 한정인지 추가. 코드 변경 없이 통과",
       "owner": "ai",
       "service": "core",
       "returns": {
         "weak": 1
       },
-      "check_fix": "기존 check 뒤에 && grep -lq 'IntersectionObserver' dist/_astro/*.js && grep -q 'fx-io' dist/_astro/*.js && ! grep -nE '^[[:space:]]*\\[data-(reveal|step|stage|scene)' src/styles/scroll.css → 모두 exit 0 (dist JS 에 폴백 포함, scroll.css 의 data-* 셀렉터가 전부 html.fx-* 로 시작)",
-      "check_was": "node scripts/check-site.mjs build && grep -q 'animation-timeline' src/styles/scroll.css && grep -q 'prefers-reduced-motion' src/styles/scroll.css && grep -q 'IntersectionObserver' src/scripts/scrollfx.js && node scripts/check-site.mjs jsbudget"
+      "reviewed": "2026-10-13"
     },
     {
       "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs colors && grep -q 'data-step-group' dist/index.html && test $(grep -o 'data-step=\"' dist/index.html | wc -l) -ge 3 && grep -qE '<svg[^>]*(aria-hidden=\"true\"|role=\"img\")' dist/index.html",
@@ -134,31 +134,37 @@
       "reviewed": "2026-10-13"
     },
     {
-      "check": "node scripts/check-site.mjs build && test $(grep -o 'data-stage=\"' dist/index.html | wc -l) -ge 4 && grep -q 'data-scene=\"haepick\"' dist/index.html && grep -rqE 'position: *sticky' src/components/home/CaseHaepick.astro src/styles/scroll.css",
+      "check": "node scripts/check-site.mjs build && test $(grep -o 'data-stage=\"' dist/index.html | wc -l) -ge 4 && grep -q 'data-scene=\"haepick\"' dist/index.html && grep -rqE 'position: *sticky' src/components/home/CaseHaepick.astro src/styles/scroll.css && node -e 'const fs=require(\"fs\");const h=fs.readFileSync(\"dist/index.html\",\"utf8\");const c=fs.readFileSync(\"src/styles/scroll.css\",\"utf8\");const ok=[\"camera\",\"detect\",\"ingredients\",\"match\"].every(s=>h.includes(\"data-stage=\\\"\"+s+\"\\\"\")&&h.includes(\"data-box=\\\"\"+s+\"\\\"\")&&c.includes(\"animation-timeline: --stage-\"+s));const props=[...c.matchAll(/@keyframes[^{]*\\{([\\s\\S]*?\\})\\s*\\}/g)].flatMap(m=>[...m[1].matchAll(/([a-z-]+)\\s*:/g)].map(x=>x[1]));process.exit(ok&&props.length&&props.every(p=>p===\"opacity\"||p===\"transform\")?0:1)'",
       "depends_on": [
         "F07",
         "F09"
       ],
       "desc": "해픽 인식 장면 연출: 섹션 sticky 고정 후 인식 박스 4단계(data-stage) 점등 — transform/opacity 만",
-      "done": false,
+      "done": true,
       "id": "F10",
       "must_not": "grep -rnE \"addEventListener\\(['\\\"]scroll|onscroll|requestAnimationFrame\" src/scripts src/components src/layouts",
-      "notes": "",
+      "notes": "완료 2026-10-13: WEAK 보강: check 에 4단계(camera·detect·ingredients·match)의 data-stage·data-box·--stage-* view timeline 과 keyframes opacity/transform 한정 검사 추가. 코드 변경 없이 통과",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "returns": {
+        "weak": 1
+      },
+      "reviewed": "2026-10-13"
     },
     {
       "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs copy dist/index.html && node scripts/check-site.mjs colors && node -e 'const h=require(\"fs\").readFileSync(\"dist/index.html\",\"utf8\");const r=h.slice(h.indexOf(\"id=\\\"record\\\"\"));const a=r.indexOf(\"GBSA\"),b=r.indexOf(\"모두의 창업\");const top=h.slice(h.indexOf(\"id=\\\"top\\\"\"),h.indexOf(\"id=\\\"engines\\\"\"));process.exit(a>-1&&b>a&&!top.includes(\"모두의 창업\")&&[\"2025.07\",\"2025.08\",\"2025.12\"].every(d=>r.includes(d))?0:1)' && grep -q '동국대' dist/index.html",
       "depends_on": [
-        "F05"
+        "F05",
+        "F18"
       ],
       "desc": "소식 + 걸어온 길: src/data/news.json(GBSA 선정 → 모두의 창업 2차 1라운드 진출 순서, 같은 카드 형식) + 타임라인(2025.07 설립 / 2025.08 해픽 출시 / 2025.12 성수 팝업), GBSA 로고 webp. 대표 이력은 F39 회사 소개의 만드는 사람들에서",
-      "done": false,
+      "done": true,
       "id": "F11",
       "must_not": "grep -q '모두의 창업' src/components/home/Hero.astro",
-      "notes": "",
+      "notes": "완료 2026-10-13: news.json(GBSA→모두의 창업, 같은 카드, href 없으면 링크 없음)+Timeline 5줄(최신 위). GBSA 로고 webp 는 밝은 판 위. Hero 주석의 '모두의 창업'이 must_not 에 걸려 문구 바꿈. 대표 이력은 F39",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "reviewed": "2026-10-13"
     },
     {
       "check": "node --test --test-reporter=tap tests/unit/ | tee /dev/stderr | grep -E '^# pass' | awk '{exit !($3>=6)}' && node --test --test-reporter=tap tests/unit/ | grep -q '^# fail 0'",
@@ -175,15 +181,21 @@
     {
       "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs colors && grep -q 'id=\"contact\"' dist/index.html && grep -q 'href=\"mailto:' dist/index.html && grep -q 'href=\"/privacy/\"' dist/index.html && grep -q 'CONTACT_EMAIL' src/config/site.js",
       "depends_on": [
-        "F05"
+        "F05",
+        "F18"
       ],
       "desc": "연락 섹션: 문의 메일 링크(CONTACT_EMAIL, src/config/site.js) + 협업 문구 + 개인정보처리방침 링크. 구독 폼은 넣지 않음 (다음 단계)",
       "done": false,
       "id": "F13",
       "must_not": "grep -rqiE 'subscribe-form|stibee' src",
-      "notes": "",
+      "notes": "review 2026-10-13 WEAK: check 가 mailto 존재·site.js 의 CONTACT_EMAIL 글자만 봄 — Contact.astro 에 주소를 하드코딩해도, mailto 주소가 설정값과 달라도 통과",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "returns": {
+        "weak": 1
+      },
+      "check_fix": "기존 check 에 추가: node -e 'const fs=require(\"fs\");const e=(fs.readFileSync(\"src/config/site.js\",\"utf8\").match(/CONTACT_EMAIL\\s*=\\s*\"([^\"]+@[^\"]+)\"/)||[])[1];const h=fs.readFileSync(\"dist/index.html\",\"utf8\");const c=fs.readFileSync(\"src/components/home/Contact.astro\",\"utf8\");process.exit(e&&h.includes(\"href=\\\"mailto:\"+e+\"\\\"\")&&/import\\s*\\{[^}]*CONTACT_EMAIL[^}]*\\}\\s*from/.test(c)&&!/[\\w.-]+@[\\w-]+\\.[a-z]{2,}/i.test(c)?0:1)' → exit 0 (dist mailto 가 설정값과 같고, Contact.astro 는 import 하며 주소 리터럴 없음)",
+      "check_was": "node scripts/check-site.mjs build && node scripts/check-site.mjs colors && grep -q 'id=\"contact\"' dist/index.html && grep -q 'href=\"mailto:' dist/index.html && grep -q 'href=\"/privacy/\"' dist/index.html && grep -q 'CONTACT_EMAIL' src/config/site.js"
     },
     {
       "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs copy dist/privacy/index.html && for w in 'Google Analytics' '쿠키' '거부' '문의'; do grep -q \"$w\" dist/privacy/index.html || exit 1; done",
@@ -212,18 +224,22 @@
       "service": "core"
     },
     {
-      "check": "git check-ignore -q .env && python3 scripts/gen_images.py --dry-run | grep -q hero && python3 -c \"import json;d=json.load(open('scripts/image_prompts.json'));s=d['slots'];assert 4<=len(s)<=6 and all(x.get('prompt') and x.get('alt') for x in s)\"",
+      "check": "git check-ignore -q .env && python3 scripts/gen_images.py --dry-run | grep -q hero && python3 -c \"import json;d=json.load(open('scripts/image_prompts.json'));s=d['slots'];assert 4<=len(s)<=6 and all(x.get('prompt') and x.get('alt') for x in s)\" && out=$(OPENAI_API_KEY= python3 scripts/gen_images.py hero 2>&1) && echo \"$out\" | grep -q 'OPENAI_API_KEY 가 없어' && git diff --quiet public/images/renewal/ && test -z \"$(git status --porcelain public/images/renewal/)\"",
       "depends_on": [
         "F01",
         "F35"
       ],
       "desc": "이미지 생성 스크립트 이식: scripts/gen_images.py(citycanvas gen_landing_images.py 방식, gpt-image-2, webp ≤300KB, stdlib) + scripts/image_prompts.json(4~6 슬롯·글자 없는 컷) + make images. 키 없으면 생성 없이 0 종료, --dry-run 지원",
-      "done": false,
+      "done": true,
       "id": "F16",
       "must_not": "grep -rnE 'sk-[A-Za-z0-9_-]{20,}' scripts src public",
-      "notes": "",
+      "notes": "완료 2026-10-13: WEAK 보강: check 에 키 빈 값 경로 추가(exit 0·안내 메시지·public/images/renewal 불변, untracked 포함). 코드 변경 없이 통과. ⚠ .env 키 히스토리 정리·교체는 여전히 사람이 push 전에",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "returns": {
+        "weak": 1
+      },
+      "reviewed": "2026-10-13"
     },
     {
       "check": "grep -q '^OPENAI_API_KEY=.' .env",
@@ -246,12 +262,13 @@
         "F17"
       ],
       "desc": "이미지 생성·적용: make images 로 히어로·우주데브리스 대시보드·해픽 폰 장면(+선택 배경) 생성(총 30장 이내), 매니페스트(프롬프트·alt·크기) 커밋, 컴포넌트에 width/height 지정해 연결",
-      "done": false,
+      "done": true,
       "id": "F18",
       "must_not": "grep -rqE 'Gemini_Generated|\\.png\"' src/components",
-      "notes": "",
+      "notes": "완료 2026-10-13: 4장 생성(누적 4/30, 글자·로고 없음 확인). RenewalImage.astro 가 매니페스트로 img(width/height)·없으면 빈 프레임. bg 미사용. images check 가 /about 도 봐서 5원칙 PNG→public/images/about/principle-N.webp 로 바꿈(F39 재사용)",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "reviewed": "2026-10-13"
     },
     {
       "check": "",
@@ -544,10 +561,21 @@
       ],
       "notes": "팀 = Jaster 1명. 사진 없으면 이니셜·로고 마크",
       "done": false
+    },
+    {
+      "id": "F40",
+      "service": "core",
+      "desc": "make dev 재시작 무오류: scripts/dev-smoke.sh 작성 — astro dev 를 별도 포트(4331)로 띄워 준비될 때까지 기다리고, /, /privacy/, /preview/canvas/ 를 요청해 200 확인, 서버 로그에 error/Error/✘/[ERROR]/failed 가 없어야 통과, 끝나면 서버 종료(trap). 같은 과정을 연속 2회(재시작) 수행. 지금 나는 에러는 원인을 고쳐서 없앤다",
+      "check": "bash scripts/dev-smoke.sh",
+      "must_not": "grep -qE \"logLevel *: *['\\\"](silent|error)['\\\"]|--silent|2>/dev/null *\\|\\| *true\" astro.config.mjs package.json Makefile scripts/dev-smoke.sh",
+      "owner": "ai",
+      "depends_on": [],
+      "notes": "",
+      "done": false
     }
   ],
   "goal": "itmoss.com 리뉴얼 — 블록체인 서사 제거, 비전 AI(우주데브리스·해픽) 중심 스크롤형 한 페이지 + 구독 폼·개인정보처리방침",
-  "planned_at": "2026-10-13T18:27:17+09:00",
+  "planned_at": "2026-10-13T20:32:03+09:00",
   "rules": 3,
   "services": [
     "core",

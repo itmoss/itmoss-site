@@ -70,3 +70,27 @@
 2026-10-13 [core] F09 완료: CaseHaepick: 4단계 li[data-stage] 정적 목록(F10 이 sticky 장면으로 감쌀 것), 지표 dl, 스토어 링크. 앱스토어 URL 은 짧은 형식(/kr/app/id6748489765) — 인코딩 URL 의 %가 must_not 에 걸림. 폰 이미지 F16
 2026-10-13 [core] F07 review 전 notes: 완료 2026-10-13: scrollfx.js 가 html.fx-css(view() 지원)/fx-io(IO 폴백) 부여, reduced-motion 은 클래스 없음. data-step 지연은 1~4 까지만. astro vite assetsInlineLimit:0 — 인라인 스크립트는 CSP 차단
 2026-10-13 [core] F07 review WEAK: check 가 소스 키워드 grep 뿐 — 빌드 산출물에 scrollfx 가 실리는지, 숨김 초기상태가 html.fx-css/fx-io 아래로만 한정되는지(계약: JS 실패 시 내용 보임) 검증 안 함 · check 보강: 기존 check 뒤에 && grep -lq 'IntersectionObserver' dist/_astro/*.js && grep -q 'fx-io' dist/_astro/*.js && ! grep -nE '^[[:space:]]*\[data-(reveal|step|stage|scene)' src/styles/scroll.css → 모두 exit 0 (dist JS 에 폴백 포함, scroll.css 의 data-* 셀렉터가 전부 html.fx-* 로 시작)
+2026-10-13 [core] F07 계획 수정: depends_on — 사용자 요청: 이미지(F16·F18) 먼저 — 순서용 선행
+2026-10-13 [core] F11 계획 수정: depends_on — 사용자 요청: 이미지(F16·F18) 먼저 — 순서용 선행
+2026-10-13 [core] F13 계획 수정: depends_on — 사용자 요청: 이미지(F16·F18) 먼저 — 순서용 선행
+2026-10-13 [core] F16 완료: gen_images.py(--dry-run·슬롯 인자·누적 30장 상한·crop 16:7)+image_prompts.json 4슬롯(bg 는 decorative). ⚠ .env(OPENAI 키)가 F03 커밋 19d231c 에 실림 — untrack 했으나 히스토리 정리·키 교체는 사람이, push 전에
+2026-10-13 계획: 항목 1개 추가 (F40)
+2026-10-13 [core] F18 완료: 4장 생성(누적 4/30, 글자·로고 없음 확인). RenewalImage.astro 가 매니페스트로 img(width/height)·없으면 빈 프레임. bg 미사용. images check 가 /about 도 봐서 5원칙 PNG→public/images/about/principle-N.webp 로 바꿈(F39 재사용)
+2026-10-13 [core] F07 계획 수정: check — WEAK 보강
+2026-10-13 [core] F07 완료 전 notes: review 2026-10-13 WEAK: check 가 소스 키워드 grep 뿐 — 빌드 산출물에 scrollfx 가 실리는지, 숨김 초기상태가 html.fx-css/fx-io 아래로만 한정되는지(계약: JS 실패 시 내용 보임) 검증 안 함
+2026-10-13 [core] F07 보강 완료: WEAK 보강: check 에 dist/_astro JS 의 IO·fx-io 포함 + scroll.css data-* 셀렉터가 전부 html.fx-* 한정인지 추가. 코드 변경 없이 통과
+2026-10-13 [core] F16 review 전 notes: 완료 2026-10-13: gen_images.py(--dry-run·슬롯 인자·누적 30장 상한·crop 16:7)+image_prompts.json 4슬롯(bg 는 decorative). ⚠ .env(OPENAI 키)가 F03 커밋 19d231c 에 실림 — untrack 했으나 히스토리 정리·키 교체는 사람이, push 전에
+2026-10-13 [core] F16 review WEAK: check 가 dry-run·프롬프트 형식만 봄 — design 필수인 '키 없으면 생성 없이 0 종료' 경로 미검증 · check 보강: check 에 추가: OPENAI_API_KEY= python3 scripts/gen_images.py hero 2>&1 | grep -q 'OPENAI_API_KEY 가 없어' && git diff --quiet public/images/renewal/ (키 빈 값이면 exit 0·메시지 출력·이미지/매니페스트 불변)
+2026-10-13 [core] F16 계획 수정: check — WEAK 보강
+2026-10-13 [core] F16 완료 전 notes: review 2026-10-13 WEAK: check 가 dry-run·프롬프트 형식만 봄 — design 필수인 '키 없으면 생성 없이 0 종료' 경로 미검증
+2026-10-13 [core] F16 보강 완료: WEAK 보강: check 에 키 빈 값 경로 추가(exit 0·안내 메시지·public/images/renewal 불변, untracked 포함). 코드 변경 없이 통과. ⚠ .env 키 히스토리 정리·교체는 여전히 사람이 push 전에
+2026-10-13 [core] F10 완료: 폰 sticky(≤760px 해제)+단계 li min-height 50svh. 폰 위 인식 박스 [data-box] 4개: CSS 는 단계별 이름 view-timeline(timeline-scope), IO 폴백은 :has(.is-in). scrollfx.js 무변경. 박스 % 좌표는 현 haepick-phone.webp 기준
+2026-10-13 [core] F11 완료: news.json(GBSA→모두의 창업, 같은 카드, href 없으면 링크 없음)+Timeline 5줄(최신 위). GBSA 로고 webp 는 밝은 판 위. Hero 주석의 '모두의 창업'이 must_not 에 걸려 문구 바꿈. 대표 이력은 F39
+2026-10-13 [core] F10 review 전 notes: 완료 2026-10-13: 폰 sticky(≤760px 해제)+단계 li min-height 50svh. 폰 위 인식 박스 [data-box] 4개: CSS 는 단계별 이름 view-timeline(timeline-scope), IO 폴백은 :has(.is-in). scrollfx.js 무변경. 박스 % 좌표는 현 haepick-phone.webp 기준
+2026-10-13 [core] F10 review WEAK: check 의 data-stage≥4 는 F09 에서 이미 충족 — 실질 검증은 sticky grep 하나뿐. 인식 박스(data-box) 점등·단계 이름·transform/opacity 만 애니메이션이 미검증 · check 보강: 기존 check 뒤에 && node -e 'const fs=require("fs");const h=fs.readFileSync("dist/index.html","utf8");const c=fs.readFileSync("src/styles/scroll.css","utf8");const ok=["camera","detect","ingredients","match"].every(s=>h.includes("data-stage=\""+s+"\"")&&h.includes("data-box=\""+s+"\"")&&c.includes("animation-timeline: --stage-"+s));const props=[...c.matchAll(/@keyframes[^{]*\{([\s\S]*?\})\s*\}/g)].flatMap(m=>[...m[1].matchAll(/([a-z-]+)\s*:/g)].map(x=>x[1]));process.exit(ok&&props.length&&props.every(p=>p==="opacity"||p==="transform")?0:1)' → exit 0 (4단계 이름이 data-stage·data-box·이름 붙은 view timeline 에 모두 있고, scroll.css keyframes 속성이 opacity/transform 뿐)
+2026-10-13 [core] F10 계획 수정: check — WEAK 보강
+2026-10-13 [core] F10 완료 전 notes: review 2026-10-13 WEAK: check 의 data-stage≥4 는 F09 에서 이미 충족 — 실질 검증은 sticky grep 하나뿐. 인식 박스(data-box) 점등·단계 이름·transform/opacity 만 애니메이션이 미검증
+2026-10-13 [core] F10 보강 완료: WEAK 보강: check 에 4단계(camera·detect·ingredients·match)의 data-stage·data-box·--stage-* view timeline 과 keyframes opacity/transform 한정 검사 추가. 코드 변경 없이 통과
+2026-10-13 [core] F13 완료: src/config/site.js 신설(CONTACT_EMAIL만). Contact.astro: 잉크 바탕 mailto 버튼+aria-label+/privacy/ 안내. /privacy/ 페이지 자체는 아직 없음(F14). 구독 설정은 넣지 않음
+2026-10-13 [core] F13 review 전 notes: 완료 2026-10-13: src/config/site.js 신설(CONTACT_EMAIL만). Contact.astro: 잉크 바탕 mailto 버튼+aria-label+/privacy/ 안내. /privacy/ 페이지 자체는 아직 없음(F14). 구독 설정은 넣지 않음
+2026-10-13 [core] F13 review WEAK: check 가 mailto 존재·site.js 의 CONTACT_EMAIL 글자만 봄 — Contact.astro 에 주소를 하드코딩해도, mailto 주소가 설정값과 달라도 통과 · check 보강: 기존 check 에 추가: node -e 'const fs=require("fs");const e=(fs.readFileSync("src/config/site.js","utf8").match(/CONTACT_EMAIL\s*=\s*"([^"]+@[^"]+)"/)||[])[1];const h=fs.readFileSync("dist/index.html","utf8");const c=fs.readFileSync("src/components/home/Contact.astro","utf8");process.exit(e&&h.includes("href=\"mailto:"+e+"\"")&&/import\s*\{[^}]*CONTACT_EMAIL[^}]*\}\s*from/.test(c)&&!/[\w.-]+@[\w-]+\.[a-z]{2,}/i.test(c)?0:1)' → exit 0 (dist mailto 가 설정값과 같고, Contact.astro 는 import 하며 주소 리터럴 없음)
