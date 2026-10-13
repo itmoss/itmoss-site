@@ -1,0 +1,10 @@
+{
+  "source": "docs/renewal/brand/itmoss-logo-source.png",
+  "files": [
+    { "file": "logo-on-dark.webp", "src": "/images/brand/logo-on-dark.webp", "width": 724, "height": 150 },
+    { "file": "logo-on-light.webp", "src": "/images/brand/logo-on-light.webp", "width": 724, "height": 150 },
+    { "file": "logo-mark.webp", "src": "/images/brand/logo-mark.webp", "width": 225, "height": 150 },
+    { "file": "favicon-32.png", "src": "/images/brand/favicon-32.png", "width": 32, "height": 32 },
+    { "file": "apple-touch-icon.png", "src": "/images/brand/apple-touch-icon.png", "width": 180, "height": 180 }
+  ]
+}
