@@ -84,3 +84,17 @@ clean:
 	@echo "🗑️  빌드 산출물 및 의존성 정리 중..."
 	rm -rf dist node_modules package-lock.json
 	@echo "✅ 정리 완료! → make install 로 재설치하세요."
+
+# ============================================================================
+# 작업 루프 (workloop) — plan → next → review
+#   대시보드는 workloop 저장소에서 한 번만 띄운다: ./workloop dash
+# ============================================================================
+
+loop: ## 작업 만들기 (NAME=작업명 [BRIEF=/절대경로/brief.md])
+	@bash commands/new-loop.sh $(NAME) $(BRIEF)
+
+loop-status: ## 작업 진행 현황 — 서비스 레인별 (NAME 생략 시 전체)
+	@python3 scripts/loop.py status $(NAME)
+
+work-loop: ## 자동 반복 — /work-next·/work-review 를 새 세션으로 번갈아 (NAME=작업 [SVC=서비스] [MAX=8])
+	@bash scripts/work-loop.sh $(NAME) $(SVC) --max $(or $(MAX),8)

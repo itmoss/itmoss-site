@@ -2,3 +2,7 @@ node_modules
 dist
 .astro
 
+.cache/workloop/
+loops/*/.lock
+loops/*/*.tmp
+loops/*/.autoloop*
