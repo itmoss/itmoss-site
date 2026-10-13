@@ -2,6 +2,7 @@
  *   [data-reveal]                         화면에 들어오면 등장
  *   [data-step-group] > [data-step="n"]   순서대로 등장
  *   [data-scene] [data-stage]             sticky 장면 안에서 단계별 점등
+ *   [data-scene] [data-box="<stage>"]     같은 이름 단계에 맞춰 켜지는 인식 박스 (해픽 폰 위)
  *
  * 숨김 초기 상태는 html.fx-css / html.fx-io 아래에서만 둔다 (클래스는 src/scripts/scrollfx.js 가 붙인다).
  * JS·CSS 가 실패하면 클래스가 없으므로 내용은 그대로 보인다.
@@ -42,6 +43,28 @@
     animation-timeline: view();
     animation-range: cover 30% cover 50%;
   }
+
+  /* 장면의 인식 박스 [data-box] 는 같은 이름의 단계가 지날 때 켜진다 — 단계마다 이름 붙은 view timeline */
+  html.fx-css [data-scene] {
+    timeline-scope: --stage-camera, --stage-detect, --stage-ingredients, --stage-match;
+  }
+  html.fx-css [data-scene] [data-stage="camera"]      { view-timeline-name: --stage-camera; }
+  html.fx-css [data-scene] [data-stage="detect"]      { view-timeline-name: --stage-detect; }
+  html.fx-css [data-scene] [data-stage="ingredients"] { view-timeline-name: --stage-ingredients; }
+  html.fx-css [data-scene] [data-stage="match"]       { view-timeline-name: --stage-match; }
+  html.fx-css [data-scene] [data-box] {
+    animation: fx-box linear both;
+    animation-range: cover 30% cover 50%;
+  }
+  html.fx-css [data-scene] [data-box="camera"]      { animation-timeline: --stage-camera; }
+  html.fx-css [data-scene] [data-box="detect"]      { animation-timeline: --stage-detect; }
+  html.fx-css [data-scene] [data-box="ingredients"] { animation-timeline: --stage-ingredients; }
+  html.fx-css [data-scene] [data-box="match"]       { animation-timeline: --stage-match; }
+}
+
+@keyframes fx-box {
+  from { opacity: 0; transform: scale(1.06); }
+  to   { opacity: 1; transform: none; }
 }
 
 /* 2순위: IntersectionObserver 폴백 */
@@ -67,15 +90,29 @@ html.fx-io [data-scene] [data-stage] {
 html.fx-io [data-scene] [data-stage].is-in {
   opacity: 1;
 }
+html.fx-io [data-scene] [data-box] {
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity var(--fx-dur) var(--fx-ease), transform var(--fx-dur) var(--fx-ease);
+}
+html.fx-io [data-scene]:has([data-stage="camera"].is-in) [data-box="camera"],
+html.fx-io [data-scene]:has([data-stage="detect"].is-in) [data-box="detect"],
+html.fx-io [data-scene]:has([data-stage="ingredients"].is-in) [data-box="ingredients"],
+html.fx-io [data-scene]:has([data-stage="match"].is-in) [data-box="match"] {
+  opacity: 1;
+  transform: none;
+}
 
 /* 동작 줄이기: 애니메이션 없음, 모두 보임 */
 @media (prefers-reduced-motion: reduce) {
   html.fx-css [data-reveal],
   html.fx-css [data-step-group] > [data-step],
   html.fx-css [data-scene] [data-stage],
+  html.fx-css [data-scene] [data-box],
   html.fx-io [data-reveal],
   html.fx-io [data-step-group] > [data-step],
-  html.fx-io [data-scene] [data-stage] {
+  html.fx-io [data-scene] [data-stage],
+  html.fx-io [data-scene] [data-box] {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
