@@ -1,3 +1,66 @@
 ---
-// #record 뒷부분 — 걸어온 길 + 대표 이력. 골격(F05): 비어 있음. 내용은 F11.
+// #record 뒷부분 — 걸어온 길. 문구: docs/renewal/copy.md "## 걸어온 길". 최신이 위.
+// 대표 이력은 회사 소개(#about, F39)의 만드는 사람들로 옮겼다.
+const milestones = [
+  { date: '2026.10', text: '우주데브리스, 「모두의 창업」 2차 1라운드 진출' },
+  { date: '2026', text: 'GBSA AI 멤버십 기업 선정' },
+  { date: '2025.12', text: '성수 팝업 현장 운영 — 해픽 현장 피부 진단' },
+  { date: '2025.08', text: '해픽 앱스토어 출시' },
+  { date: '2025.07', text: '아이티모스 설립' },
+];
 ---
+<div class="timeline">
+  <h3 class="timeline__title">걸어온 길</h3>
+  <ol class="timeline__list" data-step-group>
+    {milestones.map((m, i) => (
+      <li class="timeline__item" data-step={i + 1}>
+        <span class="timeline__date">{m.date}</span>
+        <span class="timeline__text">{m.text}</span>
+      </li>
+    ))}
+  </ol>
+</div>
+
+<style>
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .timeline__title {
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+  }
+  .timeline__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--color-line);
+  }
+  .timeline__item {
+    display: grid;
+    grid-template-columns: 10ch minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: baseline;
+    padding-block: var(--space-5);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .timeline__date {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+  .timeline__text {
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    word-break: keep-all;
+  }
+  @media (max-width: 480px) {
+    .timeline__item {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-1);
+    }
+  }
+</style>

@@ -1,4 +1,100 @@
 ---
-// #record 앞부분 — 소식. 골격(F05): 제목만. news.json 카드는 F11.
+// #record 앞부분 — 소식. 문구: docs/renewal/copy.md "## 소식".
+// src/data/news.json 배열 순서 = 화면 순서 (GBSA 먼저). 모든 소식은 같은 카드 형식.
+// href 가 없으면 링크 없이 카드만 (모두의 창업 링크 대상은 미결정).
+import news from '../../data/news.json';
 ---
-<h2 id="record-title" class="section__title section__title--sm">소식</h2>
+<div class="news">
+  <h2 id="record-title" class="section__title section__title--sm">소식</h2>
+  <ul class="news__list">
+    {news.map((item) => (
+      <li class="news__card" data-reveal>
+        <p class="news__meta">{item.date} · {item.tag}</p>
+        <h3 class="news__title">{item.title}</h3>
+        {item.body && <p class="news__body">{item.body}</p>}
+        {item.logo && (
+          <span class="news__logo">
+            <img
+              src={item.logo}
+              alt={item.logoAlt}
+              width={item.logoWidth}
+              height={item.logoHeight}
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
+        )}
+        {item.href && (
+          <a class="news__link" href={item.href} target="_blank" rel="noopener">
+            자세히 보기 <span aria-hidden="true">↗</span><span class="visually-hidden">(새 창)</span>
+          </a>
+        )}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .news {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+  .news__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: var(--space-6);
+  }
+  .news__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-8);
+    border: 1px solid var(--color-line);
+  }
+  .news__meta {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-signal);
+  }
+  .news__title {
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    word-break: keep-all;
+  }
+  .news__body {
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    color: var(--color-muted);
+    word-break: keep-all;
+  }
+  /* 로고가 남색·회색이라 어두운 바탕에서 안 보인다 — 밝은 판 위에 얹는다 */
+  .news__logo {
+    align-self: flex-start;
+    display: inline-flex;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-paper);
+  }
+  .news__logo img {
+    display: block;
+    height: 32px;
+    width: auto;
+  }
+  .news__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    margin-top: auto;
+    align-self: flex-start;
+    color: var(--color-signal);
+    text-underline-offset: 4px;
+  }
+</style>
