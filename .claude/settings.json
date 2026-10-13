@@ -25,7 +25,11 @@
       "Bash(python3 -c:*)",
       "Bash(make images:*)",
       "Bash(cwebp:*)",
-      "Bash(bash scripts/lighthouse.sh:*)"
+      "Bash(bash scripts/lighthouse.sh:*)",
+      "Bash(magick:*)",
+      "Bash(bash scripts/make-logo.sh:*)",
+      "Bash(curl -sf http://localhost:*)",
+      "Bash(pkill -f astro dev:*)"
     ]
   }
 }
