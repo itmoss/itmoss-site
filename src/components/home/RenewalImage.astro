@@ -1,0 +1,56 @@
+---
+// public/images/renewal/manifest.json 의 슬롯 하나를 <img> 로 그린다 (width/height·alt 는 매니페스트 값).
+// 매니페스트에 슬롯이 아직 없으면 같은 비율의 빈 프레임으로 자리를 잡는다 (CLS 방지). 이미지 생성: make images.
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  slot: string;
+  /** 매니페스트에 슬롯이 없을 때 빈 프레임 비율, 예: '16 / 7' */
+  ratio: string;
+  priority?: boolean;
+  class?: string;
+}
+
+interface Entry {
+  slot: string;
+  file: string;
+  width: number;
+  height: number;
+  alt: string;
+  decorative?: boolean;
+}
+
+const { slot, ratio, priority = false, class: className } = Astro.props;
+
+const manifestPath = path.join(process.cwd(), 'public/images/renewal/manifest.json');
+const images: Entry[] = fs.existsSync(manifestPath)
+  ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')).images ?? []
+  : [];
+const entry = images.find((e) => e.slot === slot);
+---
+{entry ? (
+  <img
+    class:list={['renewal-img', className]}
+    src={`/images/renewal/${entry.file}`}
+    width={entry.width}
+    height={entry.height}
+    alt={entry.decorative ? '' : entry.alt}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : 'auto'}
+    decoding={priority ? 'sync' : 'async'}
+  />
+) : (
+  <span class:list={['renewal-img', 'renewal-img--empty', className]} style={`aspect-ratio: ${ratio}`} aria-hidden="true"></span>
+)}
+
+<style>
+  .renewal-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .renewal-img--empty {
+    border: 1px solid var(--color-line);
+  }
+</style>

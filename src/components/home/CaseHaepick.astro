@@ -1,7 +1,9 @@
 ---
 // #haepick CASE 02 — data-scene="haepick". 문구: docs/renewal/copy.md "## 해픽".
 // 숫자는 출처 있는 사실만 (design.md 문구 원칙). 다운로드·사용자 수·정확도 같은 수치는 넣지 않는다.
-// 인식 단계 sticky 장면 연출은 F10, 폰 이미지는 F16.
+// 인식 단계 sticky 장면 연출은 F10, 폰 이미지는 매니페스트 슬롯 haepick-phone.
+import RenewalImage from './RenewalImage.astro';
+
 const stages = [
   { stage: 'camera', label: '비추기', body: '카메라에 제품을 비춥니다.' },
   { stage: 'detect', label: '제품 인식', body: '화면 속 제품을 찾아 표시합니다.' },
@@ -32,15 +34,20 @@ const stores = [
       </p>
     </header>
 
-    <ol class="hp-stages">
-      {stages.map((s, i) => (
-        <li class="hp-stages__item" data-stage={s.stage}>
-          <span class="hp-stages__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-          <h3 class="hp-stages__title">{s.label}</h3>
-          <p class="hp-stages__body">{s.body}</p>
-        </li>
-      ))}
-    </ol>
+    <div class="hp-scene">
+      <figure class="hp-phone">
+        <RenewalImage slot="haepick-phone" ratio="2 / 3" />
+      </figure>
+      <ol class="hp-stages">
+        {stages.map((s, i) => (
+          <li class="hp-stages__item" data-stage={s.stage}>
+            <span class="hp-stages__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="hp-stages__title">{s.label}</h3>
+            <p class="hp-stages__body">{s.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
 
     <dl class="hp-facts">
       {facts.map((f) => (
@@ -70,6 +77,26 @@ const stores = [
 </section>
 
 <style>
+  .hp-scene {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-12);
+    align-items: start;
+  }
+  .hp-phone {
+    margin: 0;
+    max-width: 440px;
+  }
+  @media (max-width: 760px) {
+    .hp-scene {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-8);
+    }
+    .hp-phone {
+      max-width: 320px;
+    }
+  }
+
   .hp-stages {
     margin: 0;
     padding: 0;

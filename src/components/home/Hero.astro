@@ -1,8 +1,7 @@
 ---
 // #top 히어로. 문구: docs/renewal/copy.md "## 히어로". 모두의 창업 소식은 넣지 않는다.
-// 히어로 이미지(F16)가 생기기 전에는 같은 비율(16:7)의 장면 프레임으로 자리를 잡는다 (CLS 방지).
-const screens = Array.from({ length: 6 }, (_, i) => i);
-const marked = 3;
+// 히어로 이미지는 매니페스트 슬롯 hero (16:7). 첫 화면이라 fetchpriority=high.
+import RenewalImage from './RenewalImage.astro';
 ---
 <section id="top" class="hero">
   <div class="container hero__inner">
@@ -15,13 +14,7 @@ const marked = 3;
       <a class="btn btn--ghost" href="#contact">협업 문의</a>
     </div>
 
-    <div class="hero__frame" aria-hidden="true">
-      {screens.map((i) => (
-        <span class:list={['hero__screen', { 'hero__screen--marked': i === marked }]}>
-          <span class="hero__scene"></span>
-        </span>
-      ))}
-    </div>
+    <RenewalImage slot="hero" ratio="16 / 7" priority class="hero__image" />
   </div>
 </section>
 
@@ -56,41 +49,8 @@ const marked = 3;
   }
 
   /* 여러 화면에 흩어진 같은 장면 — 하나만 시그널 윤곽선 */
-  .hero__frame {
+  .hero__inner :global(.hero__image) {
     margin-top: var(--space-10);
-    aspect-ratio: 16 / 7;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
-    padding: var(--space-3);
-    border: 1px solid var(--color-line);
-  }
-  .hero__screen {
-    position: relative;
-    border: 1px solid var(--color-line);
-    overflow: hidden;
-  }
-  .hero__scene {
-    position: absolute;
-    inset: 22% 18% 22% 30%;
-    border: 1px solid var(--color-line);
-  }
-  .hero__scene::after {
-    content: '';
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 30%;
-    background: var(--color-line);
-  }
-  .hero__screen:nth-child(2n) .hero__scene { inset: 18% 30% 26% 16%; }
-  .hero__screen:nth-child(3n) .hero__scene { inset: 26% 22% 18% 24%; }
-  .hero__screen--marked {
-    outline: 2px solid var(--color-signal);
-    outline-offset: -1px;
-  }
-  .hero__screen--marked .hero__scene {
-    border-color: var(--color-signal);
   }
 
   @media (max-width: 640px) {
@@ -98,10 +58,7 @@ const marked = 3;
       padding-block: var(--space-20) var(--space-16);
       gap: var(--space-8);
     }
-    .hero__frame {
-      aspect-ratio: 4 / 3;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: repeat(3, minmax(0, 1fr));
+    .hero__inner :global(.hero__image) {
       margin-top: var(--space-4);
     }
   }
