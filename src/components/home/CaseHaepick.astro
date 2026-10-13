@@ -1,6 +1,26 @@
 ---
 // #haepick CASE 02 — data-scene="haepick". 문구: docs/renewal/copy.md "## 해픽".
-// 골격(F05): 머리만. 지표·앱 링크·B2B 안내는 F09, 인식 단계 장면은 F10.
+// 숫자는 출처 있는 사실만 (design.md 문구 원칙). 다운로드·사용자 수·정확도 같은 수치는 넣지 않는다.
+// 인식 단계 sticky 장면 연출은 F10, 폰 이미지는 F16.
+const stages = [
+  { stage: 'camera', label: '비추기', body: '카메라에 제품을 비춥니다.' },
+  { stage: 'detect', label: '제품 인식', body: '화면 속 제품을 찾아 표시합니다.' },
+  { stage: 'ingredients', label: '성분 읽기', body: '표기된 성분을 읽어 옵니다.' },
+  { stage: 'match', label: '피부 맞춤', body: '내 피부 기준으로 맞는 성분과 주의할 성분을 나눠 봅니다.' },
+];
+
+const facts = [
+  { label: '출시', value: '2025.08' },
+  { label: '업데이트', value: '11회 · v1.0.10' },
+  { label: '실행 환경', value: '온디바이스 경량 모델' },
+  { label: '현장 검증', value: '성수 팝업 7일 (2025.12.17–23)' },
+];
+
+// 스토어 URL 은 짧은 형식 — 한글 슬러그를 퍼센트 인코딩한 긴 URL 은 쓰지 않는다.
+const stores = [
+  { href: 'https://apps.apple.com/kr/app/id6748489765', label: 'App Store 에서 해픽 보기' },
+  { href: 'https://play.google.com/store/apps/details?id=com.woodang.haepick_client&hl=ko', label: 'Google Play 에서 해픽 보기' },
+];
 ---
 <section id="haepick" class="section" data-scene="haepick" aria-labelledby="haepick-title">
   <div class="container section__inner">
@@ -11,5 +31,136 @@
         아이티모스의 JVL 비전 엔진이 상용 앱 「해픽」 안에서 실사용자에게 돌아가고 있습니다. 제품을 비추면 인식하고, 성분을 읽어 내 피부 기준으로 맞춰 봅니다.
       </p>
     </header>
+
+    <ol class="hp-stages">
+      {stages.map((s, i) => (
+        <li class="hp-stages__item" data-stage={s.stage}>
+          <span class="hp-stages__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="hp-stages__title">{s.label}</h3>
+          <p class="hp-stages__body">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+
+    <dl class="hp-facts">
+      {facts.map((f) => (
+        <div class="hp-facts__item">
+          <dt class="hp-facts__label">{f.label}</dt>
+          <dd class="hp-facts__value">{f.value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="hp-actions">
+      <ul class="hp-stores">
+        {stores.map((s) => (
+          <li>
+            <a class="btn btn--ghost hp-stores__btn" href={s.href} rel="noopener">
+              {s.label} <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="hp-b2b">
+        화장품 브랜드와 매장에 맞춘 인식 기능은 협업으로 만듭니다.
+        <a class="hp-b2b__link" href="#contact">협업 문의 <span aria-hidden="true">→</span></a>
+      </p>
+    </div>
   </div>
 </section>
+
+<style>
+  .hp-stages {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    border-top: 1px solid var(--color-line);
+  }
+  .hp-stages__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-8) var(--space-6) var(--space-8) 0;
+  }
+  .hp-stages__num {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-signal);
+  }
+  .hp-stages__title {
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    word-break: keep-all;
+  }
+  .hp-stages__body {
+    margin: 0;
+    max-width: 32ch;
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    color: var(--color-muted);
+    word-break: keep-all;
+  }
+
+  .hp-facts {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .hp-facts__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-6) var(--space-6) var(--space-6) 0;
+  }
+  .hp-facts__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+  .hp-facts__value {
+    margin: 0;
+    font-size: var(--text-lg);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    word-break: keep-all;
+  }
+
+  .hp-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .hp-stores {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  .hp-stores__btn {
+    gap: var(--space-2);
+  }
+  .hp-b2b {
+    margin: 0;
+    max-width: var(--measure);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    color: var(--color-muted);
+    word-break: keep-all;
+  }
+  .hp-b2b__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-left: var(--space-2);
+    color: var(--color-signal);
+    text-underline-offset: 4px;
+  }
+</style>
