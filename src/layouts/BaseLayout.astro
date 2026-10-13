@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/tokens.css';
+import '../styles/scroll.css';
 
 // .mdx 의 layout 으로 쓰일 때는 frontmatter 가 Astro.props.frontmatter 로 들어온다.
 const props = { ...(Astro.props.frontmatter ?? {}), ...Astro.props };
@@ -154,6 +155,9 @@ const nav = [
         </p>
       </div>
     </footer>
+
+    <!-- 스크롤 연출 (번들 모듈 — 인라인 아님) -->
+    <script src="../scripts/scrollfx.js"></script>
   </body>
 </html>
 

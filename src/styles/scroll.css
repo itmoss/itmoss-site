@@ -1,0 +1,84 @@
+/* 스크롤 연출 — 마크업 계약은 loops/modu/design.md "스크롤 연출 마크업 계약".
+ *   [data-reveal]                         화면에 들어오면 등장
+ *   [data-step-group] > [data-step="n"]   순서대로 등장
+ *   [data-scene] [data-stage]             sticky 장면 안에서 단계별 점등
+ *
+ * 숨김 초기 상태는 html.fx-css / html.fx-io 아래에서만 둔다 (클래스는 src/scripts/scrollfx.js 가 붙인다).
+ * JS·CSS 가 실패하면 클래스가 없으므로 내용은 그대로 보인다.
+ *   fx-css: animation-timeline: view() 지원 → CSS 만으로 스크롤에 묶인 애니메이션
+ *   fx-io : 미지원 → IntersectionObserver 가 .is-in 을 붙이고 transition 으로 등장
+ * transform·opacity 만 움직인다. */
+
+@keyframes fx-rise {
+  from { opacity: 0; transform: translateY(var(--fx-shift)); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fx-light {
+  from { opacity: var(--fx-dim); }
+  to   { opacity: 1; }
+}
+
+:root {
+  --fx-shift: var(--space-6);
+  --fx-dim: 0.25;
+  --fx-dur: 600ms;
+  --fx-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* 1순위: CSS scroll-driven */
+@supports (animation-timeline: view()) {
+  html.fx-css [data-reveal],
+  html.fx-css [data-step-group] > [data-step] {
+    animation: fx-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 80%;
+  }
+  html.fx-css [data-step-group] > [data-step="2"] { animation-range: entry 15% entry 95%; }
+  html.fx-css [data-step-group] > [data-step="3"] { animation-range: entry 30% cover 40%; }
+  html.fx-css [data-step-group] > [data-step="4"] { animation-range: entry 45% cover 45%; }
+
+  html.fx-css [data-scene] [data-stage] {
+    animation: fx-light linear both;
+    animation-timeline: view();
+    animation-range: cover 30% cover 50%;
+  }
+}
+
+/* 2순위: IntersectionObserver 폴백 */
+html.fx-io [data-reveal],
+html.fx-io [data-step-group] > [data-step] {
+  opacity: 0;
+  transform: translateY(var(--fx-shift));
+  transition: opacity var(--fx-dur) var(--fx-ease), transform var(--fx-dur) var(--fx-ease);
+}
+html.fx-io [data-step-group] > [data-step="2"] { transition-delay: 120ms; }
+html.fx-io [data-step-group] > [data-step="3"] { transition-delay: 240ms; }
+html.fx-io [data-step-group] > [data-step="4"] { transition-delay: 360ms; }
+html.fx-io [data-reveal].is-in,
+html.fx-io [data-step-group].is-in > [data-step] {
+  opacity: 1;
+  transform: none;
+}
+
+html.fx-io [data-scene] [data-stage] {
+  opacity: var(--fx-dim);
+  transition: opacity var(--fx-dur) var(--fx-ease);
+}
+html.fx-io [data-scene] [data-stage].is-in {
+  opacity: 1;
+}
+
+/* 동작 줄이기: 애니메이션 없음, 모두 보임 */
+@media (prefers-reduced-motion: reduce) {
+  html.fx-css [data-reveal],
+  html.fx-css [data-step-group] > [data-step],
+  html.fx-css [data-scene] [data-stage],
+  html.fx-io [data-reveal],
+  html.fx-io [data-step-group] > [data-step],
+  html.fx-io [data-scene] [data-stage] {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
