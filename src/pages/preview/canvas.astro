@@ -1,0 +1,25 @@
+---
+// 디자인 캔버스 시안 미리보기 (dev 전용). prod 빌드에서는 / 로 리다이렉트만 내보낸다.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+if (import.meta.env.PROD) {
+  return Astro.redirect('/');
+}
+
+const ACCENT = '#FF6A2B';
+const src = readFileSync(join(process.cwd(), 'docs/renewal/canvas/Main.dc.html'), 'utf8');
+
+// 캔버스 런타임(support.js · <x-dc> · data-dc-script)은 저장소에 없으므로 걷어낸다.
+// <helmet> 안의 폰트 <link>·<style> 은 <head> 로 옮겨 살린다.
+const helmet = src.match(/<helmet>([\s\S]*?)<\/helmet>/)?.[1] ?? '';
+const html = src
+  .replace(/<script[^>]*src="\.\/support\.js"[^>]*><\/script>\s*/, '')
+  .replace(/<script[^>]*data-dc-script[\s\S]*?<\/script>\s*/, '')
+  .replace(/<helmet>[\s\S]*?<\/helmet>\s*/, '')
+  .replace(/<\/?x-dc>\s*/g, '')
+  .replace('</head>', `${helmet}</head>`)
+  .replace(/^<!doctype html>\s*/i, '')
+  .replaceAll('{{accent}}', ACCENT);
+---
+<Fragment set:html={html} />
