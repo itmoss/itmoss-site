@@ -1,0 +1,36 @@
+{
+  "note": "gen_images.py 가 읽는 슬롯 정의. alt 는 docs/renewal/copy.md 와 같은 문구. 화면 문구는 전부 DOM 이 얹으므로 컷에는 글자·로고·실제 얼굴이 없어야 한다 — 보이면 그 파일을 지우고 다시 만든다.",
+  "guard": "No text, no letters, no numbers, no readable labels or signage, no logos, no brand marks, no app store badges, no watermarks anywhere in the frame. Wherever interface text would appear, use plain grey bars and blocks only. No recognizable faces. Dark graphite palette (#101214) with soft neutral greys and exactly one signal orange accent (#FF6A2B). Calm, precise, editorial product imagery; generous negative space.",
+  "slots": [
+    {
+      "slot": "hero",
+      "file": "hero.webp",
+      "size": "1536x1024",
+      "crop": "16:7",
+      "alt": "여러 화면에 흩어진 같은 영상 장면 가운데 하나에만 주황색 윤곽선이 그려진 그림",
+      "prompt": "A wide, quiet grid of six floating video screens, slightly different sizes and tilts, hovering in a dark graphite void. Every screen shows the same abstract scene — a simple silhouette of a figure against a soft gradient — re-cropped, re-colored and degraded differently on each screen. Exactly one screen is traced with a thin glowing signal orange outline; all others stay muted grey. Subtle depth, minimal 3D render, matte surfaces, the screens arranged in a loose horizontal band across the middle of the frame."
+    },
+    {
+      "slot": "uzudebris-dashboard",
+      "file": "uzudebris-dashboard.webp",
+      "size": "1536x1024",
+      "alt": "우주데브리스 화면 예시 — 발견된 의심 링크가 목록으로 정리된 대시보드",
+      "prompt": "A clean laptop screen mockup on a dark graphite desk, three-quarter view, showing a minimal web dashboard: a left column of small video thumbnails, a main list of rows each made of grey placeholder bars and a small thumbnail, one row highlighted with a signal orange marker, and a thin progress strip at the top. All interface text is rendered as plain grey bars, never letters. Soft studio light, shallow depth of field."
+    },
+    {
+      "slot": "haepick-phone",
+      "file": "haepick-phone.webp",
+      "size": "1024x1536",
+      "alt": "손에 든 화장품을 스마트폰 카메라로 비추자 제품 인식 박스와 성분 라벨이 나타난 장면",
+      "prompt": "A hand holding a smartphone up to a plain unbranded cosmetic bottle held in the other hand, close-up, vertical composition. On the phone screen the camera view shows the same bottle framed by a thin signal orange recognition box, with three small rounded label chips floating beside it rendered as blank grey pills. The bottle itself is completely blank with no label. Only hands are visible, no face. Dark graphite background, soft rim light."
+    },
+    {
+      "slot": "bg",
+      "file": "bg-texture.webp",
+      "size": "1536x1024",
+      "alt": "어두운 바탕에 옅은 영상 프레임 윤곽이 겹친 배경 무늬",
+      "decorative": true,
+      "prompt": "An abstract, nearly black graphite background texture made of very faint overlapping video frame outlines and scan lines, low contrast, with one tiny distant signal orange glint off-center. Designed to sit behind white text, so the whole frame stays dark and even."
+    }
+  ]
+}

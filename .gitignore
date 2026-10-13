@@ -2,6 +2,10 @@ node_modules
 dist
 .astro
 
+# 비밀 (OPENAI_API_KEY 등)
+.env
+.env.*
+
 .cache/workloop/
 loops/*/.lock
 loops/*/*.tmp

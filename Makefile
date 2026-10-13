@@ -1,4 +1,4 @@
-.PHONY: dev build preview install clean check help alias
+.PHONY: dev build preview install clean check help alias images
 
 # ============================================================================
 # itmoss-site (Astro) Makefile
@@ -78,6 +78,11 @@ preview:
 	@echo "👁️  빌드 미리보기 서버 시작 중..."
 	@echo "🌐 http://localhost:4321"
 	npm run preview
+
+# 홈 이미지 생성 (루트 .env 의 OPENAI_API_KEY, 키 없으면 아무것도 안 함)
+#   make images SLOTS=hero · make images DRY=1
+images:
+	python3 scripts/gen_images.py $(if $(DRY),--dry-run) $(SLOTS)
 
 # 정리
 clean:
