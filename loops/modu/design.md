@@ -219,3 +219,50 @@ brief 에 디자인 스킬 6개 추가(전역 설치 완료). 항목은 그대�
 - ⚠ `deploy.yml` 은 develop push 마다 GitHub Pages 에 배포한다. 따라서 **develop 을 push 하면 그 시점의 리뉴얼 진행분이 itmoss.com 에 바로 나간다.** 자동 반복은 `--no-push` 로 돌리고, push 는 사람이 상태를 보고 한다 (부분 배포 여부 = 미결정 11번).
 - 롤백: 배포된 경우 해당 커밋 revert 후 push.
 - 헤드리스 세션 권한: `.claude/settings.json` 허용 목록에 Drive 읽기 · Artifact · Skill · 빌드/테스트 명령(npm run · node · npx astro/playwright/lighthouse · gen_images · make images 등)을 추가했다.
+
+## 변경 2026-10-13 (5)
+사용자 결정: **구독 폼(스티비)을 이번 범위에서 뺀다 — 다음 단계에서 한다.** 위 계약의 "구독 폼" 절, CSP 의 `stibee.com`(connect-src·form-action), 개인정보처리방침의 구독 항목, 끝 기준의 구독 1회 통과는 이번에 적용하지 않는다.
+
+- loop.py 에 항목 삭제가 없어 해당 항목은 **사람 항목 + `[제외 · 나중에]`** 로 바꿔 AI 가 집지 않게 했다: F12(subscribe.js·단위 테스트) · F20(스티비 설정) · F21(스티비 연동) · F22(실구독 확인) · F31(구독 e2e). 다시 할 때는 owner·desc 를 되돌리고 의존을 다시 건다.
+- 남은 항목에서 구독 부분을 덜었다:
+
+| id | 바꾼 것 |
+| :--- | :--- |
+| F02 | check 에서 `## 구독 폼` 절 요구 삭제 |
+| F13 | 연락 섹션만 (메일 링크 + `/privacy/` 링크), 의존 F05 만. must_not: `src` 에 subscribe-form·stibee 가 생기면 경계 위반 |
+| F14 | 처리방침은 GA4(쿠키·이용 기록·목적·거부 방법)·시행일·문의처만 |
+| F23 | README 의 `## 구독 폼 설정` 요구 삭제, 의존 F16 만 |
+| F26 | 코드 리뷰 범위 = CSP(GA4 호스트)·외부 링크·이미지·키 노출, 의존 F15·F18 |
+| F27 | 정보통신망법(광고성 정보) 절 삭제, 의존 F02·F14 |
+| F34 | 단위 테스트 단계 삭제, 의존에서 F31 삭제 |
+
+- CSP 는 `connect-src 'self'` + GA4 호스트, `form-action 'self'` 로 둔다.
+- F01: 헤드리스 세션이 캔버스를 Artifact 대신 Claude Docs 도구로 읽으려다 두 번 막혀, 캔버스 사본(`docs/renewal/canvas/Main.dc.html`)은 계획 세션이 넣었다. `sources.md` 는 F01 세션이 Drive 에서 작성한 것(stash 에서 복원). 둘 다 커밋됨 — F01 은 다음 세션이 check 통과로 done 처리한다.
+
+## 변경 2026-10-13 (6)
+사용자 요청: **디자인 캔버스 시안을 `http://localhost:4321/` 에서 직접 보며 시뮬레이션한다.**
+
+- 새 항목 **F35** (core, F01 뒤): `src/pages/preview/canvas.astro` → dev 서버에서 `/preview/canvas/` 로 캔버스 `Main.dc.html` 을 렌더.
+  - 캔버스 런타임(`support.js`, `<x-dc>`, `<helmet>`, `data-dc-script`)은 저장소에 없으므로 걷어내고, `<helmet>` 안의 폰트 `<link>`·`<style>` 은 그대로 살리며, `{{accent}}` 는 `#FF6A2B` 로 치환한다.
+  - **dev 전용**: prod 빌드(`import.meta.env.PROD`)에서는 `/` 로 리다이렉트만 내보낸다 → 배포 산출물에 시안 문구가 들어가지 않는다 (must_not 이 확인). 따라서 `check-site copy` 등 산출물 검사와 충돌하지 않는다.
+  - 시안 파일의 hex 색은 미리보기 전용이라 `check-site colors` 범위(`src/pages/*.astro` 최상위) 밖인 `src/pages/preview/` 에 둔다.
+- 순서: 시안 확인을 먼저 할 수 있게 F03 · F04 · F16 의 depends_on 에 F35 를 추가했다 (F02 → F35 → 나머지).
+- 실제 리뉴얼 페이지 `/` 는 이전처럼 F05 부터 바뀐다. 그 전까지 `/` 는 기존 페이지 그대로라 비교용으로 쓸 수 있다.
+
+## 변경 2026-10-13 (7)
+사용자 결정: **로고를 새 로고(잎 모양 녹색 마크 + 소문자 워드마크 `itmoss`)로 바꾼다.** 원본: `docs/renewal/brand/itmoss-logo-source.png` (842×203, 배경이 불투명한 거의 흰색 #FEFEFC, 마크 #257833, 글자 #151F1D).
+
+- 새 항목 **F36** (core, F01 뒤): `scripts/make-logo.sh`(ImageMagick)로 배경 제거·변환 → `public/images/brand/`
+  | 파일 | 용도 |
+  | :--- | :--- |
+  | `logo-on-dark.webp` | 다크 그래파이트 위 (헤더·푸터 기본) — 워드마크를 밝은 색(`--color-paper` 계열)으로, 마크는 녹색 유지 |
+  | `logo-on-light.webp` | 밝은 배경 위 (원색) — 우주데브리스 밝은 섹션 등 |
+  | `logo-mark.webp` | 마크만 |
+  | `favicon-32.png` · `apple-touch-icon.png`(180) | 파비콘 |
+  | `manifest.json` | 파일별 width·height (`<img>` 에 지정) |
+- **F03** 수정: 헤더·푸터 로고 = `logo-on-dark.webp`, 파비콘 교체, 옛 `logo-itmoss.png` 참조 금지(must_not), 토큰에 `--color-leaf: #257833` 추가. 의존 F01·F35·F36.
+- 캔버스 헤더의 텍스트 로고(`ITMOSS`, Plex Mono)는 이미지 로고로 대체한다. 본문에서 회사 이름은 "아이티모스" / "ITMOSS" 그대로 쓴다.
+- 접근성: 로고 `<img alt="아이티모스 itmoss">`, 홈 링크로 감싼다. 로고는 WCAG 대비 기준 예외지만 다크 배경에서 워드마크가 읽혀야 하므로 밝게 바꾼다.
+- 리스크: 원본이 저해상도 PNG 라 2배 이상 키우면 흐려진다 → 표시 높이 28~40px. **SVG 또는 고해상도 원본이 있으면 교체**(미결정 12).
+- 미결정 13: 로고 녹색(#257833)과 사이트 강조색 시그널 오렌지(#FF6A2B)를 같이 쓸지. 기본안: 녹색은 로고에만, 강조색은 오렌지 유지.
+- 헤드리스 세션 허용 목록에 `magick` · `bash scripts/make-logo.sh` · dev 확인용 `curl -sf http://localhost:*` · `pkill -f astro dev` 추가.
