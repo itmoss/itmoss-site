@@ -211,3 +211,11 @@ brief 에 디자인 스킬 6개 추가(전역 설치 완료). 항목은 그대�
 | `emil-design-eng` | F07, F08, F10 | 스크롤 연출·인터랙션 판단, 과한 모션 억제 |
 | `web-design-guidelines` | F24 | 간격·타이포·정보 위계 리뷰 (design-critique 와 함께, 결과는 같은 문서) |
 | `accessibility` | F25 | WCAG 2.2 코드 검토 (판정 기준은 AA, accessibility.md 에 합침) |
+
+## 변경 2026-10-13 (4)
+사용자 결정: **작업 브랜치 `renewal/2026-10` 을 만들지 않고 현재 브랜치(develop)에서 작업한다.** 위 "배포 순서와 롤백"의 브랜치 문장을 이 절이 대체한다.
+
+- F01 에서 브랜치 생성·확인을 뺐다 (desc·check 수정).
+- ⚠ `deploy.yml` 은 develop push 마다 GitHub Pages 에 배포한다. 따라서 **develop 을 push 하면 그 시점의 리뉴얼 진행분이 itmoss.com 에 바로 나간다.** 자동 반복은 `--no-push` 로 돌리고, push 는 사람이 상태를 보고 한다 (부분 배포 여부 = 미결정 11번).
+- 롤백: 배포된 경우 해당 커밋 revert 후 push.
+- 헤드리스 세션 권한: `.claude/settings.json` 허용 목록에 Drive 읽기 · Artifact · Skill · 빌드/테스트 명령(npm run · node · npx astro/playwright/lighthouse · gen_images · make images 등)을 추가했다.

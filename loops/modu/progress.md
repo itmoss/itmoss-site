@@ -6,3 +6,7 @@
 2026-10-13 [core] F03 계획 수정: must_not — 경계 정리: 인라인 스크립트 허용·와일드카드 금지
 2026-10-13 [core] F01 실패 전 notes: 캔버스: claude.ai/artifact/28a6iHFjhkLriitJzDw81j project/Main.dc.html
 2026-10-13 [core] F01 실패: 헤드리스 권한 없음: git branch/switch 승인 필요, Google Drive read_file_content·Claude Docs read 미허용 → 대화형 세션에서 실행하거나 권한 허용 필요
+2026-10-13 [core] F01 계획 수정: desc, check — 사용자 결정: 브랜치 생성 없이 현재 브랜치(develop)에서 작업
+2026-10-13 [core] F01 보류 해제 (이전 사유: 헤드리스 권한 없음: git branch/switch 승인 필요, Google Drive read_file_content·Claude Docs read 미허용 → 대화형 세션에서 실행하거나 권한 허용 필요)
+2026-10-13 [core] F01 실패 전 notes: 실패 2026-10-13: 헤드리스 권한 없음: git branch/switch 승인 필요, Google Drive read_file_content·Claude Docs read 미허용 → 대화형 세션에서 실행하거나 권한 허용 필요
+2026-10-13 [core] F01 실패: sources.md 작성 완료(Drive 2건 읽음). 캔버스만 남음: Claude Docs read 미허용 → artifact 28a6iHFjhkLriitJzDw81j 의 Main.dc.html 을 docs/renewal/canvas/ 에 사람이 저장하거나 권한 허용

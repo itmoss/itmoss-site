@@ -9,13 +9,13 @@
     {
       "id": "F01",
       "service": "core",
-      "desc": "브랜치 renewal/2026-10 생성 + 원문 스냅숏: Drive 최종 지원서·피벗 계획서 발췌를 docs/renewal/sources.md 에(파일 id 표기, 지원서 우선 규칙 명시), 디자인 캔버스 Main.dc.html 사본을 docs/renewal/canvas/ 에 저장",
-      "check": "git rev-parse --verify -q renewal/2026-10 >/dev/null && test -s docs/renewal/sources.md && grep -q 1JmxnFEIxVgG_TqgYZ7nPgjEYhKWfmYIv docs/renewal/sources.md && grep -q 1ndaljIToDnBJ-XjzxHROODf3V8BhEHew docs/renewal/sources.md && test -s docs/renewal/canvas/Main.dc.html",
+      "desc": "원문 스냅숏 (브랜치 생성 없음, 현재 브랜치에서): Drive 최종 지원서·피벗 계획서 발췌를 docs/renewal/sources.md 에(파일 id 표기, 지원서 우선 규칙 명시), 디자인 캔버스 Main.dc.html 사본을 docs/renewal/canvas/ 에 저장",
+      "check": "test -s docs/renewal/sources.md && grep -q 1JmxnFEIxVgG_TqgYZ7nPgjEYhKWfmYIv docs/renewal/sources.md && grep -q 1ndaljIToDnBJ-XjzxHROODf3V8BhEHew docs/renewal/sources.md && test -s docs/renewal/canvas/Main.dc.html",
       "owner": "ai",
       "depends_on": [],
-      "notes": "실패 2026-10-13: 헤드리스 권한 없음: git branch/switch 승인 필요, Google Drive read_file_content·Claude Docs read 미허용 → 대화형 세션에서 실행하거나 권한 허용 필요",
+      "notes": "실패 2026-10-13: sources.md 작성 완료(Drive 2건 읽음). 캔버스만 남음: Claude Docs read 미허용 → artifact 28a6iHFjhkLriitJzDw81j 의 Main.dc.html 을 docs/renewal/canvas/ 에 사람이 저장하거나 권한 허용",
       "done": false,
-      "hold": "헤드리스 권한 없음: git branch/switch 승인 필요, Google Drive read_file_content·Claude Docs read 미허용 → 대화형 세션에서 실행하거나 권한 허용 필요"
+      "hold": "sources.md 작성 완료(Drive 2건 읽음). 캔버스만 남음: Claude Docs read 미허용 → artifact 28a6iHFjhkLriitJzDw81j 의 Main.dc.html 을 docs/renewal/canvas/ 에 사람이 저장하거나 권한 허용"
     },
     {
       "id": "F02",
