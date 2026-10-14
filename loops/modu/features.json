@@ -219,12 +219,13 @@
         "F39"
       ],
       "desc": "기존 페이지 정리: /about·/contact 는 astro redirects 로 /#about·/#contact, notes 설명문·public/llms.txt·기본 meta 에서 블록체인 서사 제거, 쓰지 않는 Gemini 원본 PNG 삭제(F39 가 변환한 webp 는 유지) → 산출물 전체 금지어 0",
-      "done": false,
+      "done": true,
       "id": "F15",
       "must_not": "ls public/images | grep -q Gemini_Generated",
-      "notes": "",
+      "notes": "완료 2026-10-14: about·contact.astro 삭제→astro redirects /#about·/#contact. Gemini PNG 10개+images/about webp(renewal/about 로 복사됨) 삭제. llms.txt·notes 설명 블록체인 제거. git rm 스테이징됨, 커밋은 루프가",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "reviewed": "2026-10-14"
     },
     {
       "check": "git check-ignore -q .env && python3 scripts/gen_images.py --dry-run | grep -q hero && python3 -c \"import json;d=json.load(open('scripts/image_prompts.json'));s=d['slots'];assert 4<=len(s)<=6 and all(x.get('prompt') and x.get('alt') for x in s)\" && out=$(OPENAI_API_KEY= python3 scripts/gen_images.py hero 2>&1) && echo \"$out\" | grep -q 'OPENAI_API_KEY 가 없어' && git diff --quiet public/images/renewal/ && test -z \"$(git status --porcelain public/images/renewal/)\"",
@@ -337,7 +338,7 @@
       "reviewed": "2026-10-14"
     },
     {
-      "check": "grep -qx '남은 주요 지적: 0' docs/renewal/reviews/design-critique.md && node scripts/check-site.mjs build && node scripts/check-site.mjs copy && node scripts/check-site.mjs colors",
+      "check": "grep -qx '남은 주요 지적: 0' docs/renewal/reviews/design-critique.md && grep -q 'border-radius: var(--radius-none)' src/pages/index.astro && ! grep -rqE 'border-left|border-inline-start' src/components/home && ! grep -qE \"padStart|uzu-flow__(no|num|step)|>0[1-4]<|'0[1-4]'|i \\+ 1\" src/components/home/UzuFlowDiagram.astro && node scripts/check-site.mjs build && node scripts/check-site.mjs copy && node scripts/check-site.mjs colors",
       "depends_on": [
         "F08",
         "F10",
@@ -348,11 +349,15 @@
         "F18"
       ],
       "desc": "디자인 크리틱(design:design-critique) — 섹션별 스크린샷(390/1280px) 기준 위계·일관성·사용성 검토, 주요 지적 반영, 결과 docs/renewal/reviews/design-critique.md",
-      "done": false,
+      "done": true,
       "id": "F24",
-      "notes": "",
+      "notes": "완료 2026-10-14: WEAK 보강: check 에 .btn radius-none·home 좌측 보더 없음·UzuFlowDiagram 번호 텍스트 없음 grep 추가. 코드 변경 없음(3건은 3226161 에 이미 반영)",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "returns": {
+        "weak": 1
+      },
+      "reviewed": "2026-10-14"
     },
     {
       "check": "grep -qx 'AA 위반: 0' docs/renewal/reviews/accessibility.md && npx playwright test tests/e2e/a11y.spec.mjs",
@@ -378,9 +383,10 @@
       "done": false,
       "id": "F26",
       "must_not": "grep -rniE 'accesstoken|x-api-key|api[_-]?key|sk-[A-Za-z0-9_-]{20,}' src public scripts",
-      "notes": "",
+      "notes": "실패 2026-10-14: 경계 재검토 필요: must_not 이 gen_images.py 의 OPENAI_API_KEY·api_key(이름, design·F16 이 요구)에 걸려 항상 exit 0. 키 값 패턴(sk-…)만 보게 조정 필요. 사전 점검: 인라인 스크립트 0·이미지 OK·News gbsa 링크 noreferrer 누락",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "hold": "경계 재검토 필요: must_not 이 gen_images.py 의 OPENAI_API_KEY·api_key(이름, design·F16 이 요구)에 걸려 항상 exit 0. 키 값 패턴(sk-…)만 보게 조정 필요. 사전 점검: 인라인 스크립트 0·이미지 OK·News gbsa 링크 noreferrer 누락"
     },
     {
       "check": "f=docs/renewal/reviews/compliance.md; for h in '## 개인정보보호법' '## 변호사법' '## 사람 판단 필요'; do grep -qF \"$h\" $f || exit 1; done",
@@ -540,8 +546,9 @@
         "F05",
         "F15"
       ],
-      "notes": "주소 대신 회사명·메일만. 영문은 다음 단계(다국어)",
-      "done": false
+      "notes": "완료 2026-10-14: 옛 i18n/T.astro(사용처 없음) 삭제(git rm 스테이징), BaseLayout lang prop 제거→'ko' 고정. 주소는 원래 없었음(푸터·JSON-LD 메일만). 커밋은 루프가",
+      "done": true,
+      "reviewed": "2026-10-14"
     },
     {
       "id": "F38",
@@ -569,8 +576,9 @@
         "F11",
         "F38"
       ],
-      "notes": "팀 = Jaster 1명. 사진 없으면 이니셜·로고 마크",
-      "done": false
+      "notes": "완료 2026-10-14: About.astro #about(record·contact 사이), 내비 '회사'. 5원칙 그림은 public/images/about/*.webp 를 renewal/about/ 로 복사(1408×768). 옛 원본 정리는 F15. 사진 대신 이니셜 J 마크",
+      "done": true,
+      "reviewed": "2026-10-14"
     },
     {
       "id": "F40",
@@ -580,8 +588,9 @@
       "must_not": "grep -qE \"logLevel *: *['\\\"](silent|error)['\\\"]|--silent|2>/dev/null *\\|\\| *true\" astro.config.mjs package.json Makefile scripts/dev-smoke.sh",
       "owner": "ai",
       "depends_on": [],
-      "notes": "",
-      "done": false
+      "notes": "완료 2026-10-14: scripts/dev-smoke.sh: 4331 포트 astro dev 2회, /·/privacy/·/preview/canvas/ 200, 로그 'ready in' 존재·에러 없음. 현재 에러 0건이라 코드 수정 없음. 커밋은 루프가",
+      "done": true,
+      "reviewed": "2026-10-14"
     },
     {
       "id": "F41",
@@ -594,8 +603,9 @@
         "F10",
         "F18"
       ],
-      "notes": "스크린샷 사용 허락(우당네트웍)은 F19 사람 확인 — 배포 전",
-      "done": false
+      "notes": "완료 2026-10-14: #haepick section--light(새 토큰 paper-bright+위 경계선). App Store 아이콘·스크린샷 4장 webp 자체호스팅(scripts/fetch-haepick.mjs). 스크린샷에 카메라 화면 없어 data-box 제거. 커밋은 루프가",
+      "done": true,
+      "reviewed": "2026-10-14"
     }
   ],
   "goal": "itmoss.com 리뉴얼 — 블록체인 서사 제거, 비전 AI(우주데브리스·해픽) 중심 스크롤형 한 페이지 + 구독 폼·개인정보처리방침",

@@ -114,3 +114,18 @@
 2026-10-14 [core] F29 완료: deploy-checklist.md 작성. push 전 사람 확인: F19 허락·F28 승인·처리방침 시행일=배포일·부분 배포 결정, Pages Enforce HTTPS. 롤백 기준 태그 후 push, revert(force 금지)
 2026-10-14 [core] F38 완료 전 notes: 원문 = about.astro 의 ko·*Ko 필드
 2026-10-14 [core] F38 완료: copy.md ## 회사 소개(#about, 걸어온 길 다음): 머리·철학·공존의 5원칙(한 줄·제목·본문·alt)·만드는 사람들 Jaster+대표 이력(걸어온 길에서 옮김). 내비에 '회사' 추가
+2026-10-14 [core] F39 완료 전 notes: 팀 = Jaster 1명. 사진 없으면 이니셜·로고 마크
+2026-10-14 [core] F39 완료: About.astro #about(record·contact 사이), 내비 '회사'. 5원칙 그림은 public/images/about/*.webp 를 renewal/about/ 로 복사(1408×768). 옛 원본 정리는 F15. 사진 대신 이니셜 J 마크
+2026-10-14 [core] F15 완료: about·contact.astro 삭제→astro redirects /#about·/#contact. Gemini PNG 10개+images/about webp(renewal/about 로 복사됨) 삭제. llms.txt·notes 설명 블록체인 제거. git rm 스테이징됨, 커밋은 루프가
+2026-10-14 [core] F24 완료: 390/1280 CDP 캡처로 검토. 반영: 홈 .btn 각진 모서리(global.css rounded-xl 덮음)·하지 않는 일 좌측 보더→위 선·흐름 그림 번호 제거. 푸터 처리방침 링크 21px 는 F25
+2026-10-14 [core] F24 review 전 notes: 완료 2026-10-14: 390/1280 CDP 캡처로 검토. 반영: 홈 .btn 각진 모서리(global.css rounded-xl 덮음)·하지 않는 일 좌측 보더→위 선·흐름 그림 번호 제거. 푸터 처리방침 링크 21px 는 F25
+2026-10-14 [core] F24 review WEAK: check 는 같은 세션이 쓴 '남은 주요 지적: 0' 줄 grep 뿐 — 반영했다는 3건(버튼 각짐·좌측 보더 제거·흐름 그림 번호 제거)을 하나도 검증하지 않는다 · check 보강: check 에 덧붙임: grep -q 'border-radius: var(--radius-none)' src/pages/index.astro && ! grep -rqE 'border-left|border-inline-start' src/components/home && ! grep -qE '>0[1-4]<' dist/index.html 대신 UzuFlowDiagram.astro 에 단계 번호 텍스트(01–04)가 없음을 확인하는 grep → 모두 exit 0
+2026-10-14 [core] F24 계획 수정: check — WEAK 보강
+2026-10-14 [core] F24 완료 전 notes: review 2026-10-14 WEAK: check 는 같은 세션이 쓴 '남은 주요 지적: 0' 줄 grep 뿐 — 반영했다는 3건(버튼 각짐·좌측 보더 제거·흐름 그림 번호 제거)을 하나도 검증하지 않는다
+2026-10-14 [core] F24 보강 완료: WEAK 보강: check 에 .btn radius-none·home 좌측 보더 없음·UzuFlowDiagram 번호 텍스트 없음 grep 추가. 코드 변경 없음(3건은 3226161 에 이미 반영)
+2026-10-14 [core] F26 실패: 경계 재검토 필요: must_not 이 gen_images.py 의 OPENAI_API_KEY·api_key(이름, design·F16 이 요구)에 걸려 항상 exit 0. 키 값 패턴(sk-…)만 보게 조정 필요. 사전 점검: 인라인 스크립트 0·이미지 OK·News gbsa 링크 noreferrer 누락
+2026-10-14 [core] F37 완료 전 notes: 주소 대신 회사명·메일만. 영문은 다음 단계(다국어)
+2026-10-14 [core] F37 완료: 옛 i18n/T.astro(사용처 없음) 삭제(git rm 스테이징), BaseLayout lang prop 제거→'ko' 고정. 주소는 원래 없었음(푸터·JSON-LD 메일만). 커밋은 루프가
+2026-10-14 [core] F40 완료: scripts/dev-smoke.sh: 4331 포트 astro dev 2회, /·/privacy/·/preview/canvas/ 200, 로그 'ready in' 존재·에러 없음. 현재 에러 0건이라 코드 수정 없음. 커밋은 루프가
+2026-10-14 [core] F41 완료 전 notes: 스크린샷 사용 허락(우당네트웍)은 F19 사람 확인 — 배포 전
+2026-10-14 [core] F41 완료: #haepick section--light(새 토큰 paper-bright+위 경계선). App Store 아이콘·스크린샷 4장 webp 자체호스팅(scripts/fetch-haepick.mjs). 스크린샷에 카메라 화면 없어 data-box 제거. 커밋은 루프가
