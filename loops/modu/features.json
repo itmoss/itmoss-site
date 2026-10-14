@@ -179,35 +179,38 @@
       "service": "core"
     },
     {
-      "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs colors && grep -q 'id=\"contact\"' dist/index.html && grep -q 'href=\"mailto:' dist/index.html && grep -q 'href=\"/privacy/\"' dist/index.html && grep -q 'CONTACT_EMAIL' src/config/site.js",
+      "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs colors && grep -q 'id=\"contact\"' dist/index.html && grep -q 'href=\"mailto:' dist/index.html && grep -q 'href=\"/privacy/\"' dist/index.html && grep -q 'CONTACT_EMAIL' src/config/site.js && node -e 'const fs=require(\"fs\");const e=(fs.readFileSync(\"src/config/site.js\",\"utf8\").match(/CONTACT_EMAIL\\s*=\\s*\"([^\"]+@[^\"]+)\"/)||[])[1];const h=fs.readFileSync(\"dist/index.html\",\"utf8\");const c=fs.readFileSync(\"src/components/home/Contact.astro\",\"utf8\");process.exit(e&&h.includes(\"href=\\\"mailto:\"+e+\"\\\"\")&&/import\\s*\\{[^}]*CONTACT_EMAIL[^}]*\\}\\s*from/.test(c)&&!/[\\w.-]+@[\\w-]+\\.[a-z]{2,}/i.test(c)?0:1)'",
       "depends_on": [
         "F05",
         "F18"
       ],
       "desc": "연락 섹션: 문의 메일 링크(CONTACT_EMAIL, src/config/site.js) + 협업 문구 + 개인정보처리방침 링크. 구독 폼은 넣지 않음 (다음 단계)",
-      "done": false,
+      "done": true,
       "id": "F13",
       "must_not": "grep -rqiE 'subscribe-form|stibee' src",
-      "notes": "review 2026-10-13 WEAK: check 가 mailto 존재·site.js 의 CONTACT_EMAIL 글자만 봄 — Contact.astro 에 주소를 하드코딩해도, mailto 주소가 설정값과 달라도 통과",
+      "notes": "완료 2026-10-14: WEAK 보강: check 에 dist mailto 주소=site.js CONTACT_EMAIL 일치, Contact.astro 는 import 만 하고 주소 리터럴 없음 검사 추가. 코드 변경 없이 통과",
       "owner": "ai",
       "service": "core",
       "returns": {
         "weak": 1
       },
-      "check_fix": "기존 check 에 추가: node -e 'const fs=require(\"fs\");const e=(fs.readFileSync(\"src/config/site.js\",\"utf8\").match(/CONTACT_EMAIL\\s*=\\s*\"([^\"]+@[^\"]+)\"/)||[])[1];const h=fs.readFileSync(\"dist/index.html\",\"utf8\");const c=fs.readFileSync(\"src/components/home/Contact.astro\",\"utf8\");process.exit(e&&h.includes(\"href=\\\"mailto:\"+e+\"\\\"\")&&/import\\s*\\{[^}]*CONTACT_EMAIL[^}]*\\}\\s*from/.test(c)&&!/[\\w.-]+@[\\w-]+\\.[a-z]{2,}/i.test(c)?0:1)' → exit 0 (dist mailto 가 설정값과 같고, Contact.astro 는 import 하며 주소 리터럴 없음)",
-      "check_was": "node scripts/check-site.mjs build && node scripts/check-site.mjs colors && grep -q 'id=\"contact\"' dist/index.html && grep -q 'href=\"mailto:' dist/index.html && grep -q 'href=\"/privacy/\"' dist/index.html && grep -q 'CONTACT_EMAIL' src/config/site.js"
+      "reviewed": "2026-10-14"
     },
     {
-      "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs copy dist/privacy/index.html && for w in 'Google Analytics' '쿠키' '거부' '문의'; do grep -q \"$w\" dist/privacy/index.html || exit 1; done",
+      "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs copy dist/privacy/index.html && for w in 'Google Analytics' '쿠키' '거부' '문의'; do grep -q \"$w\" dist/privacy/index.html || exit 1; done && grep -qE '<time datetime=\"[0-9]{4}-[0-9]{2}-[0-9]{2}\"' dist/privacy/index.html && node -e 'const fs=require(\"fs\");const e=(fs.readFileSync(\"src/config/site.js\",\"utf8\").match(/CONTACT_EMAIL\\s*=\\s*\"([^\"]+@[^\"]+)\"/)||[])[1];process.exit(e&&fs.readFileSync(\"dist/privacy/index.html\",\"utf8\").includes(\"href=\\\"mailto:\"+e+\"\\\"\")?0:1)' && grep -q 'CONTACT_EMAIL' src/pages/privacy.astro",
       "depends_on": [
         "F13"
       ],
       "desc": "개인정보처리방침 페이지 src/pages/privacy.astro (/privacy/): 방문 분석(Google Analytics: 쿠키·이용 기록, 목적, 거부 방법) · 시행일 · 문의처. 구독 항목은 다음 단계에 추가",
-      "done": false,
+      "done": true,
       "id": "F14",
-      "notes": "",
+      "notes": "완료 2026-10-14: WEAK 보강: check 에 시행일 time 태그·site.js CONTACT_EMAIL mailto 링크·하드코딩 금지 검사 추가. 코드 변경 없음(이미 충족). 시행일 2026-10-15 은 실제 배포일과 맞출 것",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "returns": {
+        "weak": 1
+      },
+      "reviewed": "2026-10-14"
     },
     {
       "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs copy && node scripts/check-site.mjs colors && grep -q '/#contact' dist/contact/index.html && grep -q '/#about' dist/about/index.html",
@@ -318,16 +321,20 @@
       "service": "core"
     },
     {
-      "check": "for h in '## 로컬 실행' '## 이미지 생성' '## 검사'; do grep -qF \"$h\" README.md || exit 1; done && grep -q 'npm run dev' README.md && ! grep -q 'Cloudflare Pages' README.md",
+      "check": "for h in '## 로컬 실행' '## 이미지 생성' '## 검사'; do grep -qF \"$h\" README.md || exit 1; done && grep -q 'npm run dev' README.md && ! grep -q 'Cloudflare Pages' README.md && grep -qF '## 배포' README.md && grep -q 'GitHub Pages' README.md && grep -qE 'develop.*push|push.*develop' README.md && grep -q 'check-site.mjs' README.md",
       "depends_on": [
         "F16"
       ],
       "desc": "README 재작성(engineering:documentation): 로컬 실행 · 이미지 생성 · 검사 명령 · 배포 방식(GitHub Pages, develop push = 배포)",
-      "done": false,
+      "done": true,
       "id": "F23",
-      "notes": "",
+      "notes": "완료 2026-10-14: WEAK 보강: check 에 ## 배포·GitHub Pages·develop push·check-site.mjs 확인 추가. README 는 이미 충족해 코드 변경 없음",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "returns": {
+        "weak": 1
+      },
+      "reviewed": "2026-10-14"
     },
     {
       "check": "grep -qx '남은 주요 지적: 0' docs/renewal/reviews/design-critique.md && node scripts/check-site.mjs build && node scripts/check-site.mjs copy && node scripts/check-site.mjs colors",
@@ -382,11 +389,12 @@
         "F14"
       ],
       "desc": "컴플라이언스 점검(legal:compliance-check, 참고용) — GA4 쿠키·이용 기록 고지, 딥페이크·법무법인 표기 문구를 개인정보보호법·변호사법 기준으로 점검, 결과 docs/renewal/reviews/compliance.md",
-      "done": false,
+      "done": true,
       "id": "F27",
-      "notes": "",
+      "notes": "완료 2026-10-14: compliance.md 작성(참고용). F28 확인: GA4 보존기간 14개월 vs 기본 2개월·신호/광고 설정, 국외이전·안전조치·구제방법 등 처리방침 보강, 보호책임자 성명, 법무법인 표기 유지 여부",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "reviewed": "2026-10-14"
     },
     {
       "check": "",
@@ -406,11 +414,12 @@
         "F23"
       ],
       "desc": "배포 전 점검표 docs/renewal/deploy-checklist.md (engineering:deploy-checklist) — GitHub Pages·CNAME·HTTPS 강제·develop 머지 순서·롤백, 배포는 사람이 함",
-      "done": false,
+      "done": true,
       "id": "F29",
-      "notes": "",
+      "notes": "완료 2026-10-14: deploy-checklist.md 작성. push 전 사람 확인: F19 허락·F28 승인·처리방침 시행일=배포일·부분 배포 결정, Pages Enforce HTTPS. 롤백 기준 태그 후 push, revert(force 금지)",
       "owner": "ai",
-      "service": "core"
+      "service": "core",
+      "reviewed": "2026-10-14"
     },
     {
       "check": "test -s docs/renewal/test-plan.md && npx playwright test tests/e2e/layout.spec.mjs tests/e2e/links.spec.mjs tests/e2e/news.spec.mjs",
@@ -544,8 +553,9 @@
       "depends_on": [
         "F02"
       ],
-      "notes": "원문 = about.astro 의 ko·*Ko 필드",
-      "done": false
+      "notes": "완료 2026-10-14: copy.md ## 회사 소개(#about, 걸어온 길 다음): 머리·철학·공존의 5원칙(한 줄·제목·본문·alt)·만드는 사람들 Jaster+대표 이력(걸어온 길에서 옮김). 내비에 '회사' 추가",
+      "done": true,
+      "reviewed": "2026-10-14"
     },
     {
       "id": "F39",
@@ -572,10 +582,24 @@
       "depends_on": [],
       "notes": "",
       "done": false
+    },
+    {
+      "id": "F41",
+      "service": "core",
+      "desc": "#haepick 을 밝은 섹션으로 바꾸고 생성 이미지(renewal/haepick-phone.webp) 대신 해픽 실제 브랜드 이미지 사용. 출처: App Store 조회 API https://itunes.apple.com/lookup?id=6748489765&country=kr 의 artworkUrl512(앱 아이콘)·screenshotUrls(크기 접미사를 키워 고해상도로) → webp ≤300KB 로 public/images/haepick/ 에 저장(핫링크 금지), 출처 URL·받은 날짜는 public/images/haepick/sources.json. 밝은 배경은 토큰만 쓰고 바로 위 #uzudebris(paper)와 구분되게(다른 밝은 면 또는 경계). F10 인식 박스 [data-box] 좌표는 새 스크린샷에 맞춰 다시 잡거나, 맞출 대상이 없으면 박스를 뺀다. 이미지 width/height·alt 지정",
+      "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs images && node scripts/check-site.mjs colors && test $(ls public/images/haepick/*.webp | wc -l) -ge 2 && grep -q mzstatic public/images/haepick/sources.json && python3 -c \"import re;h=open('dist/index.html').read();m=re.search(r'<section[^>]*id=\\\"haepick\\\"[^>]*>',h);assert m and re.search(r'section--(paper|light)',m.group(0)),'not light';s=h[m.end():h.find('</section>',m.end())];assert re.search(r'<img[^>]+src=\\\"/images/haepick/',s),'no brand img'\"",
+      "must_not": "grep -qE 'mzstatic\\.com|renewal/haepick-phone' dist/index.html",
+      "owner": "ai",
+      "depends_on": [
+        "F10",
+        "F18"
+      ],
+      "notes": "스크린샷 사용 허락(우당네트웍)은 F19 사람 확인 — 배포 전",
+      "done": false
     }
   ],
   "goal": "itmoss.com 리뉴얼 — 블록체인 서사 제거, 비전 AI(우주데브리스·해픽) 중심 스크롤형 한 페이지 + 구독 폼·개인정보처리방침",
-  "planned_at": "2026-10-13T20:32:03+09:00",
+  "planned_at": "2026-10-13T20:51:53+09:00",
   "rules": 3,
   "services": [
     "core",

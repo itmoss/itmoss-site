@@ -294,3 +294,15 @@ brief 에 디자인 스킬 6개 추가(전역 설치 완료). 항목은 그대�
 - 사용자 요청: `make dev` 를 다시 시작해도 에러가 없어야 한다 → **F40** (core, 선행 없음).
   - 검사: `scripts/dev-smoke.sh` — astro dev 를 포트 4331 로 띄움(사용자의 4321·Playwright 4330 과 겹치지 않게) → `/`, `/privacy/`, `/preview/canvas/` 200 → 서버 로그에 에러 줄 없음 → 종료. 재시작을 재현하려고 2회 연속.
   - 경계: 로그 수준을 낮추거나(`logLevel silent/error`, `--silent`) 에러 출력을 버리는 식으로 통과시키지 않는다.
+
+## 변경 2026-10-13 (12)
+- 사용자 요청: "#haepick 은 해픽 브랜드 이미지를 찾아 넣고, 어두울 필요 없이 밝게" → **F41** (core, 선행 F10·F18).
+  - 테마: 기존 "다크 + #uzudebris 만 밝게" 기본을 바꿔 **#haepick 도 밝은 섹션**. 바로 위 #uzudebris(paper)와 붙으므로 다른 밝은 면이나 경계로 구분. 색은 tokens.css 토큰만.
+  - 이미지: 생성 컷 `renewal/haepick-phone.webp` 대신 App Store 공개 자료(조회 API `itunes.apple.com/lookup?id=6748489765&country=kr` — 앱 아이콘 artworkUrl512, 스크린샷 screenshotUrls)를 받아 `public/images/haepick/*.webp` 로 자체 호스팅. 출처는 `public/images/haepick/sources.json`. mzstatic 핫링크 금지.
+  - F10 인식 박스 좌표는 생성 이미지 기준이었으므로 새 스크린샷에 맞춰 다시 잡거나 뺀다.
+  - 실제 화면 사용 허락(우당네트웍)은 여전히 F19 사람 확인 항목 — push(배포) 전에 확인.
+
+## 변경 2026-10-13 (13)
+- 히어로 h1·홈 `<title>`·og:title: "영상을 만드는 기술로, 영상을 지킵니다" → **"영상 해킹에 맞서는 단 하나의 솔루션, 우주데브리스"** (사용자 결정, 커밋 반영). copy.md 갱신.
+  - "단 하나의" 는 근거 없는 최상급 표현이라 brief 의 과장 금지·표시광고법과 부딪칠 수 있음을 알렸고, 사용자가 유지로 결정. **F28 컴플라이언스 확인 때 이 문구를 함께 본다.**
+  - 이후 항목은 이 h1 을 되돌리지 않는다. 회사 소개용 description·JSON-LD 의 "영상을 만드는 기술로 영상을 지키는 비전 AI" 는 회사 설명이라 그대로 둔다.

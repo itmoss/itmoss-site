@@ -94,3 +94,23 @@
 2026-10-13 [core] F13 완료: src/config/site.js 신설(CONTACT_EMAIL만). Contact.astro: 잉크 바탕 mailto 버튼+aria-label+/privacy/ 안내. /privacy/ 페이지 자체는 아직 없음(F14). 구독 설정은 넣지 않음
 2026-10-13 [core] F13 review 전 notes: 완료 2026-10-13: src/config/site.js 신설(CONTACT_EMAIL만). Contact.astro: 잉크 바탕 mailto 버튼+aria-label+/privacy/ 안내. /privacy/ 페이지 자체는 아직 없음(F14). 구독 설정은 넣지 않음
 2026-10-13 [core] F13 review WEAK: check 가 mailto 존재·site.js 의 CONTACT_EMAIL 글자만 봄 — Contact.astro 에 주소를 하드코딩해도, mailto 주소가 설정값과 달라도 통과 · check 보강: 기존 check 에 추가: node -e 'const fs=require("fs");const e=(fs.readFileSync("src/config/site.js","utf8").match(/CONTACT_EMAIL\s*=\s*"([^"]+@[^"]+)"/)||[])[1];const h=fs.readFileSync("dist/index.html","utf8");const c=fs.readFileSync("src/components/home/Contact.astro","utf8");process.exit(e&&h.includes("href=\"mailto:"+e+"\"")&&/import\s*\{[^}]*CONTACT_EMAIL[^}]*\}\s*from/.test(c)&&!/[\w.-]+@[\w-]+\.[a-z]{2,}/i.test(c)?0:1)' → exit 0 (dist mailto 가 설정값과 같고, Contact.astro 는 import 하며 주소 리터럴 없음)
+2026-10-13 계획: 항목 1개 추가 (F41)
+2026-10-14 [core] F13 계획 수정: check — WEAK 보강
+2026-10-14 [core] F13 완료 전 notes: review 2026-10-13 WEAK: check 가 mailto 존재·site.js 의 CONTACT_EMAIL 글자만 봄 — Contact.astro 에 주소를 하드코딩해도, mailto 주소가 설정값과 달라도 통과
+2026-10-14 [core] F13 보강 완료: WEAK 보강: check 에 dist mailto 주소=site.js CONTACT_EMAIL 일치, Contact.astro 는 import 만 하고 주소 리터럴 없음 검사 추가. 코드 변경 없이 통과
+2026-10-14 [core] F14 완료: src/pages/privacy.astro 신설: copy.md 문구 그대로(GA4·쿠키·거부 방법·문의 메일·제3자·권리·문의처·시행일 2026-10-15). 메일은 site.js CONTACT_EMAIL. 시행일은 실제 배포일과 다르면 맞출 것
+2026-10-14 [core] F23 완료: README 재작성: 로컬 실행·이미지 생성(make images)·검사(check-site.mjs)·배포(develop push=Pages 배포, 롤백 revert). playwright·lighthouse 는 아직 없어 미기재 — 생기면 검사 절에 추가
+2026-10-14 [core] F14 review 전 notes: 완료 2026-10-14: src/pages/privacy.astro 신설: copy.md 문구 그대로(GA4·쿠키·거부 방법·문의 메일·제3자·권리·문의처·시행일 2026-10-15). 메일은 site.js CONTACT_EMAIL. 시행일은 실제 배포일과 다르면 맞출 것
+2026-10-14 [core] F14 review WEAK: check 가 단어 4개만 grep — desc 의 시행일·문의처(메일 링크) 미검증, '문의'는 어디든 걸림 · check 보강: 기존 check 뒤에 && grep -qE '<time datetime="[0-9]{4}-[0-9]{2}-[0-9]{2}"' dist/privacy/index.html && node -e 'const fs=require("fs");const e=(fs.readFileSync("src/config/site.js","utf8").match(/CONTACT_EMAIL\s*=\s*"([^"]+@[^"]+)"/)||[])[1];process.exit(e&&fs.readFileSync("dist/privacy/index.html","utf8").includes("href=\"mailto:"+e+"\"")?0:1)' && grep -q 'CONTACT_EMAIL' src/pages/privacy.astro → exit 0 (시행일 time 태그 + site.js 주소의 mailto 링크 + 하드코딩 아님)
+2026-10-14 [core] F23 review 전 notes: 완료 2026-10-14: README 재작성: 로컬 실행·이미지 생성(make images)·검사(check-site.mjs)·배포(develop push=Pages 배포, 롤백 revert). playwright·lighthouse 는 아직 없어 미기재 — 생기면 검사 절에 추가
+2026-10-14 [core] F23 review WEAK: check 가 desc 의 배포 방식(GitHub Pages, develop push=배포) 절을 안 봄 — 제목 3개·npm run dev 만 확인 · check 보강: 기존 check 뒤에 && grep -qF '## 배포' README.md && grep -q 'GitHub Pages' README.md && grep -qE 'develop.*push|push.*develop' README.md && grep -q 'check-site.mjs' README.md → exit 0
+2026-10-14 [core] F14 계획 수정: check — WEAK 보강
+2026-10-14 [core] F14 완료 전 notes: review 2026-10-14 WEAK: check 가 단어 4개만 grep — desc 의 시행일·문의처(메일 링크) 미검증, '문의'는 어디든 걸림
+2026-10-14 [core] F14 보강 완료: WEAK 보강: check 에 시행일 time 태그·site.js CONTACT_EMAIL mailto 링크·하드코딩 금지 검사 추가. 코드 변경 없음(이미 충족). 시행일 2026-10-15 은 실제 배포일과 맞출 것
+2026-10-14 [core] F23 계획 수정: check — WEAK 보강
+2026-10-14 [core] F23 완료 전 notes: review 2026-10-14 WEAK: check 가 desc 의 배포 방식(GitHub Pages, develop push=배포) 절을 안 봄 — 제목 3개·npm run dev 만 확인
+2026-10-14 [core] F23 보강 완료: WEAK 보강: check 에 ## 배포·GitHub Pages·develop push·check-site.mjs 확인 추가. README 는 이미 충족해 코드 변경 없음
+2026-10-14 [core] F27 완료: compliance.md 작성(참고용). F28 확인: GA4 보존기간 14개월 vs 기본 2개월·신호/광고 설정, 국외이전·안전조치·구제방법 등 처리방침 보강, 보호책임자 성명, 법무법인 표기 유지 여부
+2026-10-14 [core] F29 완료: deploy-checklist.md 작성. push 전 사람 확인: F19 허락·F28 승인·처리방침 시행일=배포일·부분 배포 결정, Pages Enforce HTTPS. 롤백 기준 태그 후 push, revert(force 금지)
+2026-10-14 [core] F38 완료 전 notes: 원문 = about.astro 의 ko·*Ko 필드
+2026-10-14 [core] F38 완료: copy.md ## 회사 소개(#about, 걸어온 길 다음): 머리·철학·공존의 5원칙(한 줄·제목·본문·alt)·만드는 사람들 Jaster+대표 이력(걸어온 길에서 옮김). 내비에 '회사' 추가
