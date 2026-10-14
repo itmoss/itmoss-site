@@ -1,0 +1,324 @@
+---
+// #about — 회사 소개. 걸어온 길 다음, 연락 앞. 문구: docs/renewal/copy.md "## 회사 소개".
+// 5원칙 그림은 옛 /about 의 webp 를 public/images/renewal/about/ 로 옮겨 쓴다 (1408×768).
+const principles = [
+  {
+    no: '01',
+    kicker: '가장 먼저 깔리는 바탕',
+    title: '디지털 황무지의 토양',
+    body: '아이티모스는 주인공이 되려 하지 않습니다. 거친 디지털 세상에 가장 먼저 깔려, 사람들이 편히 머물 수 있는 바탕이 되려 합니다.',
+    img: '/images/renewal/about/principle-1.webp',
+    alt: '회로 기판 위로 이끼가 자라는 그림',
+  },
+  {
+    no: '02',
+    kicker: '보이지 않는 안전망',
+    title: '아래에서 받치는 존재',
+    body: '눈에 띄지 않게 아래에서 받칩니다. 복잡한 약관과 동의서 때문에 다치는 일이 없도록 든든한 쿠션이 되려 합니다.',
+    img: '/images/renewal/about/principle-2.webp',
+    alt: '사람의 발걸음을 이끼가 받쳐 주는 그림',
+  },
+  {
+    no: '03',
+    kicker: '필요한 것만 남깁니다',
+    title: '노이즈를 걸러내다',
+    body: '쏟아지는 정보를 그대로 흘려보내지 않습니다. 불필요한 소음을 걸러, 정리된 사실만 전합니다.',
+    img: '/images/renewal/about/principle-3.webp',
+    alt: '이끼가 흐르는 물을 거르는 그림',
+  },
+  {
+    no: '04',
+    kicker: '가두지 않는 연결',
+    title: '잠그지 않습니다',
+    body: '큰 플랫폼은 사용자를 붙잡아 두려 합니다. 아이티모스는 얇고 조용히 퍼져, 필요한 연결만 부담 없이 돕습니다.',
+    img: '/images/renewal/about/principle-4.webp',
+    alt: '지구를 감싸며 이어진 이끼 그림',
+  },
+  {
+    no: '05',
+    kicker: '끈질긴 생명력',
+    title: '이끼처럼 조용히',
+    body: '척박한 곳에서도 조용히 뿌리내립니다. 이끼처럼 생활 가까이에 스며들어 함께 지내려 합니다.',
+    img: '/images/renewal/about/principle-5.webp',
+    alt: '바위 틈을 뚫고 자란 이끼 그림',
+  },
+];
+
+const career = [
+  'Watcha — 스트리밍 아키텍처와 트랜스코딩 파이프라인',
+  'Spoon — 실시간 오디오와 대용량 미디어 처리',
+  'Bithumb Live — 고트래픽 시스템과 보안 아키텍처',
+  '해픽 — 비전 AI 엔진 상용 출시 (2025.08)',
+  '동국대학교 사이버포렌식 석사 과정 중',
+];
+---
+<section id="about" class="section section--ruled" aria-labelledby="about-title">
+  <div class="container section__inner">
+    <header class="section__head">
+      <p class="eyebrow eyebrow--signal">회사 소개</p>
+      <h2 id="about-title" class="section__title">소비자를 위한 서비스,<br />그 쓸모 있는 기술만 고민합니다.</h2>
+      <p class="section__lead">
+        우주에 가거나 더 빨리 먹으려고 기술을 바란 적은 없습니다. 아이티모스는 쓰는 사람 곁에서 필요한 일을 조용히 해내는 기술을 만듭니다.
+      </p>
+    </header>
+
+    <div class="about-philo">
+      <div class="about-philo__text">
+        <h3 class="about__subtitle">우리가 바란 기술은 무엇이었을까요?</h3>
+        <p class="about-philo__body">
+          기술은 사람의 눈에 닿을 때 비로소 쓸모가 생깁니다. 무대의 주인공은 사람이고, 기술은 보이지 않는 곳에서 돕습니다.
+        </p>
+      </div>
+      <ul class="about-philo__cards">
+        <li class="about-card">
+          <span class="eyebrow">사람</span>
+          <strong class="about-card__title">보는 사람</strong>
+          <span class="about-card__body">무엇을 보고 고를지는 사람이 정합니다.</span>
+        </li>
+        <li class="about-card">
+          <span class="eyebrow eyebrow--signal">기술</span>
+          <strong class="about-card__title">무대 뒤의 조력자</strong>
+          <span class="about-card__body">보는 사람을 위해서만 일합니다.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="about-principles">
+      <div class="about-principles__head">
+        <h3 class="about__subtitle">공존의 5원칙</h3>
+        <p class="about-principles__lead">불필요한 시스템에 묶이지 않고, 하려는 일을 온전히 해낼 수 있는 자리를 만듭니다.</p>
+      </div>
+      <ol class="about-principles__list">
+        {principles.map((p) => (
+          <li class="principle">
+            <img
+              class="principle__img"
+              src={p.img}
+              width="1408"
+              height="768"
+              alt={p.alt}
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="principle__text">
+              <p class="principle__kicker"><span class="principle__no">{p.no}</span> {p.kicker}</p>
+              <h4 class="principle__title">{p.title}</h4>
+              <p class="principle__body">{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="about-people">
+      <h3 class="about__subtitle">만드는 사람들</h3>
+      <article class="person">
+        <div class="person__mark" aria-hidden="true">J</div>
+        <div class="person__text">
+          <p class="person__name">Jaster</p>
+          <p class="eyebrow">대표 · 디자이너</p>
+          <p class="person__line">영상 스트리밍과 트랜스코딩을 20년 다뤄 왔습니다.</p>
+          <ul class="person__career">
+            {career.map((c) => <li>{c}</li>)}
+          </ul>
+          <a
+            class="person__link"
+            href="https://www.linkedin.com/in/jaster1838"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Jaster 의 LinkedIn 프로필 (새 창)"
+          >LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__subtitle {
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    word-break: keep-all;
+  }
+
+  .about-philo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-12);
+    align-items: start;
+  }
+  .about-philo__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .about-philo__body {
+    margin: 0;
+    max-width: var(--measure);
+    line-height: var(--leading-body);
+    color: var(--color-muted);
+    word-break: keep-all;
+  }
+  .about-philo__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .about-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    border: 1px solid var(--color-line);
+  }
+  .about-card__title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+  }
+  .about-card__body {
+    font-size: var(--text-sm);
+    line-height: var(--leading-body);
+    color: var(--color-muted);
+    word-break: keep-all;
+  }
+
+  .about-principles {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+  .about-principles__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .about-principles__lead {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: var(--leading-body);
+    word-break: keep-all;
+  }
+  .about-principles__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--color-line);
+  }
+  .principle {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: var(--space-8);
+    align-items: center;
+    padding-block: var(--space-8);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .principle__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .principle__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .principle__kicker {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+  .principle__no {
+    font-family: var(--font-mono);
+    color: var(--color-signal);
+  }
+  .principle__title {
+    margin: 0;
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    word-break: keep-all;
+  }
+  .principle__body {
+    margin: 0;
+    max-width: var(--measure);
+    line-height: var(--leading-body);
+    color: var(--color-muted);
+    word-break: keep-all;
+  }
+
+  .about-people {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .person {
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+    padding: var(--space-8);
+    border: 1px solid var(--color-line);
+    max-width: 760px;
+  }
+  .person__mark {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--color-faint);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xl);
+    color: var(--color-signal);
+  }
+  .person__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .person__name {
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: 700;
+  }
+  .person__line {
+    margin: var(--space-2) 0 0;
+    line-height: var(--leading-body);
+    word-break: keep-all;
+  }
+  .person__career {
+    margin: 0;
+    padding-left: var(--space-5);
+    font-size: var(--text-sm);
+    line-height: var(--leading-body);
+    color: var(--color-muted);
+    word-break: keep-all;
+  }
+  body.site .person__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    align-self: flex-start;
+    min-height: var(--tap-min);
+    margin-top: var(--space-2);
+    color: var(--color-signal);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 800px) {
+    .about-philo,
+    .principle {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-6);
+    }
+  }
+  @media (max-width: 480px) {
+    .about-philo__cards { grid-template-columns: minmax(0, 1fr); }
+    .person { flex-direction: column; padding: var(--space-6); }
+  }
+</style>
