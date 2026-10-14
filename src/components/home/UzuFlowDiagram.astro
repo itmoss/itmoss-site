@@ -18,7 +18,7 @@ const hWidth = nodes.length * H.w + last * H.gap;
 // 세로: 상자 320×88, 간격 44
 const V = { w: 320, h: 88, gap: 44 };
 const vHeight = nodes.length * V.h + last * V.gap;
-const num = (i: number) => String(i + 1).padStart(2, '0');
+// 순서 번호는 위 3단계 목록(01–03)에만 둔다 — 그림까지 번호를 매기면 01–04 와 겹쳐 읽힌다. 순서는 화살표로 보인다.
 ---
 <figure class="uzu-flow" data-reveal>
   <svg
@@ -32,9 +32,8 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
       return (
         <g>
           <rect class:list={['uzu-flow__box', { 'uzu-flow__box--end': i === last }]} x={x} y="1" width={H.w} height={H.h} />
-          <text class="uzu-flow__num" x={x + 20} y="32">{num(i)}</text>
-          <text class="uzu-flow__title" x={x + 20} y="68">{n.title}</text>
-          <text class="uzu-flow__sub" x={x + 20} y="94">{n.sub}</text>
+          <text class="uzu-flow__title" x={x + 20} y="52">{n.title}</text>
+          <text class="uzu-flow__sub" x={x + 20} y="80">{n.sub}</text>
           {i < last && (
             <g class="uzu-flow__arrow">
               <line x1={x + H.w + 8} y1={1 + H.h / 2} x2={x + H.w + H.gap - 8} y2={1 + H.h / 2} />
@@ -57,9 +56,8 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
       return (
         <g>
           <rect class:list={['uzu-flow__box', { 'uzu-flow__box--end': i === last }]} x="1" y={y} width={V.w} height={V.h} />
-          <text class="uzu-flow__num" x="20" y={y + 30}>{num(i)}</text>
-          <text class="uzu-flow__title" x="64" y={y + 31}>{n.title}</text>
-          <text class="uzu-flow__sub" x="64" y={y + 62}>{n.sub}</text>
+          <text class="uzu-flow__title" x="20" y={y + 38}>{n.title}</text>
+          <text class="uzu-flow__sub" x="20" y={y + 66}>{n.sub}</text>
           {i < last && (
             <g class="uzu-flow__arrow">
               <line x1="34" y1={y + V.h + 6} x2="34" y2={y + V.h + V.gap - 6} />
@@ -100,12 +98,6 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
   .uzu-flow__box--end {
     stroke: var(--color-signal-ink);
     stroke-width: 2;
-  }
-  .uzu-flow__num {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    letter-spacing: var(--tracking-mono);
-    fill: var(--color-signal-ink);
   }
   .uzu-flow__title {
     font-family: var(--font-sans);
