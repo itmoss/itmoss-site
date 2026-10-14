@@ -12,8 +12,9 @@ const {
   type = "website",
   publishDate,
   keywords = "아이티모스, ITMOSS, 비전 AI, Vision AI, 우주데브리스, 해픽, 영상 지문, 무단 재송출 탐지, 뷰티 AI",
-  lang = "ko",
 } = props;
+// 화면 문구는 한국어가 기본. 다국어는 다음 단계.
+const lang = 'ko';
 
 const siteURL = 'https://itmoss.com';
 const canonicalURL = new URL(Astro.url.pathname, siteURL).href;
