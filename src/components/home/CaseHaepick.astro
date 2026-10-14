@@ -1,9 +1,9 @@
 ---
 // #haepick CASE 02 — data-scene="haepick". 문구: docs/renewal/copy.md "## 해픽".
 // 숫자는 출처 있는 사실만 (design.md 문구 원칙). 다운로드·사용자 수·정확도 같은 수치는 넣지 않는다.
-// 장면: 넓은 화면에서 폰이 sticky 로 고정되고, 오른쪽 단계(data-stage)를 지날 때마다 폰 위 인식 박스(data-box)가 점등.
-// 점등(opacity)은 src/styles/scroll.css, 박스 위치는 haepick-phone.webp 화면 구도에 맞춘 % 좌표.
-import RenewalImage from './RenewalImage.astro';
+// 장면: 넓은 화면에서 해픽 앱 화면이 sticky 로 고정되고, 오른쪽 단계(data-stage)가 하나씩 지나간다.
+// 이미지는 App Store 공개 자료를 자체 호스팅한 것 (scripts/fetch-haepick.mjs, 출처 public/images/haepick/sources.json).
+// 스토어 스크린샷에는 카메라 인식 화면이 없어 생성 컷 기준이던 인식 박스(data-box)는 뺐다.
 
 const stages = [
   { stage: 'camera', label: '비추기', body: '카메라에 제품을 비춥니다.' },
@@ -25,10 +25,11 @@ const stores = [
   { href: 'https://play.google.com/store/apps/details?id=com.woodang.haepick_client&hl=ko', label: 'Google Play 에서 해픽 보기' },
 ];
 ---
-<section id="haepick" class="section" data-scene="haepick" aria-labelledby="haepick-title">
+<section id="haepick" class="section section--light" data-scene="haepick" aria-labelledby="haepick-title">
   <div class="container section__inner">
     <header class="section__head">
-      <p class="eyebrow eyebrow--signal">CASE 02 · 해픽 — VISION AI</p>
+      <img class="hp-icon" src="/images/haepick/icon.webp" width="512" height="512" alt="해픽 앱 아이콘" loading="lazy" decoding="async" />
+      <p class="eyebrow eyebrow--on-paper">CASE 02 · 해픽 — VISION AI</p>
       <h2 id="haepick-title" class="section__title">카메라를 대면,<br />성분을 읽습니다.</h2>
       <p class="section__lead">
         아이티모스의 JVL 비전 엔진이 상용 앱 「해픽」 안에서 실사용자에게 돌아가고 있습니다. 제품을 비추면 인식하고, 성분을 읽어 내 피부 기준으로 맞춰 봅니다.
@@ -37,10 +38,16 @@ const stores = [
 
     <div class="hp-scene">
       <figure class="hp-phone">
-        <RenewalImage slot="haepick-phone" ratio="2 / 3" />
-        <span class="hp-boxes" aria-hidden="true">
-          {stages.map((s) => <span class={`hp-box hp-box--${s.stage}`} data-box={s.stage}></span>)}
-        </span>
+        <img
+          class="hp-phone__img"
+          src="/images/haepick/screen-1.webp"
+          width="900"
+          height="1955"
+          alt="해픽 앱 화면 — 루틴 분석: 전문가 맞춤 루틴 점수와 등록한 화장품 목록"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="hp-phone__cap">해픽 App Store 스크린샷</figcaption>
       </figure>
       <ol class="hp-stages">
         {stages.map((s, i) => (
@@ -91,54 +98,28 @@ const stores = [
     position: sticky;
     top: calc(var(--header-h) + var(--space-8));
     margin: 0;
-    /* 세로가 짧은 화면에서도 폰 전체가 보이게 */
-    width: min(100%, 440px, (100svh - var(--header-h) - var(--space-16)) * 2 / 3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    /* 세로가 짧은 화면에서도 스크린샷 전체가 보이게 (900×1955, 캡션 몫을 뺀다) */
+    width: min(100%, 400px, (100svh - var(--header-h) - var(--space-24)) * 900 / 1955);
   }
-
-  .hp-boxes {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  .hp-phone__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-line-on-paper);
   }
-  .hp-box {
-    position: absolute;
-    border: 1px solid var(--color-signal);
+  .hp-phone__cap {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-muted-on-paper);
   }
-  .hp-box--camera {
-    left: 48%;
-    top: 24.5%;
-    width: 35.5%;
-    height: 50%;
-    border: 0;
-    --c: var(--color-signal);
-    background:
-      linear-gradient(var(--c), var(--c)) top left / 14% 2px no-repeat,
-      linear-gradient(var(--c), var(--c)) top left / 2px 10% no-repeat,
-      linear-gradient(var(--c), var(--c)) top right / 14% 2px no-repeat,
-      linear-gradient(var(--c), var(--c)) top right / 2px 10% no-repeat,
-      linear-gradient(var(--c), var(--c)) bottom left / 14% 2px no-repeat,
-      linear-gradient(var(--c), var(--c)) bottom left / 2px 10% no-repeat,
-      linear-gradient(var(--c), var(--c)) bottom right / 14% 2px no-repeat,
-      linear-gradient(var(--c), var(--c)) bottom right / 2px 10% no-repeat;
-  }
-  .hp-box--detect {
-    left: 50%;
-    top: 32%;
-    width: 26%;
-    height: 30.5%;
-    border-width: 2px;
-  }
-  .hp-box--ingredients {
-    left: 74.5%;
-    top: 42.5%;
-    width: 7.5%;
-    height: 9.5%;
-  }
-  .hp-box--match {
-    left: 51.5%;
-    top: 63.5%;
-    width: 31.5%;
-    height: 8%;
+  .hp-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 22%;
+    border: 1px solid var(--color-line-on-paper);
   }
 
   @media (max-width: 760px) {
@@ -160,7 +141,7 @@ const stores = [
     list-style: none;
     display: flex;
     flex-direction: column;
-    border-top: 1px solid var(--color-line);
+    border-top: 1px solid var(--color-line-on-paper);
   }
   .hp-stages__item {
     display: flex;
@@ -170,7 +151,7 @@ const stores = [
     /* 단계마다 스크롤 거리를 줘서 고정된 폰 옆을 하나씩 지나가게 */
     min-height: 50svh;
     padding: var(--space-8) var(--space-6) var(--space-8) 0;
-    border-bottom: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line-on-paper);
   }
   @media (max-width: 760px) {
     .hp-stages__item {
@@ -180,7 +161,7 @@ const stores = [
   .hp-stages__num {
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: var(--color-signal);
+    color: var(--color-signal-ink);
   }
   .hp-stages__title {
     margin: 0;
@@ -194,7 +175,7 @@ const stores = [
     max-width: 32ch;
     font-size: var(--text-base);
     line-height: var(--leading-body);
-    color: var(--color-muted);
+    color: var(--color-muted-on-paper);
     word-break: keep-all;
   }
 
@@ -202,8 +183,8 @@ const stores = [
     margin: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    border-top: 1px solid var(--color-line);
-    border-bottom: 1px solid var(--color-line);
+    border-top: 1px solid var(--color-line-on-paper);
+    border-bottom: 1px solid var(--color-line-on-paper);
   }
   .hp-facts__item {
     display: flex;
@@ -214,7 +195,7 @@ const stores = [
   .hp-facts__label {
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: var(--color-muted);
+    color: var(--color-muted-on-paper);
   }
   .hp-facts__value {
     margin: 0;
@@ -245,7 +226,7 @@ const stores = [
     max-width: var(--measure);
     font-size: var(--text-base);
     line-height: var(--leading-body);
-    color: var(--color-muted);
+    color: var(--color-muted-on-paper);
     word-break: keep-all;
   }
   .hp-b2b__link {
@@ -253,7 +234,7 @@ const stores = [
     align-items: center;
     min-height: 44px;
     margin-left: var(--space-2);
-    color: var(--color-signal);
+    color: var(--color-signal-ink);
     text-underline-offset: 4px;
   }
 </style>

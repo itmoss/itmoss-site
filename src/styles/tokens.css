@@ -8,6 +8,7 @@
   /* 색 — 다크 그래파이트 기본, 우주데브리스 섹션만 밝게 */
   --color-ink: #101214;            /* 바탕 */
   --color-paper: #ECEDEA;          /* 본문 글자 / 밝은 섹션 바탕 */
+  --color-paper-bright: #F8F8F6;   /* paper 와 붙는 두 번째 밝은 섹션 바탕 (#haepick) */
   --color-signal: #FF6A2B;         /* 강조·CTA·연락 섹션 바탕 */
   --color-signal-ink: #B23E0C;     /* 밝은 바탕 위 오렌지 글자 (대비용) */
   --color-muted: #A9ACA6;          /* 보조 문단 (다크 위) */

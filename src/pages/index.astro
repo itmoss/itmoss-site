@@ -123,6 +123,13 @@ import Contact from "../components/home/Contact.astro";
     color: var(--color-ink);
   }
   .section--paper .section__lead { color: var(--color-muted-on-paper); }
+  /* paper 섹션 바로 뒤에 오는 밝은 섹션 — 한 단계 밝은 면 + 경계선으로 구분 */
+  .section--light {
+    background: var(--color-paper-bright);
+    color: var(--color-ink);
+    border-top: 1px solid var(--color-line-on-paper);
+  }
+  .section--light .section__lead { color: var(--color-muted-on-paper); }
   .section--signal {
     background: var(--color-signal);
     color: var(--color-ink);

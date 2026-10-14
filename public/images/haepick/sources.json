@@ -1,0 +1,38 @@
+{
+  "lookup": "https://itunes.apple.com/lookup?id=6748489765&country=kr",
+  "app": "해픽 (haepick) - 나를 위한 뷰티 인사이트",
+  "seller": "Woodang Network Inc.",
+  "fetched": "2026-10-14",
+  "files": [
+    {
+      "file": "icon.webp",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/48/ec/41/48ec41b3-8063-b214-730b-4b515bd8be98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "file": "screen-1.webp",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/30/fc/36/30fc36fb-4c9e-6577-7c43-fe1632008590/1242_U200a_U00d7_U200a2688.jpg/900x0w.jpg",
+      "width": 900,
+      "height": 1955
+    },
+    {
+      "file": "screen-2.webp",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/30/d9/1b/30d91bc5-37d5-595a-6307-07315209afc1/1320_U200a_U00d7_U200a2868_1.jpg/900x0w.jpg",
+      "width": 900,
+      "height": 1955
+    },
+    {
+      "file": "screen-3.webp",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a5/3c/d9/a53cd960-ede7-390e-8d8f-808dc8e59d81/1320_U200a_U00d7_U200a2868_4.jpg/900x0w.jpg",
+      "width": 900,
+      "height": 1955
+    },
+    {
+      "file": "screen-4.webp",
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/85/fd/72/85fd723a-4363-d34b-64fa-cedc3a5b0899/1320_U200a_U00d7_U200a2868_5.jpg/900x0w.jpg",
+      "width": 900,
+      "height": 1955
+    }
+  ]
+}
