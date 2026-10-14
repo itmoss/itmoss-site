@@ -1,0 +1,115 @@
+---
+// /privacy/ — 개인정보처리방침. 문구: docs/renewal/copy.md "## 개인정보처리방침".
+// 이번 범위는 GA4(방문 분석)와 문의 메일만. 구독 항목은 구독 폼을 붙일 때 더한다.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { CONTACT_EMAIL } from "../config/site.js";
+
+const GA_OPTOUT_URL = "https://tools.google.com/dlpage/gaoptout";
+---
+<BaseLayout
+  title="개인정보처리방침 — 아이티모스"
+  description="아이티모스 홈페이지의 개인정보 처리 방침입니다."
+>
+  <article class="policy">
+    <h1>개인정보처리방침</h1>
+    <p class="policy__lead">
+      아이티모스(이하 "회사")는 홈페이지 itmoss.com 을 운영하면서 아래와 같이 개인정보를 처리합니다.
+      회사는 홈페이지에서 회원가입이나 입력 양식으로 개인정보를 받지 않습니다.
+    </p>
+
+    <section aria-labelledby="policy-analytics">
+      <h2 id="policy-analytics">1. 방문 분석 (Google Analytics)</h2>
+      <ul>
+        <li>회사는 방문 통계를 보기 위해 Google LLC 의 Google Analytics(GA4)를 씁니다.</li>
+        <li>수집 항목: 쿠키 식별자, 방문 페이지·방문 시각·체류 시간 등 이용 기록, 브라우저·기기 종류, IP 주소에서 추정한 대략적 지역.</li>
+        <li>목적: 어떤 페이지가 얼마나 읽히는지 파악해 홈페이지를 고치는 데만 씁니다. 개인을 식별하거나 광고에 쓰지 않습니다.</li>
+        <li>보유 기간: Google Analytics 데이터 보존 설정 기간(14개월) 동안 보관한 뒤 자동 삭제됩니다.</li>
+        <li>국외 처리: 수집된 정보는 Google 의 서버(미국 등)에서 처리될 수 있습니다.</li>
+        <li>
+          거부 방법: 브라우저 설정에서 쿠키 저장을 막거나,
+          <a href={GA_OPTOUT_URL} target="_blank" rel="noopener noreferrer">Google 애널리틱스 차단 브라우저 부가기능</a>({GA_OPTOUT_URL})을
+          설치하면 수집되지 않습니다. 거부해도 홈페이지 이용에는 제한이 없습니다.
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="policy-mail">
+      <h2 id="policy-mail">2. 문의 메일</h2>
+      <ul>
+        <li>연락 섹션의 메일 링크로 보내 주신 메일 주소와 내용은 답장과 문의 처리에만 씁니다.</li>
+        <li>문의 처리가 끝나면 지체 없이 지웁니다. 법령이 보관을 요구하는 경우에만 그 기간 동안 보관합니다.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="policy-third">
+      <h2 id="policy-third">3. 제3자 제공·위탁</h2>
+      <ul>
+        <li>회사는 위 Google Analytics 외에 개인정보를 제3자에게 제공하거나 처리를 맡기지 않습니다.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="policy-rights">
+      <h2 id="policy-rights">4. 정보주체의 권리</h2>
+      <ul>
+        <li>이용자는 언제든 자신의 개인정보 열람·정정·삭제·처리 정지를 요청할 수 있습니다. 아래 문의처로 메일을 보내 주시면 지체 없이 처리합니다.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="policy-contact">
+      <h2 id="policy-contact">5. 문의처</h2>
+      <ul>
+        <li>개인정보 보호책임자: 아이티모스 대표</li>
+        <li>메일: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="policy-date">
+      <h2 id="policy-date">6. 시행일</h2>
+      <ul>
+        <li>이 방침은 <time datetime="2026-10-15">2026년 10월 15일</time>부터 시행합니다.</li>
+      </ul>
+    </section>
+
+    <p class="policy__back"><a href="/">홈으로 돌아가기</a></p>
+  </article>
+</BaseLayout>
+
+<style>
+  .policy {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: var(--space-16) var(--gutter) var(--space-20);
+    word-break: keep-all;
+  }
+  .policy h1 {
+    margin: 0 0 var(--space-6);
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    font-weight: 700;
+  }
+  .policy__lead {
+    margin: 0;
+    color: var(--color-muted);
+  }
+  .policy h2 {
+    margin: var(--space-12) 0 var(--space-4);
+    font-size: var(--text-xl);
+    font-weight: 500;
+  }
+  .policy ul {
+    margin: 0;
+    padding-left: var(--space-6);
+    list-style: disc;
+  }
+  .policy li + li {
+    margin-top: var(--space-2);
+  }
+  body.site .policy a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+  .policy__back {
+    margin: var(--space-16) 0 0;
+  }
+</style>
