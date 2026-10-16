@@ -7,13 +7,14 @@
 // 촬영 장면(capture.webp)은 haepick.ai/ko '촬영해!픽' 의 움직이는 webp 를 자체 호스팅한 것 — 핫링크 금지.
 // 동작 줄이기 설정이면 첫 프레임(capture-still.webp)으로 바꾼다.
 import RenewalImage from './RenewalImage.astro';
+import StepIcon from '../icons/StepIcon.astro';
 
 const stages = [
-  { key: 'capture', slot: 'hp-step-camera', label: '찍기', body: '궁금한 화장품을 카메라로 찍습니다.' },
-  { key: 'detect', slot: 'hp-step-detect', label: '제품 인식', body: '찍은 사진 속 제품이 무엇인지 알아봅니다.' },
-  { key: 'analyze', slot: 'hp-step-ingredients', label: '성분·제품 정보 분석', body: '표기된 성분과 제품 정보를 읽어 정리합니다.' },
-  { key: 'match', slot: 'hp-step-match', label: '내 피부 적합도', body: '내 피부 기준으로 맞는지, 주의할 성분은 없는지 확인합니다.' },
-];
+  { key: 'capture', icon: 'camera', slot: 'hp-step-camera', label: '찍기', body: '궁금한 화장품을 카메라로 찍습니다.' },
+  { key: 'detect', icon: 'detect', slot: 'hp-step-detect', label: '제품 인식', body: '찍은 사진 속 제품이 무엇인지 알아봅니다.' },
+  { key: 'analyze', icon: 'analyze', slot: 'hp-step-ingredients', label: '성분·제품 정보 분석', body: '표기된 성분과 제품 정보를 읽어 정리합니다.' },
+  { key: 'match', icon: 'match', slot: 'hp-step-match', label: '내 피부 적합도', body: '내 피부 기준으로 맞는지, 주의할 성분은 없는지 확인합니다.' },
+] as const;
 
 const facts = [
   { label: '출시', value: '2025.08' },
@@ -65,7 +66,10 @@ const stores = [
         <li class="hp-steps__item" data-step={i + 1} data-stage={s.key}>
           <RenewalImage slot={s.slot} ratio="1 / 1" class="hp-steps__img" />
           <div class="hp-steps__text">
-            <span class="hp-steps__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div class="hp-steps__mark">
+              <StepIcon name={s.icon} />
+              <span class="hp-steps__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            </div>
             <h3 class="hp-steps__title">{s.label}</h3>
             <p class="hp-steps__body">{s.body}</p>
           </div>
@@ -162,6 +166,11 @@ const stores = [
     height: auto;
     aspect-ratio: 1 / 1;
     border: 1px solid var(--color-line-on-paper);
+  }
+  .hp-steps__mark {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
   }
   .hp-steps__num {
     font-family: var(--font-mono);

@@ -1,5 +1,6 @@
 ---
 // 히어로 3D 지구본 (장식, aria-hidden). 점 지구가 자전하고 궤도 파편 중 하나만 signal 로 "발견".
+// 파편 점마다 작은 영상 프레임(.clip)을 JS 가 겹친다 — 점 하나하나가 "영상"으로 읽히게.
 // 그리기는 src/scripts/heroglobe.js (cobe, 번들). 상자는 고정 비율이라 CLS 없음.
 // JS·WebGL 이 없으면 같은 상자에 정적 SVG 가 그대로 남는다.
 ---
@@ -16,6 +17,7 @@
     <circle class="globe__found" cx="91" cy="37" r="2.4" />
   </svg>
   <canvas class="globe__canvas" data-globe aria-hidden="true"></canvas>
+  <div class="globe__clips" data-globe-clips></div>
 </div>
 
 <script src="../../scripts/heroglobe.js"></script>
@@ -28,6 +30,7 @@
     aspect-ratio: 1 / 1;
     margin-inline: auto;
     color: var(--color-paper);
+    container-type: inline-size;
   }
   .globe__canvas,
   .globe__fallback {
@@ -46,6 +49,110 @@
   .globe.is-live .globe__fallback {
     opacity: 0;
     transition: opacity 0.8s ease;
+  }
+
+  /* 점마다 겹치는 영상 프레임. 위치·크기는 heroglobe.js 가 transform 으로만 바꾼다. */
+  .globe__clips {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.3s;
+  }
+  .globe.is-live .globe__clips {
+    opacity: 1;
+  }
+  .globe__clips :global(.clip) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4.6cqi;
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--color-muted);
+    border-radius: 2px;
+    background:
+      linear-gradient(to bottom, transparent 55%, color-mix(in srgb, var(--color-faint) 35%, transparent) 55%),
+      var(--color-ink);
+    overflow: hidden;
+    will-change: transform;
+    transition: opacity 0.4s ease;
+  }
+  .globe__clips :global(.clip.is-back) {
+    opacity: 0;
+  }
+  .globe__clips :global(.clip__play) {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    width: 30%;
+    aspect-ratio: 1;
+    translate: -40% -50%;
+    background: var(--color-paper);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    opacity: 0.85;
+  }
+  .globe__clips :global(.clip__bar) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 12%;
+    min-height: 1px;
+    background: var(--color-line);
+  }
+  .globe__clips :global(.clip__bar i) {
+    display: block;
+    height: 100%;
+    background: var(--color-paper);
+    transform-origin: left;
+    animation: clip-play var(--dur, 6s) linear var(--delay, 0s) infinite;
+  }
+  .globe.is-paused :global(.clip__bar i) {
+    animation-play-state: paused;
+  }
+
+  /* 발견된 영상: signal 테두리 + 검출 모서리 + 타임코드 */
+  .globe__clips :global(.clip--found) {
+    width: 10cqi;
+    border-color: var(--color-signal);
+    overflow: visible;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-signal) 25%, transparent);
+  }
+  .globe__clips :global(.clip--found::before),
+  .globe__clips :global(.clip--found::after) {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border: 1.5px solid var(--color-signal);
+    clip-path: polygon(0 0, 22% 0, 22% 2px, 2px 2px, 2px 30%, 0 30%, 0 0, 100% 100%, 78% 100%, 78% calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 70%, 100% 70%, 100% 100%);
+  }
+  .globe__clips :global(.clip--found::after) {
+    clip-path: polygon(100% 0, 78% 0, 78% 2px, calc(100% - 2px) 2px, calc(100% - 2px) 30%, 100% 30%, 100% 0, 0 100%, 22% 100%, 22% calc(100% - 2px), 2px calc(100% - 2px), 2px 70%, 0 70%, 0 100%);
+  }
+  .globe__clips :global(.clip--found .clip__play) {
+    background: var(--color-signal);
+  }
+  .globe__clips :global(.clip--found .clip__bar i) {
+    background: var(--color-signal);
+  }
+  .globe__clips :global(.clip__tc) {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 7px);
+    font: 500 max(8px, 1.9cqi) / 1 var(--font-mono, ui-monospace, monospace);
+    letter-spacing: 0.04em;
+    color: var(--color-signal);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  @keyframes clip-play {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
   }
 
   .globe__sphere {
@@ -74,8 +181,13 @@
 
   @media (prefers-reduced-motion: reduce) {
     .globe__canvas,
-    .globe.is-live .globe__fallback {
+    .globe.is-live .globe__fallback,
+    .globe__clips {
       transition: none;
+    }
+    .globe__clips :global(.clip__bar i) {
+      animation: none;
+      transform: scaleX(0.4);
     }
   }
 </style>

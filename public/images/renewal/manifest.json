@@ -1,5 +1,5 @@
 {
-  "generated_total": 8,
+  "generated_total": 12,
   "note": "홈 리뉴얼 이미지 등재부. 여기 없는 슬롯은 같은 비율의 빈 프레임으로 렌더된다. 채우는 방법: make images (scripts/gen_images.py)",
   "budget": 30,
   "slots": [
@@ -10,7 +10,11 @@
     "uzu-flow-register",
     "uzu-flow-predict",
     "uzu-flow-match",
-    "uzu-flow-notify"
+    "uzu-flow-notify",
+    "hp-step-camera",
+    "hp-step-detect",
+    "hp-step-ingredients",
+    "hp-step-match"
   ],
   "images": [
     {
@@ -108,6 +112,54 @@
       "prompt": "Step 4 of a series: sending a private alert through a secure channel. A closed graphite envelope sealed with a small signal orange padlock, resting on a light grey rounded phone-like slab, with a single small notification dot.",
       "model": "gpt-image-2",
       "created_at": "2026-10-16T11:22:50+00:00"
+    },
+    {
+      "slot": "hp-step-camera",
+      "file": "hp-step-camera.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 11030,
+      "alt": "파란 스마트폰 카메라를 화장품 병 쪽으로 비추는 그림",
+      "decorative": false,
+      "prompt": "Step 1 of a series: pointing a phone camera at a cosmetic. A cornflower blue clay smartphone, tilted, its rear triple camera facing a small cream dropper bottle with a blue cap standing beside it; a soft cone of pale light from the camera toward the bottle.",
+      "model": "gpt-image-2",
+      "created_at": "2026-10-16T11:30:36+00:00"
+    },
+    {
+      "slot": "hp-step-detect",
+      "file": "hp-step-detect.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 9728,
+      "alt": "화장품 병이 둥근 인식 틀 안에 잡히고 스캔선이 지나가는 그림",
+      "decorative": false,
+      "prompt": "Step 2 of a series: the product is detected. A cream dropper bottle with a blue cap framed by four rounded cream corner brackets, a thin glowing pale cyan horizontal scan line crossing the bottle, and three small sparkle stars above (one orange, one blue, one cream).",
+      "model": "gpt-image-2",
+      "created_at": "2026-10-16T11:32:03+00:00"
+    },
+    {
+      "slot": "hp-step-ingredients",
+      "file": "hp-step-ingredients.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 13058,
+      "alt": "화장품 튜브에서 성분을 뜻하는 작은 알갱이들이 떠올라 줄지어 정리되는 그림",
+      "decorative": false,
+      "prompt": "Step 3 of a series: reading the ingredients. A soft cream cosmetic tube with a blank label lying at an angle; from its label small rounded blank pills and tiny spheres in blue and beige float up and line up neatly into a short row, like ingredients being read out.",
+      "model": "gpt-image-2",
+      "created_at": "2026-10-16T11:33:30+00:00"
+    },
+    {
+      "slot": "hp-step-match",
+      "file": "hp-step-match.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 14010,
+      "alt": "피부를 뜻하는 둥근 물방울 옆에 맞는 성분과 주의할 성분이 둘로 나뉜 그림",
+      "decorative": false,
+      "prompt": "Step 4 of a series: matching ingredients to my skin. A plump beige clay water drop representing skin, with a small blue round badge carrying a check mark shape on it; beside it two small trays: one holding blue pills (suits me), one holding a single orange pill (caution).",
+      "model": "gpt-image-2",
+      "created_at": "2026-10-16T11:34:57+00:00"
     }
   ]
 }

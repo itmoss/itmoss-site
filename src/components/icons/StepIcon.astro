@@ -1,0 +1,50 @@
+---
+// 스크롤 단계 아이콘 — 같은 아이콘을 두 겹으로 겹친다: 아래는 muted, 위(__lit)는 signal.
+// 단계가 켜질 때 위 겹만 opacity·transform 으로 떠오른다 (색 자체는 움직이지 않는다 → 활성 단계만 signal).
+// 점등 규칙은 src/styles/scroll.css "단계 아이콘". JS 없음.
+import IconCamera from './IconCamera.astro';
+import IconDetect from './IconDetect.astro';
+import IconAnalyze from './IconAnalyze.astro';
+import IconMatch from './IconMatch.astro';
+import IconRegister from './IconRegister.astro';
+import IconTrack from './IconTrack.astro';
+import IconNotify from './IconNotify.astro';
+
+const ICONS = {
+  camera: IconCamera,
+  detect: IconDetect,
+  analyze: IconAnalyze,
+  match: IconMatch,
+  register: IconRegister,
+  track: IconTrack,
+  notify: IconNotify,
+};
+
+interface Props {
+  name: keyof typeof ICONS;
+}
+const Icon = ICONS[Astro.props.name];
+---
+<span class="step-icon">
+  <Icon class="step-icon__base" />
+  <Icon class="step-icon__lit" />
+</span>
+
+<style>
+  .step-icon {
+    display: inline-grid;
+    flex: none;
+    width: 24px;
+    height: 24px;
+  }
+  .step-icon > :global(svg) {
+    grid-area: 1 / 1;
+    display: block;
+  }
+  .step-icon > :global(.step-icon__base) {
+    color: var(--color-muted-on-paper);
+  }
+  .step-icon > :global(.step-icon__lit) {
+    color: var(--color-signal-ink);
+  }
+</style>

@@ -3,17 +3,21 @@
 // 약속은 "발견해서 본인에게 알린다"까지. 흐름 다이어그램은 UzuFlowDiagram, 대시보드 이미지는 매니페스트 슬롯 uzudebris-dashboard.
 import UzuFlowDiagram from './UzuFlowDiagram.astro';
 import RenewalImage from './RenewalImage.astro';
+import StepIcon from '../icons/StepIcon.astro';
+// 아이콘은 UzuFlowDiagram 의 원본 등록·지문 대조·본인 알림과 같은 모양 (올리기·지문·종)
 const steps = [
-  { title: '영상을 등록합니다', body: '채널 주소나 원본 파일을 올리면 됩니다.' },
+  { icon: 'register', title: '영상을 등록합니다', body: '채널 주소나 원본 파일을 올리면 됩니다.' },
   {
+    icon: 'track',
     title: '지문으로 해킹된 영상을 추적합니다',
     body: '화면과 소리에서 원본의 지문을 뽑아, 제목을 바꾸고 앞뒤를 잘라 다시 올린 영상까지 찾아냅니다.',
   },
   {
+    icon: 'notify',
     title: '보안 채널로 개인에게 알립니다',
     body: '발견한 위치와 플랫폼별 신고 방법을 함께 보내드립니다. 신고는 본인이 직접 합니다.',
   },
-];
+] as const;
 
 const cards = [
   {
@@ -68,7 +72,10 @@ const audiences = [
     <ol class="uzu-steps" data-step-group>
       {steps.map((s, i) => (
         <li class="uzu-steps__item" data-step={i + 1}>
-          <span class="uzu-steps__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <div class="uzu-steps__mark">
+            <StepIcon name={s.icon} />
+            <span class="uzu-steps__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          </div>
           <h3 class="uzu-steps__title">{s.title}</h3>
           <p class="uzu-steps__body">{s.body}</p>
         </li>
@@ -133,6 +140,11 @@ const audiences = [
     flex-direction: column;
     gap: var(--space-3);
     padding: var(--space-8) var(--space-6) var(--space-8) 0;
+  }
+  .uzu-steps__mark {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
   }
   .uzu-steps__num {
     font-family: var(--font-mono);

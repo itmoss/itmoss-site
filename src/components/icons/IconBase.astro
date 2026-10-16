@@ -1,0 +1,21 @@
+---
+// 인라인 SVG 아이콘 공통 틀 — 24px 그리드, 선 1.5, 색은 currentColor (부모의 color 토큰을 따른다).
+// 장식용이라 스크린리더·탭 순서에서 뺀다. 아이콘 폰트·외부 CDN·이미지 파일 아이콘은 쓰지 않는다.
+interface Props {
+  class?: string;
+}
+const { class: cls } = Astro.props;
+---
+<svg
+  class={cls}
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+><slot /></svg>

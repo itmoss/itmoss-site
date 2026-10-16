@@ -3,6 +3,7 @@
  *   [data-step-group] > [data-step="n"]   순서대로 등장
  *   [data-scene] [data-stage]             sticky 장면 안에서 단계별 점등
  *   [data-scene] [data-box="<stage>"]     같은 이름 단계에 맞춰 켜지는 인식 박스 (해픽 폰 위)
+ *   [data-step] .step-icon__lit           단계 아이콘의 signal 겹 — 단계가 들어온 뒤 켜짐
  *
  * 숨김 초기 상태는 html.fx-css / html.fx-io 아래에서만 둔다 (클래스는 src/scripts/scrollfx.js 가 붙인다).
  * JS·CSS 가 실패하면 클래스가 없으므로 내용은 그대로 보인다.
@@ -22,6 +23,7 @@
 :root {
   --fx-shift: var(--space-6);
   --fx-dim: 0.25;
+  --fx-icon-shift: 4px;
   --fx-dur: 600ms;
   --fx-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
@@ -62,6 +64,19 @@
   html.fx-css [data-scene] [data-box="match"]       { animation-timeline: --stage-match; }
 }
 
+/* 단계 아이콘 (src/components/icons/StepIcon.astro): 단계가 들어온 뒤 signal 겹이 살짝 올라오며 켜진다 */
+@keyframes fx-icon {
+  from { opacity: 0; transform: translateY(var(--fx-icon-shift)); }
+  to   { opacity: 1; transform: none; }
+}
+@supports (animation-timeline: view()) {
+  html.fx-css [data-step] .step-icon__lit {
+    animation: fx-icon linear both;
+    animation-timeline: view();
+    animation-range: cover 20% cover 40%;
+  }
+}
+
 @keyframes fx-box {
   from { opacity: 0; transform: scale(1.06); }
   to   { opacity: 1; transform: none; }
@@ -79,6 +94,20 @@ html.fx-io [data-step-group] > [data-step="3"] { transition-delay: 240ms; }
 html.fx-io [data-step-group] > [data-step="4"] { transition-delay: 360ms; }
 html.fx-io [data-reveal].is-in,
 html.fx-io [data-step-group].is-in > [data-step] {
+  opacity: 1;
+  transform: none;
+}
+
+html.fx-io [data-step] .step-icon__lit {
+  opacity: 0;
+  transform: translateY(var(--fx-icon-shift));
+  transition: opacity var(--fx-dur) var(--fx-ease), transform var(--fx-dur) var(--fx-ease);
+  transition-delay: 300ms;
+}
+html.fx-io [data-step="2"] .step-icon__lit { transition-delay: 420ms; }
+html.fx-io [data-step="3"] .step-icon__lit { transition-delay: 540ms; }
+html.fx-io [data-step="4"] .step-icon__lit { transition-delay: 660ms; }
+html.fx-io [data-step-group].is-in > [data-step] .step-icon__lit {
   opacity: 1;
   transform: none;
 }
@@ -112,7 +141,9 @@ html.fx-io [data-scene]:has([data-stage="match"].is-in) [data-box="match"] {
   html.fx-io [data-reveal],
   html.fx-io [data-step-group] > [data-step],
   html.fx-io [data-scene] [data-stage],
-  html.fx-io [data-scene] [data-box] {
+  html.fx-io [data-scene] [data-box],
+  html.fx-css [data-step] .step-icon__lit,
+  html.fx-io [data-step] .step-icon__lit {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
