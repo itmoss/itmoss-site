@@ -3,7 +3,8 @@
 // 숫자는 출처 있는 사실만 (design.md 문구 원칙). 다운로드·사용자 수·정확도 같은 수치는 넣지 않는다.
 // 장면: 넓은 화면에서 해픽 앱 화면이 sticky 로 고정되고, 오른쪽 단계(data-stage)가 하나씩 지나간다.
 // 이미지는 App Store 공개 자료를 자체 호스팅한 것 (scripts/fetch-haepick.mjs, 출처 public/images/haepick/sources.json).
-// 스토어 스크린샷에는 카메라 인식 화면이 없어 생성 컷 기준이던 인식 박스(data-box)는 뺐다.
+// 고정 이미지는 해픽 소개 페이지(haepick.ai/ko)의 '촬영해!픽' 장면 — 제품을 비추면 인식 틀이 잡히고 스캔선이 지나간다.
+// 움직이는 webp, 움직임 줄이기 설정이면 정지 png.
 
 const stages = [
   { stage: 'camera', label: '비추기', body: '카메라에 제품을 비춥니다.' },
@@ -30,7 +31,7 @@ const stores = [
     <header class="section__head">
       <img class="hp-icon" src="/images/haepick/icon.webp" width="512" height="512" alt="해픽 앱 아이콘" loading="lazy" decoding="async" />
       <p class="eyebrow eyebrow--on-paper">CASE 02 · 해픽 — VISION AI</p>
-      <h2 id="haepick-title" class="section__title">카메라를 대면,<br />성분을 읽습니다.</h2>
+      <h2 id="haepick-title" class="section__title">스캔 한 번에,<br />나만의 성분 확인.</h2>
       <p class="section__lead">
         아이티모스의 JVL 비전 엔진이 상용 앱 「해픽」 안에서 실사용자에게 돌아가고 있습니다. 제품을 비추면 인식하고, 성분을 읽어 내 피부 기준으로 맞춰 봅니다.
       </p>
@@ -38,16 +39,19 @@ const stores = [
 
     <div class="hp-scene">
       <figure class="hp-phone">
-        <img
-          class="hp-phone__img"
-          src="/images/haepick/screen-1.webp"
-          width="900"
-          height="1955"
-          alt="해픽 앱 화면 — 루틴 분석: 전문가 맞춤 루틴 점수와 등록한 화장품 목록"
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption class="hp-phone__cap">해픽 App Store 스크린샷</figcaption>
+        <picture>
+          <source srcset="/images/haepick/scan.png" media="(prefers-reduced-motion: reduce)" />
+          <img
+            class="hp-phone__img"
+            src="/images/haepick/scan.webp"
+            width="528"
+            height="465"
+            alt="해픽으로 화장품을 촬영하는 장면 — 스마트폰 카메라가 화장품 병을 인식 틀 안에 잡고 스캔선이 지나간다"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+        <figcaption class="hp-phone__cap">촬영해!픽 — 이 화장품, 나한테 맞을까? · haepick.ai</figcaption>
       </figure>
       <ol class="hp-stages">
         {stages.map((s, i) => (
@@ -101,14 +105,12 @@ const stores = [
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    /* 세로가 짧은 화면에서도 스크린샷 전체가 보이게 (900×1955, 캡션 몫을 뺀다) */
-    width: min(100%, 400px, (100svh - var(--header-h) - var(--space-24)) * 900 / 1955);
+    width: min(100%, 480px);
   }
   .hp-phone__img {
     display: block;
     width: 100%;
     height: auto;
-    border: 1px solid var(--color-line-on-paper);
   }
   .hp-phone__cap {
     font-family: var(--font-mono);
@@ -131,7 +133,7 @@ const stores = [
     .hp-phone {
       position: relative;
       top: auto;
-      width: min(100%, 320px);
+      width: min(100%, 360px);
     }
   }
 
