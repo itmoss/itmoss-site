@@ -374,19 +374,22 @@
       "service": "core"
     },
     {
-      "check": "grep -qx '남은 보안·개인정보 지적: 0' docs/renewal/reviews/code-review.md && node scripts/check-site.mjs build",
+      "check": "node scripts/check-site.mjs build && python3 -c \"import re,glob;hs={p:open(p).read() for p in glob.glob('dist/**/*.html',recursive=True)};bad=[a for h in hs.values() for a in re.findall(r'<a[^>]*target=.?_blank[^>]*>',h) if not re.search(r'rel=.[^>]*noopener[^>]*noreferrer',a)];assert not bad,bad;h=hs['dist/index.html'];c=re.search(r'Content-Security-Policy\\\" content=\\\"([^\\\"]+)',h).group(1);s=re.search(r'script-src([^;]*)',c).group(1);assert 'googletagmanager.com' in s and 'unsafe' not in s and '*' not in s,s\" && grep -qx '남은 보안·개인정보 지적: 0' docs/renewal/reviews/code-review.md",
       "depends_on": [
         "F15",
         "F18"
       ],
       "desc": "코드 리뷰(engineering:code-review) — CSP meta(GA4 호스트 범위)·외부 링크 rel·이미지 최적화·키 노출, 보안·개인정보 지적 반영, 결과 docs/renewal/reviews/code-review.md",
-      "done": false,
+      "done": true,
       "id": "F26",
-      "must_not": "grep -rniE 'accesstoken|x-api-key|api[_-]?key|sk-[A-Za-z0-9_-]{20,}' src public scripts",
-      "notes": "실패 2026-10-14: 경계 재검토 필요: must_not 이 gen_images.py 의 OPENAI_API_KEY·api_key(이름, design·F16 이 요구)에 걸려 항상 exit 0. 키 값 패턴(sk-…)만 보게 조정 필요. 사전 점검: 인라인 스크립트 0·이미지 OK·News gbsa 링크 noreferrer 누락",
+      "must_not": "grep -rnE 'sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}' src public scripts || git ls-files --error-unmatch .env",
+      "notes": "완료 2026-10-16: WEAK 보강: check 에 dist 전체 target=_blank rel=noopener noreferrer, index CSP script-src(googletagmanager 포함·unsafe/* 없음) 검사 추가. 코드 변경 없음",
       "owner": "ai",
       "service": "core",
-      "hold": "경계 재검토 필요: must_not 이 gen_images.py 의 OPENAI_API_KEY·api_key(이름, design·F16 이 요구)에 걸려 항상 exit 0. 키 값 패턴(sk-…)만 보게 조정 필요. 사전 점검: 인라인 스크립트 0·이미지 OK·News gbsa 링크 noreferrer 누락"
+      "returns": {
+        "weak": 1
+      },
+      "reviewed": "2026-10-16"
     },
     {
       "check": "f=docs/renewal/reviews/compliance.md; for h in '## 개인정보보호법' '## 변호사법' '## 사람 판단 필요'; do grep -qF \"$h\" $f || exit 1; done",
@@ -442,9 +445,14 @@
       "done": false,
       "id": "F30",
       "must_not": "grep -rnE 'test\\.skip|test\\.fixme|\\.only\\(' tests/e2e",
-      "notes": "",
+      "notes": "review 2026-10-16 WEAK: layout 섹션 순서 검사가 #about 을 빼고(top…record,contact), 내비 검사도 #about(회사)을 안 봐 design.md 2026-10-16 섹션·내비 계약을 다 지키지 않는다",
       "owner": "ai",
-      "service": "e2e"
+      "service": "e2e",
+      "returns": {
+        "weak": 1
+      },
+      "check_fix": "grep -q \"'record', 'about', 'contact'\" tests/e2e/layout.spec.mjs && grep -qE \"'#record', '#about', '#contact'\" tests/e2e/links.spec.mjs && npx playwright test tests/e2e/layout.spec.mjs tests/e2e/links.spec.mjs tests/e2e/news.spec.mjs → exit 0 (#about 이 순서·내비 목록에 들어간 채 통과)",
+      "check_was": "test -s docs/renewal/test-plan.md && npx playwright test tests/e2e/layout.spec.mjs tests/e2e/links.spec.mjs tests/e2e/news.spec.mjs"
     },
     {
       "check": "npx playwright test tests/e2e/subscribe.spec.mjs",
@@ -606,10 +614,87 @@
       "notes": "완료 2026-10-14: #haepick section--light(새 토큰 paper-bright+위 경계선). App Store 아이콘·스크린샷 4장 webp 자체호스팅(scripts/fetch-haepick.mjs). 스크린샷에 카메라 화면 없어 data-box 제거. 커밋은 루프가",
       "done": true,
       "reviewed": "2026-10-14"
+    },
+    {
+      "id": "F42",
+      "service": "core",
+      "desc": "히어로에 3D WebGL 우주 지구본: Hero.astro 의 RenewalImage(slot hero) 자리를 src/components/home/HeroGlobe.astro(<canvas data-globe aria-hidden>)로 교체. 라이브러리는 번들되는 경량 WebGL(권장 cobe, npm) — three.js·CDN 금지(JS 50KB·CSP). 점으로 그린 지구가 천천히 자전하고 궤도의 파편(데브리스) 점들 중 하나만 signal 오렌지로 '발견' 표시, 나머지는 토큰 색. 고정 aspect-ratio 상자로 자리 확보(CLS 0), 첫 페인트 뒤 초기화(LCP 는 h1), devicePixelRatio ≤2, 화면 밖·탭 숨김이면 멈춤, prefers-reduced-motion 이면 회전 없이 한 장면, WebGL 없으면 같은 상자에 정적 대체(SVG/CSS). 데스크톱은 제목 옆/뒤, 390px 에서 가로 스크롤 없음",
+      "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs jsbudget && node scripts/check-site.mjs colors && bash scripts/dev-smoke.sh && python3 -c \"import re;h=open('dist/index.html').read();m=re.search(r'<section[^>]*id=\\\"top\\\"[^>]*>',h);s=h[m.end():h.find('</section>',m.end())];assert re.search(r'<canvas[^>]*data-globe',s),'no globe canvas'\" && grep -rq 'prefers-reduced-motion' src/components/home/HeroGlobe.astro src/scripts",
+      "must_not": "grep -qE '\"three\"|\"@react-three' package.json || grep -rqE 'unpkg\\.com|cdn\\.jsdelivr|cdnjs|skypack' src",
+      "owner": "ai",
+      "depends_on": [
+        "F05",
+        "F07",
+        "F18"
+      ],
+      "notes": "완료 2026-10-16: 히어로 = HeroGlobe(cobe 2.0.1 번들, 동적 import·첫 페인트 뒤). 색은 tokens.css 변수 런타임 읽기, 발견점 위치 heroglobe.js FOUND. hero.webp 미사용. 커밋은 루프가",
+      "done": true,
+      "reviewed": "2026-10-16"
+    },
+    {
+      "id": "F43",
+      "service": "core",
+      "desc": "#haepick 을 haepick.ai/ko 의 '촬영해!픽' 기준으로 재구성. ① 그림: https://haepick.ai/landing/ko/s3-obj.webp(움직이는 webp: 휴대폰 + 스캔 모서리 틀 안의 세럼병 + 스캔선, 528×465, 263KB)를 public/images/haepick/capture.webp 로 자체 호스팅하고 첫 프레임을 capture-still.webp 로 추출 → <picture> 에 media=\"(prefers-reduced-motion: reduce)\" source 로 정지 컷, img width/height·alt. 출처는 sources.json 에 추가(haepick.ai). 핫링크 금지. 스토어 스크린샷은 보조로 유지하거나 줄임. ② 문구: 해픽 공식 문구 '이 화장품, 나한테 맞을까? 궁금한 화장품을 찍으면 제품 정보를 분석하고 내 피부에 맞는지 확인해드립니다' 의 뜻을 따라 data-stage 4단계를 촬영 흐름(찍기 → 제품 인식 → 성분·제품 정보 분석 → 내 피부 적합도)으로 다시 쓰고 copy.md ## 해픽 갱신. 공식 문구를 그대로 인용할 때는 '해픽' 출처가 드러나게. 수치·의학적 효능 주장 추가 금지",
+      "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs images && node scripts/check-site.mjs colors && node scripts/check-site.mjs copy && test -f public/images/haepick/capture.webp && test -f public/images/haepick/capture-still.webp && grep -q 'haepick.ai' public/images/haepick/sources.json && grep -q '촬영' docs/renewal/copy.md && python3 -c \"import re;h=open('dist/index.html').read();m=re.search(r'<section[^>]*id=\\\"haepick\\\"[^>]*>',h);s=h[m.end():h.find('</section>',m.end())];assert 'capture.webp' in s,'no capture img';assert re.search(r'prefers-reduced-motion[^>]*capture-still|capture-still[^>]*prefers-reduced-motion',s),'no still source';assert '찍' in s,'no capture copy'\"",
+      "must_not": "grep -qE 'haepick\\.ai/landing|mzstatic\\.com' dist/index.html",
+      "owner": "ai",
+      "depends_on": [
+        "F41"
+      ],
+      "notes": "완료 2026-10-16: #haepick 상단에 촬영 장면 capture.webp(=s3-obj, 자체 호스팅)+정지 컷, 캡션 '이 화장품, 나한테 맞을까?' 해픽 출처. 단계 data-stage=capture/detect/analyze/match. 스토어 스크린샷 미사용. 커밋은 루프가",
+      "done": true,
+      "reviewed": "2026-10-16"
+    },
+    {
+      "id": "F44",
+      "service": "core",
+      "desc": "스크롤로 지나가는 단계에 아이콘: #haepick 의 li[data-stage] 4개(F43 의 촬영 흐름: 찍기·제품 인식·분석·피부 적합도)와 #uzudebris 의 li[data-step] 3개(등록·추적·알림)마다 인라인 SVG 아이콘(src/components/icons/*.astro, 24px 그리드·선 굵기 통일, stroke=currentColor, aria-hidden=true, focusable=false). 단계가 켜질 때(data-stage .is-in / 스크롤 타임라인) 아이콘도 함께 점등·살짝 이동 — transform/opacity 만, reduced-motion 이면 정지. 아이콘 폰트·외부 아이콘 CDN·이미지 파일 아이콘 금지(JS 0 바이트 추가). 색은 토큰만(활성 단계만 signal)",
+      "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs colors && node scripts/check-site.mjs jsbudget && ls src/components/icons/*.astro >/dev/null && python3 -c \"import re;h=open('dist/index.html').read()\ndef sec(i):\n m=re.search(r'<section[^>]*id=\\\"'+i+r'\\\"[^>]*>',h);return h[m.end():h.find('</section>',m.end())]\nfor i,a,n in (('haepick','data-stage',4),('uzudebris','data-step',3)):\n s=sec(i);items=re.findall(r'<li[^>]*'+a+r'[^>]*>(.*?)</li>',s,re.S);assert len(items)>=n,(i,len(items));assert all(re.search(r'<svg[^>]*aria-hidden=\\\"true\\\"',x) for x in items),i+' item without aria-hidden svg'\"",
+      "must_not": "grep -qiE 'font-awesome|material-icons|fonts\\.googleapis\\.com/icon|unpkg\\.com|cdn\\.jsdelivr|iconify' dist/index.html",
+      "owner": "ai",
+      "depends_on": [
+        "F43"
+      ],
+      "notes": "완료 2026-10-16: 단계 아이콘 src/components/icons(IconBase+7종, StepIcon 두 겹: muted 바탕+signal __lit). 점등 규칙 scroll.css '[data-step] .step-icon__lit'. JS 0. 커밋은 루프가",
+      "done": true,
+      "reviewed": "2026-10-16"
+    },
+    {
+      "id": "F45",
+      "service": "core",
+      "desc": "이미지 품질 재생성(gpt-image-2, quality high): scripts/image_prompts.json 의 guard·프롬프트를 'AI 티 안 나는' 사진/에디토리얼 톤으로 다시 쓰기 (실제 렌즈·자연광·질감·약한 그레인; 플라스틱 광택·네온·보라 그라데이션·과한 대칭·글로우 금지; 글자·로고·얼굴 없음 유지). 대상 슬롯: uzudebris-dashboard(재생성), uzu-flow-register/predict/match/notify(UzuFlowDiagram), principle-1~5(회사 소개 5원칙 — 옛 Gemini 그림 대체, 파일 renewal/about/principle-N.webp 로 매니페스트 등재), 새 슬롯 uzudebris-earth(우주에서 본 지구 + 궤도를 도는 파편, 그중 하나만 오렌지 빛 — #uzudebris 머리 키비주얼, 히어로 3D 지구본(F42)과 같은 은유). 누적 30장 한도 안에서 슬롯당 최대 2회. 생성 뒤 직접 열어 보고 글자·깨진 형태가 있으면 그 슬롯만 다시. 컴포넌트는 매니페스트 width/height 로. hero·haepick-phone·bg 는 쓰지 않으므로 재생성 안 함",
+      "check": "node scripts/check-site.mjs build && node scripts/check-site.mjs images && python3 -c \"import json,os;m=json.load(open('public/images/renewal/manifest.json'));e={x['slot']:x for x in m['images']};need=['uzudebris-dashboard','uzudebris-earth','uzu-flow-register','uzu-flow-predict','uzu-flow-match','uzu-flow-notify']+['principle-%d'%i for i in range(1,6)];miss=[s for s in need if s not in e or 'gpt-image-2' not in (e[s].get('model') or '') or not os.path.exists('public/images/renewal/'+e[s]['file'])];assert not miss,miss;assert m.get('generated_total',0)<=30;h=open('dist/index.html').read();assert e['uzudebris-earth']['file'] in h,'earth not used';assert all(e['principle-%d'%i]['file'] in h for i in range(1,6)),'principles not from manifest'\"",
+      "must_not": "grep -rqE 'Gemini_Generated|images/about/principle' src dist/index.html",
+      "owner": "ai",
+      "depends_on": [
+        "F18",
+        "F39",
+        "F41"
+      ],
+      "notes": "완료 2026-10-16: 11장 재생성(사진 톤 guard, 누적 24/30, 재시도 0). 5원칙=매니페스트 principle-N(RenewalImage), #uzudebris 머리=uzudebris-earth. image_prompts·manifest에 다른 세션 globe-clips 슬롯 섞임. 커밋은 루프가",
+      "done": true,
+      "reviewed": "2026-10-16"
+    },
+    {
+      "id": "F46",
+      "service": "core",
+      "desc": "전체 디자인 보정 — 'AI 가 만든 티' 제거 (스킬: design-taste-frontend · make-interfaces-feel-better · web-design-guidelines · emil-design-eng). 390/768/1280 캡처로 섹션별 점검 후 docs/renewal/reviews/design-polish.md 에 표(| 위치 | AI 티 | 고친 것 |) 10행 이상. 볼 것: 모든 카드가 같은 모양·간격으로 반복, 가운데 정렬 남발, 의미 없는 그라데이션·글로우·과한 둥근 모서리·그림자, 아이콘+제목+본문 3열 템플릿, 상투어 카피, 리듬 없는 세로 간격, 타이포 위계(크기·굵기·자간) 약함, 숫자·라벨 정렬, 호버·포커스·눌림 상태, 이미지와 글의 비례. 토큰·문구 원칙 유지, 사용자가 확정한 문구(design.md 변경 2026-10-16 (2) 이후)는 바꾸지 않음",
+      "check": "node scripts/check-site.mjs all && bash scripts/dev-smoke.sh && test -f docs/renewal/reviews/design-polish.md && test $(grep -cE '^\\| ' docs/renewal/reviews/design-polish.md) -ge 10 && grep -q '영상 해킹에 맞서는' dist/index.html && grep -q '스캔 한 번에' dist/index.html && grep -q '대표 / 영상해커 / 식물키우는개발자' dist/index.html && grep -q '함께하고 있습니다' dist/index.html",
+      "must_not": "python3 -c \"import re,sys;h=open('dist/index.html').read();t=re.sub(r'<[^>]+>',' ',h);bad=re.search(r'[\\U0001F300-\\U0001FAFF\\u2728]',h) or re.search(r'(?i)(seamless|cutting-edge|revolutionary|unlock|empower|혁신적인|차세대|원활한)',t);sys.exit(0 if bad else 1)\"",
+      "owner": "ai",
+      "depends_on": [
+        "F42",
+        "F43",
+        "F44",
+        "F45"
+      ],
+      "notes": "완료 2026-10-16: 해픽 h2·리드를 확정 문구로 복구(F43이 바꿔둠). 박스 카드→위 선, J 아바타 제거, 한글 모노 라벨 폰트·자간, tabular-nums, btn:active, 글로우 제거. 표 docs/renewal/reviews/design-polish.md. 커밋은 루프가",
+      "done": true,
+      "reviewed": "2026-10-16"
     }
   ],
   "goal": "itmoss.com 리뉴얼 — 블록체인 서사 제거, 비전 AI(우주데브리스·해픽) 중심 스크롤형 한 페이지 + 구독 폼·개인정보처리방침",
-  "planned_at": "2026-10-13T20:51:53+09:00",
+  "planned_at": "2026-10-16T20:19:04+09:00",
   "rules": 3,
   "services": [
     "core",

@@ -129,3 +129,28 @@
 2026-10-14 [core] F40 완료: scripts/dev-smoke.sh: 4331 포트 astro dev 2회, /·/privacy/·/preview/canvas/ 200, 로그 'ready in' 존재·에러 없음. 현재 에러 0건이라 코드 수정 없음. 커밋은 루프가
 2026-10-14 [core] F41 완료 전 notes: 스크린샷 사용 허락(우당네트웍)은 F19 사람 확인 — 배포 전
 2026-10-14 [core] F41 완료: #haepick section--light(새 토큰 paper-bright+위 경계선). App Store 아이콘·스크린샷 4장 webp 자체호스팅(scripts/fetch-haepick.mjs). 스크린샷에 카메라 화면 없어 data-box 제거. 커밋은 루프가
+2026-10-14 [core] F26 계획 수정: must_not — 사용자 요청: 경계가 키 이름(OPENAI_API_KEY)에도 걸려 항상 실패 → 키 값 패턴(sk-…·AKIA…)과 .env 추적 여부만 검사
+2026-10-14 [core] F26 보류 해제 (이전 사유: 경계 재검토 필요: must_not 이 gen_images.py 의 OPENAI_API_KEY·api_key(이름, design·F16 이 요구)에 걸려 항상 exit 0. 키 값 패턴(sk-…)만 보게 조정 필요. 사전 점검: 인라인 스크립트 0·이미지 OK·News gbsa 링크 noreferrer 누락)
+2026-10-14 계획: 항목 1개 추가 (F42)
+2026-10-16 계획: 항목 1개 추가 (F43)
+2026-10-16 계획: 항목 1개 추가 (F44)
+2026-10-16 계획: 항목 2개 추가 (F45, F46)
+2026-10-16 [core] F26 완료 전 notes: 실패 2026-10-14: 경계 재검토 필요: must_not 이 gen_images.py 의 OPENAI_API_KEY·api_key(이름, design·F16 이 요구)에 걸려 항상 exit 0. 키 값 패턴(sk-…)만 보게 조정 필요. 사전 점검: 인라인 스크립트 0·이미지 OK·News gbsa 링크 noreferrer 누락
+2026-10-16 [core] F26 완료: CSP·rel·이미지·키 점검 완료, News gbsa 링크 noreferrer 추가. GA 광고 기능 켜면 doubleclick 호스트 CSP 계약 변경 필요. 커밋은 루프가
+2026-10-16 [core] F42 완료 전 notes: 히어로 생성 이미지 hero.webp 는 이 항목 뒤 사용 안 함
+2026-10-16 [core] F42 완료: 히어로 = HeroGlobe(cobe 2.0.1 번들, 동적 import·첫 페인트 뒤). 색은 tokens.css 변수 런타임 읽기, 발견점 위치 heroglobe.js FOUND. hero.webp 미사용. 커밋은 루프가
+2026-10-16 [core] F43 완료 전 notes: 참고 프레임은 F19 사용 허락(우당네트웍) 범위에 포함해 확인
+2026-10-16 [core] F43 완료: #haepick 상단에 촬영 장면 capture.webp(=s3-obj, 자체 호스팅)+정지 컷, 캡션 '이 화장품, 나한테 맞을까?' 해픽 출처. 단계 data-stage=capture/detect/analyze/match. 스토어 스크린샷 미사용. 커밋은 루프가
+2026-10-16 [core] F26 review 전 notes: 완료 2026-10-16: CSP·rel·이미지·키 점검 완료, News gbsa 링크 noreferrer 추가. GA 광고 기능 켜면 doubleclick 호스트 CSP 계약 변경 필요. 커밋은 루프가
+2026-10-16 [core] F26 review WEAK: check 가 구현자가 직접 쓴 '남은 지적: 0' 한 줄과 build 만 본다 — CSP·rel 실제 상태는 미검증 (현재 dist 는 계약대로 맞음) · check 보강: node scripts/check-site.mjs build && python3 -c "import re,glob;hs={p:open(p).read() for p in glob.glob('dist/**/*.html',recursive=True)};bad=[a for h in hs.values() for a in re.findall(r'<a[^>]*target=.?_blank[^>]*>',h) if not re.search(r'rel=.[^>]*noopener[^>]*noreferrer',a)];assert not bad,bad;h=hs['dist/index.html'];c=re.search(r'Content-Security-Policy\" content=\"([^\"]+)',h).group(1);s=re.search(r'script-src([^;]*)',c).group(1);assert 'googletagmanager.com' in s and 'unsafe' not in s and '*' not in s,s" && grep -qx '남은 보안·개인정보 지적: 0' docs/renewal/reviews/code-review.md → exit 0
+2026-10-16 [core] F26 계획 수정: check — WEAK 보강: dist 의 target=_blank rel·CSP script-src 실제 검사 추가
+2026-10-16 [core] F26 완료 전 notes: review 2026-10-16 WEAK: check 가 구현자가 직접 쓴 '남은 지적: 0' 한 줄과 build 만 본다 — CSP·rel 실제 상태는 미검증 (현재 dist 는 계약대로 맞음)
+2026-10-16 [core] F26 보강 완료: WEAK 보강: check 에 dist 전체 target=_blank rel=noopener noreferrer, index CSP script-src(googletagmanager 포함·unsafe/* 없음) 검사 추가. 코드 변경 없음
+2026-10-16 [core] F44 완료 전 notes: uzudebris 흐름도(UzuFlowDiagram)와 아이콘 모양을 맞출 것
+2026-10-16 [core] F44 완료: 단계 아이콘 src/components/icons(IconBase+7종, StepIcon 두 겹: muted 바탕+signal __lit). 점등 규칙 scroll.css '[data-step] .step-icon__lit'. JS 0. 커밋은 루프가
+2026-10-16 [core] F45 완료 전 notes: F19 사람 판정 대상: uzudebris·흐름 4·5원칙·지구
+2026-10-16 [core] F45 완료: 11장 재생성(사진 톤 guard, 누적 24/30, 재시도 0). 5원칙=매니페스트 principle-N(RenewalImage), #uzudebris 머리=uzudebris-earth. image_prompts·manifest에 다른 세션 globe-clips 슬롯 섞임. 커밋은 루프가
+2026-10-16 [core] F46 완료: 해픽 h2·리드를 확정 문구로 복구(F43이 바꿔둠). 박스 카드→위 선, J 아바타 제거, 한글 모노 라벨 폰트·자간, tabular-nums, btn:active, 글로우 제거. 표 docs/renewal/reviews/design-polish.md. 커밋은 루프가
+2026-10-16 [e2e] F30 완료: Playwright 설정(mobile 390·desktop, :4330, offline()로 GA·폰트 차단) + layout·links·news 28통과. /about 리다이렉트는 itmoss.com 절대주소 meta refresh라 대상만 검사. 커밋은 루프가
+2026-10-16 [e2e] F30 review 전 notes: 완료 2026-10-16: Playwright 설정(mobile 390·desktop, :4330, offline()로 GA·폰트 차단) + layout·links·news 28통과. /about 리다이렉트는 itmoss.com 절대주소 meta refresh라 대상만 검사. 커밋은 루프가
+2026-10-16 [e2e] F30 review WEAK: layout 섹션 순서 검사가 #about 을 빼고(top…record,contact), 내비 검사도 #about(회사)을 안 봐 design.md 2026-10-16 섹션·내비 계약을 다 지키지 않는다 · check 보강: grep -q "'record', 'about', 'contact'" tests/e2e/layout.spec.mjs && grep -qE "'#record', '#about', '#contact'" tests/e2e/links.spec.mjs && npx playwright test tests/e2e/layout.spec.mjs tests/e2e/links.spec.mjs tests/e2e/news.spec.mjs → exit 0 (#about 이 순서·내비 목록에 들어간 채 통과)
