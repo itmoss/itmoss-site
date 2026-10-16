@@ -1,28 +1,37 @@
 ---
 // #top 히어로. 문구: docs/renewal/copy.md "## 히어로". 공모전 소식은 넣지 않는다 (#record 에만).
-// 히어로 이미지는 매니페스트 슬롯 hero (16:7). 첫 화면이라 fetchpriority=high.
-import RenewalImage from './RenewalImage.astro';
+// 비주얼은 3D 지구본(HeroGlobe) — 데스크톱은 제목 옆, 좁은 화면은 제목 아래.
+import HeroGlobe from './HeroGlobe.astro';
 ---
 <section id="top" class="hero">
   <div class="container hero__inner">
-    <h1 class="hero__title">영상 해킹에 맞서는<br />단 하나의 솔루션, 우주데브리스</h1>
-    <p class="hero__lead">
-      아이티모스는 영상과 보안을 20년간 다뤄 온 팀이 만든 영상 해킹 AI 회사입니다. 화면 속 사물을 분석하는 비전 엔진과, 해킹된 영상을 찾아내는 보안 AI 엔진을 만듭니다.
-    </p>
-    <div class="hero__actions">
-      <a class="btn btn--signal" href="#uzudebris">우주데브리스 보기</a>
+    <div class="hero__text">
+      <h1 class="hero__title">영상 해킹에 맞서는<br />단 하나의 솔루션, 우주데브리스</h1>
+      <p class="hero__lead">
+        아이티모스는 영상과 보안을 20년간 다뤄 온 팀이 만든 영상 해킹 AI 회사입니다. 화면 속 사물을 분석하는 비전 엔진과, 해킹된 영상을 찾아내는 보안 AI 엔진을 만듭니다.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--signal" href="#uzudebris">우주데브리스 보기</a>
+      </div>
     </div>
 
-    <RenewalImage slot="hero" ratio="16 / 7" priority class="hero__image" />
+    <div class="hero__visual">
+      <HeroGlobe />
+    </div>
   </div>
 </section>
 
 <style>
   .hero__inner {
+    display: grid;
+    gap: var(--space-10);
+    padding-block: var(--space-30) var(--space-24);
+  }
+  .hero__text {
     display: flex;
     flex-direction: column;
     gap: var(--space-10);
-    padding-block: var(--space-30) var(--space-24);
+    min-width: 0;
   }
   .hero__title {
     margin: 0;
@@ -46,10 +55,26 @@ import RenewalImage from './RenewalImage.astro';
     flex-wrap: wrap;
     gap: var(--space-3);
   }
+  .hero__visual {
+    min-width: 0;
+  }
 
-  /* 여러 화면에 흩어진 같은 장면 — 하나만 시그널 윤곽선 */
-  .hero__inner :global(.hero__image) {
-    margin-top: var(--space-10);
+  /* 넓은 화면: 제목 옆에 지구본. 제목 글자가 지구본 위로 조금 겹쳐도 되게 지구본을 뒤에 둔다 */
+  @media (min-width: 960px) {
+    .hero__inner {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      align-items: center;
+    }
+    .hero__title {
+      font-size: clamp(40px, 5.6vw, 88px);
+    }
+    .hero__text {
+      position: relative;
+      z-index: 1;
+    }
+    .hero__visual {
+      margin-inline-start: calc(var(--space-16) * -1);
+    }
   }
 
   @media (max-width: 640px) {
@@ -57,8 +82,13 @@ import RenewalImage from './RenewalImage.astro';
       padding-block: var(--space-20) var(--space-16);
       gap: var(--space-8);
     }
-    .hero__inner :global(.hero__image) {
-      margin-top: var(--space-4);
+    .hero__text {
+      gap: var(--space-8);
+    }
+    .hero__visual {
+      max-width: 360px;
+      width: 100%;
+      margin-inline: auto;
     }
   }
 </style>

@@ -1,29 +1,17 @@
 ---
-// #haepick CASE 02 — data-scene="haepick". 문구: docs/renewal/copy.md "## 해픽".
+// #haepick CASE 02. 문구: docs/renewal/copy.md "## 해픽".
 // 숫자는 출처 있는 사실만 (design.md 문구 원칙). 다운로드·사용자 수·정확도 같은 수치는 넣지 않는다.
-// 장면: 넓은 화면에서 해픽 앱 화면이 sticky 로 고정되고, 오른쪽 단계(data-stage)가 하나씩 지나간다.
-// 이미지는 App Store 공개 자료를 자체 호스팅한 것 (scripts/fetch-haepick.mjs, 출처 public/images/haepick/sources.json).
-// 고정 이미지는 해픽 소개 페이지(haepick.ai/ko)의 '촬영해!픽' 장면 — 제품을 비추면 인식 틀이 잡히고 스캔선이 지나간다.
-// 움직이는 webp, 움직임 줄이기 설정이면 정지 png.
+// 단계: 네 단계를 카드로 나란히 두고 카드마다 그림(매니페스트 슬롯 hp-step-*, gpt-image-2 — 해픽 점토풍 톤)을 붙인다.
+// 예전 sticky 장면(왼쪽 고정 이미지 + 오른쪽 단계 점등)은 단계 사이가 멀고 그림과 따로 놀아 걷어냈다.
+// 앱 아이콘은 App Store 공개 자료를 자체 호스팅한 것 (scripts/fetch-haepick.mjs, 출처 public/images/haepick/sources.json).
+import RenewalImage from './RenewalImage.astro';
 
 const stages = [
-  { stage: 'camera', label: '비추기', body: '카메라에 제품을 비춥니다.' },
-  { stage: 'detect', label: '제품 인식', body: '화면 속 제품을 찾아 표시합니다.' },
-  { stage: 'ingredients', label: '성분 읽기', body: '표기된 성분을 읽어 옵니다.' },
-  { stage: 'match', label: '피부 맞춤', body: '내 피부 기준으로 맞는 성분과 주의할 성분을 나눠 봅니다.' },
+  { slot: 'hp-step-camera', label: '비추기', body: '카메라에 제품을 비춥니다.' },
+  { slot: 'hp-step-detect', label: '제품 인식', body: '화면 속 제품을 찾아 표시합니다.' },
+  { slot: 'hp-step-ingredients', label: '성분 읽기', body: '표기된 성분을 읽어 옵니다.' },
+  { slot: 'hp-step-match', label: '피부 맞춤', body: '내 피부 기준으로 맞는 성분과 주의할 성분을 나눠 봅니다.' },
 ];
-
-// 단계 아이콘 — 32 격자, 선 1.5, 색은 currentColor. 인식 틀 모서리는 위 촬영 장면의 틀과 같은 모양.
-const icons: Record<string, string> = {
-  // 스마트폰과 렌즈
-  camera: '<rect x="9" y="3" width="14" height="26" rx="3"/><circle cx="16" cy="11" r="3.5"/><path d="M14 25h4"/>',
-  // 인식 틀 안의 화장품 병
-  detect: '<path d="M4 10V6a2 2 0 0 1 2-2h4M22 4h4a2 2 0 0 1 2 2v4M28 22v4a2 2 0 0 1-2 2h-4M10 28H6a2 2 0 0 1-2-2v-4"/><path d="M14 9h4v3h-4zM13 12h6a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z"/>',
-  // 성분표 줄과 지나가는 스캔선
-  ingredients: '<rect x="6" y="4" width="20" height="24" rx="2"/><path d="M10 10h12M10 14h9M10 22h12M10 26h7"/><path d="M3 18h26"/>',
-  // 피부(물방울)와 맞음 표시
-  match: '<path d="M16 3c4.5 5.5 9 10.5 9 16a9 9 0 0 1-18 0c0-5.5 4.5-10.5 9-16z"/><path d="m12 19 3 3 5-6"/>',
-};
 
 const facts = [
   { label: '출시', value: '2025.08' },
@@ -38,7 +26,7 @@ const stores = [
   { href: 'https://play.google.com/store/apps/details?id=com.woodang.haepick_client&hl=ko', label: 'Google Play 에서 해픽 보기' },
 ];
 ---
-<section id="haepick" class="section section--light" data-scene="haepick" aria-labelledby="haepick-title">
+<section id="haepick" class="section section--light" aria-labelledby="haepick-title">
   <div class="container section__inner">
     <header class="section__head">
       <img class="hp-icon" src="/images/haepick/icon.webp" width="512" height="512" alt="해픽 앱 아이콘" loading="lazy" decoding="async" />
@@ -49,35 +37,18 @@ const stores = [
       </p>
     </header>
 
-    <div class="hp-scene">
-      <figure class="hp-phone">
-        <picture>
-          <source srcset="/images/haepick/scan.png" media="(prefers-reduced-motion: reduce)" />
-          <img
-            class="hp-phone__img"
-            src="/images/haepick/scan.webp"
-            width="528"
-            height="465"
-            alt="해픽으로 화장품을 촬영하는 장면 — 스마트폰 카메라가 화장품 병을 인식 틀 안에 잡고 스캔선이 지나간다"
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
-        <figcaption class="hp-phone__cap">촬영해!픽 — 이 화장품, 나한테 맞을까? · haepick.ai</figcaption>
-      </figure>
-      <ol class="hp-stages">
-        {stages.map((s, i) => (
-          <li class="hp-stages__item" data-stage={s.stage}>
-            <div class="hp-stages__mark" aria-hidden="true">
-              <svg class="hp-stages__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={icons[s.stage]} />
-              <span class="hp-stages__num">{String(i + 1).padStart(2, '0')}</span>
-            </div>
-            <h3 class="hp-stages__title">{s.label}</h3>
-            <p class="hp-stages__body">{s.body}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
+    <ol class="hp-steps" data-step-group>
+      {stages.map((s, i) => (
+        <li class="hp-steps__item" data-step={i + 1}>
+          <RenewalImage slot={s.slot} ratio="1 / 1" class="hp-steps__img" />
+          <div class="hp-steps__text">
+            <span class="hp-steps__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="hp-steps__title">{s.label}</h3>
+            <p class="hp-steps__body">{s.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
 
     <dl class="hp-facts">
       {facts.map((f) => (
@@ -107,31 +78,6 @@ const stores = [
 </section>
 
 <style>
-  .hp-scene {
-    display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: var(--space-12);
-    align-items: start;
-  }
-  .hp-phone {
-    position: sticky;
-    top: calc(var(--header-h) + var(--space-8));
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    width: min(100%, 480px);
-  }
-  .hp-phone__img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .hp-phone__cap {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--color-muted-on-paper);
-  }
   .hp-icon {
     width: 64px;
     height: 64px;
@@ -139,73 +85,60 @@ const stores = [
     border: 1px solid var(--color-line-on-paper);
   }
 
-  @media (max-width: 760px) {
-    .hp-scene {
-      grid-template-columns: minmax(0, 1fr);
-      gap: var(--space-8);
-    }
-    /* 좁은 화면은 한 줄로 쌓이므로 고정하지 않는다 */
-    .hp-phone {
-      position: relative;
-      top: auto;
-      width: min(100%, 360px);
-    }
-  }
-
-  .hp-stages {
+  .hp-steps {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+  .hp-steps__item {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid var(--color-line-on-paper);
+    gap: var(--space-4);
   }
-  .hp-stages__item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-3);
-    /* 단계마다 스크롤 거리를 줘서 고정된 폰 옆을 하나씩 지나가게 */
-    min-height: 50svh;
-    padding: var(--space-8) var(--space-6) var(--space-8) 0;
-    border-bottom: 1px solid var(--color-line-on-paper);
-  }
-  @media (max-width: 760px) {
-    .hp-stages__item {
-      min-height: 0;
-    }
-  }
-  .hp-stages__mark {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-  }
-  .hp-stages__icon {
-    width: 48px;
-    height: 48px;
-    padding: 8px;
+  .hp-steps__item :global(.hp-steps__img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     border: 1px solid var(--color-line-on-paper);
-    color: var(--color-signal-ink);
   }
-  .hp-stages__num {
+  .hp-steps__num {
     font-family: var(--font-mono);
     font-size: var(--text-sm);
     color: var(--color-signal-ink);
   }
-  .hp-stages__title {
+  .hp-steps__title {
     margin: 0;
     font-size: var(--text-xl);
     font-weight: 500;
     line-height: var(--leading-tight);
     word-break: keep-all;
   }
-  .hp-stages__body {
+  .hp-steps__body {
     margin: 0;
-    max-width: 32ch;
     font-size: var(--text-base);
     line-height: var(--leading-body);
     color: var(--color-muted-on-paper);
     word-break: keep-all;
+  }
+  .hp-steps__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  @media (max-width: 960px) {
+    .hp-steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: var(--space-10);
+    }
+  }
+  @media (max-width: 480px) {
+    .hp-steps {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 
   .hp-facts {

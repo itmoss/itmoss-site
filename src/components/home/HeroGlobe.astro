@@ -1,0 +1,81 @@
+---
+// 히어로 3D 지구본 (장식, aria-hidden). 점 지구가 자전하고 궤도 파편 중 하나만 signal 로 "발견".
+// 그리기는 src/scripts/heroglobe.js (cobe, 번들). 상자는 고정 비율이라 CLS 없음.
+// JS·WebGL 이 없으면 같은 상자에 정적 SVG 가 그대로 남는다.
+---
+<div class="globe" data-globe-box aria-hidden="true">
+  <svg class="globe__fallback" viewBox="0 0 100 100" focusable="false">
+    <circle class="globe__sphere" cx="50" cy="50" r="34" />
+    <ellipse class="globe__line" cx="50" cy="50" rx="34" ry="12" />
+    <ellipse class="globe__line" cx="50" cy="50" rx="14" ry="34" />
+    <ellipse class="globe__orbit" cx="50" cy="50" rx="46" ry="16" transform="rotate(-18 50 50)" />
+    <circle class="globe__debris" cx="9" cy="62" r="1.2" />
+    <circle class="globe__debris" cx="30" cy="31" r="1.2" />
+    <circle class="globe__debris" cx="88" cy="30" r="1.2" />
+    <circle class="globe__debris" cx="70" cy="66" r="1.2" />
+    <circle class="globe__found" cx="91" cy="37" r="2.4" />
+  </svg>
+  <canvas class="globe__canvas" data-globe aria-hidden="true"></canvas>
+</div>
+
+<script src="../../scripts/heroglobe.js"></script>
+
+<style>
+  .globe {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 1 / 1;
+    margin-inline: auto;
+    color: var(--color-paper);
+  }
+  .globe__canvas,
+  .globe__fallback {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .globe__canvas {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .globe.is-live .globe__canvas {
+    opacity: 1;
+  }
+  .globe.is-live .globe__fallback {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+
+  .globe__sphere {
+    fill: none;
+    stroke: var(--color-faint);
+    stroke-width: 0.4;
+    stroke-dasharray: 0.6 1.4;
+  }
+  .globe__line {
+    fill: none;
+    stroke: var(--color-line);
+    stroke-width: 0.3;
+  }
+  .globe__orbit {
+    fill: none;
+    stroke: var(--color-line);
+    stroke-width: 0.3;
+    stroke-dasharray: 1 1.5;
+  }
+  .globe__debris {
+    fill: var(--color-muted);
+  }
+  .globe__found {
+    fill: var(--color-signal);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .globe__canvas,
+    .globe.is-live .globe__fallback {
+      transition: none;
+    }
+  }
+</style>

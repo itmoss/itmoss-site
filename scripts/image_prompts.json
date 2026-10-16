@@ -67,7 +67,44 @@
       "size": "1024x1024",
       "crop": "1:1",
       "guard": "paper"
+    },
+    {
+      "slot": "hp-step-camera",
+      "file": "hp-step-camera.webp",
+      "alt": "파란 스마트폰 카메라를 화장품 병 쪽으로 비추는 그림",
+      "prompt": "Step 1 of a series: pointing a phone camera at a cosmetic. A cornflower blue clay smartphone, tilted, its rear triple camera facing a small cream dropper bottle with a blue cap standing beside it; a soft cone of pale light from the camera toward the bottle.",
+      "size": "1024x1024",
+      "crop": "1:1",
+      "guard": "haepick"
+    },
+    {
+      "slot": "hp-step-detect",
+      "file": "hp-step-detect.webp",
+      "alt": "화장품 병이 둥근 인식 틀 안에 잡히고 스캔선이 지나가는 그림",
+      "prompt": "Step 2 of a series: the product is detected. A cream dropper bottle with a blue cap framed by four rounded cream corner brackets, a thin glowing pale cyan horizontal scan line crossing the bottle, and three small sparkle stars above (one orange, one blue, one cream).",
+      "size": "1024x1024",
+      "crop": "1:1",
+      "guard": "haepick"
+    },
+    {
+      "slot": "hp-step-ingredients",
+      "file": "hp-step-ingredients.webp",
+      "alt": "화장품 튜브에서 성분을 뜻하는 작은 알갱이들이 떠올라 줄지어 정리되는 그림",
+      "prompt": "Step 3 of a series: reading the ingredients. A soft cream cosmetic tube with a blank label lying at an angle; from its label small rounded blank pills and tiny spheres in blue and beige float up and line up neatly into a short row, like ingredients being read out.",
+      "size": "1024x1024",
+      "crop": "1:1",
+      "guard": "haepick"
+    },
+    {
+      "slot": "hp-step-match",
+      "file": "hp-step-match.webp",
+      "alt": "피부를 뜻하는 둥근 물방울 옆에 맞는 성분과 주의할 성분이 둘로 나뉜 그림",
+      "prompt": "Step 4 of a series: matching ingredients to my skin. A plump beige clay water drop representing skin, with a small blue round badge carrying a check mark shape on it; beside it two small trays: one holding blue pills (suits me), one holding a single orange pill (caution).",
+      "size": "1024x1024",
+      "crop": "1:1",
+      "guard": "haepick"
     }
   ],
-  "guard_paper": "No text, no letters, no numbers, no readable labels or signage, no logos, no brand marks, no watermarks anywhere in the frame. Wherever interface text would appear, use plain grey bars and blocks only. No recognizable faces, no people. Flat light paper background exactly #ECEDEA filling the whole frame, edge to edge, no vignette, no gradient, no frame or border. Soft neutral greys and graphite (#101214) with exactly one signal orange accent (#FF6A2B). Minimal matte 3D render, isometric three-quarter view, one small object group centered with generous empty space around it, soft contact shadow only. Same style, scale and lighting as the other three images in this four-step series."
+  "guard_paper": "No text, no letters, no numbers, no readable labels or signage, no logos, no brand marks, no watermarks anywhere in the frame. Wherever interface text would appear, use plain grey bars and blocks only. No recognizable faces, no people. Flat light paper background exactly #ECEDEA filling the whole frame, edge to edge, no vignette, no gradient, no frame or border. Soft neutral greys and graphite (#101214) with exactly one signal orange accent (#FF6A2B). Minimal matte 3D render, isometric three-quarter view, one small object group centered with generous empty space around it, soft contact shadow only. Same style, scale and lighting as the other three images in this four-step series.",
+  "guard_haepick": "No text, no letters, no numbers, no readable labels, no logos, no brand marks, no watermarks anywhere in the frame. No people, no hands, no faces. Soft clay-like 3D render with matte pastel materials, rounded friendly shapes, like the haepick app illustrations: cornflower blue (#3E6FD0), warm beige and cream, with at most one small orange accent (#E0703A). Flat background exactly #F8F8F6 filling the whole frame edge to edge, no gradient, no vignette, no border, soft contact shadow only. One object group centered with generous empty space around it, three-quarter front view, soft studio light. Same style, scale and lighting as the other three images in this four-step series."
 }
