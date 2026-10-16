@@ -247,7 +247,7 @@ Jaster 1명. 옛 페이지의 AI 협업자 카드는 두지 않는다.
 | :--- | :--- |
 | 소제목 | 만드는 사람들 |
 | 이름 | Jaster |
-| 역할 | 대표 / 영상해커 |
+| 역할 | 대표 / 영상해커 / 식물키우는개발자 |
 | 링크 → `https://www.linkedin.com/in/jaster1838` | LinkedIn |
 | 링크 aria-label | Jaster 의 LinkedIn 프로필 (새 창) |
 
