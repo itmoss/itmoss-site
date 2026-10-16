@@ -1,6 +1,7 @@
 ---
 // #uzudebris CASE 01 — 밝은 배경 섹션. 문구: docs/renewal/copy.md "## 우주데브리스".
 // 약속은 "발견해서 본인에게 알린다"까지. 흐름 다이어그램은 UzuFlowDiagram, 대시보드 이미지는 매니페스트 슬롯 uzudebris-dashboard.
+// 머리 키비주얼은 슬롯 uzudebris-earth (궤도 파편 중 하나만 오렌지 — 히어로 3D 지구본과 같은 은유).
 import UzuFlowDiagram from './UzuFlowDiagram.astro';
 import RenewalImage from './RenewalImage.astro';
 import StepIcon from '../icons/StepIcon.astro';
@@ -65,6 +66,10 @@ const audiences = [
       </p>
     </header>
 
+    <figure class="uzu-key" data-reveal>
+      <RenewalImage slot="uzudebris-earth" ratio="16 / 9" />
+    </figure>
+
     <figure class="uzu-shot" data-reveal>
       <RenewalImage slot="uzudebris-dashboard" ratio="3 / 2" />
     </figure>
@@ -122,6 +127,9 @@ const audiences = [
 </section>
 
 <style>
+  .uzu-key {
+    margin: 0;
+  }
   .uzu-shot {
     margin: 0;
     max-width: 960px;

@@ -1,6 +1,6 @@
 {
   "note": "gen_images.py 가 읽는 슬롯 정의. alt 는 docs/renewal/copy.md 와 같은 문구. 화면 문구는 전부 DOM 이 얹으므로 컷에는 글자·로고·실제 얼굴이 없어야 한다 — 보이면 그 파일을 지우고 다시 만든다.",
-  "guard": "No text, no letters, no numbers, no readable labels or signage, no logos, no brand marks, no app store badges, no watermarks anywhere in the frame. Wherever interface text would appear, use plain grey bars and blocks only. No recognizable faces. Dark graphite palette (#101214) with soft neutral greys and exactly one signal orange accent (#FF6A2B). Calm, precise, editorial product imagery; generous negative space.",
+  "guard": "No text, no letters, no numbers, no readable labels or signage, no logos, no brand marks, no app store badges, no watermarks anywhere in the frame. Wherever interface text would appear, use plain grey bars and blocks only. No recognizable faces. Shot like a real editorial photograph, not a 3D render or illustration: real camera and lens (35mm or 50mm, natural perspective, slight lens falloff), soft natural or practical light with believable shadows, real material texture (matte paper, brushed metal, stone, fabric, skin of plants), subtle film grain, slightly imperfect and asymmetric composition. Dark graphite tones (#101214) with soft neutral greys and exactly one small signal orange accent (#FF6A2B). Avoid: glossy plastic sheen, neon, glow, bloom, lens flares, purple or teal gradients, holograms, perfect symmetry, floating objects, CGI look, over-saturated color, HDR. Calm and quiet, generous negative space.",
   "slots": [
     {
       "slot": "hero",
@@ -15,7 +15,16 @@
       "file": "uzudebris-dashboard.webp",
       "size": "1536x1024",
       "alt": "우주데브리스 화면 예시 — 발견된 의심 링크가 목록으로 정리된 대시보드",
-      "prompt": "A clean laptop screen mockup on a dark graphite desk, three-quarter view, showing a minimal web dashboard: a left column of small video thumbnails, a main list of rows each made of grey placeholder bars and a small thumbnail, one row highlighted with a signal orange marker, and a thin progress strip at the top. All interface text is rendered as plain grey bars, never letters. Soft studio light, shallow depth of field."
+      "prompt": "A real photograph of an open matte-grey laptop on a worn dark wooden desk at dusk, three-quarter view from slightly above, a ceramic mug and a closed notebook partly out of frame. The screen shows a minimal web dashboard: a left column of small muted video thumbnails, a main list of rows each made of grey placeholder bars and a small thumbnail, one row marked with a small signal orange tag, and a thin progress strip at the top. All interface text is rendered as plain grey bars, never letters. Light comes from a desk lamp off-frame and the screen itself; shallow depth of field, the keyboard edge softly out of focus.",
+      "crop": "3:2"
+    },
+    {
+      "slot": "uzudebris-earth",
+      "file": "uzudebris-earth.webp",
+      "size": "1536x1024",
+      "crop": "16:9",
+      "alt": "우주에서 본 지구 둘레를 도는 수많은 파편 가운데 하나만 주황빛으로 빛나는 장면",
+      "prompt": "A photograph of Earth from low orbit at night side and dawn edge, like an astronaut's handheld shot through a window with a real wide lens: the dark curved limb of the planet fills the lower right of the frame, a thin pale atmosphere line, faint city lights and cloud texture below. Scattered across the black space above are many tiny grey fragments of orbital debris — bolts, paint flecks, broken panel shards — at different distances, some slightly motion-blurred. Exactly one small fragment catches a warm signal orange glint of sunlight; every other fragment stays cool grey. Natural low light, real sensor noise and grain, no stars painted in, no glow halos."
     },
     {
       "slot": "haepick-phone",
@@ -36,7 +45,7 @@
       "slot": "uzu-flow-register",
       "file": "uzu-flow-register.webp",
       "alt": "원본 영상 파일을 보관함에 올리는 그림",
-      "prompt": "Step 1 of a series: registering an original video. A single matte graphite video file card with a small play triangle, sliding down into a shallow light grey tray, with a small signal orange upward arrow tab on the card.",
+      "prompt": "Step 1 of a series: registering an original video. A single thick graphite card cut like a film frame, with a small embossed play triangle, half slid into a shallow off-white card tray; a small signal orange paper tab folded into an upward arrow sticks out of the card.",
       "size": "1024x1024",
       "crop": "1:1",
       "guard": "paper"
@@ -45,7 +54,7 @@
       "slot": "uzu-flow-predict",
       "file": "uzu-flow-predict.webp",
       "alt": "흩어진 여러 영상 카드 가운데 후보 몇 장을 돋보기로 고르는 그림",
-      "prompt": "Step 2 of a series: predicting where copies of content were re-uploaded. A loose scatter of small grey video thumbnail cards, with a graphite magnifying lens hovering over them; under the lens two cards are lifted slightly and tinted signal orange as candidates.",
+      "prompt": "Step 2 of a series: predicting where copies of content were re-uploaded. A loose, uneven scatter of small grey card rectangles like tiny printed video thumbnails lying on the table, a real glass magnifying loupe with a graphite rim resting on top of them; through the glass two of the cards are visibly marked with a small signal orange paper corner, slightly lifted off the table.",
       "size": "1024x1024",
       "crop": "1:1",
       "guard": "paper"
@@ -54,7 +63,7 @@
       "slot": "uzu-flow-match",
       "file": "uzu-flow-match.webp",
       "alt": "두 영상 카드의 지문 무늬를 겹쳐 맞춰 보는 그림",
-      "prompt": "Step 3 of a series: fingerprint matching between two videos. Two thin translucent video cards standing side by side, each carrying the same abstract fingerprint-like swirl pattern made of concentric lines and a short audio waveform strip; a thin signal orange line connects matching points between them.",
+      "prompt": "Step 3 of a series: fingerprint matching between two videos. Two sheets of thin tracing paper propped upright side by side in small wooden clips, each printed in graphite ink with the same abstract fingerprint-like swirl of concentric lines and a short waveform strip below it; a single taut signal orange thread is pinned between matching points on the two sheets.",
       "size": "1024x1024",
       "crop": "1:1",
       "guard": "paper"
@@ -63,10 +72,50 @@
       "slot": "uzu-flow-notify",
       "file": "uzu-flow-notify.webp",
       "alt": "자물쇠가 달린 봉투로 한 사람에게만 알림을 보내는 그림",
-      "prompt": "Step 4 of a series: sending a private alert through a secure channel. A closed graphite envelope sealed with a small signal orange padlock, resting on a light grey rounded phone-like slab, with a single small notification dot.",
+      "prompt": "Step 4 of a series: sending a private alert through a secure channel. A small closed graphite paper envelope sealed with a tiny signal orange wax-like seal shaped as a padlock, resting on a light grey card cut in the rounded shape of a phone, with one small round paper dot in the corner of the card as a notification mark.",
       "size": "1024x1024",
       "crop": "1:1",
       "guard": "paper"
+    },
+    {
+      "slot": "principle-1",
+      "file": "about/principle-1.webp",
+      "size": "1536x1024",
+      "crop": "16:9",
+      "alt": "회로 기판 위로 이끼가 자라는 그림",
+      "prompt": "Macro photograph of an old, dusty green-grey circuit board lying on dark stone, with real cushion moss slowly growing across it and filling the gaps between chips and traces. One tiny signal orange component on the board catches the light. Close focus with a 100mm macro lens, soft overcast daylight from the side, shallow depth of field, moisture beads on the moss."
+    },
+    {
+      "slot": "principle-2",
+      "file": "about/principle-2.webp",
+      "size": "1536x1024",
+      "crop": "16:9",
+      "alt": "사람의 발걸음을 이끼가 받쳐 주는 그림",
+      "prompt": "Low-angle photograph of a forest path at ground level: a thick, soft carpet of moss over dark rocks, a single worn hiking boot stepping gently onto it, only the boot and lower trouser leg in frame, no person visible above. The moss compresses softly under the step. One small signal orange lace on the boot is the only warm color. Early morning diffused light, mist, real texture, 35mm lens close to the ground."
+    },
+    {
+      "slot": "principle-3",
+      "file": "about/principle-3.webp",
+      "size": "1536x1024",
+      "crop": "16:9",
+      "alt": "이끼가 흐르는 물을 거르는 그림",
+      "prompt": "Close photograph of a small stream trickling over a mossy rock ledge: murky water with fallen leaves and grit on the upper side, and after passing through the dense moss it drips down clear and clean. One small signal orange fallen leaf caught on the moss. Slow shutter so the water is lightly silky, soft shade light, dark wet stone, real natural texture."
+    },
+    {
+      "slot": "principle-4",
+      "file": "about/principle-4.webp",
+      "size": "1536x1024",
+      "crop": "16:9",
+      "alt": "지구를 감싸며 이어진 이끼 그림",
+      "prompt": "Still-life photograph on a dark table: an old matte stone or plaster globe without any printed map lines or text, loosely wrapped by a thin living layer of moss that spreads in fine threads across its surface like a network, never covering it completely. One tiny signal orange bead sits where several moss threads meet. Window light from one side, deep shadows, 50mm lens, real dust and texture."
+    },
+    {
+      "slot": "principle-5",
+      "file": "about/principle-5.webp",
+      "size": "1536x1024",
+      "crop": "16:9",
+      "alt": "바위 틈을 뚫고 자란 이끼 그림",
+      "prompt": "Photograph of a narrow crack in a dark weathered granite boulder, with a small tuft of bright living moss pushing out of the crack, a few thin sporophyte stalks rising from it. One sporophyte tip catches a warm signal orange rim of late sunlight. Rough mineral texture, lichen spots, natural late afternoon light, 85mm lens, shallow depth of field."
     },
     {
       "slot": "hp-step-camera",
@@ -113,6 +162,6 @@
       "prompt": "A dense contact sheet of 24 different video stills arranged in an exact grid of 6 columns by 4 rows, every cell the same size, cells touching edge to edge with no gutters, no borders, no frames, no rounded corners. Each cell is a completely different real-world video frame, like random clips from many countries: night city traffic with light trails, ocean waves from a drone, a snowy mountain ridge, a busy food market stall with steam, a soccer pitch from high above, a concert stage with colored lights seen from the crowd, a rainy street with umbrellas seen from behind, a desert road, a tropical forest canopy, a kitchen pan with sizzling vegetables, a subway platform motion blur, a harbor with container cranes, a skateboarder's feet on a ramp, aerial rice terraces, a cat on a windowsill, fireworks over a river, a cyclist on a country road from behind, a server room corridor, a lighthouse at dusk, autumn leaves in a park, a factory assembly line, a hot air balloon over valleys, a beach at golden hour, a living room TV glow. Each still looks like a genuine frame grabbed from consumer or broadcast video: varied color temperatures, slight motion blur, natural compression softness."
     }
   ],
-  "guard_paper": "No text, no letters, no numbers, no readable labels or signage, no logos, no brand marks, no watermarks anywhere in the frame. Wherever interface text would appear, use plain grey bars and blocks only. No recognizable faces, no people. Flat light paper background exactly #ECEDEA filling the whole frame, edge to edge, no vignette, no gradient, no frame or border. Soft neutral greys and graphite (#101214) with exactly one signal orange accent (#FF6A2B). Minimal matte 3D render, isometric three-quarter view, one small object group centered with generous empty space around it, soft contact shadow only. Same style, scale and lighting as the other three images in this four-step series.",
+  "guard_paper": "No text, no letters, no numbers, no readable labels or signage, no logos, no brand marks, no watermarks anywhere in the frame. Wherever interface text would appear, use plain grey bars and blocks only. No recognizable faces, no people, no hands. A real tabletop still-life photograph of small handmade paper and card objects, not a 3D render: shot from a high three-quarter angle with a 50mm lens, soft diffused window light from the left, gentle natural shadow, visible paper fibre and card edge texture, subtle film grain. Light paper backdrop close to #ECEDEA filling the whole frame edge to edge, no vignette, no gradient, no frame or border. Matte off-white and grey card, graphite (#101214) ink details, exactly one small signal orange (#FF6A2B) paper accent. Avoid: glossy plastic, glow, neon, gradients, perfect symmetry, CGI or clay-render look. One small object group centered with generous empty space around it. Same style, scale, angle and lighting as the other three images in this four-step series.",
   "guard_haepick": "No text, no letters, no numbers, no readable labels, no logos, no brand marks, no watermarks anywhere in the frame. No people, no hands, no faces. Soft clay-like 3D render with matte pastel materials, rounded friendly shapes, like the haepick app illustrations: cornflower blue (#3E6FD0), warm beige and cream, with at most one small orange accent (#E0703A). Flat background exactly #F8F8F6 filling the whole frame edge to edge, no gradient, no vignette, no border, soft contact shadow only. One object group centered with generous empty space around it, three-quarter front view, soft studio light. Same style, scale and lighting as the other three images in this four-step series."
 }

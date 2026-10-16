@@ -1,46 +1,42 @@
 ---
 // #about — 회사 소개. 걸어온 길 다음, 연락 앞. 문구: docs/renewal/copy.md "## 회사 소개".
-// 5원칙 그림은 옛 /about 의 webp 를 public/images/renewal/about/ 로 옮겨 쓴다 (1408×768).
+// 5원칙 그림은 매니페스트 슬롯 principle-1~5 (gpt-image-2, renewal/about/principle-N.webp). 크기·alt 는 매니페스트 값.
+import RenewalImage from './RenewalImage.astro';
 const principles = [
   {
     no: '01',
     kicker: '가장 먼저 깔리는 바탕',
     title: '디지털 황무지의 토양',
     body: '아이티모스는 주인공이 되려 하지 않습니다. 거친 디지털 세상에 가장 먼저 깔려, 사람들이 편히 머물 수 있는 바탕이 되려 합니다.',
-    img: '/images/renewal/about/principle-1.webp',
-    alt: '회로 기판 위로 이끼가 자라는 그림',
+    slot: 'principle-1',
   },
   {
     no: '02',
     kicker: '보이지 않는 안전망',
     title: '아래에서 받치는 존재',
     body: '눈에 띄지 않게 아래에서 받칩니다. 복잡한 약관과 동의서 때문에 다치는 일이 없도록 든든한 쿠션이 되려 합니다.',
-    img: '/images/renewal/about/principle-2.webp',
-    alt: '사람의 발걸음을 이끼가 받쳐 주는 그림',
+    slot: 'principle-2',
   },
   {
     no: '03',
     kicker: '필요한 것만 남깁니다',
     title: '노이즈를 걸러내다',
     body: '쏟아지는 정보를 그대로 흘려보내지 않습니다. 불필요한 소음을 걸러, 정리된 사실만 전합니다.',
-    img: '/images/renewal/about/principle-3.webp',
-    alt: '이끼가 흐르는 물을 거르는 그림',
+    slot: 'principle-3',
   },
   {
     no: '04',
     kicker: '가두지 않는 연결',
     title: '잠그지 않습니다',
     body: '큰 플랫폼은 사용자를 붙잡아 두려 합니다. 아이티모스는 얇고 조용히 퍼져, 필요한 연결만 부담 없이 돕습니다.',
-    img: '/images/renewal/about/principle-4.webp',
-    alt: '지구를 감싸며 이어진 이끼 그림',
+    slot: 'principle-4',
   },
   {
     no: '05',
     kicker: '끈질긴 생명력',
     title: '이끼처럼 조용히',
     body: '척박한 곳에서도 조용히 뿌리내립니다. 이끼처럼 생활 가까이에 스며들어 함께 지내려 합니다.',
-    img: '/images/renewal/about/principle-5.webp',
-    alt: '바위 틈을 뚫고 자란 이끼 그림',
+    slot: 'principle-5',
   },
 ];
 
@@ -84,15 +80,7 @@ const principles = [
       <ol class="about-principles__list">
         {principles.map((p) => (
           <li class="principle">
-            <img
-              class="principle__img"
-              src={p.img}
-              width="1408"
-              height="768"
-              alt={p.alt}
-              loading="lazy"
-              decoding="async"
-            />
+            <RenewalImage slot={p.slot} ratio="16 / 9" class="principle__img" />
             <div class="principle__text">
               <p class="principle__kicker"><span class="principle__no">{p.no}</span> {p.kicker}</p>
               <h4 class="principle__title">{p.title}</h4>
