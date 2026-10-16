@@ -1,6 +1,8 @@
 node_modules
 dist
 .astro
+test-results
+playwright-report
 
 # 비밀 (OPENAI_API_KEY 등)
 .env
