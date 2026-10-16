@@ -51,7 +51,7 @@ test.describe('390px 모바일 — 가로 스크롤 없음', () => {
   test('/ 의 섹션이 계약된 순서로 모두 있다', async ({ page }) => {
     await offline(page);
     await page.goto('/');
-    const ids = ['top', 'engines', 'uzudebris', 'haepick', 'record', 'contact'];
+    const ids = ['top', 'engines', 'uzudebris', 'haepick', 'record', 'about', 'contact'];
     const tops = [];
     for (const id of ids) {
       const el = page.locator(`#${id}`);

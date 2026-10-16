@@ -18,14 +18,14 @@ test('내부 앵커(href="#x")는 모두 같은 페이지의 id 를 가리킨다
 test('내비 링크가 계약된 섹션으로 간다', async ({ page }) => {
   await page.goto('/');
   const hrefs = await page.locator('nav.site-nav a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
-  for (const h of ['#uzudebris', '#haepick', '#record', '#contact']) {
+  for (const h of ['#uzudebris', '#haepick', '#record', '#about', '#contact']) {
     expect(hrefs, `내비에 ${h}`).toContain(h);
   }
 });
 
 test('내비 링크를 누르면 해당 섹션이 화면에 들어온다', async ({ page }) => {
   await page.goto('/');
-  for (const id of ['uzudebris', 'record', 'contact']) {
+  for (const id of ['uzudebris', 'record', 'about', 'contact']) {
     const link = page.locator(`nav.site-nav a[href="#${id}"]`);
     if (!(await link.isVisible())) continue; // 좁은 화면에서 내비를 숨기는 경우 — 앵커 존재는 위에서 검사
     await link.click();
