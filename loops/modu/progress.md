@@ -154,3 +154,14 @@
 2026-10-16 [e2e] F30 완료: Playwright 설정(mobile 390·desktop, :4330, offline()로 GA·폰트 차단) + layout·links·news 28통과. /about 리다이렉트는 itmoss.com 절대주소 meta refresh라 대상만 검사. 커밋은 루프가
 2026-10-16 [e2e] F30 review 전 notes: 완료 2026-10-16: Playwright 설정(mobile 390·desktop, :4330, offline()로 GA·폰트 차단) + layout·links·news 28통과. /about 리다이렉트는 itmoss.com 절대주소 meta refresh라 대상만 검사. 커밋은 루프가
 2026-10-16 [e2e] F30 review WEAK: layout 섹션 순서 검사가 #about 을 빼고(top…record,contact), 내비 검사도 #about(회사)을 안 봐 design.md 2026-10-16 섹션·내비 계약을 다 지키지 않는다 · check 보강: grep -q "'record', 'about', 'contact'" tests/e2e/layout.spec.mjs && grep -qE "'#record', '#about', '#contact'" tests/e2e/links.spec.mjs && npx playwright test tests/e2e/layout.spec.mjs tests/e2e/links.spec.mjs tests/e2e/news.spec.mjs → exit 0 (#about 이 순서·내비 목록에 들어간 채 통과)
+2026-10-16 [e2e] F30 계획 수정: check — WEAK 보강
+2026-10-16 F31 사람 작업 완료 (대시보드)
+2026-10-16 [e2e] F30 완료 전 notes: review 2026-10-16 WEAK: layout 섹션 순서 검사가 #about 을 빼고(top…record,contact), 내비 검사도 #about(회사)을 안 봐 design.md 2026-10-16 섹션·내비 계약을 다 지키지 않는다
+2026-10-16 [e2e] F30 보강 완료: WEAK 보강: layout 섹션 순서·내비 목록·클릭 검사에 #about 추가, check 에 grep 두 줄 추가. 28통과. 커밋은 루프가
+2026-10-16 계획: 항목 1개 추가 (F47)
+2026-10-16 [core] F25 완료: axe(wcag2a/aa/21) 4페이지·44px·첫 Tab 스펙 추가. 내비 min-width 44, 메일 aria-label 보이는 글자로 시작, /notes 옛 밝은 테마→다크 토큰. @axe-core/playwright devDep. 커밋은 루프가
+2026-10-16 [core] F47 완료 전 notes: 사용자 확정 문구(design.md 변경 2026-10-16) 는 바꾸지 않음
+2026-10-16 [core] F47 완료: BaseLayout: 옛 표어·keywords 제거, @graph(Org·WebSite·우주데브리스 SoftwareApplication·해픽 MobileApplication), og.jpg 1200×630(make-og.sh)·summary_large_image, sitemap /preview/ 제외, llms.txt 갱신. 커밋은 루프가
+2026-10-16 [e2e] F32 완료: motion.spec 4통과: reduce→fx 클래스 없음·연출 대상 opacity1/transform·animation none·섹션 본문 불투명도1·running 애니 0. 기본→smooth 스크롤이라 behavior:instant 로 끝까지, 외부요청은 빈 200(abort는 콘솔에러). 커밋은 루프가
+2026-10-16 [e2e] F33 완료: scripts/lighthouse.sh: build→preview :4329→lighthouse@12 모바일 3회 중앙값, / 기준 perf94 a11y100 cls0.002. LH_PATHS·RUNS·SKIP_BUILD 로 조절, Chrome 없으면 Playwright Chromium. 커밋은 루프가
+2026-10-16 [e2e] F34 완료: 코드 변경 없음. check-site all + playwright 44통과 + lighthouse / 중앙값 perf94 a11y100 cls0.002, must_not 경계 지킴
