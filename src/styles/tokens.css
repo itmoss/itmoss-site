@@ -27,7 +27,8 @@
 
   /* 타이포 */
   --font-sans: 'IBM Plex Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Plex Mono 에는 한글이 없다 — 한글 라벨이 시스템 고정폭으로 벌어지지 않게 Plex Sans KR 을 바로 뒤에 둔다 */
+  --font-mono: 'IBM Plex Mono', 'IBM Plex Sans KR', ui-monospace, SFMono-Regular, Menlo, monospace;
   --text-xs: 13px;
   --text-sm: 14px;
   --text-base: 16px;

@@ -35,9 +35,9 @@ const stores = [
       <header class="section__head">
         <img class="hp-icon" src="/images/haepick/icon.webp" width="512" height="512" alt="해픽 앱 아이콘" loading="lazy" decoding="async" />
         <p class="eyebrow eyebrow--on-paper">CASE 02 · 해픽 — VISION AI</p>
-        <h2 id="haepick-title" class="section__title">찍으면 바로,<br />내 피부에 맞는지.</h2>
+        <h2 id="haepick-title" class="section__title">스캔 한 번에,<br />나만의 성분 확인.</h2>
         <p class="section__lead">
-          아이티모스의 JVL 비전 엔진이 상용 앱 「해픽」과 함께하고 있습니다. 궁금한 화장품을 찍으면 제품을 인식하고, 성분과 제품 정보를 분석해 내 피부에 맞는지 알려 줍니다.
+          아이티모스의 JVL 비전 엔진이 상용 앱 「해픽」과 함께하고 있습니다. 제품을 스캔하면 바로 인식하고, 성분을 읽어 내 피부 기준으로 분석해 줍니다.
         </p>
       </header>
 
@@ -129,6 +129,10 @@ const stores = [
     width: 100%;
     max-width: 528px;
     height: auto;
+  }
+  /* 캡션은 그림 폭에 맞춰 붙인다 (그림 max 528px 인데 캡션만 칸 끝까지 늘어 따로 놀던 것) */
+  .hp-capture {
+    max-width: 528px;
   }
   .hp-capture__caption {
     display: flex;
@@ -228,6 +232,7 @@ const stores = [
   }
   .hp-facts__value {
     margin: 0;
+    font-variant-numeric: tabular-nums;
     font-size: var(--text-lg);
     font-weight: 500;
     line-height: var(--leading-tight);
@@ -261,6 +266,7 @@ const stores = [
   .hp-b2b__link {
     display: inline-flex;
     align-items: center;
+    gap: var(--space-1);
     min-height: 44px;
     margin-left: var(--space-2);
     color: var(--color-signal-ink);

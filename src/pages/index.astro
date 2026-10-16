@@ -53,6 +53,8 @@ import Contact from "../components/home/Contact.astro";
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     letter-spacing: 0.02em;
+    /* Plex Mono 의 공백은 고정폭(0.6em)이라 한글 낱말 사이가 벌어진다 — 본문 공백 폭에 가깝게 */
+    word-spacing: -0.25em;
     color: var(--color-muted);
   }
   .eyebrow--signal { color: var(--color-signal); }
@@ -67,7 +69,12 @@ import Contact from "../components/home/Contact.astro";
     border-radius: var(--radius-none);
     font-weight: 500;
     text-decoration: none;
-    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 120ms ease-out;
+  }
+  /* 눌림 — 아주 살짝 들어간다 (동작 줄이기면 없음) */
+  .btn:active { transform: scale(0.98); }
+  @media (prefers-reduced-motion: reduce) {
+    .btn:active { transform: none; }
   }
   body.site .btn--signal {
     background: var(--color-signal);
@@ -82,6 +89,16 @@ import Contact from "../components/home/Contact.astro";
   }
   body.site .btn--ghost:hover {
     border-color: var(--color-signal);
+  }
+  /* 밝은 섹션의 ghost 버튼: 테두리는 ink, hover 는 면을 채워 상태가 분명히 보이게 */
+  body.site .section--light .btn--ghost,
+  body.site .section--paper .btn--ghost {
+    border-color: var(--color-ink);
+  }
+  body.site .section--light .btn--ghost:hover,
+  body.site .section--paper .btn--ghost:hover {
+    background: var(--color-ink);
+    color: var(--color-paper);
   }
 
   .section__inner {

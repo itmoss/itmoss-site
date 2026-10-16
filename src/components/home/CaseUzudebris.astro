@@ -130,9 +130,19 @@ const audiences = [
   .uzu-key {
     margin: 0;
   }
+  /* 큰 그림 두 장이 같은 왼쪽 선에 연달아 쌓이지 않게 — 대시보드 컷은 오른쪽으로 비켜 지구 컷과 겹쳐 올린다 */
   .uzu-shot {
     margin: 0;
-    max-width: 960px;
+    max-width: 760px;
+    width: 100%;
+    margin-inline-start: auto;
+  }
+  @media (min-width: 961px) {
+    .uzu-shot {
+      margin-top: calc(var(--space-30) * -1);
+      position: relative;
+      border: var(--space-2) solid var(--color-paper);
+    }
   }
 
   .uzu-steps {
@@ -157,6 +167,7 @@ const audiences = [
   .uzu-steps__num {
     font-family: var(--font-mono);
     font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
     color: var(--color-signal-ink);
   }
   .uzu-steps__title {
@@ -181,18 +192,23 @@ const audiences = [
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-6);
+    gap: var(--space-12);
+    /* 흐름 그림(칸 네 개) 바로 뒤 — 같은 상자 모양이 연달아 오지 않게 숨을 한 번 쉰다 */
+    margin-top: var(--space-8);
   }
+  /* 상자 대신 위 선 하나: 지금 하는 일은 굵은 ink, 준비 중은 점선 */
   .uzu-card {
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    padding: var(--space-8);
-    border: 1px solid var(--color-ink);
+    padding-top: var(--space-6);
+    border-top: 2px solid var(--color-ink);
   }
   .uzu-card--next {
-    border-color: var(--color-line-on-paper);
-    border-style: dashed;
+    border-top: 1px dashed var(--color-muted-on-paper);
+  }
+  .uzu-card--next .uzu-card__title {
+    color: var(--color-muted-on-paper);
   }
   .uzu-card__title {
     margin: 0;
@@ -247,11 +263,13 @@ const audiences = [
     word-break: keep-all;
   }
 
+  /* "하지 않는 일" 과 CTA 는 한 묶음 — 섹션 공통 간격(48px)보다 붙인다 */
   .uzu-cta {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-3);
+    margin-top: calc(var(--space-4) * -1);
   }
   .uzu-cta__btn {
     gap: var(--space-2);

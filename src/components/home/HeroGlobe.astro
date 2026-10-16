@@ -116,7 +116,9 @@
     border: 1.5px solid var(--color-signal);
     overflow: visible;
     opacity: 1;
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-signal) 18%, transparent);
+    /* 번지는 글로우 대신 검출 틀처럼 떨어진 가는 선 하나 */
+    outline: 1px solid color-mix(in srgb, var(--color-signal) 45%, transparent);
+    outline-offset: 3px;
   }
   .globe__clips :global(.clip--found .clip__img) {
     clip-path: inset(18.75% 0);

@@ -45,10 +45,16 @@ const engines = [
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-12);
   }
+  /* 똑같은 두 칸이 나란히 떠 있지 않게 — 칸마다 위 선을 긋고, 02(우주데브리스 쪽)만 signal 선 */
   .engines__item {
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-faint);
+  }
+  .engines__item:last-child {
+    border-top-color: var(--color-signal);
   }
   .engines__title {
     margin: 0;
@@ -73,7 +79,18 @@ const engines = [
     align-items: center;
     gap: var(--space-2);
     min-height: var(--tap-min);
-    font-size: var(--text-sm);
+    margin-top: auto;
+    font-size: var(--text-base);
+    font-weight: 500;
     text-underline-offset: 4px;
+  }
+  .engines__link span {
+    transition: transform 160ms ease;
+  }
+  .engines__link:hover span {
+    transform: translateX(4px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .engines__link:hover span { transform: none; }
   }
 </style>

@@ -94,7 +94,6 @@ const principles = [
     <div class="about-people">
       <h3 class="about__subtitle">만드는 사람들</h3>
       <article class="person">
-        <div class="person__mark" aria-hidden="true">J</div>
         <div class="person__text">
           <p class="person__name">Jaster</p>
           <p class="eyebrow">대표 / 영상해커 / 식물키우는개발자</p>
@@ -141,17 +140,21 @@ const principles = [
   .about-philo__cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-4);
+    gap: var(--space-8);
     margin: 0;
     padding: 0;
     list-style: none;
   }
+  /* 같은 상자 두 개 대신 위 선 — '기술' 쪽만 signal 선으로 무대 뒤 조력자를 짚는다 */
   .about-card {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
-    padding: var(--space-6);
-    border: 1px solid var(--color-line);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-faint);
+  }
+  .about-card:last-child {
+    border-top-color: var(--color-signal);
   }
   .about-card__title {
     font-size: var(--text-lg);
@@ -233,24 +236,11 @@ const principles = [
     flex-direction: column;
     gap: var(--space-6);
   }
+  /* 이니셜 아바타 상자는 뺐다 (사진 없는 자리표시 — 템플릿 티). 이름을 크게, 위 선 하나로 */
   .person {
-    display: flex;
-    gap: var(--space-6);
-    align-items: flex-start;
-    padding: var(--space-8);
-    border: 1px solid var(--color-line);
     max-width: 760px;
-  }
-  .person__mark {
-    flex: none;
-    display: grid;
-    place-items: center;
-    width: 64px;
-    height: 64px;
-    border: 1px solid var(--color-faint);
-    font-family: var(--font-mono);
-    font-size: var(--text-2xl);
-    color: var(--color-signal);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-faint);
   }
   .person__text {
     display: flex;
@@ -259,8 +249,10 @@ const principles = [
   }
   .person__name {
     margin: 0;
-    font-size: var(--text-xl);
+    font-size: var(--text-2xl);
     font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
   }
   body.site .person__link {
     display: inline-flex;
@@ -283,6 +275,5 @@ const principles = [
   }
   @media (max-width: 480px) {
     .about-philo__cards { grid-template-columns: minmax(0, 1fr); }
-    .person { flex-direction: column; padding: var(--space-6); }
   }
 </style>
