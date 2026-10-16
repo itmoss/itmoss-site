@@ -17,6 +17,13 @@
   --color-line: #2A2D2B;           /* 구분선 (다크 위) */
   --color-line-on-paper: #C9CBC5;  /* 구분선 (밝은 바탕 위) */
   --color-leaf: #257833;           /* 로고 마크 녹색 — 로고에만 쓴다 */
+  /* 히어로 h1 의 "우주데브리스" 한 단어에만 쓰는 무지개 빛 (Hero.astro .hero__rainbow) */
+  --rainbow-1: #FF5F6D;
+  --rainbow-2: #FFB443;
+  --rainbow-3: #F9F871;
+  --rainbow-4: #4CE0A3;
+  --rainbow-5: #4FB3FF;
+  --rainbow-6: #9B7BFF;
 
   /* 타이포 */
   --font-sans: 'IBM Plex Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;

@@ -103,6 +103,14 @@
       "size": "1024x1024",
       "crop": "1:1",
       "guard": "haepick"
+    },
+    {
+      "slot": "globe-clips",
+      "file": "globe-clips.webp",
+      "alt": "",
+      "decorative": true,
+      "size": "1536x1024",
+      "prompt": "A dense contact sheet of 24 different video stills arranged in an exact grid of 6 columns by 4 rows, every cell the same size, cells touching edge to edge with no gutters, no borders, no frames, no rounded corners. Each cell is a completely different real-world video frame, like random clips from many countries: night city traffic with light trails, ocean waves from a drone, a snowy mountain ridge, a busy food market stall with steam, a soccer pitch from high above, a concert stage with colored lights seen from the crowd, a rainy street with umbrellas seen from behind, a desert road, a tropical forest canopy, a kitchen pan with sizzling vegetables, a subway platform motion blur, a harbor with container cranes, a skateboarder's feet on a ramp, aerial rice terraces, a cat on a windowsill, fireworks over a river, a cyclist on a country road from behind, a server room corridor, a lighthouse at dusk, autumn leaves in a park, a factory assembly line, a hot air balloon over valleys, a beach at golden hour, a living room TV glow. Each still looks like a genuine frame grabbed from consumer or broadcast video: varied color temperatures, slight motion blur, natural compression softness."
     }
   ],
   "guard_paper": "No text, no letters, no numbers, no readable labels or signage, no logos, no brand marks, no watermarks anywhere in the frame. Wherever interface text would appear, use plain grey bars and blocks only. No recognizable faces, no people. Flat light paper background exactly #ECEDEA filling the whole frame, edge to edge, no vignette, no gradient, no frame or border. Soft neutral greys and graphite (#101214) with exactly one signal orange accent (#FF6A2B). Minimal matte 3D render, isometric three-quarter view, one small object group centered with generous empty space around it, soft contact shadow only. Same style, scale and lighting as the other three images in this four-step series.",

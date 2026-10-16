@@ -1,5 +1,5 @@
 {
-  "generated_total": 12,
+  "generated_total": 13,
   "note": "홈 리뉴얼 이미지 등재부. 여기 없는 슬롯은 같은 비율의 빈 프레임으로 렌더된다. 채우는 방법: make images (scripts/gen_images.py)",
   "budget": 30,
   "slots": [
@@ -14,7 +14,8 @@
     "hp-step-camera",
     "hp-step-detect",
     "hp-step-ingredients",
-    "hp-step-match"
+    "hp-step-match",
+    "globe-clips"
   ],
   "images": [
     {
@@ -160,6 +161,18 @@
       "prompt": "Step 4 of a series: matching ingredients to my skin. A plump beige clay water drop representing skin, with a small blue round badge carrying a check mark shape on it; beside it two small trays: one holding blue pills (suits me), one holding a single orange pill (caution).",
       "model": "gpt-image-2",
       "created_at": "2026-10-16T11:34:57+00:00"
+    },
+    {
+      "slot": "globe-clips",
+      "file": "globe-clips.webp",
+      "width": 768,
+      "height": 512,
+      "bytes": 56980,
+      "alt": "",
+      "decorative": true,
+      "prompt": "A dense contact sheet of 24 different video stills arranged in an exact grid of 6 columns by 4 rows, every cell the same size, cells touching edge to edge with no gutters, no borders, no frames, no rounded corners. Each cell is a completely different real-world video frame, like random clips from many countries: night city traffic with light trails, ocean waves from a drone, a snowy mountain ridge, a busy food market stall with steam, a soccer pitch from high above, a concert stage with colored lights seen from the crowd, a rainy street with umbrellas seen from behind, a desert road, a tropical forest canopy, a kitchen pan with sizzling vegetables, a subway platform motion blur, a harbor with container cranes, a skateboarder's feet on a ramp, aerial rice terraces, a cat on a windowsill, fireworks over a river, a cyclist on a country road from behind, a server room corridor, a lighthouse at dusk, autumn leaves in a park, a factory assembly line, a hot air balloon over valleys, a beach at golden hour, a living room TV glow. Each still looks like a genuine frame grabbed from consumer or broadcast video: varied color temperatures, slight motion blur, natural compression softness.",
+      "model": "gpt-image-2",
+      "created_at": "2026-10-16T11:39:14+00:00"
     }
   ]
 }
