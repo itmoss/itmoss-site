@@ -8,21 +8,64 @@ const entries = Object.keys(noteModules).map((path) => path.replace('./', '').re
   description="아이티모스(ITMOSS)의 기술 노트. Vision AI, 벡터 검색, 트레이딩 인프라 등 딥테크 주제를 다룹니다."
   keywords="아이티모스 기술블로그, ITMOSS notes, Vision AI, 벡터 검색, 트레이딩 인프라, 딥테크"
 >
-  <section class="py-32 max-w-7xl mx-auto px-6 font-mono">
-    <div class="mb-16">
-      <div class="text-sm text-[var(--muted)] mb-4">> NOTES</div>
-      <h1 class="text-6xl font-black uppercase tracking-widest">[NOTES]</h1>
-      <p class="mt-6 text-sm text-[var(--muted)]">> 기술, 아이디어, 그리고 관측의 기록들.</p>
+  <section class="notes">
+    <div class="notes__head">
+      <div class="notes__label">> NOTES</div>
+      <h1 class="notes__title">[NOTES]</h1>
+      <p class="notes__lead">> 기술, 아이디어, 그리고 관측의 기록들.</p>
     </div>
-    <ul class="space-y-4">
+    <ul class="notes__list">
       {entries.map((name) => (
         <li>
-          <a href={`/notes/${name}`} class="card pl-12 block hover:no-underline group">
-            <div class="text-xs font-bold text-[var(--accent)] mb-2 tracking-widest group-hover:text-[var(--fg)] transition-colors">[NOTE]</div>
-            <p class="text-base font-bold">{name}</p>
+          <a href={`/notes/${name}`} class="notes__item">
+            <span class="notes__tag">[NOTE]</span>
+            <span class="notes__name">{name}</span>
           </a>
         </li>
       ))}
     </ul>
   </section>
 </BaseLayout>
+
+<style>
+  /* 다크 바탕 토큰만 — 예전 밝은 테마 변수(--muted·--accent)와 .card(흰 바탕)는 대비가 맞지 않는다. */
+  .notes {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-16) var(--gutter);
+    font-family: var(--font-mono);
+  }
+  .notes__head { margin-bottom: var(--space-12); }
+  .notes__label,
+  .notes__lead {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+  .notes__title {
+    margin: var(--space-4) 0 0;
+    font-size: var(--text-3xl);
+    letter-spacing: 0.08em;
+  }
+  .notes__lead { margin-top: var(--space-6); }
+  .notes__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+  }
+  .notes__list li { border-bottom: 1px solid var(--color-line); }
+  body.site .notes__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-height: var(--tap-min);
+    padding: var(--space-5) 0;
+    text-decoration: none;
+  }
+  .notes__tag {
+    font-size: var(--text-xs);
+    color: var(--color-signal);
+    letter-spacing: 0.08em;
+  }
+  .notes__name { font-weight: 500; }
+</style>
