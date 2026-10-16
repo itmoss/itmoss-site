@@ -31,6 +31,43 @@
       "alt": "어두운 바탕에 옅은 영상 프레임 윤곽이 겹친 배경 무늬",
       "decorative": true,
       "prompt": "An abstract, nearly black graphite background texture made of very faint overlapping video frame outlines and scan lines, low contrast, with one tiny distant signal orange glint off-center. Designed to sit behind white text, so the whole frame stays dark and even."
+    },
+    {
+      "slot": "uzu-flow-register",
+      "file": "uzu-flow-register.webp",
+      "alt": "원본 영상 파일을 보관함에 올리는 그림",
+      "prompt": "Step 1 of a series: registering an original video. A single matte graphite video file card with a small play triangle, sliding down into a shallow light grey tray, with a small signal orange upward arrow tab on the card.",
+      "size": "1024x1024",
+      "crop": "1:1",
+      "guard": "paper"
+    },
+    {
+      "slot": "uzu-flow-predict",
+      "file": "uzu-flow-predict.webp",
+      "alt": "흩어진 여러 영상 카드 가운데 후보 몇 장을 돋보기로 고르는 그림",
+      "prompt": "Step 2 of a series: predicting where copies of content were re-uploaded. A loose scatter of small grey video thumbnail cards, with a graphite magnifying lens hovering over them; under the lens two cards are lifted slightly and tinted signal orange as candidates.",
+      "size": "1024x1024",
+      "crop": "1:1",
+      "guard": "paper"
+    },
+    {
+      "slot": "uzu-flow-match",
+      "file": "uzu-flow-match.webp",
+      "alt": "두 영상 카드의 지문 무늬를 겹쳐 맞춰 보는 그림",
+      "prompt": "Step 3 of a series: fingerprint matching between two videos. Two thin translucent video cards standing side by side, each carrying the same abstract fingerprint-like swirl pattern made of concentric lines and a short audio waveform strip; a thin signal orange line connects matching points between them.",
+      "size": "1024x1024",
+      "crop": "1:1",
+      "guard": "paper"
+    },
+    {
+      "slot": "uzu-flow-notify",
+      "file": "uzu-flow-notify.webp",
+      "alt": "자물쇠가 달린 봉투로 한 사람에게만 알림을 보내는 그림",
+      "prompt": "Step 4 of a series: sending a private alert through a secure channel. A closed graphite envelope sealed with a small signal orange padlock, resting on a light grey rounded phone-like slab, with a single small notification dot.",
+      "size": "1024x1024",
+      "crop": "1:1",
+      "guard": "paper"
     }
-  ]
+  ],
+  "guard_paper": "No text, no letters, no numbers, no readable labels or signage, no logos, no brand marks, no watermarks anywhere in the frame. Wherever interface text would appear, use plain grey bars and blocks only. No recognizable faces, no people. Flat light paper background exactly #ECEDEA filling the whole frame, edge to edge, no vignette, no gradient, no frame or border. Soft neutral greys and graphite (#101214) with exactly one signal orange accent (#FF6A2B). Minimal matte 3D render, isometric three-quarter view, one small object group centered with generous empty space around it, soft contact shadow only. Same style, scale and lighting as the other three images in this four-step series."
 }

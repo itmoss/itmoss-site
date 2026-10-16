@@ -13,6 +13,18 @@ const stages = [
   { stage: 'match', label: '피부 맞춤', body: '내 피부 기준으로 맞는 성분과 주의할 성분을 나눠 봅니다.' },
 ];
 
+// 단계 아이콘 — 32 격자, 선 1.5, 색은 currentColor. 인식 틀 모서리는 위 촬영 장면의 틀과 같은 모양.
+const icons: Record<string, string> = {
+  // 스마트폰과 렌즈
+  camera: '<rect x="9" y="3" width="14" height="26" rx="3"/><circle cx="16" cy="11" r="3.5"/><path d="M14 25h4"/>',
+  // 인식 틀 안의 화장품 병
+  detect: '<path d="M4 10V6a2 2 0 0 1 2-2h4M22 4h4a2 2 0 0 1 2 2v4M28 22v4a2 2 0 0 1-2 2h-4M10 28H6a2 2 0 0 1-2-2v-4"/><path d="M14 9h4v3h-4zM13 12h6a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z"/>',
+  // 성분표 줄과 지나가는 스캔선
+  ingredients: '<rect x="6" y="4" width="20" height="24" rx="2"/><path d="M10 10h12M10 14h9M10 22h12M10 26h7"/><path d="M3 18h26"/>',
+  // 피부(물방울)와 맞음 표시
+  match: '<path d="M16 3c4.5 5.5 9 10.5 9 16a9 9 0 0 1-18 0c0-5.5 4.5-10.5 9-16z"/><path d="m12 19 3 3 5-6"/>',
+};
+
 const facts = [
   { label: '출시', value: '2025.08' },
   { label: '업데이트', value: '11회 · v1.0.10' },
@@ -56,7 +68,10 @@ const stores = [
       <ol class="hp-stages">
         {stages.map((s, i) => (
           <li class="hp-stages__item" data-stage={s.stage}>
-            <span class="hp-stages__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div class="hp-stages__mark" aria-hidden="true">
+              <svg class="hp-stages__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={icons[s.stage]} />
+              <span class="hp-stages__num">{String(i + 1).padStart(2, '0')}</span>
+            </div>
             <h3 class="hp-stages__title">{s.label}</h3>
             <p class="hp-stages__body">{s.body}</p>
           </li>
@@ -159,6 +174,18 @@ const stores = [
     .hp-stages__item {
       min-height: 0;
     }
+  }
+  .hp-stages__mark {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .hp-stages__icon {
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+    border: 1px solid var(--color-line-on-paper);
+    color: var(--color-signal-ink);
   }
   .hp-stages__num {
     font-family: var(--font-mono);

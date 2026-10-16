@@ -1,12 +1,16 @@
 {
-  "generated_total": 4,
+  "generated_total": 8,
   "note": "홈 리뉴얼 이미지 등재부. 여기 없는 슬롯은 같은 비율의 빈 프레임으로 렌더된다. 채우는 방법: make images (scripts/gen_images.py)",
   "budget": 30,
   "slots": [
     "hero",
     "uzudebris-dashboard",
     "haepick-phone",
-    "bg"
+    "bg",
+    "uzu-flow-register",
+    "uzu-flow-predict",
+    "uzu-flow-match",
+    "uzu-flow-notify"
   ],
   "images": [
     {
@@ -56,6 +60,54 @@
       "prompt": "An abstract, nearly black graphite background texture made of very faint overlapping video frame outlines and scan lines, low contrast, with one tiny distant signal orange glint off-center. Designed to sit behind white text, so the whole frame stays dark and even.",
       "model": "gpt-image-2",
       "created_at": "2026-10-13T11:32:20+00:00"
+    },
+    {
+      "slot": "uzu-flow-register",
+      "file": "uzu-flow-register.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7450,
+      "alt": "원본 영상 파일을 보관함에 올리는 그림",
+      "decorative": false,
+      "prompt": "Step 1 of a series: registering an original video. A single matte graphite video file card with a small play triangle, sliding down into a shallow light grey tray, with a small signal orange upward arrow tab on the card.",
+      "model": "gpt-image-2",
+      "created_at": "2026-10-16T11:18:15+00:00"
+    },
+    {
+      "slot": "uzu-flow-predict",
+      "file": "uzu-flow-predict.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 27572,
+      "alt": "흩어진 여러 영상 카드 가운데 후보 몇 장을 돋보기로 고르는 그림",
+      "decorative": false,
+      "prompt": "Step 2 of a series: predicting where copies of content were re-uploaded. A loose scatter of small grey video thumbnail cards, with a graphite magnifying lens hovering over them; under the lens two cards are lifted slightly and tinted signal orange as candidates.",
+      "model": "gpt-image-2",
+      "created_at": "2026-10-16T11:19:47+00:00"
+    },
+    {
+      "slot": "uzu-flow-match",
+      "file": "uzu-flow-match.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 25720,
+      "alt": "두 영상 카드의 지문 무늬를 겹쳐 맞춰 보는 그림",
+      "decorative": false,
+      "prompt": "Step 3 of a series: fingerprint matching between two videos. Two thin translucent video cards standing side by side, each carrying the same abstract fingerprint-like swirl pattern made of concentric lines and a short audio waveform strip; a thin signal orange line connects matching points between them.",
+      "model": "gpt-image-2",
+      "created_at": "2026-10-16T11:21:16+00:00"
+    },
+    {
+      "slot": "uzu-flow-notify",
+      "file": "uzu-flow-notify.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 9148,
+      "alt": "자물쇠가 달린 봉투로 한 사람에게만 알림을 보내는 그림",
+      "decorative": false,
+      "prompt": "Step 4 of a series: sending a private alert through a secure channel. A closed graphite envelope sealed with a small signal orange padlock, resting on a light grey rounded phone-like slab, with a single small notification dot.",
+      "model": "gpt-image-2",
+      "created_at": "2026-10-16T11:22:50+00:00"
     }
   ]
 }

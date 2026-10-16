@@ -53,9 +53,11 @@ def load_env() -> None:
         os.environ.setdefault(k.strip(), v.strip().strip("\"'"))
 
 
-def load_slots() -> tuple[str, list[dict]]:
+def load_slots() -> tuple[dict, list[dict]]:
+    """공통 제약 묶음과 슬롯. 슬롯의 "guard": "paper" 는 guard_paper (밝은 섹션용), 없으면 guard."""
     data = json.loads(PROMPTS.read_text())
-    return data.get("guard", ""), data["slots"]
+    guards = {k.removeprefix("guard_") if k != "guard" else "": v for k, v in data.items() if k.startswith("guard")}
+    return guards, data["slots"]
 
 
 def webp_dims(p: Path) -> tuple[int, int]:
@@ -157,7 +159,7 @@ def main() -> int:
     load_env()
     model = os.environ.get("OPENAI_IMAGE_MODEL", "gpt-image-2")
     quality = os.environ.get("OPENAI_IMAGE_QUALITY", "high")
-    guard, slots = load_slots()
+    guards, slots = load_slots()
 
     unknown = only - {s["slot"] for s in slots}
     if unknown:
@@ -195,7 +197,7 @@ def main() -> int:
     for spec in targets:
         print(f"· {spec['slot']} 생성 중… ({model} · {spec['size']} · {quality})")
         try:
-            raw = generate(key, model, quality, spec, guard)
+            raw = generate(key, model, quality, spec, guards[spec.get("guard", "")])
         except urllib.error.HTTPError as e:
             print(f"  실패 {e.code}: {e.read()[:300]!r}", file=sys.stderr)
             failed += 1

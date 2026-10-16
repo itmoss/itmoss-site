@@ -2,7 +2,7 @@
   "lookup": "https://itunes.apple.com/lookup?id=6748489765&country=kr",
   "app": "해픽 (haepick) - 나를 위한 뷰티 인사이트",
   "seller": "Woodang Network Inc.",
-  "fetched": "2026-10-14",
+  "fetched": "2026-10-16",
   "files": [
     {
       "file": "icon.webp",
@@ -33,6 +33,20 @@
       "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/85/fd/72/85fd723a-4363-d34b-64fa-cedc3a5b0899/1320_U200a_U00d7_U200a2868_5.jpg/900x0w.jpg",
       "width": 900,
       "height": 1955
+    }
+  ],
+  "landing": [
+    {
+      "file": "scan.webp",
+      "url": "https://haepick.ai/landing/ko/s3-obj.webp",
+      "width": 528,
+      "height": 465
+    },
+    {
+      "file": "scan.png",
+      "url": "https://haepick.ai/landing/ko/s3-obj.png",
+      "width": 528,
+      "height": 465
     }
   ]
 }
