@@ -58,18 +58,6 @@ const principles = [
           기술은 사람의 눈에 닿을 때 비로소 쓸모가 생기고, 무대의 주인공은 여전히 사람이어야 합니다.
         </p>
       </div>
-      <ul class="about-philo__cards">
-        <li class="about-card">
-          <span class="eyebrow">사람</span>
-          <strong class="about-card__title">보는 사람</strong>
-          <span class="about-card__body">무엇을 보고 고를지는 사람이 정합니다.</span>
-        </li>
-        <li class="about-card">
-          <span class="eyebrow eyebrow--signal">기술</span>
-          <strong class="about-card__title">무대 뒤의 조력자</strong>
-          <span class="about-card__body">보는 사람을 위해서만 일합니다.</span>
-        </li>
-      </ul>
     </div>
 
     <div class="about-principles">
@@ -119,12 +107,6 @@ const principles = [
     word-break: keep-all;
   }
 
-  .about-philo {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--space-12);
-    align-items: start;
-  }
   .about-philo__text {
     display: flex;
     flex-direction: column;
@@ -137,36 +119,6 @@ const principles = [
     color: var(--color-muted);
     word-break: keep-all;
   }
-  .about-philo__cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  /* 같은 상자 두 개 대신 위 선 — '기술' 쪽만 signal 선으로 무대 뒤 조력자를 짚는다 */
-  .about-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    padding-top: var(--space-5);
-    border-top: 1px solid var(--color-faint);
-  }
-  .about-card:last-child {
-    border-top-color: var(--color-signal);
-  }
-  .about-card__title {
-    font-size: var(--text-lg);
-    font-weight: 500;
-  }
-  .about-card__body {
-    font-size: var(--text-sm);
-    line-height: var(--leading-body);
-    color: var(--color-muted);
-    word-break: keep-all;
-  }
-
   .about-principles {
     display: flex;
     flex-direction: column;
@@ -267,13 +219,9 @@ const principles = [
   }
 
   @media (max-width: 800px) {
-    .about-philo,
     .principle {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--space-6);
     }
-  }
-  @media (max-width: 480px) {
-    .about-philo__cards { grid-template-columns: minmax(0, 1fr); }
   }
 </style>
