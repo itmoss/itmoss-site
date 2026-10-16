@@ -247,7 +247,7 @@ Jaster 1명. 옛 페이지의 AI 협업자 카드는 두지 않는다.
 | :--- | :--- |
 | 소제목 | 만드는 사람들 |
 | 이름 | Jaster |
-| 역할 | 대표 · 디자이너 |
+| 역할 | 대표 / 영상해커 |
 | 한 줄 | 영상 스트리밍과 트랜스코딩을 20년 다뤄 왔습니다. |
 | 링크 → `https://www.linkedin.com/in/jaster1838` | LinkedIn |
 | 링크 aria-label | Jaster 의 LinkedIn 프로필 (새 창) |
