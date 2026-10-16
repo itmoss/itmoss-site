@@ -37,6 +37,23 @@
   ],
   "landing": [
     {
+      "file": "capture.webp",
+      "url": "https://haepick.ai/landing/ko/s3-obj.webp",
+      "page": "https://haepick.ai/ko",
+      "section": "촬영해!픽",
+      "fetched": "2026-10-16",
+      "width": 528,
+      "height": 465
+    },
+    {
+      "file": "capture-still.webp",
+      "from": "capture.webp",
+      "note": "첫 프레임 (prefers-reduced-motion 용 정지 컷)",
+      "page": "https://haepick.ai/ko",
+      "width": 528,
+      "height": 465
+    },
+    {
       "file": "scan.webp",
       "url": "https://haepick.ai/landing/ko/s3-obj.webp",
       "width": 528,

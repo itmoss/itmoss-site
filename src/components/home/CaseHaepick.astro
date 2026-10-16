@@ -4,13 +4,15 @@
 // 단계: 네 단계를 카드로 나란히 두고 카드마다 그림(매니페스트 슬롯 hp-step-*, gpt-image-2 — 해픽 점토풍 톤)을 붙인다.
 // 예전 sticky 장면(왼쪽 고정 이미지 + 오른쪽 단계 점등)은 단계 사이가 멀고 그림과 따로 놀아 걷어냈다.
 // 앱 아이콘은 App Store 공개 자료를 자체 호스팅한 것 (scripts/fetch-haepick.mjs, 출처 public/images/haepick/sources.json).
+// 촬영 장면(capture.webp)은 haepick.ai/ko '촬영해!픽' 의 움직이는 webp 를 자체 호스팅한 것 — 핫링크 금지.
+// 동작 줄이기 설정이면 첫 프레임(capture-still.webp)으로 바꾼다.
 import RenewalImage from './RenewalImage.astro';
 
 const stages = [
-  { slot: 'hp-step-camera', label: '비추기', body: '카메라에 제품을 비춥니다.' },
-  { slot: 'hp-step-detect', label: '제품 인식', body: '화면 속 제품을 찾아 표시합니다.' },
-  { slot: 'hp-step-ingredients', label: '성분 읽기', body: '표기된 성분을 읽어 옵니다.' },
-  { slot: 'hp-step-match', label: '피부 맞춤', body: '내 피부 기준으로 맞는 성분과 주의할 성분을 나눠 봅니다.' },
+  { key: 'capture', slot: 'hp-step-camera', label: '찍기', body: '궁금한 화장품을 카메라로 찍습니다.' },
+  { key: 'detect', slot: 'hp-step-detect', label: '제품 인식', body: '찍은 사진 속 제품이 무엇인지 알아봅니다.' },
+  { key: 'analyze', slot: 'hp-step-ingredients', label: '성분·제품 정보 분석', body: '표기된 성분과 제품 정보를 읽어 정리합니다.' },
+  { key: 'match', slot: 'hp-step-match', label: '내 피부 적합도', body: '내 피부 기준으로 맞는지, 주의할 성분은 없는지 확인합니다.' },
 ];
 
 const facts = [
@@ -28,18 +30,39 @@ const stores = [
 ---
 <section id="haepick" class="section section--light" aria-labelledby="haepick-title">
   <div class="container section__inner">
-    <header class="section__head">
-      <img class="hp-icon" src="/images/haepick/icon.webp" width="512" height="512" alt="해픽 앱 아이콘" loading="lazy" decoding="async" />
-      <p class="eyebrow eyebrow--on-paper">CASE 02 · 해픽 — VISION AI</p>
-      <h2 id="haepick-title" class="section__title">스캔 한 번에,<br />나만의 성분 확인.</h2>
-      <p class="section__lead">
-        아이티모스의 JVL 비전 엔진이 상용 앱 「해픽」과 함께하고 있습니다. 제품을 스캔하면 바로 인식하고, 성분을 읽어 내 피부 기준으로 분석해 줍니다.
-      </p>
-    </header>
+    <div class="hp-top">
+      <header class="section__head">
+        <img class="hp-icon" src="/images/haepick/icon.webp" width="512" height="512" alt="해픽 앱 아이콘" loading="lazy" decoding="async" />
+        <p class="eyebrow eyebrow--on-paper">CASE 02 · 해픽 — VISION AI</p>
+        <h2 id="haepick-title" class="section__title">찍으면 바로,<br />내 피부에 맞는지.</h2>
+        <p class="section__lead">
+          아이티모스의 JVL 비전 엔진이 상용 앱 「해픽」과 함께하고 있습니다. 궁금한 화장품을 찍으면 제품을 인식하고, 성분과 제품 정보를 분석해 내 피부에 맞는지 알려 줍니다.
+        </p>
+      </header>
+
+      <figure class="hp-capture">
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" srcset="/images/haepick/capture-still.webp" type="image/webp" />
+          <img
+            class="hp-capture__img"
+            src="/images/haepick/capture.webp"
+            width="528"
+            height="465"
+            alt="스캔 틀 안에 세운 세럼병을 스마트폰으로 찍는 해픽 촬영 장면"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+        <figcaption class="hp-capture__caption">
+          <q>이 화장품, 나한테 맞을까?</q>
+          <span class="hp-capture__source">— 해픽 「촬영해!픽」</span>
+        </figcaption>
+      </figure>
+    </div>
 
     <ol class="hp-steps" data-step-group>
       {stages.map((s, i) => (
-        <li class="hp-steps__item" data-step={i + 1}>
+        <li class="hp-steps__item" data-step={i + 1} data-stage={s.key}>
           <RenewalImage slot={s.slot} ratio="1 / 1" class="hp-steps__img" />
           <div class="hp-steps__text">
             <span class="hp-steps__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
@@ -83,6 +106,41 @@ const stores = [
     height: 64px;
     border-radius: 22%;
     border: 1px solid var(--color-line-on-paper);
+  }
+
+  .hp-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--space-12);
+    align-items: center;
+  }
+  .hp-capture {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .hp-capture__img {
+    display: block;
+    width: 100%;
+    max-width: 528px;
+    height: auto;
+  }
+  .hp-capture__caption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    word-break: keep-all;
+  }
+  .hp-capture__source {
+    color: var(--color-muted-on-paper);
+  }
+  @media (max-width: 960px) {
+    .hp-top {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 
   .hp-steps {
