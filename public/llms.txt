@@ -1,21 +1,25 @@
-# ITMOSS — LLM-Friendly Site Index
+# 아이티모스 ITMOSS
 
-> ITMOSS is a vision AI company that protects video with the technology used to make it — 우주데브리스 (detecting unauthorized re-streams of creators' videos) and 해픽 (beauty vision AI).
+> 아이티모스는 영상과 보안을 20년간 다뤄 온 팀이 만든 영상 해킹 AI 회사입니다. 해킹된 영상을 찾아 알려 주는 우주데브리스, 카메라로 화장품 성분을 읽는 해픽을 만듭니다.
+> ITMOSS is a Korean AI company fighting video hacking. It builds 우주데브리스 (UzuDebris — finds hacked videos re-uploaded without permission and alerts the owner) and 해픽 (Haepick — a beauty vision AI app that reads cosmetic ingredients with the camera).
 
-## Pages
+## 사이트 구성 (한 페이지)
 
-- [Home](https://itmoss.com/): One-page site — engines, products, record, company, contact
-- [About](https://itmoss.com/#about): Company philosophy and principles
-- [Contact](https://itmoss.com/#contact): Get in touch
-- [Notes](https://itmoss.com/notes/): Technical blog — AI, fintech, infrastructure
+- [홈](https://itmoss.com/): 영상 해킹에 맞서는 단 하나의 AI 솔루션, 우주데브리스
+- [우주데브리스](https://itmoss.com/#uzudebris): 해킹된 영상을 찾아 알려 주는 보안 AI 서비스 — https://uzudebris.com
+- [해픽 · Vision AI](https://itmoss.com/#haepick): 카메라로 화장품 성분을 읽는 앱 (iOS·Android)
+- [소식](https://itmoss.com/#record): 회사 소식과 걸어온 길
+- [회사](https://itmoss.com/#about): 회사 소개와 만드는 사람들
+- [연락](https://itmoss.com/#contact): 문의 메일
+- [개인정보처리방침](https://itmoss.com/privacy/)
+- [기술 노트](https://itmoss.com/notes/)
 
-## Notes
+## 앱
 
-- [K-Beauty Vector Search](https://itmoss.com/notes/kbeauty-vector-search/)
-- [RabbitScene Intro](https://itmoss.com/notes/rabbitscene-intro/)
-- [Trading Infrastructure](https://itmoss.com/notes/trading-infra/)
+- 해픽 App Store: https://apps.apple.com/kr/app/id6748489765
+- 해픽 Google Play: https://play.google.com/store/apps/details?id=com.woodang.haepick_client&hl=ko
 
-## Contact
+## 연락
 
 - Email: jaster@itmoss.com
-- Blog: https://blog.naver.com/itmoss
+- LinkedIn: https://www.linkedin.com/in/jaster1838

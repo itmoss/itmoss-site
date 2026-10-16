@@ -4,7 +4,12 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [tailwind({ applyBaseStyles: true }), mdx(), sitemap()],
+  integrations: [
+    tailwind({ applyBaseStyles: true }),
+    mdx(),
+    // /preview/ 는 내부 시안 페이지 — 검색에 내지 않는다
+    sitemap({ filter: (page) => !page.includes('/preview/') })
+  ],
   site: 'https://itmoss.com',
   // 옛 페이지는 한 페이지 섹션으로 보낸다 (정적 빌드라 meta refresh 로 나간다).
   redirects: {

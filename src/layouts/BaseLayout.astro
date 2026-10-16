@@ -2,16 +2,20 @@
 import '../styles/global.css';
 import '../styles/tokens.css';
 import '../styles/scroll.css';
+import { CONTACT_EMAIL } from '../config/site.js';
+
+const OG_IMAGE = '/images/brand/og.jpg';
 
 // .mdx 의 layout 으로 쓰일 때는 frontmatter 가 Astro.props.frontmatter 로 들어온다.
 const props = { ...(Astro.props.frontmatter ?? {}), ...Astro.props };
 const {
-  title = "아이티모스 ITMOSS — 영상을 만드는 기술로 영상을 지키는 비전 AI",
-  description = "아이티모스(ITMOSS)는 영상을 만드는 기술로 영상을 지키는 비전 AI 회사입니다. 창작자 영상 무단 재송출 탐지 우주데브리스와 뷰티 비전 AI 해픽을 만듭니다.",
-  image = "/images/brand/apple-touch-icon.png",
+  title = "아이티모스 ITMOSS — 영상 해킹에 맞서는 단 하나의 AI 솔루션",
+  description = "아이티모스는 영상과 보안을 20년간 다뤄 온 팀이 만든 영상 해킹 AI 회사입니다. 해킹된 영상을 찾아 알려 주는 우주데브리스, 카메라로 화장품 성분을 읽는 해픽을 만듭니다.",
+  // 기본 공유 카드는 scripts/make-og.sh 가 만드는 1200×630. 다른 이미지를 주면 크기 메타는 붙이지 않는다.
+  image = OG_IMAGE,
+  imageAlt = "아이티모스 로고와 지구 — 영상 해킹에 맞서는 단 하나의 AI 솔루션",
   type = "website",
   publishDate,
-  keywords = "아이티모스, ITMOSS, 비전 AI, Vision AI, 우주데브리스, 해픽, 영상 지문, 무단 재송출 탐지, 뷰티 AI",
 } = props;
 // 화면 문구는 한국어가 기본. 다국어는 다음 단계.
 const lang = 'ko';
@@ -19,13 +23,61 @@ const lang = 'ko';
 const siteURL = 'https://itmoss.com';
 const canonicalURL = new URL(Astro.url.pathname, siteURL).href;
 const ogImage = image.startsWith('http') ? image : new URL(image, siteURL).href;
+const isDefaultOg = image === OG_IMAGE;
 const logoURL = `${siteURL}/images/brand/logo-on-light.webp`;
 const isArticle = type === 'article';
 const isHome = Astro.url.pathname === '/';
 // 홈에서는 같은 페이지 앵커, 다른 페이지에서는 홈의 앵커로 보낸다.
 const anchor = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 const GA_ID = 'G-FZK5GDSNNR';
-const CONTACT_EMAIL = 'jaster@itmoss.com';
+
+// 구조화 데이터 — 확인된 사실만 (가격·평점·후기 없음). 스토어 주소는 CaseHaepick 과 같다.
+const LINKEDIN_URL = 'https://www.linkedin.com/in/jaster1838';
+const APP_STORE_URL = 'https://apps.apple.com/kr/app/id6748489765';
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.woodang.haepick_client&hl=ko';
+const orgId = `${siteURL}/#organization`;
+const siteGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": orgId,
+      "name": "아이티모스",
+      "alternateName": "ITMOSS",
+      "url": siteURL,
+      "logo": logoURL,
+      "description": "영상과 보안을 20년간 다뤄 온 팀이 만든 영상 해킹 AI 회사. 우주데브리스와 해픽을 만든다.",
+      "email": CONTACT_EMAIL,
+      "sameAs": [LINKEDIN_URL, APP_STORE_URL, PLAY_STORE_URL]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteURL}/#website`,
+      "name": "아이티모스",
+      "url": siteURL,
+      "inLanguage": "ko-KR",
+      "publisher": { "@id": orgId }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "우주데브리스",
+      "url": "https://uzudebris.com",
+      "applicationCategory": "SecurityApplication",
+      "description": "해킹되어 무단으로 올라간 영상을 찾아 알려 주는 보안 AI 서비스.",
+      "provider": { "@id": orgId }
+    },
+    {
+      "@type": "MobileApplication",
+      "name": "해픽",
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "LifestyleApplication",
+      "description": "카메라로 화장품 성분을 읽어 알려 주는 뷰티 비전 AI 앱.",
+      "installUrl": [APP_STORE_URL, PLAY_STORE_URL],
+      "sameAs": [APP_STORE_URL, PLAY_STORE_URL],
+      "publisher": { "@id": orgId }
+    }
+  ]
+};
 
 const csp = [
   "default-src 'self'",
@@ -56,7 +108,6 @@ const nav = [
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
     <meta name="author" content="ITMOSS" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
@@ -69,15 +120,19 @@ const nav = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    {isDefaultOg && <meta property="og:image:width" content="1200" />}
+    {isDefaultOg && <meta property="og:image:height" content="630" />}
+    <meta property="og:image:alt" content={imageAlt} />
     <meta property="og:locale" content="ko_KR" />
-    <meta property="og:site_name" content="ITMOSS" />
+    <meta property="og:site_name" content="아이티모스 ITMOSS" />
     {publishDate && <meta property="article:published_time" content={publishDate} />}
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
     <!-- JSON-LD (데이터 블록 — 실행되지 않으므로 CSP 대상 아님) -->
     {isArticle ? (
@@ -97,17 +152,7 @@ const nav = [
         }
       })} />
     ) : (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "ITMOSS",
-        "alternateName": "아이티모스",
-        "url": siteURL,
-        "logo": logoURL,
-        "description": "아이티모스(ITMOSS) — 영상을 만드는 기술로 영상을 지키는 비전 AI 회사",
-        "email": CONTACT_EMAIL,
-        "sameAs": []
-      })} />
+      <script type="application/ld+json" set:html={JSON.stringify(siteGraph)} />
     )}
 
     <link rel="sitemap" href="/sitemap-index.xml" />
