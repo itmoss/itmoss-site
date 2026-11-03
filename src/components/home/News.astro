@@ -1,6 +1,6 @@
 ---
 // #record 앞부분 — 소식. 문구: docs/renewal/copy.md "## 소식".
-// src/data/news.json 배열 순서 = 화면 순서 (GBSA 먼저). 모든 소식은 같은 카드 형식.
+// src/data/news.json 배열 순서 = 화면 순서 (협약 소식 먼저). 모든 소식은 같은 카드 형식.
 // href 가 없으면 링크 없이 카드만 (모두의 창업 링크 대상은 미결정).
 import news from '../../data/news.json';
 ---
@@ -12,6 +12,16 @@ import news from '../../data/news.json';
         <p class="news__meta">{item.date} · {item.tag}</p>
         <h3 class="news__title">{item.title}</h3>
         {item.body && <p class="news__body">{item.body}</p>}
+        {item.partnerLogos && (
+          <div class="news__collaboration" role="group" aria-label="아이티모스와 은하미디어랩의 IP 업무협약">
+            {item.partnerLogos.map((logo, index) => (
+              <>
+                {index > 0 && <span class="news__collaboration-cross" aria-hidden="true">×</span>}
+                <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} loading="lazy" decoding="async" />
+              </>
+            ))}
+          </div>
+        )}
         {item.logo && (
           <span class="news__logo">
             <img
@@ -98,5 +108,26 @@ import news from '../../data/news.json';
     align-self: flex-start;
     color: var(--color-signal);
     text-underline-offset: 4px;
+  }
+  .news__collaboration {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    padding: 24px 16px;
+    margin-top: auto;
+  }
+  .news__collaboration img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+  }
+  .news__collaboration-cross {
+    color: #214c7d;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1;
   }
 </style>

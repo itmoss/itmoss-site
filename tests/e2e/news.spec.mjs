@@ -49,3 +49,13 @@ test('카드마다 날짜·태그가 있고 href 가 있으면 그 링크가 붙
 test('히어로(#top)에는 모두의 창업 소식을 넣지 않는다', async ({ page }) => {
   await expect(page.locator('#top')).not.toContainText('모두의 창업');
 });
+
+test('은하미디어랩 IP 협약 소식에는 두 회사 로고와 연혁이 표시된다', async ({ page }) => {
+  const card = page.locator('#record .news__card').filter({ hasText: '은하미디어랩' });
+  await expect(card).toContainText('IP 업무협약(MOU) 체결');
+  await expect(card.locator('.news__collaboration img')).toHaveCount(2);
+  await expect(card.getByAltText('아이티모스 ITMOSS')).toHaveAttribute('src', '/images/brand/logo-on-light.webp');
+  await expect(card.getByAltText('은하미디어랩')).toHaveAttribute('src', '/images/brand/eunha-media-lab.png');
+  await expect(card.locator('.news__collaboration-cross')).toHaveText('×');
+  await expect(page.locator('.timeline__list')).toContainText('독립영화사 은하미디어랩과 IP 업무협약(MOU) 체결');
+});

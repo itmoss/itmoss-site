@@ -1,5 +1,25 @@
 [
   {
+    "date": "협약 소식",
+    "tag": "MOU",
+    "title": "아이티모스, 독립영화사 은하미디어랩과 IP 업무협약(MOU) 체결",
+    "body": "아이티모스와 독립영화사 은하미디어랩이 지식재산(IP) 분야 업무협약을 체결했습니다.",
+    "partnerLogos": [
+      {
+        "src": "/images/brand/logo-on-light.webp",
+        "alt": "아이티모스 ITMOSS",
+        "width": 724,
+        "height": 150
+      },
+      {
+        "src": "/images/brand/eunha-media-lab.png",
+        "alt": "은하미디어랩",
+        "width": 626,
+        "height": 164
+      }
+    ]
+  },
+  {
     "date": "2026",
     "tag": "선정",
     "title": "아이티모스 뷰티 AI 플랫폼, GBSA AI 멤버십 기업 선정",
