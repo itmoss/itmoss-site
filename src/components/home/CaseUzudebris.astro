@@ -79,7 +79,6 @@ const audiences = [
         <li class="uzu-steps__item" data-step={i + 1}>
           <div class="uzu-steps__mark">
             <StepIcon name={s.icon} />
-            <span class="uzu-steps__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
           </div>
           <h3 class="uzu-steps__title">{s.title}</h3>
           <p class="uzu-steps__body">{s.body}</p>
@@ -165,12 +164,6 @@ const audiences = [
     display: flex;
     align-items: center;
     gap: var(--space-3);
-  }
-  .uzu-steps__num {
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    font-variant-numeric: tabular-nums;
-    color: var(--color-signal-ink);
   }
   .uzu-steps__title {
     margin: 0;

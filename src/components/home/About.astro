@@ -4,35 +4,30 @@
 import RenewalImage from './RenewalImage.astro';
 const principles = [
   {
-    no: '01',
     kicker: '가장 먼저 깔리는 바탕',
     title: '디지털 황무지의 토양',
     body: '아이티모스는 화성에 가려 하지 않습니다. 거친 디지털 세상에 가장 먼저, 사람들이 편히 머물 수 있는 바탕이 되려 합니다.',
     slot: 'principle-1',
   },
   {
-    no: '02',
     kicker: '보이지 않는 안전망',
     title: '아래에서 받치는 존재',
     body: '눈에 띄지 않게 아래에서 받칩니다. 복잡한 약관과 동의서 때문에 다치는 일이 없도록 든든한 쿠션이 되려 합니다.',
     slot: 'principle-2',
   },
   {
-    no: '03',
     kicker: '필요한 것만 남깁니다',
     title: '노이즈를 걸러내다',
     body: '쏟아지는 정보를 그대로 흘려보내지 않습니다. 불필요한 소음을 걸러, 정리된 사실만 전합니다.',
     slot: 'principle-3',
   },
   {
-    no: '04',
     kicker: '가두지 않는 연결',
     title: '잠그지 않습니다',
     body: '큰 플랫폼은 사용자를 붙잡아 두려 합니다. 아이티모스는 얇고 조용히 퍼져, 필요한 연결만 부담 없이 돕습니다.',
     slot: 'principle-4',
   },
   {
-    no: '05',
     kicker: '끈질긴 생명력',
     title: '이끼처럼 조용히',
     body: '척박한 곳에서도 조용히 뿌리내립니다. 이끼처럼 생활 가까이에 스며들어 함께 지내려 합니다.',
@@ -66,7 +61,7 @@ const principles = [
           <li class="principle">
             <RenewalImage slot={p.slot} ratio="16 / 9" class="principle__img" />
             <div class="principle__text">
-              <p class="principle__kicker"><span class="principle__no">{p.no}</span> {p.kicker}</p>
+              <p class="principle__kicker">{p.kicker}</p>
               <h4 class="principle__title">{p.title}</h4>
               <p class="principle__body">{p.body}</p>
             </div>
@@ -148,10 +143,6 @@ const principles = [
     margin: 0;
     font-size: var(--text-sm);
     color: var(--color-muted);
-  }
-  .principle__no {
-    font-family: var(--font-mono);
-    color: var(--color-signal);
   }
   .principle__title {
     margin: 0;

@@ -68,7 +68,6 @@ const stores = [
           <div class="hp-steps__text">
             <div class="hp-steps__mark">
               <StepIcon name={s.icon} />
-              <span class="hp-steps__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             </div>
             <h3 class="hp-steps__title">{s.label}</h3>
             <p class="hp-steps__body">{s.body}</p>
@@ -175,11 +174,6 @@ const stores = [
     display: flex;
     align-items: center;
     gap: var(--space-3);
-  }
-  .hp-steps__num {
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    color: var(--color-signal-ink);
   }
   .hp-steps__title {
     margin: 0;
