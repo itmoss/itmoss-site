@@ -94,7 +94,7 @@ const csp = [
 
 const nav = [
   { id: 'uzudebris', label: '우주데브리스' },
-  { id: 'haepick', label: '해픽 · Vision AI' },
+  { href: '/haepick/', label: '해픽 · Vision AI' },
   { id: 'record', label: '소식' },
   { id: 'about', label: '회사' },
   { id: 'contact', label: '연락' },
@@ -178,7 +178,11 @@ const nav = [
           <img src="/images/brand/logo-on-dark.webp" width="724" height="150" alt="아이티모스 itmoss" />
         </a>
         <nav class="site-nav" aria-label="주 메뉴">
-          {nav.map((item) => <a href={anchor(item.id)}>{item.label}</a>)}
+          {nav.map((item) => {
+            const href = item.href ?? anchor(item.id);
+            const current = item.href && Astro.url.pathname.startsWith(item.href);
+            return <a href={href} aria-current={current ? 'page' : undefined}>{item.label}</a>;
+          })}
         </nav>
       </div>
     </header>

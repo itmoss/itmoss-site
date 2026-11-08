@@ -7,7 +7,7 @@
 
 - [홈](https://itmoss.com/): 영상 해킹에 맞서는 단 하나의 AI 솔루션, 우주데브리스
 - [우주데브리스](https://itmoss.com/#uzudebris): 해킹된 영상을 찾아 알려 주는 보안 AI 서비스 — https://uzudebris.com
-- [해픽 · Vision AI](https://itmoss.com/#haepick): 카메라로 화장품 성분을 읽는 앱 (iOS·Android)
+- [해픽 · Vision AI](https://itmoss.com/haepick/): 카메라로 화장품 성분을 읽는 앱 (iOS·Android)
 - [소식](https://itmoss.com/#record): 회사 소식과 걸어온 길
 - [회사](https://itmoss.com/#about): 회사 소개와 만드는 사람들
 - [연락](https://itmoss.com/#contact): 문의 메일

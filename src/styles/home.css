@@ -1,0 +1,128 @@
+/* 홈·서비스 페이지 공통 섹션 스타일 — 색·간격은 tokens.css 변수만 쓴다 (index.astro 에서 옮김) */
+  /* 홈 섹션 공통 — 색·간격은 tokens.css 변수만 쓴다 */
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-inline: var(--gutter);
+    box-sizing: border-box;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .eyebrow {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.02em;
+    /* Plex Mono 의 공백은 고정폭(0.6em)이라 한글 낱말 사이가 벌어진다 — 본문 공백 폭에 가깝게 */
+    word-spacing: -0.25em;
+    color: var(--color-muted);
+  }
+  .eyebrow--signal { color: var(--color-signal); }
+  .eyebrow--on-paper { color: var(--color-signal-ink); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 var(--space-6);
+    /* global.css(노트 페이지용) .btn 의 rounded-xl 을 덮는다 — 각진 모서리 토큰 */
+    border-radius: var(--radius-none);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 120ms ease-out;
+  }
+  /* 눌림 — 아주 살짝 들어간다 (동작 줄이기면 없음) */
+  .btn:active { transform: scale(0.98); }
+  @media (prefers-reduced-motion: reduce) {
+    .btn:active { transform: none; }
+  }
+  body.site .btn--signal {
+    background: var(--color-signal);
+    color: var(--color-ink);
+  }
+  body.site .btn--signal:hover {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+  body.site .btn--ghost {
+    border: 1px solid var(--color-faint);
+  }
+  body.site .btn--ghost:hover {
+    border-color: var(--color-signal);
+  }
+  /* 밝은 섹션의 ghost 버튼: 테두리는 ink, hover 는 면을 채워 상태가 분명히 보이게 */
+  body.site .section--light .btn--ghost,
+  body.site .section--paper .btn--ghost {
+    border-color: var(--color-ink);
+  }
+  body.site .section--light .btn--ghost:hover,
+  body.site .section--paper .btn--ghost:hover {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  .section__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    padding-block: var(--space-30);
+  }
+  .section__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    max-width: 760px;
+  }
+  .section__title {
+    margin: 0;
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+  }
+  .section__title--sm {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .section__lead {
+    margin: 0;
+    font-size: var(--text-lg);
+    line-height: var(--leading-body);
+    color: var(--color-muted);
+    word-break: keep-all;
+  }
+
+  .section--ruled { border-top: 1px solid var(--color-line); }
+  .section--paper {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+  .section--paper .section__lead { color: var(--color-muted-on-paper); }
+  /* paper 섹션 바로 뒤에 오는 밝은 섹션 — 한 단계 밝은 면 + 경계선으로 구분 */
+  .section--light {
+    background: var(--color-paper-bright);
+    color: var(--color-ink);
+    border-top: 1px solid var(--color-line-on-paper);
+  }
+  .section--light .section__lead { color: var(--color-muted-on-paper); }
+  .section--signal {
+    background: var(--color-signal);
+    color: var(--color-ink);
+  }
+  .section--signal .section__lead { color: var(--color-ink); max-width: 560px; }
+
+  @media (max-width: 640px) {
+    .section__inner { padding-block: var(--space-20); }
+  }
