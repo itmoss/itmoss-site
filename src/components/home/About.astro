@@ -61,10 +61,6 @@ const principles = [
     </div>
 
     <div class="about-principles">
-      <div class="about-principles__head">
-        <h3 class="about__subtitle">공존의 5원칙</h3>
-        <p class="about-principles__lead">불필요한 시스템에 묶이지 않고, 하려는 일을 온전히 해낼 수 있는 자리를 만듭니다.</p>
-      </div>
       <ol class="about-principles__list">
         {principles.map((p) => (
           <li class="principle">
@@ -123,17 +119,6 @@ const principles = [
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
-  }
-  .about-principles__head {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-  .about-principles__lead {
-    margin: 0;
-    color: var(--color-muted);
-    line-height: var(--leading-body);
-    word-break: keep-all;
   }
   .about-principles__list {
     margin: 0;
