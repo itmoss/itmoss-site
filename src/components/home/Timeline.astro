@@ -10,23 +10,56 @@ const milestones = [
   { date: '2025.07', text: '아이티모스 설립' },
 ];
 ---
-<div class="timeline">
-  <h3 class="timeline__title">걸어온 길</h3>
-  <ol class="timeline__list" data-step-group>
-    {milestones.map((m, i) => (
-      <li class="timeline__item" data-step={i + 1}>
+<details class="timeline">
+  <summary class="timeline__summary">
+    <h3 class="timeline__title">걸어온 길</h3>
+    <svg class="timeline__chevron" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </summary>
+  <ol class="timeline__list">
+    {milestones.map((m) => (
+      <li class="timeline__item">
         <span class="timeline__date">{m.date}</span>
         <span class="timeline__text">{m.text}</span>
       </li>
     ))}
   </ol>
-</div>
+</details>
 
 <style>
-  .timeline {
+  .timeline__summary {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    cursor: pointer;
+    list-style: none;
+  }
+  .timeline__summary::-webkit-details-marker {
+    display: none;
+  }
+  .timeline__summary:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+  .timeline__chevron {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    color: var(--color-muted);
+    transition: transform 0.2s ease;
+  }
+  .timeline[open] .timeline__chevron {
+    transform: rotate(180deg);
+  }
+  .timeline[open] .timeline__list {
+    margin-top: var(--space-6);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .timeline__chevron {
+      transition: none;
+    }
   }
   .timeline__title {
     margin: 0;
